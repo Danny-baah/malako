@@ -1113,7 +1113,7 @@ function initInteractiveConfigurator() {
       metadata: {
         submittedAt: timestamp,
         formattedDate: formattedDate,
-        recipient: 'info@malawko-elektrotechnik.de'
+        recipient: 'kontakt@elektrotechnik-malawko.de'
       }
     };
 
