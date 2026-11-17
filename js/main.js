@@ -69,6 +69,11 @@ function initMobileMenu() {
 
   // Services accordion in mobile menu
   if (subToggle && submenu) {
+    if (submenu.classList.contains('open')) {
+      const icon = subToggle.querySelector('.chevron-icon');
+      if (icon) icon.style.transform = 'rotate(180deg)';
+    }
+
     subToggle.addEventListener('click', (e) => {
       e.preventDefault();
       const isSubOpen = submenu.classList.toggle('open');
