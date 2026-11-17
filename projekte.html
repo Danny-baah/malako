@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referenzen &amp; Projekte | Elektrotechnik Malawko GmbH</title>
+  <meta name="description" content="Entdecken Sie ausgewählte Projekte von Elektrotechnik Malawko: Elektroinstallation, Smart Home, Wallbox & E-Mobilität und Beleuchtung in Kiel und Schleswig-Holstein.">
+  
+  <!-- Preload Critical Hero Background -->
+  <link rel="preload" as="image" href="assets/images/hero-bg.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/logos/malawko-logo.png" type="image/png">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER & NAVIGATION BAR
+       ===================================================================== -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <nav class="liquid-navbar" aria-label="Hauptnavigation">
+        <!-- Malawko Logo Container -->
+        <a href="index.html" class="brand-card" aria-label="Elektrotechnik Malawko GmbH Startseite">
+          <img 
+            src="assets/logos/malawko-logo.png" 
+            srcset="assets/logos/malawko-logo@3x.png 2x" 
+            alt="Elektrotechnik Malawko GmbH Logo" 
+            class="brand-logo"
+            width="170" 
+            height="46"
+          >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktopNavLinks">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Startseite</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#ueber-uns" class="nav-link">Über uns</a>
+          </li>
+          <li class="nav-item has-dropdown" id="servicesDropdownTrigger">
+            <button 
+              type="button" 
+              class="nav-link dropdown-toggle" 
+              aria-expanded="false" 
+              aria-haspopup="true"
+              aria-controls="servicesDropdown"
+            >
+              <span>Leistungen</span>
+              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            
+            <!-- Services Dropdown (Liquid Glass Card) -->
+            <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
+              <div class="dropdown-inner">
+                <a href="elektroinstallation.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">01</span>
+                  <div class="dropdown-text">
+                    <strong>Elektroinstallation</strong>
+                    <small>Neu- & Altbauinstallationen</small>
+                  </div>
+                </a>
+                <a href="zaehler-hausanschluss.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">02</span>
+                  <div class="dropdown-text">
+                    <strong>Zähler und Hausanschluss</strong>
+                    <small>Zähleranlagen & Modernisierung</small>
+                  </div>
+                </a>
+                <a href="wallbox-emobilitaet.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">03</span>
+                  <div class="dropdown-text">
+                    <strong>Wallbox & E-Mobilität</strong>
+                    <small>Ladeinfrastruktur Heim & Gewerbe</small>
+                  </div>
+                </a>
+                <a href="smart-home.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">04</span>
+                  <div class="dropdown-text">
+                    <strong>Smart Home & KNX</strong>
+                    <small>Intelligente Gebäudeautomation</small>
+                  </div>
+                </a>
+                <a href="beleuchtung.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">05</span>
+                  <div class="dropdown-text">
+                    <strong>Beleuchtung</strong>
+                    <small>Lichtplanung & energieeffiziente LEDs</small>
+                  </div>
+                </a>
+                <a href="netzwerk-kommunikation.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">06</span>
+                  <div class="dropdown-text">
+                    <strong>Netzwerk & Kommunikation</strong>
+                    <small>Strukturierte Datenverkabelung</small>
+                  </div>
+                </a>
+                <a href="pruefung-wartung.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">07</span>
+                  <div class="dropdown-text">
+                    <strong>Prüfung & Wartung</strong>
+                    <small>E-Check & DGUV V3 Prüfungen</small>
+                  </div>
+                </a>
+                <a href="stoerung-reparatur.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">08</span>
+                  <div class="dropdown-text">
+                    <strong>Störung & Reparatur</strong>
+                    <small>Schnelle Diagnose & Behebung</small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="projekte.html" class="nav-link active" aria-current="page">Referenzen</a>
+          </li>
+          <li class="nav-item">
+            <a href="kontakt.html" class="nav-link">Kontakt</a>
+          </li>
+        </ul>
+
+        <!-- Right Quick Action / Call CTA -->
+        <div class="nav-actions">
+          <span class="nav-divider" aria-hidden="true"></span>
+          
+          <a href="kontakt.html#projektanfrage" class="btn-project-cta" aria-label="Projekt anfragen">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button 
+            type="button" 
+            class="hamburger-btn" 
+            id="mobileMenuToggle" 
+            aria-label="Menü öffnen" 
+            aria-expanded="false" 
+            aria-controls="mobileDrawer"
+          >
+            <span class="bar bar-top"></span>
+            <span class="bar bar-mid"></span>
+            <span class="bar bar-bot"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="drawer-backdrop" id="drawerBackdrop"></div>
+      <div class="drawer-panel">
+        <div class="drawer-header">
+          <img src="assets/logos/malawko-logo.png" alt="Malawko Logo" width="140" height="38">
+          <button type="button" class="drawer-close" id="drawerCloseBtn" aria-label="Menü schließen">&times;</button>
+        </div>
+        <ul class="drawer-links">
+          <li><a href="index.html" class="drawer-link">Startseite</a></li>
+          <li><a href="index.html#ueber-uns" class="drawer-link">Über uns</a></li>
+          <li><a href="index.html#leistungen" class="drawer-link">Leistungen</a></li>
+          <li><a href="projekte.html" class="drawer-link active">Referenzen</a></li>
+          <li><a href="kontakt.html" class="drawer-link">Kontakt</a></li>
+        </ul>
+        <div class="drawer-cta-wrap">
+          <a href="kontakt.html#projektanfrage" class="btn-primary-orange" style="width: 100%; justify-content: center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- =====================================================================
+         1. HERO SECTION: "Unsere Arbeit. Ihre Inspiration."
+         ===================================================================== -->
+    <section class="projects-hero-section" id="hero" aria-labelledby="heroTitle">
+      <div class="projects-hero-bg-wrap" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/hero-bg-2x.webp 2x, assets/images/hero-bg.webp 1x" type="image/webp">
+          <img src="assets/images/hero-bg.jpg" alt="Exklusive moderne Villa mit stimmungsvoller Beleuchtung" class="projects-hero-bg-img" fetchpriority="high">
+        </picture>
+        <div class="projects-hero-overlay"></div>
+      </div>
+
+      <div class="projects-hero-container">
+        <div class="projects-hero-content">
+          <!-- Breadcrumb Navigation -->
+          <nav class="breadcrumbs" aria-label="Brotkrumen-Navigation">
+            <a href="index.html" class="breadcrumb-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Startseite</span>
+            </a>
+            <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+            <span class="breadcrumb-current" aria-current="page">Referenzen</span>
+          </nav>
+
+          <!-- Section Badge -->
+          <div class="section-badge-inline light">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">UNSERE REFERENZEN</span>
+          </div>
+
+          <!-- Hero Headline -->
+          <h1 id="heroTitle" class="projects-hero-title">
+            Unsere Arbeit.<br>
+            <span class="highlight-orange">Ihre Inspiration.</span>
+          </h1>
+
+          <!-- Hero Description -->
+          <p class="projects-hero-desc">
+            Entdecken Sie ausgewählte Projekte und erfahren Sie, wie wir individuelle Elektrolösungen zuverlässig und professionell umgesetzt haben.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="projects-hero-actions">
+            <a href="#ausgewaehlte-referenzen" class="btn-primary-orange">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Projekte entdecken</span>
+            </a>
+
+            <button type="button" class="btn-outline-glass" id="playVideoBtn" aria-label="Projektvideo ansehen">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span>Projektvideo ansehen</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         2. SECTION: "Ausgewählte Referenzen" WITH CATEGORY FILTERS
+         ===================================================================== -->
+    <section class="ausgewaehlte-referenzen-section" id="ausgewaehlte-referenzen" aria-labelledby="referenzenTitle">
+      <div class="referenzen-container">
+        <div class="referenzen-header-wrap">
+          <div class="referenzen-header-text">
+            <div class="section-badge-inline">
+              <span class="badge-dash" aria-hidden="true"></span>
+              <span class="badge-text">UNSERE PROJEKTE</span>
+            </div>
+            <h2 id="referenzenTitle" class="referenzen-title">
+              Ausgewählte <span class="highlight-orange">Referenzen</span>
+            </h2>
+            <p class="referenzen-subtitle">
+              Echte Projekte, reale Lösungen – entdecken Sie, wie wir die Anforderungen unserer Kunden erfolgreich umgesetzt haben.
+            </p>
+          </div>
+
+          <!-- Decorative Architectural Line Art -->
+          <div class="referenzen-header-art" aria-hidden="true">
+            <svg width="140" height="90" viewBox="0 0 160 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <!-- House outline -->
+              <path d="M10 65 L60 25 L110 65" />
+              <path d="M25 53 L25 88 L95 88 L95 53" />
+              <path d="M80 32 L80 18 L90 18 L90 40" />
+              <!-- Power plug connector line -->
+              <path d="M95 80 L130 80 C140 80 148 72 148 62 L148 50" />
+              <circle cx="148" cy="46" r="10" stroke-width="1.6" />
+              <line x1="144" y1="36" x2="144" y2="28" stroke-width="2" />
+              <line x1="152" y1="36" x2="152" y2="28" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Filter Navigation Pills -->
+        <div class="project-filter-bar" role="tablist" aria-label="Projekte nach Gewerk filtern">
+          <button type="button" class="filter-pill active" data-filter="all" role="tab" aria-selected="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Alle Projekte</span>
+          </button>
+          
+          <button type="button" class="filter-pill" data-filter="elektro" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Elektroinstallation</span>
+          </button>
+
+          <button type="button" class="filter-pill" data-filter="smart-home" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Smart Home</span>
+          </button>
+
+          <button type="button" class="filter-pill" data-filter="wallbox" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+            <span>Wallbox &amp; E-Mobilität</span>
+          </button>
+
+          <button type="button" class="filter-pill" data-filter="beleuchtung" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="9" y1="18" x2="15" y2="18"></line>
+              <line x1="10" y1="22" x2="14" y2="22"></line>
+              <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+            </svg>
+            <span>Beleuchtung</span>
+          </button>
+
+          <button type="button" class="filter-pill" data-filter="netzwerk" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <span>Netzwerk</span>
+          </button>
+
+          <button type="button" class="filter-pill" data-filter="wartung" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
+            <span>Wartung &amp; Service</span>
+          </button>
+        </div>
+
+        <!-- 3 Featured Project Showcase Cards -->
+        <div class="featured-projects-grid" id="featuredProjectsGrid">
+          <!-- Card 1: Einfamilienhaus – Komplettinstallation -->
+          <article class="project-card-item" data-category="elektro" tabindex="0" aria-label="Einfamilienhaus – Komplettinstallation Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <img src="assets/images/project-1-2x.webp" alt="Moderne Villa mit smarter Außenbeleuchtung" class="project-card-photo" loading="lazy">
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Elektroinstallation</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Einfamilienhaus – Komplettinstallation</h3>
+                <div class="project-card-meta">
+                  <span>📅 4 Wochen</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Privatkunde</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Wallbox-Installation im Eigenheim -->
+          <article class="project-card-item" data-category="wallbox" tabindex="0" aria-label="Wallbox-Installation im Eigenheim Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <img src="assets/images/project-2-2x.webp" alt="Wallbox-Installation an Hauswand mit Elektrofahrzeug" class="project-card-photo" loading="lazy">
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+              <span>Wallbox &amp; E-Mobilität</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Wallbox-Installation im Eigenheim</h3>
+                <div class="project-card-meta">
+                  <span>📅 2 Tage</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Privatkunde</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Smart Home im Bestandsgebäude -->
+          <article class="project-card-item" data-category="smart-home" tabindex="0" aria-label="Smart Home im Bestandsgebäude Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <img src="assets/images/service-clean-v3-4-2x.webp" alt="Smart Home KNX Touchdisplay im Wohnbereich" class="project-card-photo" loading="lazy">
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Smart Home</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Smart Home im Bestandsgebäude</h3>
+                <div class="project-card-meta">
+                  <span>📅 3 Wochen</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Wohngebäude</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. SECTION: "Projekt im Detail" (SMART HOME CASE STUDY)
+         ===================================================================== -->
+    <section class="projekt-detail-section" id="projekt-im-detail" aria-labelledby="detailTitle">
+      <div class="detail-container">
+        <div class="detail-header">
+          <div class="section-badge-inline">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">PROJEKT IM DETAIL</span>
+          </div>
+          <h2 id="detailTitle" class="detail-title">
+            Projektbeispiel: <span class="highlight-orange">Smart Home im Einfamilienhaus</span>
+          </h2>
+        </div>
+
+        <div class="detail-main-layout">
+          <!-- Left Column: Gallery & Interactive Thumbnails -->
+          <div class="detail-gallery-column">
+            <div class="detail-main-display">
+              <img src="assets/images/project-1-2x.webp" id="detailMainImg" alt="Detailansicht: Modernes Einfamilienhaus mit Smart-Home-Beleuchtung" class="detail-main-photo">
+              
+              <div class="project-card-glass-tag" style="top: 18px; left: 18px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Smart Home</span>
+              </div>
+
+              <!-- Gallery Arrows -->
+              <button type="button" class="detail-nav-btn prev" id="detailPrevBtn" aria-label="Vorheriges Bild">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </button>
+              <button type="button" class="detail-nav-btn next" id="detailNextBtn" aria-label="Nächstes Bild">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <!-- 5 Thumbnails Strip -->
+            <div class="detail-thumbnails-row" role="tablist" aria-label="Bildergalerie Thumbnails">
+              <button type="button" class="detail-thumb-btn active" data-img="assets/images/project-1-2x.webp" aria-label="Bild 1: Außenansicht Villa">
+                <img src="assets/images/project-1-2x.webp" alt="Außenansicht Villa">
+              </button>
+              <button type="button" class="detail-thumb-btn" data-img="assets/images/service-clean-v3-5-2x.webp" aria-label="Bild 2: Wohnbereich mit Lichtkonzept">
+                <img src="assets/images/service-clean-v3-5-2x.webp" alt="Wohnbereich mit Lichtkonzept">
+              </button>
+              <button type="button" class="detail-thumb-btn" data-img="assets/images/project-3-2x.webp" aria-label="Bild 3: KNX Touchpanel">
+                <img src="assets/images/project-3-2x.webp" alt="KNX Touchpanel">
+              </button>
+              <button type="button" class="detail-thumb-btn" data-img="assets/images/service-clean-v3-1-2x.webp" aria-label="Bild 4: Verteilerschrank und Absicherung">
+                <img src="assets/images/service-clean-v3-1-2x.webp" alt="Verteilerschrank und Absicherung">
+              </button>
+              <button type="button" class="detail-thumb-btn" data-img="assets/images/project-lighting-rings-2x.webp" aria-label="Bild 5: Designer LED-Ringbeleuchtung">
+                <img src="assets/images/project-lighting-rings-2x.webp" alt="Designer LED-Ringbeleuchtung">
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: 6 Project Specs & Orange Result Banner -->
+          <div class="detail-specs-column">
+            <div class="detail-specs-grid">
+              <!-- Spec 1: Ausgangslage -->
+              <div class="detail-spec-card">
+                <div class="spec-icon-box" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="6"></circle>
+                    <circle cx="12" cy="12" r="2"></circle>
+                  </svg>
+                </div>
+                <div class="spec-text-box">
+                  <h3 class="spec-title">Ausgangslage</h3>
+                  <p class="spec-desc">Traditionelle Elektroinstallation ohne smarte Steuerung und mit veralteter Beleuchtung.</p>
+                </div>
+              </div>
+
+              <!-- Spec 2: Kundenwunsch -->
+              <div class="detail-spec-card">
+                <div class="spec-icon-box" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <div class="spec-text-box">
+                  <h3 class="spec-title">Kundenwunsch</h3>
+                  <p class="spec-desc">Mehr Komfort, höhere Energieeffizienz und eine zentrale, intuitive Steuerung von Licht, Heizung und Rollläden.</p>
+                </div>
+              </div>
+
+              <!-- Spec 3: Umgesetzte Lösung -->
+              <div class="detail-spec-card">
+                <div class="spec-icon-box" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                </div>
+                <div class="spec-text-box">
+                  <h3 class="spec-title">Umgesetzte Lösung</h3>
+                  <p class="spec-desc">Installation eines Smart-Home-Systems inkl. smarter Beleuchtung, Heizungssteuerung und automatisierter Rollläden.</p>
+                </div>
+              </div>
+
+              <!-- Spec 4: Projektzeit -->
+              <div class="detail-spec-card">
+                <div class="spec-icon-box" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </div>
+                <div class="spec-text-box">
+                  <h3 class="spec-title">Projektzeit</h3>
+                  <p class="spec-desc">3 Wochen</p>
+                </div>
+              </div>
+
+              <!-- Spec 5: Besondere Herausforderung -->
+              <div class="detail-spec-card">
+                <div class="spec-icon-box" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 22 20 2 20 12 2"></polygon>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                </div>
+                <div class="spec-text-box">
+                  <h3 class="spec-title">Besondere Herausforderung</h3>
+                  <p class="spec-desc">Integration der neuen Technik in den Bestandsbau ohne größere bauliche Eingriffe.</p>
+                </div>
+              </div>
+
+              <!-- Spec 6: Eingesetzte Technik -->
+              <div class="detail-spec-card">
+                <div class="spec-icon-box" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                    <rect x="9" y="9" width="6" height="6"></rect>
+                    <line x1="9" y1="1" x2="9" y2="4"></line>
+                    <line x1="15" y1="1" x2="15" y2="4"></line>
+                    <line x1="9" y1="20" x2="9" y2="23"></line>
+                    <line x1="15" y1="20" x2="15" y2="23"></line>
+                    <line x1="20" y1="9" x2="23" y2="9"></line>
+                    <line x1="20" y1="14" x2="23" y2="14"></line>
+                    <line x1="1" y1="9" x2="4" y2="9"></line>
+                    <line x1="1" y1="14" x2="4" y2="14"></line>
+                  </svg>
+                </div>
+                <div class="spec-text-box">
+                  <h3 class="spec-title">Eingesetzte Technik</h3>
+                  <p class="spec-desc">KNX-System, smarte Schalter, Präsenzsensoren, LED-Beleuchtung, App-Steuerung.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Result Banner -->
+            <div class="detail-result-banner">
+              <div class="result-badge">
+                <div class="result-check-circle" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span class="result-label">Ergebnis</span>
+              </div>
+              <p class="result-text">
+                Ein modernes, energieeffizientes und komfortables Zuhause mit zentraler Smart-Home-Steuerung.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. SECTION: "Weitere Projekte aus der Praxis" (6 CARDS GRID)
+         ===================================================================== -->
+    <section class="weitere-referenzen-section" id="weitere-referenzen" aria-labelledby="weitereTitle">
+      <div class="referenzen-container">
+        <div class="section-badge-inline">
+          <span class="badge-dash" aria-hidden="true"></span>
+          <span class="badge-text">WEITERE REFERENZEN</span>
+        </div>
+        <h2 id="weitereTitle" class="referenzen-title">
+          Weitere Projekte aus <span class="highlight-orange">der Praxis</span>
+        </h2>
+        <p class="referenzen-subtitle">
+          Ein Einblick in ausgewählte Projekte, die wir erfolgreich realisiert haben.
+        </p>
+
+        <div class="weitere-grid">
+          <!-- Card 1: Wohnhaus – Komplettinstallation -->
+          <article class="project-card-item" tabindex="0" aria-label="Wohnhaus – Komplettinstallation Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <img src="assets/images/project-1-2x.webp" alt="Wohnhaus mit moderner Architektur und Außenbeleuchtung" class="project-card-photo" loading="lazy">
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Elektroinstallation</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Wohnhaus – Komplettinstallation</h3>
+                <div class="project-card-meta">
+                  <span>📅 4 Wochen</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Privatkunde</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Wallbox-Installation -->
+          <article class="project-card-item" tabindex="0" aria-label="Wallbox-Installation Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <img src="assets/images/project-2-2x.webp" alt="Wallbox-Installation im Eigenheim" class="project-card-photo" loading="lazy">
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+              <span>Wallbox &amp; E-Mobilität</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Wallbox-Installation</h3>
+                <div class="project-card-meta">
+                  <span>📅 2 Tage</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Eigenheim</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Smart Home Nachrüstung -->
+          <article class="project-card-item" tabindex="0" aria-label="Smart Home Nachrüstung Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <img src="assets/images/service-5-2x.webp" alt="Wohnraum mit integrierter Smart-Home-Technik und Ambiente-Licht" class="project-card-photo" loading="lazy">
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Smart Home</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Smart Home Nachrüstung</h3>
+                <div class="project-card-meta">
+                  <span>📅 3 Wochen</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Bestandsgebäude</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: LED-Beleuchtungskonzept -->
+          <article class="project-card-item" tabindex="0" aria-label="LED-Beleuchtungskonzept Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <img src="assets/images/project-lighting-rings-2x.webp" alt="Design-Küche und Essbereich mit abgehängten LED-Ringleuchten und warmer Akzentbeleuchtung" class="project-card-photo" loading="lazy">
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="9" y1="18" x2="15" y2="18"></line>
+                <line x1="10" y1="22" x2="14" y2="22"></line>
+                <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+              </svg>
+              <span>Beleuchtung</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">LED-Beleuchtungskonzept</h3>
+                <div class="project-card-meta">
+                  <span>📅 1 Woche</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Wohngebäude</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Netzwerkinstallation im Büro -->
+          <article class="project-card-item" tabindex="0" aria-label="Netzwerkinstallation im Büro Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <img src="assets/images/service-clean-v3-6-2x.webp" alt="Strukturierte Datenverkabelung im Serverschrank" class="project-card-photo" loading="lazy">
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              <span>Netzwerk &amp; Kommunikation</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Netzwerkinstallation im Büro</h3>
+                <div class="project-card-meta">
+                  <span>📅 5 Tage</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Gewerbekunde</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Prüfung & Wartung nach VDE -->
+          <article class="project-card-item" tabindex="0" aria-label="Prüfung & Wartung nach VDE Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <img src="assets/images/service-clean-v3-7-2x.webp" alt="Elektrische Prüfung mit Messgerät an Hauptverteilung" class="project-card-photo" loading="lazy">
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+              <span>Wartung &amp; Service</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Prüfung &amp; Wartung nach VDE</h3>
+                <div class="project-card-meta">
+                  <span>📅 1 Tag</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Gewerbeobjekt</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         5. CTA BANNER SECTION ("Jetzt Elektrotechnik mit Malawko realisieren.")
+         ===================================================================== -->
+    <section class="cta-banner-section" id="kontakt-banner" aria-labelledby="ctaBannerHeading">
+      <div class="cta-banner-bg-wrap" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/cta-banner-bg.webp" type="image/webp">
+          <img src="assets/images/cta-banner-bg.jpg" alt="Elektrotechnik Malawko Villa bei Dämmerung" class="cta-banner-bg-img" loading="lazy">
+        </picture>
+        <div class="cta-banner-overlay"></div>
+      </div>
+
+      <div class="cta-banner-container">
+        <div class="cta-banner-tag">
+          <span class="tag-line" aria-hidden="true"></span>
+          <span class="tag-text">BEREIT FÜR IHR PROJEKT?</span>
+          <span class="tag-line" aria-hidden="true"></span>
+        </div>
+
+        <h2 class="cta-banner-headline" id="ctaBannerHeading">
+          Jetzt Elektrotechnik<br>
+          mit <span class="highlight-orange">Malawko</span> realisieren.
+        </h2>
+
+        <div class="cta-banner-actions">
+          <a href="kontakt.html#projektanfrage" class="btn-primary-orange btn-banner">
+            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+
+          <a href="tel:+4915125383578" class="btn-outline-white btn-banner">
+            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>0151 25 38 35 78</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       6. SITE FOOTER
+       ===================================================================== -->
+  <footer class="site-footer" id="footer">
+    <!-- Subtle top ambient glow curves -->
+    <div class="footer-glow footer-glow-left" aria-hidden="true"></div>
+    <div class="footer-glow footer-glow-right" aria-hidden="true"></div>
+
+    <div class="footer-container">
+      <div class="footer-main-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <div class="footer-logo-wrap">
+            <img src="assets/logos/malawko-footer-logo-clean.png" alt="MALAWKO Elektrotechnik Logo" class="footer-brand-logo" width="180" height="55">
+          </div>
+          <p class="footer-brand-desc">
+            Ihr zuverlässiger Partner für moderne Elektrotechnik in Privat, Gewerbe und öffentlichen Einrichtungen.
+          </p>
+        </div>
+
+        <!-- Col 2: Schnellzugriff -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Schnellzugriff</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="index.html" class="footer-link">Startseite</a></li>
+            <li><a href="index.html#ueber-uns" class="footer-link">Über uns</a></li>
+            <li><a href="index.html#leistungen" class="footer-link">Leistungen</a></li>
+            <li><a href="projekte.html" class="footer-link">Referenzen</a></li>
+            <li><a href="kontakt.html" class="footer-link">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Unsere Leistungen -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Unsere Leistungen</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="elektroinstallation.html" class="footer-link">Elektroinstallation</a></li>
+            <li><a href="smart-home.html" class="footer-link">Smart Home</a></li>
+            <li><a href="wallbox-emobilitaet.html" class="footer-link">Wallbox &amp; E-Mobilität</a></li>
+            <li><a href="beleuchtung.html" class="footer-link">Lichtplanung</a></li>
+            <li><a href="pruefung-wartung.html" class="footer-link">Wartung &amp; Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Kontakt -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Kontakt</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-contact-list">
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+4915125383578" class="contact-link">0151 25 38 35 78</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:info@malawko-elektrotechnik.de" class="contact-link">info@malawko-elektrotechnik.de</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span class="contact-text">Kiel &amp; Schleswig-Holstein</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Malawko Elektrotechnik. Alle Rechte vorbehalten.
+        </div>
+        <div class="footer-credit">
+          Webdesign by <span class="highlight-orange">EmanCopys</span>
+        </div>
+        <div class="footer-legal-links">
+          <a href="#impressum">Impressum</a>
+          <span class="legal-sep">|</span>
+          <a href="#datenschutz">Datenschutz</a>
+          <span class="legal-sep">|</span>
+          <a href="#cookies">Cookie-Einstellungen</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Video Modal -->
+  <div class="video-modal-backdrop" id="videoModal" aria-hidden="true" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.88); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+    <div class="video-modal-dialog" style="position: relative; width: 90%; max-width: 860px; background: #0E141C; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);">
+      <button type="button" id="closeVideoBtn" aria-label="Schließen" style="position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; color: #fff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">&times;</button>
+      <div style="padding: 30px; text-align: center;">
+        <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 12px;">Projektvideo</h3>
+        <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; color: #aaa; margin-bottom: 24px;">Erleben Sie unsere Meisterarbeit im Detail.</p>
+        <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/images/project-1-2x.webp" alt="Projektvideo Vorschau" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.65;">
+          <div style="position: absolute; width: 68px; height: 68px; border-radius: 50%; background: var(--color-orange); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 8px 24px rgba(217, 84, 30, 0.5); cursor: pointer;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

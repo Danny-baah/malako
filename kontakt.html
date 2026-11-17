@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt &amp; Projektanfrage | Elektrotechnik Malawko GmbH</title>
+  <meta name="description" content="Kontaktieren Sie Elektrotechnik Malawko GmbH: Ihr Meisterbetrieb für Elektroinstallation, Smart Home, Photovoltaik und Wallboxen in Kiel und Schleswig-Holstein.">
+  
+  <!-- Preload Critical Assets -->
+  <link rel="preload" as="image" href="assets/images/contact-hero-bg.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/logos/malawko-logo.png" type="image/png">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet Map CSS for Einsatzgebiet Section -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER & NAVIGATION BAR (IDENTICAL SHARED NAVBAR)
+       ===================================================================== -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <nav class="liquid-navbar" aria-label="Hauptnavigation">
+        <!-- Malawko Logo Container -->
+        <a href="index.html" class="brand-card" aria-label="Elektrotechnik Malawko GmbH Startseite">
+          <img 
+            src="assets/logos/malawko-logo.png" 
+            srcset="assets/logos/malawko-logo@3x.png 2x" 
+            alt="Elektrotechnik Malawko GmbH Logo" 
+            class="brand-logo"
+            width="170" 
+            height="46"
+          >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktopNavLinks">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Startseite</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#ueber-uns" class="nav-link">Über uns</a>
+          </li>
+          <li class="nav-item has-dropdown" id="servicesDropdownTrigger">
+            <button 
+              type="button" 
+              class="nav-link dropdown-toggle" 
+              aria-expanded="false" 
+              aria-haspopup="true"
+              aria-controls="servicesDropdown"
+            >
+              <span>Leistungen</span>
+              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            
+            <!-- Services Dropdown (Liquid Glass Card) -->
+            <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
+              <div class="dropdown-inner">
+                <a href="elektroinstallation.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">01</span>
+                  <div class="dropdown-text">
+                    <strong>Elektroinstallation</strong>
+                    <small>Neu- & Altbauinstallationen</small>
+                  </div>
+                </a>
+                <a href="zaehler-hausanschluss.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">02</span>
+                  <div class="dropdown-text">
+                    <strong>Zähler und Hausanschluss</strong>
+                    <small>Zähleranlagen & Modernisierung</small>
+                  </div>
+                </a>
+                <a href="wallbox-emobilitaet.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">03</span>
+                  <div class="dropdown-text">
+                    <strong>Wallbox & E-Mobilität</strong>
+                    <small>Ladeinfrastruktur Heim & Gewerbe</small>
+                  </div>
+                </a>
+                <a href="smart-home.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">04</span>
+                  <div class="dropdown-text">
+                    <strong>Smart Home & KNX</strong>
+                    <small>Intelligente Gebäudeautomation</small>
+                  </div>
+                </a>
+                <a href="beleuchtung.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">05</span>
+                  <div class="dropdown-text">
+                    <strong>Beleuchtung</strong>
+                    <small>Lichtplanung & energieeffiziente LEDs</small>
+                  </div>
+                </a>
+                <a href="netzwerk-kommunikation.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">06</span>
+                  <div class="dropdown-text">
+                    <strong>Netzwerk & Kommunikation</strong>
+                    <small>Strukturierte Datenverkabelung</small>
+                  </div>
+                </a>
+                <a href="pruefung-wartung.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">07</span>
+                  <div class="dropdown-text">
+                    <strong>Prüfung & Wartung</strong>
+                    <small>E-Check & DGUV V3 Prüfungen</small>
+                  </div>
+                </a>
+                <a href="stoerung-reparatur.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">08</span>
+                  <div class="dropdown-text">
+                    <strong>Störung & Reparatur</strong>
+                    <small>Schnelle Diagnose & Behebung</small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="projekte.html" class="nav-link">Referenzen</a>
+          </li>
+          <li class="nav-item">
+            <a href="kontakt.html" class="nav-link active" aria-current="page">Kontakt</a>
+          </li>
+        </ul>
+
+        <!-- Right Quick Action / Call CTA -->
+        <div class="nav-actions">
+          <span class="nav-divider" aria-hidden="true"></span>
+          
+          <a href="#projektanfrage" class="btn-project-cta" aria-label="Projekt anfragen">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button 
+            type="button" 
+            class="hamburger-btn" 
+            id="mobileMenuToggle" 
+            aria-label="Menü öffnen" 
+            aria-expanded="false" 
+            aria-controls="mobileDrawer"
+          >
+            <span class="bar bar-top"></span>
+            <span class="bar bar-mid"></span>
+            <span class="bar bar-bot"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="drawer-backdrop" id="drawerBackdrop"></div>
+      <div class="drawer-panel">
+        <div class="drawer-header">
+          <img src="assets/logos/malawko-logo.png" alt="Malawko Logo" width="140" height="38">
+          <button type="button" class="drawer-close" id="drawerCloseBtn" aria-label="Menü schließen">&times;</button>
+        </div>
+        <ul class="drawer-links">
+          <li><a href="index.html" class="drawer-link">Startseite</a></li>
+          <li><a href="index.html#ueber-uns" class="drawer-link">Über uns</a></li>
+          <li><a href="index.html#leistungen" class="drawer-link">Leistungen</a></li>
+          <li><a href="projekte.html" class="drawer-link">Referenzen</a></li>
+          <li><a href="kontakt.html" class="drawer-link active">Kontakt</a></li>
+        </ul>
+        <div class="drawer-cta-wrap">
+          <a href="#projektanfrage" class="btn-primary-orange" style="width: 100%; justify-content: center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- =====================================================================
+         SECTION 01: CONTACT HERO
+         ===================================================================== -->
+    <section class="contact-hero-section" id="hero" aria-labelledby="contactHeroTitle">
+      <div class="contact-hero-bg-wrap" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/contact-hero-bg-2x.webp 2x, assets/images/contact-hero-bg.webp 1x" type="image/webp">
+          <img src="assets/images/contact-hero-bg.jpg" alt="Elektroniker mit Smart Home Steuerung vor moderner Villa bei Dämmerung" class="contact-hero-bg-img" fetchpriority="high">
+        </picture>
+        <div class="contact-hero-overlay"></div>
+      </div>
+
+      <div class="contact-hero-container">
+        <div class="contact-hero-content">
+          <!-- Breadcrumb Navigation -->
+          <nav class="breadcrumbs" aria-label="Brotkrumen-Navigation">
+            <a href="index.html" class="breadcrumb-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Startseite</span>
+            </a>
+            <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+            <span class="breadcrumb-current" aria-current="page">Kontakt</span>
+          </nav>
+
+          <!-- Headline -->
+          <h1 id="contactHeroTitle" class="contact-hero-title">
+            Lassen Sie uns Ihr<br>
+            Projekt <span class="highlight-orange">gemeinsam</span><br>
+            angehen.
+          </h1>
+
+          <!-- Supporting Text -->
+          <p class="contact-hero-desc">
+            Ob Neubau, Sanierung oder smarte Elektrolösungen – wir sind Ihr zuverlässiger Partner in der Elektrotechnik.
+          </p>
+
+          <!-- Buttons -->
+          <div class="contact-hero-actions">
+            <a href="#projektanfrage" class="btn-primary-orange">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>Projekt zusammenstellen</span>
+            </a>
+
+            <a href="tel:+4915125383578" class="btn-outline-glass">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Sofort anrufen</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Bar Strip -->
+      <div class="contact-trust-bar-wrap">
+        <div class="contact-trust-bar" role="list" aria-label="Unsere Qualitätsversprechen">
+          <div class="contact-trust-item" role="listitem">
+            <div class="contact-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <div class="contact-trust-text">
+              <span class="trust-title">Zuverlässiger Partner</span>
+              <span class="trust-sub">Verlässliche Terminabsprache</span>
+            </div>
+          </div>
+
+          <span class="contact-trust-divider" aria-hidden="true"></span>
+
+          <div class="contact-trust-item" role="listitem">
+            <div class="contact-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="contact-trust-text">
+              <span class="trust-title">Erfahrung &amp; Kompetenz</span>
+              <span class="trust-sub">Zertifizierter Meisterbetrieb</span>
+            </div>
+          </div>
+
+          <span class="contact-trust-divider" aria-hidden="true"></span>
+
+          <div class="contact-trust-item" role="listitem">
+            <div class="contact-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <div class="contact-trust-text">
+              <span class="trust-title">Innovative Lösungen</span>
+              <span class="trust-sub">Zukunftssichere Smart-Tech</span>
+            </div>
+          </div>
+
+          <span class="contact-trust-divider" aria-hidden="true"></span>
+
+          <div class="contact-trust-item" role="listitem">
+            <div class="contact-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="contact-trust-text">
+              <span class="trust-title">Persönliche Beratung</span>
+              <span class="trust-sub">Individuelle Fachbetreuung</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 02: DIREKTER KONTAKT
+         ===================================================================== -->
+    <section class="direkter-kontakt-section" id="direkter-kontakt" aria-labelledby="direktTitle">
+      <div class="direkter-kontakt-container">
+        <!-- Left: 4 Direct Contact Cards -->
+        <div class="direkter-kontakt-left">
+          <div class="section-badge-inline">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">DIREKTER KONTAKT</span>
+          </div>
+          <h2 id="direktTitle" class="direkter-title">
+            Kontaktieren Sie uns <span class="highlight-orange">direkt.</span>
+          </h2>
+          <p class="direkter-subtitle">
+            Sie haben eine Frage, ein konkretes Anliegen oder möchten sich persönlich beraten lassen? Wir sind gerne für Sie da.
+          </p>
+
+          <div class="direct-cards-grid">
+            <!-- Card 1: Telefon -->
+            <div class="direct-card">
+              <div class="direct-card-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="direct-card-content">
+                <span class="direct-card-label">Telefon</span>
+                <a href="tel:+4915125383578" class="direct-card-value">0151 25 38 35 78</a>
+                <span class="direct-card-sub">Mo – Fr: 08:00 – 17:00 Uhr</span>
+              </div>
+            </div>
+
+            <!-- Card 2: E-Mail -->
+            <div class="direct-card">
+              <div class="direct-card-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="direct-card-content">
+                <span class="direct-card-label">E-Mail</span>
+                <a href="mailto:info@malawko-elektrotechnik.de" class="direct-card-value">info@malawko.de</a>
+                <span class="direct-card-sub">Wir antworten zeitnah.</span>
+              </div>
+            </div>
+
+            <!-- Card 3: Standort -->
+            <div class="direct-card">
+              <div class="direct-card-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="direct-card-content">
+                <span class="direct-card-label">Standort</span>
+                <span class="direct-card-value" style="font-size: 0.95rem;">Kiel, Schleswig-Holstein</span>
+                <a href="#einsatzgebiet" class="direct-card-link">Auf Karte anzeigen &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Card 4: Öffnungszeiten -->
+            <div class="direct-card">
+              <div class="direct-card-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="direct-card-content">
+                <span class="direct-card-label">Öffnungszeiten</span>
+                <span class="direct-card-value" style="font-size: 0.92rem;">Mo – Fr: 08:00 – 17:00</span>
+                <span class="direct-card-sub">Sa: nach Vereinbarung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Architectural Photograph of Company Premises & Van -->
+        <div class="direkter-kontakt-right">
+          <picture>
+            <source srcset="assets/images/contact-office-premises-2x.webp 2x, assets/images/contact-office-premises.webp 1x" type="image/webp">
+            <img src="assets/images/contact-office-premises.jpg" alt="Malawko Elektrotechnik Firmenstandort mit beleuchtetem Eingang und Firmenfahrzeug" class="direkter-office-img" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 03: PROJEKTANFRAGE / PROJECT CONFIGURATOR
+         ===================================================================== -->
+    <section class="projektanfrage-section" id="projektanfrage" aria-labelledby="inquiryTitle">
+      <div class="projektanfrage-container">
+        <!-- Left: Headline, description, and Blueprint Desk Image -->
+        <div class="projektanfrage-left">
+          <div class="section-badge-inline">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">PROJEKTANFRAGE</span>
+          </div>
+          <h2 id="inquiryTitle" class="projektanfrage-title">
+            Erzählen Sie uns<br>
+            kurz von <span class="highlight-orange">Ihrem<br>Projekt.</span>
+          </h2>
+          <p class="projektanfrage-desc">
+            Beschreiben Sie Ihr Vorhaben in wenigen Angaben – wir melden uns schnellstmöglich mit einem passenden Angebot bei Ihnen.
+          </p>
+
+          <div class="projektanfrage-desk-wrap">
+            <picture>
+              <source srcset="assets/images/contact-blueprint-desk-2x.webp 2x, assets/images/contact-blueprint-desk.webp 1x" type="image/webp">
+              <img src="assets/images/contact-blueprint-desk.jpg" alt="Architekturplan mit Elektroinstallation, Bauhelm und Werkzeugen" class="projektanfrage-desk-img" loading="lazy">
+            </picture>
+          </div>
+        </div>
+
+        <!-- Right: Clean Inquiry Form Card -->
+        <div class="projektanfrage-right">
+          <div class="inquiry-form-card">
+            <form id="projectInquiryForm" novalidate>
+              
+              <!-- STEP 1: IHRE KONTAKTDATEN (FIRST) -->
+              <h3 class="form-sub-heading" style="margin-top: 0; margin-bottom: 18px;">Ihre Kontaktdaten</h3>
+
+              <div class="form-grid-2col">
+                <div class="form-group">
+                  <label for="vornameInput" class="form-label">Vorname <span class="req">*</span></label>
+                  <input type="text" id="vornameInput" name="vorname" class="form-control" style="padding-left: 18px;" placeholder="Max" required aria-required="true">
+                </div>
+
+                <div class="form-group">
+                  <label for="nachnameInput" class="form-label">Nachname <span class="req">*</span></label>
+                  <input type="text" id="nachnameInput" name="nachname" class="form-control" style="padding-left: 18px;" placeholder="Mustermann" required aria-required="true">
+                </div>
+
+                <div class="form-group">
+                  <label for="emailInput" class="form-label">E-Mail <span class="req">*</span></label>
+                  <input type="email" id="emailInput" name="email" class="form-control" style="padding-left: 18px;" placeholder="ihre.email@beispiel.de" required aria-required="true">
+                </div>
+
+                <div class="form-group">
+                  <label for="telefonInput" class="form-label">Telefonnummer <span class="req">*</span></label>
+                  <input type="tel" id="telefonInput" name="telefon" class="form-control" style="padding-left: 18px;" placeholder="0151 12345678" required aria-required="true">
+                </div>
+              </div>
+
+              <!-- SECTION DIVIDER -->
+              <hr class="form-section-divider">
+
+              <!-- STEP 2: PROJEKT DETAILS -->
+              <div class="form-grid-2col">
+                <!-- Field 1: Anliegen -->
+                <div class="form-group">
+                  <label for="anliegenSelect" class="form-label">Anliegen <span class="req">*</span></label>
+                  <div class="input-with-icon">
+                    <span class="input-icon" aria-hidden="true">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                      </svg>
+                    </span>
+                    <select id="anliegenSelect" name="anliegen" class="form-control" required aria-required="true">
+                      <option value="">Bitte wählen Sie Ihr Anliegen</option>
+                      <option value="Ich brauche eine Wallbox">Ich brauche eine Wallbox</option>
+                      <option value="Ich möchte Smart Home / KNX">Ich möchte Smart Home / KNX</option>
+                      <option value="Ich baue oder saniere">Ich baue oder saniere</option>
+                      <option value="Ich möchte modernisieren">Ich möchte modernisieren</option>
+                      <option value="Ich habe eine Störung">Ich habe eine Störung</option>
+                      <option value="Prüfung oder Wartung">Prüfung oder Wartung</option>
+                      <option value="Elektro-Notfall">Elektro-Notfall</option>
+                      <option value="Sonstiges Anliegen">Sonstiges Anliegen</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Field 2: Objektart -->
+                <div class="form-group">
+                  <label for="objektartSelect" class="form-label">Objektart <span class="req">*</span></label>
+                  <div class="input-with-icon">
+                    <span class="input-icon" aria-hidden="true">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                      </svg>
+                    </span>
+                    <select id="objektartSelect" name="objektart" class="form-control" required aria-required="true">
+                      <option value="">Bitte wählen Sie die Objektart</option>
+                      <option value="Einfamilienhaus">Einfamilienhaus</option>
+                      <option value="Wohnung">Wohnung</option>
+                      <option value="Mehrfamilienhaus">Mehrfamilienhaus</option>
+                      <option value="Büro">Büro</option>
+                      <option value="Ladengeschäft">Ladengeschäft</option>
+                      <option value="Werkstatt oder Halle">Werkstatt oder Halle</option>
+                      <option value="Öffentliche Einrichtung">Öffentliche Einrichtung</option>
+                      <option value="Hausverwaltung">Hausverwaltung</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Field 3: Projektstatus -->
+                <div class="form-group">
+                  <label for="projektstatusSelect" class="form-label">Projektstatus</label>
+                  <div class="input-with-icon">
+                    <span class="input-icon" aria-hidden="true">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
+                    </span>
+                    <select id="projektstatusSelect" name="projektstatus" class="form-control">
+                      <option value="">Bitte wählen</option>
+                      <option value="Idee oder erste Orientierung">Idee oder erste Orientierung</option>
+                      <option value="Angebot gewünscht">Angebot gewünscht</option>
+                      <option value="Konkrete Planung vorhanden">Konkrete Planung vorhanden</option>
+                      <option value="Bau bereits begonnen">Bau bereits begonnen</option>
+                      <option value="Störung oder Ausfall">Störung oder Ausfall</option>
+                      <option value="Dringender Termin erforderlich">Dringender Termin erforderlich</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Field 4: Umfang (Adaptive based on Anliegen) -->
+                <div class="form-group">
+                  <label for="umfangSelect" class="form-label">Umfang</label>
+                  <div class="input-with-icon">
+                    <span class="input-icon" aria-hidden="true">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                      </svg>
+                    </span>
+                    <select id="umfangSelect" name="umfang" class="form-control">
+                      <option value="">Bitte wählen</option>
+                      <option value="small">Kleineres Vorhaben (&lt; 1 Tag)</option>
+                      <option value="medium">Mittleres Projekt (mehrere Tage)</option>
+                      <option value="large">Großprojekt / Gesamtanlage</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Field 5: Nachricht (optional) -->
+                <div class="form-group">
+                  <label for="nachrichtInput" class="form-label">Nachricht <span style="font-weight: 500; color: #888;">(optional)</span></label>
+                  <div class="input-with-icon">
+                    <span class="input-icon" style="top: 18px;" aria-hidden="true">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                    </span>
+                    <textarea id="nachrichtInput" name="nachricht" class="form-control" placeholder="Beschreiben Sie Ihr Projekt kurz ..."></textarea>
+                  </div>
+                </div>
+
+                <!-- Field 6: Dateien hochladen (optional) -->
+                <div class="form-group">
+                  <label class="form-label">Dateien hochladen <span style="font-weight: 500; color: #888;">(optional)</span></label>
+                  <div class="upload-dropzone" id="fileDropzone" role="button" tabindex="0" aria-label="Dateien hochladen">
+                    <div class="upload-icon" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                      </svg>
+                    </div>
+                    <div class="upload-text-wrap">
+                      <span class="upload-main-text">Bilder oder Dokumente auswählen</span>
+                      <span class="upload-hint-text">(JPG, PNG, PDF – max. 10 MB)</span>
+                    </div>
+                    <input type="file" id="fileUploadInput" name="files[]" multiple accept=".jpg,.jpeg,.png,.pdf,.webp" style="display: none;">
+                  </div>
+                  <div class="file-list" id="fileListContainer" aria-live="polite"></div>
+                </div>
+              </div>
+
+              <!-- Bevorzugte Rückmeldung -->
+              <div class="preferred-contact-group">
+                <span class="preferred-label">Bevorzugte Rückmeldung:</span>
+                <label class="radio-pill">
+                  <input type="radio" name="rueckmeldung" value="E-Mail" checked>
+                  <span>E-Mail</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="rueckmeldung" value="Telefon">
+                  <span>Telefon</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="rueckmeldung" value="WhatsApp">
+                  <span>WhatsApp</span>
+                </label>
+              </div>
+
+              <!-- Datenschutz Consent Checkbox -->
+              <div class="consent-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="datenschutzCheckbox" name="datenschutz" required aria-required="true">
+                  <span>Ich habe die <a href="#datenschutz">Datenschutzerklärung</a> zur Kenntnis genommen und willige in die Verarbeitung meiner eingegebenen Daten zur Beantwortung meiner Anfrage ein. <span class="req">*</span></span>
+                </label>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn-submit-inquiry" id="submitInquiryBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                <span>Anfrage senden</span>
+              </button>
+
+              <!-- Feedback Messages -->
+              <div class="form-feedback-alert success" id="formFeedbackSuccess" role="alert"></div>
+              <div class="form-feedback-alert error" id="formFeedbackError" role="alert"></div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 04: UNSER EINSATZGEBIET (KIEL & REGION MAP)
+         ===================================================================== -->
+    <section class="einsatzgebiet-section bg-white" id="einsatzgebiet" aria-labelledby="einsatzgebietTitle">
+      <div class="einsatzgebiet-container">
+        <!-- Left Column: Information & Key Benefits -->
+        <div class="einsatzgebiet-content">
+          <div class="section-badge-inline">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">UNSER EINSATZGEBIET</span>
+          </div>
+          
+          <h2 id="einsatzgebietTitle" class="einsatzgebiet-title">
+            Hier sind wir<br>für Sie <span class="highlight-orange">im Einsatz.</span>
+          </h2>
+          
+          <p class="einsatzgebiet-desc">
+            Zuverlässige Elektrotechnik in Ihrer Region – für Privatkunden, Unternehmen und öffentliche Einrichtungen.
+          </p>
+
+          <div class="einsatzgebiet-features">
+            <!-- Benefit 1: Regionale Betreuung -->
+            <div class="einsatzgebiet-feature-card">
+              <div class="feature-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="feature-text-box">
+                <h3 class="feature-title">Regionale Betreuung</h3>
+                <p class="feature-subtitle">Schnell vor Ort, wenn Sie uns brauchen.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 2: Kurze Reaktionszeiten -->
+            <div class="einsatzgebiet-feature-card">
+              <div class="feature-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div class="feature-text-box">
+                <h3 class="feature-title">Kurze Reaktionszeiten</h3>
+                <p class="feature-subtitle">Zuverlässiger und effizienter Service.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 3: Für Privat & Gewerbe -->
+            <div class="einsatzgebiet-feature-card">
+              <div class="feature-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="feature-text-box">
+                <h3 class="feature-title">Für Privat & Gewerbe</h3>
+                <p class="feature-subtitle">Individuelle Lösungen für jedes Projekt.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Leaflet Map with Floating Glass Card -->
+        <div class="einsatzgebiet-map-wrapper">
+          <div id="einsatzgebietMap" class="einsatzgebiet-map" role="region" aria-label="Interaktive Karte: Unser Einsatzgebiet in Kiel und Schleswig-Holstein"></div>
+
+          <!-- Floating Glass Card with Region Checklist -->
+          <div class="einsatzgebiet-glass-card">
+            <div class="glass-card-header">
+              <div class="glass-card-icon-wrap" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <span class="glass-card-title">Unser Einsatzgebiet</span>
+            </div>
+
+            <ul class="glass-card-checklist" aria-label="Liste der abgedeckten Regionen">
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kiel und Umgebung</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Plön</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Rendsburg-Eckernförde</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Segeberg</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Ostholstein</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       SECTION 05: SHARED FOOTER
+       ===================================================================== -->
+  <footer class="site-footer" id="footer">
+    <!-- Subtle top ambient glow curves -->
+    <div class="footer-glow footer-glow-left" aria-hidden="true"></div>
+    <div class="footer-glow footer-glow-right" aria-hidden="true"></div>
+
+    <div class="footer-container">
+      <div class="footer-main-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <div class="footer-logo-wrap">
+            <img src="assets/logos/malawko-footer-logo-clean.png" alt="MALAWKO Elektrotechnik Logo" class="footer-brand-logo" width="180" height="55">
+          </div>
+          <p class="footer-brand-desc">
+            Ihr zuverlässiger Partner für moderne Elektrotechnik in Privat, Gewerbe und öffentlichen Einrichtungen.
+          </p>
+        </div>
+
+        <!-- Col 2: Schnellzugriff -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Schnellzugriff</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="index.html" class="footer-link">Startseite</a></li>
+            <li><a href="index.html#ueber-uns" class="footer-link">Über uns</a></li>
+            <li><a href="index.html#leistungen" class="footer-link">Leistungen</a></li>
+            <li><a href="projekte.html" class="footer-link">Referenzen</a></li>
+            <li><a href="kontakt.html" class="footer-link">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Unsere Leistungen -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Unsere Leistungen</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="elektroinstallation.html" class="footer-link">Elektroinstallation</a></li>
+            <li><a href="smart-home.html" class="footer-link">Smart Home</a></li>
+            <li><a href="wallbox-emobilitaet.html" class="footer-link">Wallbox &amp; E-Mobilität</a></li>
+            <li><a href="beleuchtung.html" class="footer-link">Lichtplanung</a></li>
+            <li><a href="pruefung-wartung.html" class="footer-link">Wartung &amp; Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Kontakt -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Kontakt</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-contact-list">
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+4915125383578" class="contact-link">0151 25 38 35 78</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:info@malawko-elektrotechnik.de" class="contact-link">info@malawko-elektrotechnik.de</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span class="contact-text">Kiel &amp; Schleswig-Holstein</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Malawko Elektrotechnik. Alle Rechte vorbehalten.
+        </div>
+        <div class="footer-credit">
+          Webdesign by <span class="highlight-orange">EmanCopys</span>
+        </div>
+        <div class="footer-legal-links">
+          <a href="#impressum">Impressum</a>
+          <span class="legal-sep">|</span>
+          <a href="#datenschutz">Datenschutz</a>
+          <span class="legal-sep">|</span>
+          <a href="#cookies">Cookie-Einstellungen</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet Interactive Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

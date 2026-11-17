@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elektroinstallation | Elektrotechnik Malawko GmbH</title>
+  <meta name="description" content="Fachgerechte Elektroinstallation für Wohn- und Gewerbegebäude in Kiel und Schleswig-Holstein. Meisterbetrieb für Neu- und Altbau, Verteilertechnik und Modernisierung.">
+  
+  <!-- Preload Critical Hero Image -->
+  <link rel="preload" as="image" href="assets/images/service-hero-elektro-2x.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/logos/malawko-logo.png" type="image/png">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet Map CSS for Einsatzgebiet Section -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER & NAVIGATION BAR (IDENTICAL SHARED NAVBAR)
+       ===================================================================== -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <nav class="liquid-navbar" aria-label="Hauptnavigation">
+        <!-- Malawko Logo Container -->
+        <a href="index.html" class="brand-card" aria-label="Elektrotechnik Malawko GmbH Startseite">
+          <img 
+            src="assets/logos/malawko-logo.png" 
+            srcset="assets/logos/malawko-logo@3x.png 2x" 
+            alt="Elektrotechnik Malawko GmbH Logo" 
+            class="brand-logo"
+            width="170" 
+            height="46"
+          >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktopNavLinks">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Startseite</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#ueber-uns" class="nav-link">Über uns</a>
+          </li>
+          <li class="nav-item has-dropdown active" id="servicesDropdownTrigger">
+            <button 
+              type="button" 
+              class="nav-link dropdown-toggle active" 
+              aria-expanded="false" 
+              aria-haspopup="true"
+              aria-controls="servicesDropdown"
+            >
+              <span>Leistungen</span>
+              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            
+            <!-- Services Dropdown (Liquid Glass Card) -->
+            <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
+              <div class="dropdown-inner">
+                <a href="elektroinstallation.html" class="dropdown-item active" role="menuitem">
+                  <span class="dropdown-num">01</span>
+                  <div class="dropdown-text">
+                    <strong>Elektroinstallation</strong>
+                    <small>Neu- &amp; Altbauinstallationen</small>
+                  </div>
+                </a>
+                <a href="zaehler-hausanschluss.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">02</span>
+                  <div class="dropdown-text">
+                    <strong>Zähler und Hausanschluss</strong>
+                    <small>Zähleranlagen &amp; Modernisierung</small>
+                  </div>
+                </a>
+                <a href="wallbox-emobilitaet.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">03</span>
+                  <div class="dropdown-text">
+                    <strong>Wallbox &amp; E-Mobilität</strong>
+                    <small>Ladeinfrastruktur Heim &amp; Gewerbe</small>
+                  </div>
+                </a>
+                <a href="smart-home.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">04</span>
+                  <div class="dropdown-text">
+                    <strong>Smart Home &amp; KNX</strong>
+                    <small>Intelligente Gebäudeautomation</small>
+                  </div>
+                </a>
+                <a href="beleuchtung.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">05</span>
+                  <div class="dropdown-text">
+                    <strong>Beleuchtung</strong>
+                    <small>Lichtplanung &amp; energieeffiziente LEDs</small>
+                  </div>
+                </a>
+                <a href="netzwerk-kommunikation.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">06</span>
+                  <div class="dropdown-text">
+                    <strong>Netzwerk &amp; Kommunikation</strong>
+                    <small>Strukturierte Datenverkabelung</small>
+                  </div>
+                </a>
+                <a href="pruefung-wartung.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">07</span>
+                  <div class="dropdown-text">
+                    <strong>Prüfung &amp; Wartung</strong>
+                    <small>E-Check &amp; DGUV V3 Prüfungen</small>
+                  </div>
+                </a>
+                <a href="stoerung-reparatur.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">08</span>
+                  <div class="dropdown-text">
+                    <strong>Störung &amp; Reparatur</strong>
+                    <small>Schnelle Diagnose &amp; Behebung</small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="projekte.html" class="nav-link">Referenzen</a>
+          </li>
+          <li class="nav-item">
+            <a href="kontakt.html" class="nav-link">Kontakt</a>
+          </li>
+        </ul>
+
+        <!-- Right Quick Action / Call CTA -->
+        <div class="nav-actions">
+          <span class="nav-divider" aria-hidden="true"></span>
+          
+          <a href="kontakt.html#projektanfrage" class="btn-project-cta" aria-label="Projekt anfragen">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button 
+            type="button" 
+            class="hamburger-btn" 
+            id="mobileMenuToggle" 
+            aria-label="Menü öffnen" 
+            aria-expanded="false" 
+            aria-controls="mobileDrawer"
+          >
+            <span class="bar bar-top"></span>
+            <span class="bar bar-mid"></span>
+            <span class="bar bar-bot"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-content">
+        <ul class="mobile-nav-list">
+          <li><a href="index.html" class="drawer-link">Startseite</a></li>
+          <li><a href="index.html#ueber-uns" class="drawer-link">Über uns</a></li>
+          <li><a href="elektroinstallation.html" class="drawer-link active">Elektroinstallation</a></li>
+          <li><a href="projekte.html" class="drawer-link">Referenzen</a></li>
+          <li><a href="kontakt.html" class="drawer-link">Kontakt</a></li>
+        </ul>
+        <div class="drawer-cta-wrap">
+          <a href="kontakt.html#projektanfrage" class="btn-primary-orange" style="width: 100%; justify-content: center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- =====================================================================
+         SECTION 01: SERVICE HERO
+         ===================================================================== -->
+    <section class="service-hero-section" id="hero" aria-labelledby="serviceHeroTitle">
+      <div class="service-hero-bg-wrap" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/service-hero-elektro-2x.webp 2x, assets/images/service-hero-elektro.webp 1x" type="image/webp">
+          <img src="assets/images/service-hero-elektro.jpg" alt="Elektroinstallation Verteilerkasten und moderne Beleuchtung" class="service-hero-bg-img" fetchpriority="high">
+        </picture>
+        <div class="service-hero-overlay"></div>
+      </div>
+
+      <div class="service-hero-container">
+        <div class="service-hero-content">
+          <!-- Breadcrumb Navigation -->
+          <nav class="breadcrumbs" aria-label="Brotkrumen-Navigation">
+            <a href="index.html" class="breadcrumb-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Startseite</span>
+            </a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <a href="index.html#leistungen" class="breadcrumb-item">Leistungen</a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <span class="breadcrumb-current" aria-current="page">Elektroinstallation</span>
+          </nav>
+
+          <!-- Category Badge -->
+          <div class="service-hero-badge">
+            <span class="badge-line" aria-hidden="true"></span>
+            <span class="badge-text">Elektroinstallation</span>
+          </div>
+
+          <!-- Hero Headline -->
+          <h1 class="service-hero-title" id="serviceHeroTitle">
+            Moderne <span class="highlight-orange">Elektroinstallation.</span>
+          </h1>
+
+          <!-- Dual Hero Buttons -->
+          <div class="service-hero-actions">
+            <a href="kontakt.html#projektanfrage" class="btn-primary-orange btn-lg">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Projekt anfragen</span>
+            </a>
+
+            <a href="tel:+4915125383578" class="btn-hero-glass-call">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Jetzt anrufen</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4-Item Glass Feature Strip -->
+        <div class="service-trust-bar" aria-label="Qualitätsmerkmale">
+          <div class="service-trust-item">
+            <div class="service-trust-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <span class="service-trust-text">Sichere Installation</span>
+          </div>
+
+          <div class="service-trust-divider" aria-hidden="true"></div>
+
+          <div class="service-trust-item">
+            <div class="service-trust-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+                <line x1="1" y1="14" x2="7" y2="14"></line>
+                <line x1="9" y1="8" x2="15" y2="8"></line>
+                <line x1="17" y1="16" x2="23" y2="16"></line>
+              </svg>
+            </div>
+            <span class="service-trust-text">Moderne Technik</span>
+          </div>
+
+          <div class="service-trust-divider" aria-hidden="true"></div>
+
+          <div class="service-trust-item">
+            <div class="service-trust-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <span class="service-trust-text">Energieeffiziente Lösungen</span>
+          </div>
+
+          <div class="service-trust-divider" aria-hidden="true"></div>
+
+          <div class="service-trust-item">
+            <div class="service-trust-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <span class="service-trust-text">Fachgerechte Umsetzung</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 02: SERVICE INTRODUCTION
+         ===================================================================== -->
+    <section class="service-intro-section" id="ueber-die-leistung" aria-labelledby="serviceIntroTitle">
+      <div class="service-intro-container">
+        <!-- Left: Text & 3 Benefit Items -->
+        <div class="service-intro-left">
+          <div class="service-intro-badge">
+            <span class="badge-line" aria-hidden="true"></span>
+            <span class="badge-text">ÜBER DIE LEISTUNG</span>
+          </div>
+
+          <h2 class="service-intro-title" id="serviceIntroTitle">
+            Elektroinstallationen,<br>
+            die <span class="highlight-orange">durchdacht sind.</span>
+          </h2>
+
+          <p class="service-intro-desc">
+            Wir planen und realisieren moderne Elektroinstallationen für Wohn- und Gewerbegebäude – sicher, effizient und zukunftsfähig.
+          </p>
+
+          <div class="service-intro-benefits">
+            <!-- Benefit 1 -->
+            <div class="service-benefit-item">
+              <div class="service-benefit-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div class="service-benefit-info">
+                <h3 class="service-benefit-title">Individuelle Planung</h3>
+                <p class="service-benefit-text">Lösungen, die genau zu Ihrem Projekt passen.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 2 -->
+            <div class="service-benefit-item">
+              <div class="service-benefit-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <div class="service-benefit-info">
+                <h3 class="service-benefit-title">Normgerechte Umsetzung</h3>
+                <p class="service-benefit-text">Sichere und fachgerechte Installation nach aktuellen Standards.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 3 -->
+            <div class="service-benefit-item">
+              <div class="service-benefit-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                </svg>
+              </div>
+              <div class="service-benefit-info">
+                <h3 class="service-benefit-title">Zukunftssicher &amp; effizient</h3>
+                <p class="service-benefit-text">Moderne Technik mit Blick auf Energieeffizienz und Erweiterbarkeit.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Single CTA Button -->
+          <div>
+            <a href="kontakt.html#projektanfrage" class="btn-primary-orange btn-lg">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Projekt anfragen</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Overlapping Image Composition -->
+        <div class="service-intro-right">
+          <div class="service-intro-main-photo-wrap">
+            <img src="assets/images/project-1-2x.jpg" alt="Exklusives modernes Wohnhaus mit Beleuchtung" class="service-intro-main-photo" loading="lazy">
+          </div>
+          <div class="service-intro-inset-photo-wrap">
+            <img src="assets/images/service-clean-v3-1-2x.jpg" alt="Elektroinstallation Verteilerkasten Detail" class="service-intro-inset-photo" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 03: OUR SERVICES (6-CARD GRID)
+         ===================================================================== -->
+    <section class="service-offerings-section" id="unsere-leistungen" aria-labelledby="offeringsTitle">
+      <div class="service-offerings-container">
+        <div class="service-offerings-header">
+          <div class="service-offerings-badge">
+            <span class="badge-line" aria-hidden="true"></span>
+            <span class="badge-text">UNSERE LEISTUNGEN</span>
+          </div>
+
+          <h2 class="service-offerings-title" id="offeringsTitle">
+            Unsere Leistungen im Bereich <span class="highlight-orange">Elektroinstallation.</span>
+          </h2>
+
+          <p class="service-offerings-subtitle">
+            Umfassende Elektrotechnik für Neubau, Sanierung und Modernisierung – zuverlässig aus einer Hand.
+          </p>
+        </div>
+
+        <!-- 6-Card Grid -->
+        <div class="service-offerings-grid">
+          <!-- Card 1: Beleuchtungsinstallation -->
+          <div class="offering-card">
+            <div class="offering-card-photo-wrap">
+              <img src="assets/images/service-clean-v3-5-2x.jpg" alt="Moderne LED Deckenbeleuchtung" class="offering-card-photo" loading="lazy">
+            </div>
+            <div class="offering-card-pill">
+              <div class="offering-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M9 18h6"></path>
+                  <path d="M10 22h4"></path>
+                  <path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.5 4.5 3 6h8c1.5-1.5 3-3.5 3-6a7 7 0 0 0-7-7z"></path>
+                </svg>
+              </div>
+              <div class="offering-card-text">
+                <h3 class="offering-card-title">Beleuchtungsinstallation</h3>
+                <p class="offering-card-desc">Individuelle und energieeffiziente Beleuchtungslösungen.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Verteilertechnik -->
+          <div class="offering-card">
+            <div class="offering-card-photo-wrap">
+              <img src="assets/images/service-clean-v3-1-2x.jpg" alt="Planung und Installation moderner Unterverteiler" class="offering-card-photo" loading="lazy">
+            </div>
+            <div class="offering-card-pill">
+              <div class="offering-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div class="offering-card-text">
+                <h3 class="offering-card-title">Verteilertechnik</h3>
+                <p class="offering-card-desc">Planung und Installation moderner Unterverteilungen.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Steckdosen & Schalter -->
+          <div class="offering-card">
+            <div class="offering-card-photo-wrap">
+              <img src="assets/images/service-sockets-2x.jpg" alt="Design Schalter und Steckdosen" class="offering-card-photo" loading="lazy">
+            </div>
+            <div class="offering-card-pill">
+              <div class="offering-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+                  <circle cx="12" cy="8" r="1.5"></circle>
+                  <circle cx="12" cy="16" r="1.5"></circle>
+                </svg>
+              </div>
+              <div class="offering-card-text">
+                <h3 class="offering-card-title">Steckdosen &amp; Schalter</h3>
+                <p class="offering-card-desc">Funktionale und ästhetische Installationen für jeden Bereich.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Smart Home -->
+          <div class="offering-card">
+            <div class="offering-card-photo-wrap">
+              <img src="assets/images/service-clean-v3-4-2x.jpg" alt="Smart Home Touchscreen Wandsteuerung" class="offering-card-photo" loading="lazy">
+            </div>
+            <div class="offering-card-pill">
+              <div class="offering-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </div>
+              <div class="offering-card-text">
+                <h3 class="offering-card-title">Smart Home</h3>
+                <p class="offering-card-desc">Intelligente Steuerung für mehr Komfort, Sicherheit und Effizienz.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: E-Mobilität -->
+          <div class="offering-card">
+            <div class="offering-card-photo-wrap">
+              <img src="assets/images/service-clean-v3-3-2x.jpg" alt="Wallbox Ladestation für Elektrofahrzeuge" class="offering-card-photo" loading="lazy">
+            </div>
+            <div class="offering-card-pill">
+              <div class="offering-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                  <path d="M7 15h10"></path>
+                  <path d="M10 9l4 6"></path>
+                </svg>
+              </div>
+              <div class="offering-card-text">
+                <h3 class="offering-card-title">E-Mobilität</h3>
+                <p class="offering-card-desc">Ladeinfrastruktur für Zuhause und Gewerbe.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Sicherheitstechnik -->
+          <div class="offering-card">
+            <div class="offering-card-photo-wrap">
+              <img src="assets/images/service-security-2x.jpg" alt="Rauchmelder und Sicherheitssensoren" class="offering-card-photo" loading="lazy">
+            </div>
+            <div class="offering-card-pill">
+              <div class="offering-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <div class="offering-card-text">
+                <h3 class="offering-card-title">Sicherheitstechnik</h3>
+                <p class="offering-card-desc">Zuverlässige Lösungen wie Rauchmelder, Bewegungsmelder und mehr.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 04: SOLUTIONS IN DETAIL (INTERACTIVE SELECTOR)
+         ===================================================================== -->
+    <section class="solutions-detail-section" id="loesungen-im-detail" aria-labelledby="solutionsTitle">
+      <div class="solutions-detail-container">
+        <div class="solutions-detail-header">
+          <div class="solutions-detail-badge">
+            <span class="badge-line" aria-hidden="true"></span>
+            <span class="badge-text">LÖSUNGEN IM DETAIL</span>
+          </div>
+
+          <h2 class="solutions-detail-title" id="solutionsTitle">
+            Unsere Elektro-Lösungen im <span class="highlight-orange">Überblick.</span>
+          </h2>
+
+          <p class="solutions-detail-subtitle">
+            Moderne, sichere und effiziente Elektroinstallationen – passend zu Ihren Anforderungen.
+          </p>
+        </div>
+
+        <!-- 3-Column Interactive Grid -->
+        <div class="solutions-interactive-grid" id="solutionsInteractiveGrid">
+          <!-- Col 1: Vertical Selector -->
+          <ul class="solutions-nav-list" role="tablist" aria-label="Elektro-Lösungen Kategorien">
+            <li>
+              <button type="button" class="solutions-tab-btn active" data-solution="verteiler" role="tab" aria-selected="true">
+                <span class="tab-btn-inner">
+                  <span class="tab-btn-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                  </span>
+                  <span class="tab-btn-label">Verteilertechnik</span>
+                </span>
+                <span class="tab-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="solutions-tab-btn" data-solution="beleuchtung" role="tab" aria-selected="false">
+                <span class="tab-btn-inner">
+                  <span class="tab-btn-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                      <path d="M9 18h6"></path>
+                      <path d="M10 22h4"></path>
+                      <path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.5 4.5 3 6h8c1.5-1.5 3-3.5 3-6a7 7 0 0 0-7-7z"></path>
+                    </svg>
+                  </span>
+                  <span class="tab-btn-label">Beleuchtung</span>
+                </span>
+                <span class="tab-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="solutions-tab-btn" data-solution="steckdosen" role="tab" aria-selected="false">
+                <span class="tab-btn-inner">
+                  <span class="tab-btn-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                      <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+                      <circle cx="12" cy="8" r="1.5"></circle>
+                      <circle cx="12" cy="16" r="1.5"></circle>
+                    </svg>
+                  </span>
+                  <span class="tab-btn-label">Steckdosen &amp; Schalter</span>
+                </span>
+                <span class="tab-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="solutions-tab-btn" data-solution="smarthome" role="tab" aria-selected="false">
+                <span class="tab-btn-inner">
+                  <span class="tab-btn-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                  </span>
+                  <span class="tab-btn-label">Smart Home</span>
+                </span>
+                <span class="tab-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="solutions-tab-btn" data-solution="emobilitaet" role="tab" aria-selected="false">
+                <span class="tab-btn-inner">
+                  <span class="tab-btn-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                      <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                      <path d="M7 15h10"></path>
+                      <path d="M10 9l4 6"></path>
+                    </svg>
+                  </span>
+                  <span class="tab-btn-label">E-Mobilität</span>
+                </span>
+                <span class="tab-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="solutions-tab-btn" data-solution="sicherheit" role="tab" aria-selected="false">
+                <span class="tab-btn-inner">
+                  <span class="tab-btn-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      <polyline points="9 12 11 14 15 10"></polyline>
+                    </svg>
+                  </span>
+                  <span class="tab-btn-label">Sicherheitstechnik</span>
+                </span>
+                <span class="tab-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+            </li>
+          </ul>
+
+          <!-- Col 2: Center Photo Card -->
+          <div class="solutions-photo-card">
+            <img 
+              src="assets/images/service-clean-v3-1-2x.jpg" 
+              alt="Fachgerecht verdrahteter Elektro-Verteilerkasten mit Sicherungsautomaten" 
+              class="solutions-photo-img" 
+              id="solutionsPhotoImg"
+              loading="lazy"
+            >
+          </div>
+
+          <!-- Col 3: Right Detail Content Card -->
+          <div class="solutions-detail-card">
+            <div class="detail-card-icon-wrap" id="detailCardIconWrap" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+
+            <h3 class="detail-card-title" id="detailCardTitle">Verteilertechnik</h3>
+
+            <p class="detail-card-desc" id="detailCardDesc">
+              Planung, Aufbau und Modernisierung von Verteilungen – für eine sichere und zuverlässige Stromversorgung in Wohn- und Gewerbegebäuden.
+            </p>
+
+            <ul class="detail-checklist" id="detailChecklist">
+              <li class="detail-check-item">
+                <span class="check-badge" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Planung und Dimensionierung</span>
+              </li>
+              <li class="detail-check-item">
+                <span class="check-badge" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Fachgerechte Installation</span>
+              </li>
+              <li class="detail-check-item">
+                <span class="check-badge" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Erweiterung bestehender Anlagen</span>
+              </li>
+              <li class="detail-check-item">
+                <span class="check-badge" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Sichere und normgerechte Ausführung</span>
+              </li>
+            </ul>
+
+            <div>
+              <a href="kontakt.html#projektanfrage" class="btn-primary-orange btn-lg">
+                <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                <span>Projekt anfragen</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 05: HOW YOUR PROJECT WORKS (5-STAGE TIMELINE)
+         ===================================================================== -->
+    <section class="project-steps-section" id="ablauf" aria-labelledby="projectStepsTitle">
+      <div class="project-steps-container">
+        <div class="project-steps-header">
+          <div class="project-steps-badge">
+            <span class="badge-line" aria-hidden="true"></span>
+            <span class="badge-text">SO LÄUFT IHR PROJEKT</span>
+          </div>
+
+          <h2 class="project-steps-title" id="projectStepsTitle">
+            In 5 Schritten zu Ihrer <span class="highlight-orange">Elektroinstallation.</span>
+          </h2>
+
+          <p class="project-steps-subtitle">
+            Ein klarer, strukturierter Ablauf – von der ersten Beratung bis zur finalen Übergabe.
+          </p>
+        </div>
+
+        <!-- 5-Step Connected Grid -->
+        <div class="project-steps-grid">
+          <!-- Step 1: Beratung -->
+          <div class="step-process-card">
+            <div class="step-photo-wrap">
+              <img src="assets/images/step-clean-1.jpg" alt="Persönliche Beratung und Bedarfsanalyse" class="step-card-img" loading="lazy">
+              <span class="step-number-tag">01</span>
+            </div>
+            <div class="step-card-body">
+              <div class="step-icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <h3 class="step-title">Beratung</h3>
+              <p class="step-desc">Wir besprechen Ihre Wünsche und Anforderungen.</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Planung -->
+          <div class="step-process-card">
+            <div class="step-photo-wrap">
+              <img src="assets/images/step-clean-2.jpg" alt="Detailplanung und Elektro-Bauzeichnung" class="step-card-img" loading="lazy">
+              <span class="step-number-tag">02</span>
+            </div>
+            <div class="step-card-body">
+              <div class="step-icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <h3 class="step-title">Planung</h3>
+              <p class="step-desc">Wir entwickeln die passende Lösung für Ihr Projekt.</p>
+            </div>
+          </div>
+
+          <!-- Step 3: Vorbereitung -->
+          <div class="step-process-card">
+            <div class="step-photo-wrap">
+              <img src="assets/images/step-clean-3.jpg" alt="Materialbeschaffung und Installationsvorbereitung" class="step-card-img" loading="lazy">
+              <span class="step-number-tag">03</span>
+            </div>
+            <div class="step-card-body">
+              <div class="step-icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <h3 class="step-title">Vorbereitung</h3>
+              <p class="step-desc">Wir organisieren alle Materialien und Voraussetzungen.</p>
+            </div>
+          </div>
+
+          <!-- Step 4: Installation -->
+          <div class="step-process-card">
+            <div class="step-photo-wrap">
+              <img src="assets/images/step-clean-4.jpg" alt="Fachgerechte Elektroinstallation durch Handwerksmeister" class="step-card-img" loading="lazy">
+              <span class="step-number-tag">04</span>
+            </div>
+            <div class="step-card-body">
+              <div class="step-icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <h3 class="step-title">Installation</h3>
+              <p class="step-desc">Fachgerechte und sichere Umsetzung nach Plan.</p>
+            </div>
+          </div>
+
+          <!-- Step 5: Prüfung & Übergabe -->
+          <div class="step-process-card">
+            <div class="step-photo-wrap">
+              <img src="assets/images/step-clean-5.jpg" alt="Messprüfung nach VDE und Anlagenübergabe" class="step-card-img" loading="lazy">
+              <span class="step-number-tag">05</span>
+            </div>
+            <div class="step-card-body">
+              <div class="step-icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <h3 class="step-title">Prüfung &amp; Übergabe</h3>
+              <p class="step-desc">Wir prüfen alles sorgfältig und übergeben die fertige Anlage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 06: UNSER EINSATZGEBIET (KIEL & REGION MAP)
+         ===================================================================== -->
+    <section class="einsatzgebiet-section" id="einsatzgebiet" aria-labelledby="einsatzgebietTitle">
+      <div class="einsatzgebiet-container">
+        <!-- Left Column: Information & Key Benefits -->
+        <div class="einsatzgebiet-content">
+          <div class="section-badge-inline">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">UNSER EINSATZGEBIET</span>
+          </div>
+          
+          <h2 id="einsatzgebietTitle" class="einsatzgebiet-title">
+            Hier sind wir<br>für Sie <span class="highlight-orange">im Einsatz.</span>
+          </h2>
+          
+          <p class="einsatzgebiet-desc">
+            Zuverlässige Elektrotechnik in Ihrer Region – für Privatkunden, Unternehmen und öffentliche Einrichtungen.
+          </p>
+
+          <div class="einsatzgebiet-features">
+            <!-- Benefit 1: Regionale Betreuung -->
+            <div class="einsatzgebiet-feature-card">
+              <div class="feature-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="feature-text-box">
+                <h3 class="feature-title">Regionale Betreuung</h3>
+                <p class="feature-subtitle">Schnell vor Ort, wenn Sie uns brauchen.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 2: Kurze Reaktionszeiten -->
+            <div class="einsatzgebiet-feature-card">
+              <div class="feature-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div class="feature-text-box">
+                <h3 class="feature-title">Kurze Reaktionszeiten</h3>
+                <p class="feature-subtitle">Zuverlässiger und effizienter Service.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 3: Für Privat & Gewerbe -->
+            <div class="einsatzgebiet-feature-card">
+              <div class="feature-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="feature-text-box">
+                <h3 class="feature-title">Für Privat & Gewerbe</h3>
+                <p class="feature-subtitle">Individuelle Lösungen für jedes Projekt.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Leaflet Map with Floating Glass Card -->
+        <div class="einsatzgebiet-map-wrapper">
+          <div id="einsatzgebietMap" class="einsatzgebiet-map" role="region" aria-label="Interaktive Karte: Unser Einsatzgebiet in Kiel und Schleswig-Holstein"></div>
+
+          <!-- Floating Glass Card with Region Checklist -->
+          <div class="einsatzgebiet-glass-card">
+            <div class="glass-card-header">
+              <div class="glass-card-icon-wrap" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <span class="glass-card-title">Unser Einsatzgebiet</span>
+            </div>
+
+            <ul class="glass-card-checklist" aria-label="Liste der abgedeckten Regionen">
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kiel und Umgebung</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Plön</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Rendsburg-Eckernförde</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Segeberg</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Ostholstein</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 07: FINAL CTA (EXACT HOMEPAGE COMPONENT)
+         ===================================================================== -->
+    <section class="cta-banner-section" id="kontakt-banner" aria-labelledby="ctaBannerHeading">
+      <div class="cta-banner-bg-wrap" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/cta-banner-bg-2x.webp 2x, assets/images/cta-banner-bg.webp 1x" type="image/webp">
+          <img src="assets/images/cta-banner-bg.jpg" alt="Elektrotechnik Malawko Villa bei Dämmerung" class="cta-banner-bg-img" loading="lazy">
+        </picture>
+        <div class="cta-banner-overlay"></div>
+      </div>
+
+      <div class="cta-banner-container">
+        <div class="cta-banner-tag">
+          <span class="tag-line" aria-hidden="true"></span>
+          <span class="tag-text">BEREIT FÜR IHR PROJEKT?</span>
+          <span class="tag-line" aria-hidden="true"></span>
+        </div>
+
+        <h2 class="cta-banner-headline" id="ctaBannerHeading">
+          Jetzt Elektrotechnik<br>
+          mit <span class="highlight-orange">Malawko</span> realisieren.
+        </h2>
+
+        <div class="cta-banner-actions">
+          <a href="kontakt.html#projektanfrage" class="btn-primary-orange btn-banner">
+            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+
+          <a href="tel:+4915125383578" class="btn-outline-white btn-banner">
+            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>0151 25 38 35 78</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       SECTION 08: GLOBAL FOOTER (EXACT REUSED FOOTER)
+       ===================================================================== -->
+  <footer class="site-footer" id="footer">
+    <!-- Subtle top ambient glow curves -->
+    <div class="footer-glow footer-glow-left" aria-hidden="true"></div>
+    <div class="footer-glow footer-glow-right" aria-hidden="true"></div>
+
+    <div class="footer-container">
+      <div class="footer-main-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <div class="footer-logo-wrap">
+            <img src="assets/logos/malawko-footer-logo-clean.png" alt="MALAWKO Elektrotechnik Logo" class="footer-brand-logo" width="180" height="55">
+          </div>
+          <p class="footer-brand-desc">
+            Ihr zuverlässiger Partner für moderne Elektrotechnik in Privat, Gewerbe und öffentlichen Einrichtungen.
+          </p>
+        </div>
+
+        <!-- Col 2: Schnellzugriff -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Schnellzugriff</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="index.html" class="footer-link">Startseite</a></li>
+            <li><a href="index.html#ueber-uns" class="footer-link">Über uns</a></li>
+            <li><a href="index.html#leistungen" class="footer-link">Leistungen</a></li>
+            <li><a href="projekte.html" class="footer-link">Referenzen</a></li>
+            <li><a href="kontakt.html" class="footer-link">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Unsere Leistungen -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Unsere Leistungen</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="elektroinstallation.html" class="footer-link">Elektroinstallation</a></li>
+            <li><a href="smart-home.html" class="footer-link">Smart Home</a></li>
+            <li><a href="wallbox-emobilitaet.html" class="footer-link">Wallbox &amp; E-Mobilität</a></li>
+            <li><a href="zaehler-hausanschluss.html" class="footer-link">Modernisierung</a></li>
+            <li><a href="pruefung-wartung.html" class="footer-link">Wartung &amp; Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Kontakt -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Kontakt</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-contact-list">
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+4915125383578" class="contact-link">0151 25 38 35 78</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:info@malawko-elektrotechnik.de" class="contact-link">info@malawko-elektrotechnik.de</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span class="contact-text">Kiel &amp; Schleswig-Holstein</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Malawko Elektrotechnik. Alle Rechte vorbehalten.
+        </div>
+        <div class="footer-credit">
+          Webdesign by <span class="highlight-orange">EmanCopys</span>
+        </div>
+        <div class="footer-legal-links">
+          <a href="#impressum">Impressum</a>
+          <span class="legal-sep">|</span>
+          <a href="#datenschutz">Datenschutz</a>
+          <span class="legal-sep">|</span>
+          <a href="#cookies">Cookie-Einstellungen</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet Interactive Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

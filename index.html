@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elektrotechnik Malawko GmbH | Meisterbetrieb Hamburg</title>
+  <meta name="description" content="Elektrotechnik, die zu Ihrem Vorhaben passt. Meisterbetrieb für Elektroinstallation, Smart Home, Photovoltaik und E-Mobilität in Hamburg.">
+  
+  <!-- Preload Critical Hero Background -->
+  <link rel="preload" as="image" href="assets/images/hero-bg.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/logos/malawko-logo.png" type="image/png">
+
+  <!-- Google Fonts: Plus Jakarta Sans for premium architectural aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet Map CSS for Einsatzgebiet Section -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#hero-content" class="skip-link">Zum Inhalt springen</a>
+
+  <!-- FLOATING LIQUID-GLASS NAVIGATION HEADER -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <nav class="liquid-navbar" aria-label="Hauptnavigation">
+        <!-- Original Malawko Logo inside Light Glass Card Container -->
+        <a href="#" class="brand-card" aria-label="Elektrotechnik Malawko GmbH Startseite">
+          <img 
+            src="assets/logos/malawko-logo.png" 
+            srcset="assets/logos/malawko-logo@3x.png 2x" 
+            alt="Elektrotechnik Malawko GmbH Logo" 
+            class="brand-logo"
+            width="170" 
+            height="46"
+          >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktopNavLinks">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#ueber-uns" class="nav-link">Über uns</a>
+          </li>
+          <li class="nav-item has-dropdown" id="servicesDropdownTrigger">
+            <button 
+              type="button" 
+              class="nav-link dropdown-toggle" 
+              aria-expanded="false" 
+              aria-haspopup="true"
+              aria-controls="servicesDropdown"
+            >
+              <span>Leistungen</span>
+              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            
+            <!-- Services Dropdown (Liquid Glass Card) -->
+            <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
+              <div class="dropdown-inner">
+                <a href="elektroinstallation.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">01</span>
+                  <div class="dropdown-text">
+                    <strong>Elektroinstallation</strong>
+                    <small>Neu- & Altbauinstallationen</small>
+                  </div>
+                </a>
+                <a href="zaehler-hausanschluss.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">02</span>
+                  <div class="dropdown-text">
+                    <strong>Zähler und Hausanschluss</strong>
+                    <small>Zähleranlagen & Modernisierung</small>
+                  </div>
+                </a>
+                <a href="wallbox-emobilitaet.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">03</span>
+                  <div class="dropdown-text">
+                    <strong>Wallbox & E-Mobilität</strong>
+                    <small>Ladeinfrastruktur Heim & Gewerbe</small>
+                  </div>
+                </a>
+                <a href="smart-home.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">04</span>
+                  <div class="dropdown-text">
+                    <strong>Smart Home & KNX</strong>
+                    <small>Intelligente Gebäudeautomation</small>
+                  </div>
+                </a>
+                <a href="beleuchtung.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">05</span>
+                  <div class="dropdown-text">
+                    <strong>Beleuchtung</strong>
+                    <small>Lichtplanung & energieeffiziente LEDs</small>
+                  </div>
+                </a>
+                <a href="netzwerk-kommunikation.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">06</span>
+                  <div class="dropdown-text">
+                    <strong>Netzwerk & Kommunikation</strong>
+                    <small>Strukturierte Datenverkabelung</small>
+                  </div>
+                </a>
+                <a href="pruefung-wartung.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">07</span>
+                  <div class="dropdown-text">
+                    <strong>Prüfung & Wartung</strong>
+                    <small>E-Check & DGUV V3 Prüfungen</small>
+                  </div>
+                </a>
+                <a href="stoerung-reparatur.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">08</span>
+                  <div class="dropdown-text">
+                    <strong>Störung & Reparatur</strong>
+                    <small>Schnelle Diagnose & Behebung</small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="projekte.html" class="nav-link">Referenzen</a>
+          </li>
+          <li class="nav-item">
+            <a href="kontakt.html" class="nav-link">Kontakt</a>
+          </li>
+        </ul>
+
+        <!-- Right Quick Action / Call CTA -->
+        <div class="nav-actions">
+          <span class="nav-divider" aria-hidden="true"></span>
+          
+          <a href="tel:+4915125383578" class="phone-circle-btn" aria-label="Telefonisch anrufen: 0151 25 38 35 78" title="Telefon: 0151 25 38 35 78">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+
+          <a href="tel:+4915125383578" class="btn-call-orange">
+            <span>Sofort anrufen</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button 
+            type="button" 
+            class="hamburger-btn" 
+            id="mobileMenuToggle" 
+            aria-label="Menü öffnen" 
+            aria-expanded="false" 
+            aria-controls="mobileDrawer"
+          >
+            <span class="bar bar-top"></span>
+            <span class="bar bar-mid"></span>
+            <span class="bar bar-bot"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-content">
+        <ul class="mobile-nav-list">
+          <li><a href="#" class="mobile-nav-link active">Home</a></li>
+          <li><a href="#ueber-uns" class="mobile-nav-link">Über uns</a></li>
+          <li class="mobile-has-sub">
+            <button type="button" class="mobile-nav-link mobile-sub-toggle" id="mobileSubToggle" aria-expanded="false">
+              <span>Leistungen</span>
+              <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="mobile-submenu" id="mobileSubmenu">
+              <li><a href="elektroinstallation.html">1. Elektroinstallation</a></li>
+              <li><a href="zaehler-hausanschluss.html">2. Zähler und Hausanschluss</a></li>
+              <li><a href="wallbox-emobilitaet.html">3. Wallbox &amp; E-Mobilität</a></li>
+              <li><a href="smart-home.html">4. Smart Home &amp; KNX</a></li>
+              <li><a href="beleuchtung.html">5. Beleuchtung</a></li>
+              <li><a href="netzwerk-kommunikation.html">6. Netzwerk &amp; Kommunikation</a></li>
+              <li><a href="pruefung-wartung.html">7. Prüfung &amp; Wartung</a></li>
+              <li><a href="stoerung-reparatur.html">8. Störung &amp; Reparatur</a></li>
+            </ul>
+          </li>
+          <li><a href="projekte.html" class="mobile-nav-link">Referenzen</a></li>
+          <li><a href="kontakt.html" class="mobile-nav-link">Kontakt</a></li>
+        </ul>
+
+        <div class="mobile-actions">
+          <a href="tel:+4915125383578" class="btn-call-orange btn-block">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>Sofort anrufen (0151 25 38 35 78)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN HERO SECTION -->
+  <main id="hero-content">
+    <section class="hero-section" aria-label="Hero Willkommen">
+      <!-- High Quality Architectural Background Image -->
+      <div class="hero-background-wrapper" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/hero-bg-2x.webp 2x, assets/images/hero-bg.webp 1x" type="image/webp">
+          <img 
+            src="assets/images/hero-bg.jpg" 
+            srcset="assets/images/hero-bg-2x.jpg 2x" 
+            alt="Modernes Wohnhaus mit Solar Photovoltaik und Wallbox" 
+            class="hero-bg-image"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </picture>
+        <div class="hero-subtle-overlay"></div>
+      </div>
+
+      <div class="hero-container">
+        <!-- Main Left Glass Content Panel -->
+        <div class="hero-content-panel">
+          <!-- Small intro badge text -->
+          <div class="hero-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">ELEKTROTECHNIK FÜR PRIVAT &amp; GEWERBE</span>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="hero-headline">
+            Elektrotechnik,<br>
+            die zu Ihrem<br>
+            <span class="highlight-orange">Vorhaben</span> passt.
+          </h1>
+
+          <!-- Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#konfigurator" class="btn-primary-orange">
+              <!-- Stacked Project Layers Icon -->
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              <span>Projekt zusammenstellen</span>
+              <!-- Right Arrow -->
+              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+
+            <a href="#stoerung" class="btn-secondary-glass">
+              <!-- Orange Lightning Bolt Icon -->
+              <svg class="btn-icon icon-lightning" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Störung melden</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bottom Bento Trust Grid (Continuous Frosted Glass Panel) -->
+        <div class="hero-bento-trust-grid" role="region" aria-label="Qualitätsmerkmale">
+          <!-- Item 1: Qualifizierter Elektrobetrieb -->
+          <div class="trust-item">
+            <div class="trust-icon-wrap" aria-hidden="true">
+              <!-- Rosette Badge Check Icon -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76z"></path>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+            </div>
+            <div class="trust-text">
+              <span class="trust-line-1">Qualifizierter</span>
+              <span class="trust-line-2">Elektrobetrieb</span>
+            </div>
+          </div>
+
+          <div class="trust-divider" aria-hidden="true"></div>
+
+          <!-- Item 2: Feste Ansprechpartner -->
+          <div class="trust-item">
+            <div class="trust-icon-wrap" aria-hidden="true">
+              <!-- Dedicated Contacts Users Icon -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="trust-text">
+              <span class="trust-line-1">Feste</span>
+              <span class="trust-line-2">Ansprechpartner</span>
+            </div>
+          </div>
+
+          <div class="trust-divider" aria-hidden="true"></div>
+
+          <!-- Item 3: Transparente Angebote -->
+          <div class="trust-item">
+            <div class="trust-icon-wrap" aria-hidden="true">
+              <!-- Transparent Proposals Document Icon -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <line x1="10" y1="9" x2="8" y2="9"></line>
+              </svg>
+            </div>
+            <div class="trust-text">
+              <span class="trust-line-1">Transparente</span>
+              <span class="trust-line-2">Angebote</span>
+            </div>
+          </div>
+
+          <div class="trust-divider" aria-hidden="true"></div>
+
+          <!-- Item 4: Geprüfte & dokumentierte Arbeiten -->
+          <div class="trust-item">
+            <div class="trust-icon-wrap" aria-hidden="true">
+              <!-- Shield Checkmark Icon -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+            </div>
+            <div class="trust-text">
+              <span class="trust-line-1">Geprüfte &amp;</span>
+              <span class="trust-line-2">dokumentierte Arbeiten</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / UNSERE LEISTUNG SECTION -->
+    <section class="about-section" id="ueber-uns" aria-labelledby="aboutHeading">
+      <div class="about-container">
+        <!-- Left Column: Image Collage -->
+        <div class="about-visual-col">
+          <div class="about-collage-wrapper">
+            <picture>
+              <source srcset="assets/images/about-collage-2x.webp 2x, assets/images/about-collage.webp 1x" type="image/webp">
+              <img 
+                src="assets/images/about-collage.png" 
+                srcset="assets/images/about-collage-2x.png 2x" 
+                alt="Elektrotechnik Malawko Fachbetrieb — Elektroinstallation, Wallbox Ladeinfrastruktur und Photovoltaik" 
+                class="about-collage-img"
+                loading="lazy"
+                width="415" 
+                height="380"
+              >
+            </picture>
+          </div>
+        </div>
+
+        <!-- Right Column: Text & Features Content -->
+        <div class="about-content-col">
+          <!-- Intro Badge -->
+          <div class="section-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">UNSERE LEISTUNG</span>
+          </div>
+
+          <!-- Main Headline -->
+          <h2 class="about-headline" id="aboutHeading">
+            Elektrische Lösungen<br>
+            aus <span class="highlight-orange">einer Hand.</span>
+          </h2>
+
+          <!-- Description Paragraph -->
+          <p class="about-description">
+            Ihr zuverlässiger Partner für moderne Elektrotechnik – für private Haushalte, Gewerbe und Neubauprojekte. Mit Fachwissen, Erfahrung und einem hohen Qualitätsanspruch setzen wir Ihr Vorhaben effizient und sicher um.
+          </p>
+
+          <!-- 3-Column Trust & Quality Features -->
+          <div class="about-features-row">
+            <!-- Feature 1: Erfahrung & Fachkompetenz -->
+            <div class="about-feature-item">
+              <div class="feature-icon-wrap" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="6"></circle>
+                  <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                </svg>
+              </div>
+              <div class="feature-text">
+                <strong>Erfahrung &amp;</strong>
+                <span>Fachkompetenz</span>
+              </div>
+            </div>
+
+            <div class="feature-divider" aria-hidden="true"></div>
+
+            <!-- Feature 2: Individuelle Beratung -->
+            <div class="about-feature-item">
+              <div class="feature-icon-wrap" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="feature-text">
+                <strong>Individuelle</strong>
+                <span>Beratung</span>
+              </div>
+            </div>
+
+            <div class="feature-divider" aria-hidden="true"></div>
+
+            <!-- Feature 3: Nachhaltige Technik -->
+            <div class="about-feature-item">
+              <div class="feature-icon-wrap" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 20A7 7 0 0 1 4 13c0-4 3-7 8-9 0 0 1 4 1 7 0 2-1 4-2 5"></path>
+                  <path d="M13 14c2.5 0 5-1 7-4 0 4-3 7-7 8"></path>
+                  <path d="M13 21v-7"></path>
+                </svg>
+              </div>
+              <div class="feature-text">
+                <strong>Nachhaltige</strong>
+                <span>Technik</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="about-cta-wrap">
+            <a href="kontakt.html#projektanfrage" class="btn-primary-orange btn-lg">
+              <span>Jetzt Projekt anfragen</span>
+              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SERVICES GRID SECTION ("Was können wir für Sie tun?")
+         ===================================================================== -->
+    <section class="services-section" id="leistungen" aria-labelledby="servicesHeading">
+      <div class="services-container">
+        <!-- Section Header -->
+        <div class="section-center-header">
+          <div class="section-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">UNSERE LEISTUNGEN</span>
+          </div>
+          <h2 class="section-main-headline" id="servicesHeading">
+            Was können wir <span class="highlight-orange">für Sie</span> tun?
+          </h2>
+          <p class="section-sub-headline">
+            Von der klassischen Elektroinstallation bis zur smarten Gebäudetechnik – wir bieten durchdachte Lösungen für Privat, Gewerbe und Neubau.
+          </p>
+        </div>
+
+        <!-- 8 Services Grid -->
+        <div class="services-bento-grid">
+          <!-- Card 1: Elektroinstallation -->
+          <a href="kontakt.html#projektanfrage" class="service-bento-card">
+            <div class="service-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/service-clean-v3-1.webp" type="image/webp">
+                <img src="assets/images/service-clean-v3-1.jpg" alt="Elektroinstallation Verteilerkasten" class="service-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="service-card-glass-pill">
+              <div class="service-pill-icon-wrap" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <span class="service-pill-title">Elektroinstallation</span>
+              <div class="service-pill-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 2: Zähler und Hausanschluss -->
+          <a href="kontakt.html#projektanfrage" class="service-bento-card">
+            <div class="service-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/service-clean-v3-2.webp" type="image/webp">
+                <img src="assets/images/service-clean-v3-2.jpg" alt="Zähler und Hausanschluss" class="service-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="service-card-glass-pill">
+              <div class="service-pill-icon-wrap" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+                  <line x1="9" y1="7" x2="15" y2="7"></line>
+                  <circle cx="12" cy="14" r="3"></circle>
+                </svg>
+              </div>
+              <span class="service-pill-title">Zähler und Hausanschluss</span>
+              <div class="service-pill-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 3: Wallbox & E-Mobilität -->
+          <a href="wallbox-emobilitaet.html" class="service-bento-card">
+            <div class="service-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/service-clean-v3-3.webp" type="image/webp">
+                <img src="assets/images/service-clean-v3-3.jpg" alt="Wallbox und E-Mobilität" class="service-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="service-card-glass-pill">
+              <div class="service-pill-icon-wrap" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2 11.2 2 11.7 2 12.2V16c0 .6.4 1 1 1h2"></path>
+                  <circle cx="7" cy="17" r="2"></circle>
+                  <path d="M9 17h6"></path>
+                  <circle cx="17" cy="17" r="2"></circle>
+                </svg>
+              </div>
+              <span class="service-pill-title">Wallbox &amp; E-Mobilität</span>
+              <div class="service-pill-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 4: Smart Home & KNX -->
+          <a href="smart-home.html" class="service-bento-card">
+            <div class="service-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/service-clean-v3-4.webp" type="image/webp">
+                <img src="assets/images/service-clean-v3-4.jpg" alt="Smart Home und KNX" class="service-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="service-card-glass-pill">
+              <div class="service-pill-icon-wrap" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </div>
+              <span class="service-pill-title">Smart Home &amp; KNX</span>
+              <div class="service-pill-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 5: Beleuchtung -->
+          <a href="beleuchtung.html" class="service-bento-card">
+            <div class="service-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/service-clean-v3-5.webp" type="image/webp">
+                <img src="assets/images/service-clean-v3-5.jpg" alt="Moderne Beleuchtung" class="service-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="service-card-glass-pill">
+              <div class="service-pill-icon-wrap" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 18h6"></path>
+                  <path d="M10 22h4"></path>
+                  <path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.3 4.8 3.3 6.1.5.3.7.8.7 1.4V17h6v-.5c0-.6.2-1.1.7-1.4 2-1.3 3.3-3.6 3.3-6.1a7 7 0 0 0-7-7z"></path>
+                </svg>
+              </div>
+              <span class="service-pill-title">Beleuchtung</span>
+              <div class="service-pill-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 6: Netzwerk & Kommunikation -->
+          <a href="netzwerk-kommunikation.html" class="service-bento-card">
+            <div class="service-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/service-clean-v3-6.webp" type="image/webp">
+                <img src="assets/images/service-clean-v3-6.jpg" alt="Netzwerk und Kommunikation" class="service-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="service-card-glass-pill">
+              <div class="service-pill-icon-wrap" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+              </div>
+              <span class="service-pill-title">Netzwerk &amp; Kommunikation</span>
+              <div class="service-pill-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 7: Prüfung & Wartung -->
+          <a href="pruefung-wartung.html" class="service-bento-card">
+            <div class="service-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/service-clean-v3-7.webp" type="image/webp">
+                <img src="assets/images/service-clean-v3-7.jpg" alt="Prüfung und Wartung" class="service-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="service-card-glass-pill">
+              <div class="service-pill-icon-wrap" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  <polyline points="9 14 11 16 15 11"></polyline>
+                </svg>
+              </div>
+              <span class="service-pill-title">Prüfung &amp; Wartung</span>
+              <div class="service-pill-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 8: Störung & Reparatur -->
+          <a href="kontakt.html#projektanfrage" class="service-bento-card">
+            <div class="service-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/service-clean-v3-8.webp" type="image/webp">
+                <img src="assets/images/service-clean-v3-8.jpg" alt="Störung und Reparatur Kundendienst" class="service-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="service-card-glass-pill">
+              <div class="service-pill-icon-wrap" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+              </div>
+              <span class="service-pill-title">Störung &amp; Reparatur</span>
+              <div class="service-pill-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PROCESS STEPS SECTION ("In wenigen Schritten zur passenden Elektrolösung")
+         ===================================================================== -->
+    <section class="process-section" id="ablauf" aria-labelledby="processHeading">
+      <div class="process-container">
+        <!-- Left Column: Header text -->
+        <div class="process-header-col">
+          <div class="section-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">SO LÄUFT IHR PROJEKT AB</span>
+          </div>
+          <h2 class="process-headline" id="processHeading">
+            In wenigen Schritten zur passenden <span class="highlight-orange">Elektrolösung.</span>
+          </h2>
+          <p class="process-description">
+            Von der ersten Anfrage bis zur fertigen Umsetzung – transparent, strukturiert und zuverlässig.
+          </p>
+        </div>
+
+        <!-- Right Column: 5 Steps Timeline Cards -->
+        <div class="process-timeline-col">
+          <div class="process-timeline-track" aria-hidden="true"></div>
+          
+          <div class="process-steps-grid">
+            <!-- Step 1 -->
+            <div class="process-step-card">
+              <div class="step-num-badge">01</div>
+              <div class="step-card-photo-wrap">
+                <img src="assets/images/step-clean-1.jpg?v=3" alt="Anfrage stellen" class="step-card-photo" loading="lazy">
+              </div>
+              <div class="step-card-body">
+                <div class="step-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </div>
+                <h3 class="step-title">Anfrage stellen</h3>
+                <p class="step-text">Teilen Sie uns Ihr Vorhaben einfach online mit.</p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-step-card">
+              <div class="step-num-badge">02</div>
+              <div class="step-card-photo-wrap">
+                <img src="assets/images/step-clean-2.jpg?v=3" alt="Bedarf klären" class="step-card-photo" loading="lazy">
+              </div>
+              <div class="step-card-body">
+                <div class="step-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    <polyline points="9 14 11 16 15 11"></polyline>
+                  </svg>
+                </div>
+                <h3 class="step-title">Bedarf klären</h3>
+                <p class="step-text">Wir prüfen Ihre Angaben und besprechen die Details.</p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-step-card">
+              <div class="step-num-badge">03</div>
+              <div class="step-card-photo-wrap">
+                <img src="assets/images/step-clean-3.jpg?v=3" alt="Vor-Ort-Termin" class="step-card-photo" loading="lazy">
+              </div>
+              <div class="step-card-body">
+                <div class="step-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </div>
+                <h3 class="step-title">Vor-Ort-Termin</h3>
+                <p class="step-text">Wir nehmen die Gegebenheiten auf und beraten Sie persönlich.</p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-step-card">
+              <div class="step-num-badge">04</div>
+              <div class="step-card-photo-wrap">
+                <img src="assets/images/step-clean-4.jpg?v=3" alt="Umsetzung" class="step-card-photo" loading="lazy">
+              </div>
+              <div class="step-card-body">
+                <div class="step-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                </div>
+                <h3 class="step-title">Umsetzung</h3>
+                <p class="step-text">Wir installieren Ihre Elektrolösung fachgerecht und termintreu.</p>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="process-step-card">
+              <div class="step-num-badge">05</div>
+              <div class="step-card-photo-wrap">
+                <img src="assets/images/step-clean-5.jpg?v=3" alt="Prüfung & Übergabe" class="step-card-photo" loading="lazy">
+              </div>
+              <div class="step-card-body">
+                <div class="step-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <polyline points="9 12 11 14 15 10"></polyline>
+                  </svg>
+                </div>
+                <h3 class="step-title">Prüfung &amp; Übergabe</h3>
+                <p class="step-text">Nach der Prüfung erhalten Sie eine saubere Dokumentation und eine sichere Anlage.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PROJECTS / REFERENZEN SECTION ("Ausgewählte Projekte aus der Praxis.")
+         ===================================================================== -->
+    <section class="projects-section" id="projekte" aria-labelledby="projectsHeading">
+      <div class="projects-container">
+        <!-- Section Header -->
+        <div class="section-center-header">
+          <div class="section-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">UNSERE REFERENZEN</span>
+          </div>
+          <h2 class="section-main-headline" id="projectsHeading">
+            Ausgewählte Projekte aus <span class="highlight-orange">der Praxis.</span>
+          </h2>
+          <p class="section-sub-headline">
+            Ein Einblick in unsere abgeschlossenen Projekte – von der modernen Elektroinstallation bis hin zu intelligenten Gebäudelösungen.
+          </p>
+        </div>
+
+        <!-- Bento Grid Projects -->
+        <div class="projects-bento-grid">
+          <!-- Main Large Card (Left): Einfamilienhaus -->
+          <div class="project-bento-card project-card-large">
+            <div class="project-bg-img-wrap">
+              <picture>
+                <source srcset="assets/images/project-1.webp" type="image/webp">
+                <img src="assets/images/project-1.jpg" alt="Elektroinstallation Einfamilienhaus" class="project-bg-img" loading="lazy">
+              </picture>
+              <div class="project-card-overlay"></div>
+            </div>
+            
+            <div class="project-tag-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              </svg>
+              <span>Neubau</span>
+            </div>
+
+            <div class="project-card-bottom-glass">
+              <div class="project-info">
+                <h3 class="project-title">Elektroinstallation Einfamilienhaus</h3>
+                <div class="project-meta-row">
+                  <span class="meta-item">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    Komplette Elektroinstallation
+                  </span>
+                  <span class="meta-sep" aria-hidden="true">|</span>
+                  <span class="meta-item">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="12" cy="12" r="3"></circle></svg>
+                    Smart Home (KNX)
+                  </span>
+                  <span class="meta-sep" aria-hidden="true">|</span>
+                  <span class="meta-item">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="2" width="14" height="20" rx="3"></rect></svg>
+                    Wallbox
+                  </span>
+                </div>
+              </div>
+              <a href="projekte.html" class="project-circle-btn" aria-label="Projekt ansehen">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Stacked Column -->
+          <div class="projects-right-col">
+            <!-- Small Card 1: Wallbox -->
+            <div class="project-bento-card project-card-small">
+              <div class="project-bg-img-wrap">
+                <picture>
+                  <source srcset="assets/images/project-2.webp" type="image/webp">
+                  <img src="assets/images/project-2.jpg" alt="Wallbox-Installation" class="project-bg-img" loading="lazy">
+                </picture>
+                <div class="project-card-overlay"></div>
+              </div>
+
+              <div class="project-tag-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2">
+                  <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+                </svg>
+                <span>E-Mobilität</span>
+              </div>
+
+              <div class="project-card-bottom-glass">
+                <div class="project-info">
+                  <h3 class="project-title">Wallbox-Installation</h3>
+                  <p class="project-subtitle">Ladelösung für privates Wohnen</p>
+                </div>
+                <a href="projekte.html" class="project-circle-btn" aria-label="Projekt ansehen">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Small Card 2: Zähleranlage -->
+            <div class="project-bento-card project-card-small">
+              <div class="project-bg-img-wrap">
+                <picture>
+                  <source srcset="assets/images/project-3.webp" type="image/webp">
+                  <img src="assets/images/project-3.jpg" alt="Zähleranlage und Hausanschluss" class="project-bg-img" loading="lazy">
+                </picture>
+                <div class="project-card-overlay"></div>
+              </div>
+
+              <div class="project-tag-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                <span>Elektrotechnik</span>
+              </div>
+
+              <div class="project-card-bottom-glass">
+                <div class="project-info">
+                  <h3 class="project-title">Zähleranlage &amp; Hausanschluss</h3>
+                  <p class="project-subtitle">Modernisierung und Netzanschluss</p>
+                </div>
+                <a href="projekte.html" class="project-circle-btn" aria-label="Projekt ansehen">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination Indicator -->
+        <div class="projects-pagination" aria-hidden="true">
+          <span class="page-dot"></span>
+          <span class="page-dot active"></span>
+          <span class="page-dot"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         WHY MALAWKO SECTION ("Gute Gründe, die für uns sprechen.")
+         ===================================================================== -->
+    <section class="why-section" id="warum-malawko" aria-labelledby="whyHeading">
+      <div class="why-container">
+        <!-- Left Column: Benefits List -->
+        <div class="why-content-col">
+          <div class="section-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">WARUM MALAWKO</span>
+          </div>
+
+          <h2 class="why-headline" id="whyHeading">
+            Gute Gründe, die<br>
+            <span class="highlight-orange">für uns sprechen.</span>
+          </h2>
+
+          <p class="why-description">
+            Verlassen Sie sich auf Fachkompetenz, Qualität und einen zuverlässigen Partner für moderne Elektrotechnik.
+          </p>
+
+          <div class="why-benefits-list">
+            <!-- Benefit 1 -->
+            <div class="why-benefit-item">
+              <div class="why-icon-bubble" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <div class="why-benefit-text">
+                <h3 class="benefit-title">Fachbetrieb</h3>
+                <p class="benefit-desc">Elektrotechnik mit geprüfter Qualifikation.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 2 -->
+            <div class="why-benefit-item">
+              <div class="why-icon-bubble" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="why-benefit-text">
+                <h3 class="benefit-title">Persönlicher Kontakt</h3>
+                <p class="benefit-desc">Direkte, ehrliche und individuelle Beratung.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 3 -->
+            <div class="why-benefit-item">
+              <div class="why-icon-bubble" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <div class="why-benefit-text">
+                <h3 class="benefit-title">Transparente Angebote</h3>
+                <p class="benefit-desc">Faire und nachvollziehbare Kosten.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 4 -->
+            <div class="why-benefit-item">
+              <div class="why-icon-bubble" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <div class="why-benefit-text">
+                <h3 class="benefit-title">Qualität &amp; Sicherheit</h3>
+                <p class="benefit-desc">Normgerechte Ausführung und saubere Dokumentation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Van Photo & Overlapping Stats Bar -->
+        <div class="why-visual-col">
+          <div class="why-photo-card">
+            <picture>
+              <source srcset="assets/images/why-van-clean.webp" type="image/webp">
+              <img src="assets/images/why-van-clean.jpg" alt="Malawko Elektrotechnik Einsatzfahrzeug vor modernem Wohnhaus" class="why-van-img" loading="lazy">
+            </picture>
+
+            <!-- Floating Stats Bar -->
+            <div class="why-stats-glass-bar">
+              <div class="why-stat-item">
+                <div class="stat-icon-wrap" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </div>
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Jahre Erfahrung</div>
+              </div>
+
+              <div class="why-stat-divider" aria-hidden="true"></div>
+
+              <div class="why-stat-item">
+                <div class="stat-icon-wrap" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                  </svg>
+                </div>
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Realisierte Projekte</div>
+              </div>
+
+              <div class="why-stat-divider" aria-hidden="true"></div>
+
+              <div class="why-stat-item">
+                <div class="stat-icon-wrap" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="stat-number-text">Zufriedene</div>
+                <div class="stat-label">Kunden</div>
+              </div>
+
+              <div class="why-stat-divider" aria-hidden="true"></div>
+
+              <div class="why-stat-item">
+                <div class="stat-icon-wrap" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <polyline points="9 12 11 14 15 10"></polyline>
+                  </svg>
+                </div>
+                <div class="stat-number-text">Geprüfte</div>
+                <div class="stat-label">Qualität</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         UNSER EINSATZGEBIET SECTION (Kiel & Schleswig-Holstein Map)
+         ===================================================================== -->
+    <section class="einsatzgebiet-section" id="einsatzgebiet" aria-labelledby="einsatzgebietTitle">
+      <div class="einsatzgebiet-container">
+        <!-- Left Column: Information & Key Benefits -->
+        <div class="einsatzgebiet-content">
+          <div class="section-badge-inline">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">UNSER EINSATZGEBIET</span>
+          </div>
+          
+          <h2 id="einsatzgebietTitle" class="einsatzgebiet-title">
+            Hier sind wir<br>für Sie <span class="highlight-orange">im Einsatz.</span>
+          </h2>
+          
+          <p class="einsatzgebiet-desc">
+            Zuverlässige Elektrotechnik in Ihrer Region – für Privatkunden, Unternehmen und öffentliche Einrichtungen.
+          </p>
+
+          <div class="einsatzgebiet-features">
+            <!-- Benefit 1: Regionale Betreuung -->
+            <div class="einsatzgebiet-feature-card">
+              <div class="feature-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="feature-text-box">
+                <h3 class="feature-title">Regionale Betreuung</h3>
+                <p class="feature-subtitle">Schnell vor Ort, wenn Sie uns brauchen.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 2: Kurze Reaktionszeiten -->
+            <div class="einsatzgebiet-feature-card">
+              <div class="feature-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div class="feature-text-box">
+                <h3 class="feature-title">Kurze Reaktionszeiten</h3>
+                <p class="feature-subtitle">Zuverlässiger und effizienter Service.</p>
+              </div>
+            </div>
+
+            <!-- Benefit 3: Für Privat & Gewerbe -->
+            <div class="einsatzgebiet-feature-card">
+              <div class="feature-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="feature-text-box">
+                <h3 class="feature-title">Für Privat & Gewerbe</h3>
+                <p class="feature-subtitle">Individuelle Lösungen für jedes Projekt.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Leaflet Map with Floating Glass Card -->
+        <div class="einsatzgebiet-map-wrapper">
+          <div id="einsatzgebietMap" class="einsatzgebiet-map" role="region" aria-label="Interaktive Karte: Unser Einsatzgebiet in Kiel und Schleswig-Holstein"></div>
+
+          <!-- Floating Glass Card with Region Checklist -->
+          <div class="einsatzgebiet-glass-card">
+            <div class="glass-card-header">
+              <div class="glass-card-icon-wrap" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <span class="glass-card-title">Unser Einsatzgebiet</span>
+            </div>
+
+            <ul class="glass-card-checklist" aria-label="Liste der abgedeckten Regionen">
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kiel und Umgebung</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Plön</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Rendsburg-Eckernförde</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Segeberg</span>
+              </li>
+              <li>
+                <span class="checklist-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span class="checklist-name">Kreis Ostholstein</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CTA BANNER SECTION ("Jetzt Elektrotechnik mit Malawko realisieren.")
+         ===================================================================== -->
+    <section class="cta-banner-section" id="kontakt-banner" aria-labelledby="ctaBannerHeading">
+      <div class="cta-banner-bg-wrap" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/cta-banner-bg.webp" type="image/webp">
+          <img src="assets/images/cta-banner-bg.jpg" alt="Elektrotechnik Malawko Villa bei Dämmerung" class="cta-banner-bg-img" loading="lazy">
+        </picture>
+        <div class="cta-banner-overlay"></div>
+      </div>
+
+      <div class="cta-banner-container">
+        <div class="cta-banner-tag">
+          <span class="tag-line" aria-hidden="true"></span>
+          <span class="tag-text">BEREIT FÜR IHR PROJEKT?</span>
+          <span class="tag-line" aria-hidden="true"></span>
+        </div>
+
+        <h2 class="cta-banner-headline" id="ctaBannerHeading">
+          Jetzt Elektrotechnik<br>
+          mit <span class="highlight-orange">Malawko</span> realisieren.
+        </h2>
+
+        <div class="cta-banner-actions">
+          <a href="kontakt.html#projektanfrage" class="btn-primary-orange btn-banner">
+            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+
+          <a href="tel:+494311234567" class="btn-outline-white btn-banner">
+            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>Jetzt anrufen</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       SITE FOOTER ("MALAWKO Elektrotechnik")
+       ===================================================================== -->
+  <footer class="site-footer" id="footer">
+    <!-- Subtle top ambient glow curves -->
+    <div class="footer-glow footer-glow-left" aria-hidden="true"></div>
+    <div class="footer-glow footer-glow-right" aria-hidden="true"></div>
+
+    <div class="footer-container">
+      <div class="footer-main-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <div class="footer-logo-wrap">
+            <img src="assets/logos/malawko-footer-logo-clean.png" alt="MALAWKO Elektrotechnik Logo" class="footer-brand-logo" width="180" height="55">
+          </div>
+          <p class="footer-brand-desc">
+            Ihr zuverlässiger Partner für moderne Elektrotechnik in Privat, Gewerbe und öffentlichen Einrichtungen.
+          </p>
+        </div>
+
+        <!-- Col 2: Schnellzugriff -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Schnellzugriff</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="#" class="footer-link">Startseite</a></li>
+            <li><a href="#ueber-uns" class="footer-link">Über uns</a></li>
+            <li><a href="#leistungen" class="footer-link">Leistungen</a></li>
+            <li><a href="projekte.html" class="footer-link">Referenzen</a></li>
+            <li><a href="kontakt.html" class="footer-link">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Unsere Leistungen -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Unsere Leistungen</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="elektroinstallation.html" class="footer-link">Elektroinstallation</a></li>
+            <li><a href="#leistungen" class="footer-link">Smart Home</a></li>
+            <li><a href="#leistungen" class="footer-link">Wallbox &amp; E-Mobilität</a></li>
+            <li><a href="#leistungen" class="footer-link">Modernisierung</a></li>
+            <li><a href="#leistungen" class="footer-link">Wartung &amp; Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Kontakt -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Kontakt</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-contact-list">
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+494311234567" class="contact-link">+49 (0) 431 123 45 67</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:info@malawko-elektrotechnik.de" class="contact-link">info@malawko-elektrotechnik.de</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span class="contact-text">Kiel, Schleswig-Holstein</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Malawko Elektrotechnik. Alle Rechte vorbehalten.
+        </div>
+        <div class="footer-credit">
+          Webdesign by <span class="highlight-orange">EmanCopys</span>
+        </div>
+        <div class="footer-legal-links">
+          <a href="#impressum">Impressum</a>
+          <span class="legal-sep">|</span>
+          <a href="#datenschutz">Datenschutz</a>
+          <span class="legal-sep">|</span>
+          <a href="#cookies">Cookie-Einstellungen</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet Interactive Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
