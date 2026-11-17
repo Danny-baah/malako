@@ -3,6 +3,38 @@
  * Vanilla JavaScript implementation for interactions, accessibility and responsiveness.
  */
 
+// Clean URLs in address bar: strips .html extension and maps /index to /home
+(function cleanUrlExtension() {
+  if (typeof window === 'undefined' || !window.location) return;
+  if (window.location.protocol.startsWith('http')) {
+    const pathname = window.location.pathname;
+    if (pathname.endsWith('.html') || pathname.endsWith('/index')) {
+      let clean = pathname.replace(/\.html$/, '');
+      if (clean === '/index' || clean.endsWith('/index')) {
+        clean = clean.slice(0, -6) + '/home';
+      }
+      const newUrl = clean + window.location.search + window.location.hash;
+      window.history.replaceState(null, '', newUrl);
+    }
+  }
+
+  // Graceful fallback for direct filesystem (file://) testing
+  if (window.location.protocol === 'file:') {
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a || !a.getAttribute('href')) return;
+      const href = a.getAttribute('href');
+      if (href.startsWith('http') || href.startsWith('//') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#') || href.startsWith('javascript:')) return;
+      const [path, hash] = href.split('#');
+      if (path && !path.includes('.')) {
+        e.preventDefault();
+        const base = (path === 'home' || path === '/home' || path === '/') ? 'index.html' : (path.replace(/^\//, '') + '.html');
+        window.location.href = base + (hash ? '#' + hash : '');
+      }
+    });
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initMobileMenu();
