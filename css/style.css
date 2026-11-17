@@ -4477,13 +4477,29 @@ a.direct-card-value:hover {
     gap: 8px;
   }
   .config-nav-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
     padding-top: 18px;
     margin-top: 20px;
   }
-  .btn-config-back,
-  .btn-config-next {
+  .btn-config-back {
+    flex-shrink: 0;
+    width: auto !important;
     padding: 12px 20px;
     font-size: 0.9rem;
+    box-sizing: border-box;
+  }
+  .btn-config-next {
+    flex-shrink: 0;
+    width: auto !important;
+    max-width: 100%;
+    padding: 12px 22px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
   }
 }
 
@@ -4518,6 +4534,20 @@ a.direct-card-value:hover {
   .config-pref-btn {
     padding: 8px 6px;
     font-size: 0.78rem;
+  }
+  .config-nav-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .btn-config-back,
+  .btn-config-next {
+    padding: 11px 18px !important;
+    font-size: 0.88rem !important;
+    width: auto !important;
   }
 }
 

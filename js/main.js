@@ -579,6 +579,13 @@ function initInteractiveConfigurator() {
       cardEl.setAttribute('aria-checked', 'true');
       state.property = cardEl.getAttribute('data-value');
       hideAlert();
+
+      // Auto-advance to Step 3 on single choice selection
+      setTimeout(() => {
+        if (currentStep === 2) {
+          goToStep(3);
+        }
+      }, 260);
     };
 
     cardEl.addEventListener('click', selectProperty);
@@ -604,6 +611,13 @@ function initInteractiveConfigurator() {
       cardEl.setAttribute('aria-checked', 'true');
       state.phase = cardEl.getAttribute('data-value');
       hideAlert();
+
+      // Auto-advance to Step 4 on single choice selection
+      setTimeout(() => {
+        if (currentStep === 3) {
+          goToStep(4);
+        }
+      }, 260);
     };
 
     cardEl.addEventListener('click', selectPhase);
