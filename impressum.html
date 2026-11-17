@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum | Elektrotechnik Malawko GmbH</title>
+  <meta name="description" content="Impressum und rechtliche Angaben der Elektrotechnik Malawko GmbH in Hamburg.">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logos/malawko-logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER & NAVIGATION BAR (IDENTICAL SHARED NAVBAR)
+       ===================================================================== -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <nav class="liquid-navbar" aria-label="Hauptnavigation">
+        <!-- Malawko Logo Container -->
+        <a href="index.html" class="brand-card" aria-label="Elektrotechnik Malawko GmbH Startseite">
+          <img
+            src="assets/logos/malawko-logo.png"
+            srcset="assets/logos/malawko-logo@3x.png 2x"
+            alt="Elektrotechnik Malawko GmbH Logo"
+            class="brand-logo"
+            width="170"
+            height="46"
+          >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktopNavLinks">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Startseite</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html#ueber-uns" class="nav-link">Über uns</a>
+          </li>
+          <li class="nav-item has-dropdown" id="servicesDropdownTrigger">
+            <button
+              type="button"
+              class="nav-link dropdown-toggle"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="servicesDropdown"
+            >
+              <span>Leistungen</span>
+              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Dropdown Menu (All 8 Core Services) -->
+            <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
+              <div class="dropdown-arrow-indicator" aria-hidden="true"></div>
+              <div class="dropdown-services-grid">
+                <a href="elektroinstallation.html" class="service-dropdown-item" role="menuitem">
+                  <div class="service-item-num">01</div>
+                  <div class="service-item-content">
+                    <div class="service-item-title">Elektroinstallation</div>
+                    <div class="service-item-desc">Neu- &amp; Altbauinstallationen, Modernisierung</div>
+                  </div>
+                </a>
+                <a href="zaehler-hausanschluss.html" class="service-dropdown-item" role="menuitem">
+                  <div class="service-item-num">02</div>
+                  <div class="service-item-content">
+                    <div class="service-item-title">Zähler und Hausanschluss</div>
+                    <div class="service-item-desc">Zähleranlagen, Verteilerbau &amp; Anschluss</div>
+                  </div>
+                </a>
+                <a href="wallbox-emobilitaet.html" class="service-dropdown-item" role="menuitem">
+                  <div class="service-item-num">03</div>
+                  <div class="service-item-content">
+                    <div class="service-item-title">Wallbox &amp; E-Mobilität</div>
+                    <div class="service-item-desc">Ladeinfrastruktur für Privat &amp; Gewerbe</div>
+                  </div>
+                </a>
+                <a href="smart-home.html" class="service-dropdown-item" role="menuitem">
+                  <div class="service-item-num">04</div>
+                  <div class="service-item-content">
+                    <div class="service-item-title">Smart Home &amp; KNX</div>
+                    <div class="service-item-desc">Intelligente Gebäude- &amp; Lichtsteuerung</div>
+                  </div>
+                </a>
+                <a href="beleuchtung.html" class="service-dropdown-item" role="menuitem">
+                  <div class="service-item-num">05</div>
+                  <div class="service-item-content">
+                    <div class="service-item-title">Beleuchtung</div>
+                    <div class="service-item-desc">Lichtplanung &amp; energieeffiziente LED-Konzepte</div>
+                  </div>
+                </a>
+                <a href="netzwerk-kommunikation.html" class="service-dropdown-item" role="menuitem">
+                  <div class="service-item-num">06</div>
+                  <div class="service-item-content">
+                    <div class="service-item-title">Netzwerk &amp; Kommunikation</div>
+                    <div class="service-item-desc">Strukturierte Verkabelung &amp; Datennetzwerke</div>
+                  </div>
+                </a>
+                <a href="pruefung-wartung.html" class="service-dropdown-item" role="menuitem">
+                  <div class="service-item-num">07</div>
+                  <div class="service-item-content">
+                    <div class="service-item-title">Prüfung &amp; Wartung</div>
+                    <div class="service-item-desc">E-Check &amp; DGUV V3 Prüfungen nach Norm</div>
+                  </div>
+                </a>
+                <a href="stoerung-reparatur.html" class="service-dropdown-item" role="menuitem">
+                  <div class="service-item-num">08</div>
+                  <div class="service-item-content">
+                    <div class="service-item-title">Störung &amp; Reparatur</div>
+                    <div class="service-item-desc">Schnelle Diagnose &amp; fachgerechte Behebung</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="projekte.html" class="nav-link">Referenzen</a>
+          </li>
+          <li class="nav-item">
+            <a href="kontakt.html" class="nav-link">Kontakt</a>
+          </li>
+        </ul>
+
+        <!-- Right Side CTA Group -->
+        <div class="nav-actions">
+          <a href="kontakt.html#projektanfrage" class="btn-project-cta" aria-label="Projekt unverbindlich konfigurieren">
+            <svg class="cta-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+
+          <div class="nav-divider" aria-hidden="true"></div>
+
+          <a href="tel:+4915125383578" class="btn-call-orange" aria-label="Direkt anrufen: 0151 25 38 35 78">
+            <svg class="phone-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+
+          <button
+            type="button"
+            class="hamburger-btn"
+            id="mobileMenuToggle"
+            aria-label="Mobiles Navigationsmenü öffnen"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+          >
+            <span class="bar bar-top"></span>
+            <span class="bar bar-mid"></span>
+            <span class="bar bar-bot"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-content">
+        <ul class="mobile-nav-list">
+          <li><a href="index.html" class="mobile-nav-link">Startseite</a></li>
+          <li><a href="index.html#ueber-uns" class="mobile-nav-link">Über uns</a></li>
+          <li class="mobile-has-sub">
+            <button type="button" class="mobile-nav-link mobile-sub-toggle" id="mobileSubToggle" aria-expanded="false">
+              <span>Leistungen</span>
+              <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="mobile-submenu" id="mobileSubmenu">
+              <li><a href="elektroinstallation.html">1. Elektroinstallation</a></li>
+              <li><a href="zaehler-hausanschluss.html">2. Zähler und Hausanschluss</a></li>
+              <li><a href="wallbox-emobilitaet.html">3. Wallbox &amp; E-Mobilität</a></li>
+              <li><a href="smart-home.html">4. Smart Home &amp; KNX</a></li>
+              <li><a href="beleuchtung.html">5. Beleuchtung</a></li>
+              <li><a href="netzwerk-kommunikation.html">6. Netzwerk &amp; Kommunikation</a></li>
+              <li><a href="pruefung-wartung.html">7. Prüfung &amp; Wartung</a></li>
+              <li><a href="stoerung-reparatur.html">8. Störung &amp; Reparatur</a></li>
+            </ul>
+          </li>
+          <li><a href="projekte.html" class="mobile-nav-link">Referenzen</a></li>
+          <li><a href="kontakt.html" class="mobile-nav-link">Kontakt</a></li>
+        </ul>
+        <div class="mobile-drawer-cta">
+          <a href="kontakt.html#projektanfrage" class="btn-primary-orange btn-block">
+            <span>Projekt unverbindlich anfragen</span>
+          </a>
+          <a href="tel:+4915125383578" class="btn-secondary-glass btn-block">
+            <span>Sofort anrufen (0151 25 38 35 78)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- =====================================================================
+         LEGAL CONTENT SECTION: IMPRESSUM
+         ===================================================================== -->
+    <section class="legal-page-section" aria-labelledby="impressumTitle">
+      <div class="legal-container">
+        
+        <header class="legal-header">
+          <div class="legal-badge">— RECHTLICHE HINWEISE</div>
+          <h1 class="legal-title" id="impressumTitle">Impressum</h1>
+        </header>
+
+        <article class="legal-card">
+          <h2>Angaben gemäß § 5 TMG</h2>
+          
+          <div class="legal-info-box">
+            <p><strong>Elektrotechnik Malawko GmbH</strong></p>
+            <p>Schreyerring 49</p>
+            <p>22309 Hamburg</p>
+            <br>
+            <p><span class="legal-info-label">Telefon:</span> <a href="tel:+4915125383578">0151 25 38 35 78</a></p>
+            <p><span class="legal-info-label">E-Mail:</span> <a href="mailto:kontakt@elektrotechnik-malawko.de">kontakt@elektrotechnik-malawko.de</a></p>
+            <br>
+            <p><span class="legal-info-label">St.Nr.:</span> 50/717/02237</p>
+            <p><span class="legal-info-label">Aufsichtsbehörde:</span> HK-Nr. 1243226</p>
+          </div>
+
+          <h2>Bildquellen und Urheberrechtshinweise</h2>
+          <p>
+            © rabbit75_fot // Fotlia.com<br>
+            © marcus_hofmann // Fotlia.com
+          </p>
+
+          <h2>Hinweis gemäß Online-Streitbeilegungs-Verordnung</h2>
+          <p>
+            Nach geltendem Recht sind wir verpflichtet, Verbraucher auf die Existenz der Europäischen Online-Streitbeilegungs-Plattform hinzuweisen, die für die Beilegung von Streitigkeiten genutzt werden kann, ohne dass ein Gericht eingeschaltet werden muss. Für die Einrichtung der Plattform ist die Europäische Kommission zuständig. Die Europäische Online-Streitbeilegungs-Plattform ist hier zu finden: <a href="http://ec.europa.eu/odr" target="_blank" rel="noopener noreferrer">http://ec.europa.eu/odr</a>. Unsere E-Mail lautet: <a href="mailto:kontakt@elektrotechnik-malawko.de">kontakt@elektrotechnik-malawko.de</a>.
+          </p>
+          <p>
+            Wir weisen aber darauf hin, dass wir nicht bereit sind, uns am Streitbeilegungsverfahren im Rahmen der Europäischen Online-Streitbeilegungs-Plattform zu beteiligen. Nutzen Sie zur Kontaktaufnahme bitte unsere obige E-Mail und Telefonnummer.
+          </p>
+
+          <h2>Disclaimer – rechtliche Hinweise</h2>
+
+          <h3>§ 1 Warnhinweis zu Inhalten</h3>
+          <p>
+            Die kostenlosen und frei zugänglichen Inhalte dieser Webseite wurden mit größtmöglicher Sorgfalt erstellt. Der Anbieter dieser Webseite übernimmt jedoch keine Gewähr für die Richtigkeit und Aktualität der bereitgestellten kostenlosen und frei zugänglichen journalistischen Ratgeber und Nachrichten. Namentlich gekennzeichnete Beiträge geben die Meinung des jeweiligen Autors und nicht immer die Meinung des Anbieters wieder. Allein durch den Aufruf der kostenlosen und frei zugänglichen Inhalte kommt keinerlei Vertragsverhältnis zwischen dem Nutzer und dem Anbieter zustande, insoweit fehlt es am Rechtsbindungswillen des Anbieters.
+          </p>
+
+          <h3>§ 2 Externe Links</h3>
+          <p>
+            Diese Website enthält Verknüpfungen zu Websites Dritter („externe Links“). Diese Websites unterliegen der Haftung der jeweiligen Betreiber. Der Anbieter hat bei der erstmaligen Verknüpfung der externen Links die fremden Inhalte daraufhin überprüft, ob etwaige Rechtsverstöße bestehen. Zu dem Zeitpunkt waren keine Rechtsverstöße ersichtlich. Der Anbieter hat keinerlei Einfluss auf die aktuelle und zukünftige Gestaltung und auf die Inhalte der verknüpften Seiten. Das Setzen von externen Links bedeutet nicht, dass sich der Anbieter die hinter dem Verweis oder Link liegenden Inhalte zu Eigen macht. Eine ständige Kontrolle der externen Links ist für den Anbieter ohne konkrete Hinweise auf Rechtsverstöße nicht zumutbar. Bei Kenntnis von Rechtsverstößen werden jedoch derartige externe Links unverzüglich gelöscht.
+          </p>
+
+          <h3>§ 3 Urheber- und Leistungsschutzrechte</h3>
+          <p>
+            Die auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheber- und Leistungsschutzrecht. Jede vom deutschen Urheber- und Leistungsschutzrecht nicht zugelassene Verwertung bedarf der vorherigen schriftlichen Zustimmung des Anbieters oder jeweiligen Rechteinhabers. Dies gilt insbesondere für Vervielfältigung, Bearbeitung, Übersetzung, Einspeicherung, Verarbeitung bzw. Wiedergabe von Inhalten in Datenbanken oder anderen elektronischen Medien und Systemen. Inhalte und Rechte Dritter sind dabei als solche gekennzeichnet. Die unerlaubte Vervielfältigung oder Weitergabe einzelner Inhalte oder kompletter Seiten ist nicht gestattet und strafbar. Lediglich die Herstellung von Kopien und Downloads für den persönlichen, privaten und nicht kommerziellen Gebrauch ist erlaubt.
+          </p>
+          <p>
+            Die Darstellung dieser Website in fremden Frames ist nur mit schriftlicher Erlaubnis zulässig.
+          </p>
+
+          <h3>§ 4 Besondere Nutzungsbedingungen</h3>
+          <p>
+            Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen.
+          </p>
+
+          <p style="margin-top: 32px; font-size: 0.9rem; color: #718096;">
+            <em>Quelle: Impressum Muster von JuraForum.de</em>
+          </p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       GLOBAL FOOTER
+       ===================================================================== -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-container">
+      <div class="footer-top-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <a href="index.html" class="footer-logo-link" aria-label="Zur Startseite">
+            <img src="assets/logos/malawko-logo.png" srcset="assets/logos/malawko-logo@3x.png 2x" alt="Elektrotechnik Malawko Logo" class="footer-logo" width="160" height="43">
+          </a>
+          <p class="footer-brand-desc">
+            Ihr zertifizierter Meisterbetrieb für zukunftssichere Elektroinstallation, Smart Home, Wallboxen und moderne Gebäudetechnik.
+          </p>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Navigation</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="index.html" class="footer-link">Startseite</a></li>
+            <li><a href="index.html#ueber-uns" class="footer-link">Über uns</a></li>
+            <li><a href="projekte.html" class="footer-link">Referenzen</a></li>
+            <li><a href="kontakt.html" class="footer-link">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Leistungen -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Leistungen</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="elektroinstallation.html" class="footer-link">Elektroinstallation</a></li>
+            <li><a href="smart-home.html" class="footer-link">Smart Home</a></li>
+            <li><a href="wallbox-emobilitaet.html" class="footer-link">Wallbox &amp; E-Mobilität</a></li>
+            <li><a href="beleuchtung.html" class="footer-link">Lichtplanung</a></li>
+            <li><a href="pruefung-wartung.html" class="footer-link">Wartung &amp; Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Kontakt -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Kontakt</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-contact-list">
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+4915125383578" class="contact-link">0151 25 38 35 78</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:kontakt@elektrotechnik-malawko.de" class="contact-link">kontakt@elektrotechnik-malawko.de</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span class="contact-text">Schreyerring 49, 22309 Hamburg</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Malawko Elektrotechnik. Alle Rechte vorbehalten.
+        </div>
+        <div class="footer-credit">
+          Webdesign by <a href="https://emancopys.com/" target="_blank" rel="noopener noreferrer" class="credit-link"><span class="highlight-orange">EmanCopys</span></a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="impressum.html" class="active">Impressum</a>
+          <span class="legal-sep">|</span>
+          <a href="datenschutz.html">Datenschutz</a>
+          <span class="legal-sep">|</span>
+          <a href="#cookies">Cookie-Einstellungen</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
