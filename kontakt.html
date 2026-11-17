@@ -422,230 +422,781 @@
     <!-- =====================================================================
          SECTION 03: PROJEKTANFRAGE / PROJECT CONFIGURATOR
          ===================================================================== -->
-    <section class="projektanfrage-section" id="projektanfrage" aria-labelledby="inquiryTitle">
-      <div class="projektanfrage-container">
-        <!-- Left: Headline, description, and Blueprint Desk Image -->
-        <div class="projektanfrage-left">
+    <!-- =====================================================================
+         SECTION 03: INTERACTIVE PROJECT CONFIGURATOR (6 STEPS)
+         ===================================================================== -->
+    <section class="projektanfrage-section" id="projektanfrage" aria-labelledby="configuratorTitle">
+      <div class="configurator-container">
+        
+        <!-- ===============================================================
+             LEFT COLUMN: INTRODUCTION PANEL (PERSISTENT ACROSS STEPS)
+             =============================================================== -->
+        <aside class="configurator-intro-col">
           <div class="section-badge-inline">
             <span class="badge-dash" aria-hidden="true"></span>
             <span class="badge-text">PROJEKTANFRAGE</span>
           </div>
-          <h2 id="inquiryTitle" class="projektanfrage-title">
-            Erzählen Sie uns<br>
-            kurz von <span class="highlight-orange">Ihrem<br>Projekt.</span>
+
+          <h2 id="configuratorTitle" class="configurator-intro-title">
+            Konfigurieren Sie<br>
+            Ihr <span class="highlight-orange">Elektroprojekt</span><br>
+            in wenigen Schritten.
           </h2>
-          <p class="projektanfrage-desc">
-            Beschreiben Sie Ihr Vorhaben in wenigen Angaben – wir melden uns schnellstmöglich mit einem passenden Angebot bei Ihnen.
+
+          <p class="configurator-intro-desc">
+            Erzählen Sie uns von Ihrem Vorhaben – wir erstellen Ihnen eine passende und unverbindliche Lösung.
           </p>
 
-          <div class="projektanfrage-desk-wrap">
+          <!-- Large Rounded Photograph of Electrician at Distribution Board -->
+          <div class="configurator-intro-photo-wrap">
             <picture>
-              <source srcset="assets/images/contact-blueprint-desk-2x.webp 2x, assets/images/contact-blueprint-desk.webp 1x" type="image/webp">
-              <img src="assets/images/contact-blueprint-desk.jpg" alt="Architekturplan mit Elektroinstallation, Bauhelm und Werkzeugen" class="projektanfrage-desk-img" loading="lazy">
+              <source srcset="assets/images/step-clean-4.webp" type="image/webp">
+              <img 
+                src="assets/images/step-clean-4.jpg" 
+                alt="Elektrofachkraft bei der professionellen Installation und Verdrahtung eines Verteilerkastens" 
+                class="configurator-intro-photo" 
+                width="640" 
+                height="480" 
+                loading="lazy"
+              >
             </picture>
           </div>
-        </div>
 
-        <!-- Right: Clean Inquiry Form Card -->
-        <div class="projektanfrage-right">
-          <div class="inquiry-form-card">
-            <form id="projectInquiryForm" novalidate>
-              
-              <!-- STEP 1: IHRE KONTAKTDATEN (FIRST) -->
-              <h3 class="form-sub-heading" style="margin-top: 0; margin-bottom: 18px;">Ihre Kontaktdaten</h3>
+          <!-- Three Concise Benefits -->
+          <div class="configurator-intro-benefits" aria-label="Ihre Vorteile bei der Projektanfrage">
+            <div class="config-benefit-item">
+              <div class="config-benefit-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <span class="config-benefit-text">Individuelle Beratung</span>
+            </div>
 
-              <div class="form-grid-2col">
-                <div class="form-group">
-                  <label for="vornameInput" class="form-label">Vorname <span class="req">*</span></label>
-                  <input type="text" id="vornameInput" name="vorname" class="form-control" style="padding-left: 18px;" placeholder="Max" required aria-required="true">
-                </div>
+            <div class="config-benefit-item">
+              <div class="config-benefit-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <span class="config-benefit-text">Passende Lösung für Ihr Projekt</span>
+            </div>
 
-                <div class="form-group">
-                  <label for="nachnameInput" class="form-label">Nachname <span class="req">*</span></label>
-                  <input type="text" id="nachnameInput" name="nachname" class="form-control" style="padding-left: 18px;" placeholder="Mustermann" required aria-required="true">
-                </div>
+            <div class="config-benefit-item">
+              <div class="config-benefit-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <span class="config-benefit-text">Schnelle Rückmeldung</span>
+            </div>
+          </div>
+        </aside>
 
-                <div class="form-group">
-                  <label for="emailInput" class="form-label">E-Mail <span class="req">*</span></label>
-                  <input type="email" id="emailInput" name="email" class="form-control" style="padding-left: 18px;" placeholder="ihre.email@beispiel.de" required aria-required="true">
-                </div>
+        <!-- ===============================================================
+             RIGHT COLUMN: INTERACTIVE CONFIGURATOR CARD
+             =============================================================== -->
+        <main class="configurator-card" id="configuratorCard" aria-live="polite">
+          
+          <!-- Card Header: Step Counter, Badge & 6-Segment Progress Bar -->
+          <div class="config-card-header">
+            <div class="config-header-meta">
+              <span class="config-step-counter" id="configStepCounter">Schritt 1 von 6</span>
+              <span class="config-badge-pill" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Projektanfrage</span>
+              </span>
+            </div>
 
-                <div class="form-group">
-                  <label for="telefonInput" class="form-label">Telefonnummer <span class="req">*</span></label>
-                  <input type="tel" id="telefonInput" name="telefon" class="form-control" style="padding-left: 18px;" placeholder="0151 12345678" required aria-required="true">
-                </div>
+            <!-- 6-Segment Visual Progress Indicator -->
+            <div class="config-progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="6" id="configProgressBar" aria-label="Fortschritt der Projektkonfiguration">
+              <span class="config-progress-seg active" data-seg="1"></span>
+              <span class="config-progress-seg" data-seg="2"></span>
+              <span class="config-progress-seg" data-seg="3"></span>
+              <span class="config-progress-seg" data-seg="4"></span>
+              <span class="config-progress-seg" data-seg="5"></span>
+              <span class="config-progress-seg" data-seg="6"></span>
+            </div>
+          </div>
+
+          <!-- Notification / Validation Banner -->
+          <div class="config-alert-box" id="configAlertBox" role="alert" style="display: none;"></div>
+
+          <!-- Configurator Multi-Step Form -->
+          <form id="projectConfiguratorForm" novalidate>
+
+            <!-- ===========================================================
+                 STEP 1: SERVICE SELECTION (MULTI-SELECT)
+                 =========================================================== -->
+            <div class="config-step-panel active" id="configStep1" data-step="1">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Welche Arbeiten benötigen Sie?</h3>
+                <p class="config-step-subtitle">Wählen Sie eine oder mehrere Leistungen aus, die zu Ihrem Vorhaben passen.</p>
               </div>
 
-              <!-- SECTION DIVIDER -->
-              <hr class="form-section-divider">
-
-              <!-- STEP 2: PROJEKT DETAILS -->
-              <div class="form-grid-2col">
-                <!-- Field 1: Anliegen -->
-                <div class="form-group">
-                  <label for="anliegenSelect" class="form-label">Anliegen <span class="req">*</span></label>
-                  <div class="input-with-icon">
-                    <span class="input-icon" aria-hidden="true">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <div class="config-cards-grid config-grid-4x2" role="group" aria-label="Leistungsauswahl">
+                <!-- 1. Elektroinstallation -->
+                <div class="config-card config-card-multiselect is-selected" data-value="Elektroinstallation" tabindex="0" role="checkbox" aria-checked="true">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                       </svg>
-                    </span>
-                    <select id="anliegenSelect" name="anliegen" class="form-control" required aria-required="true">
-                      <option value="">Bitte wählen Sie Ihr Anliegen</option>
-                      <option value="Ich brauche eine Wallbox">Ich brauche eine Wallbox</option>
-                      <option value="Ich möchte Smart Home / KNX">Ich möchte Smart Home / KNX</option>
-                      <option value="Ich baue oder saniere">Ich baue oder saniere</option>
-                      <option value="Ich möchte modernisieren">Ich möchte modernisieren</option>
-                      <option value="Ich habe eine Störung">Ich habe eine Störung</option>
-                      <option value="Prüfung oder Wartung">Prüfung oder Wartung</option>
-                      <option value="Elektro-Notfall">Elektro-Notfall</option>
-                      <option value="Sonstiges Anliegen">Sonstiges Anliegen</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- Field 2: Objektart -->
-                <div class="form-group">
-                  <label for="objektartSelect" class="form-label">Objektart <span class="req">*</span></label>
-                  <div class="input-with-icon">
-                    <span class="input-icon" aria-hidden="true">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
-                    </span>
-                    <select id="objektartSelect" name="objektart" class="form-control" required aria-required="true">
-                      <option value="">Bitte wählen Sie die Objektart</option>
-                      <option value="Einfamilienhaus">Einfamilienhaus</option>
-                      <option value="Wohnung">Wohnung</option>
-                      <option value="Mehrfamilienhaus">Mehrfamilienhaus</option>
-                      <option value="Büro">Büro</option>
-                      <option value="Ladengeschäft">Ladengeschäft</option>
-                      <option value="Werkstatt oder Halle">Werkstatt oder Halle</option>
-                      <option value="Öffentliche Einrichtung">Öffentliche Einrichtung</option>
-                      <option value="Hausverwaltung">Hausverwaltung</option>
-                    </select>
+                    </div>
                   </div>
+                  <div class="config-card-label">Elektroinstallation</div>
                 </div>
 
-                <!-- Field 3: Projektstatus -->
-                <div class="form-group">
-                  <label for="projektstatusSelect" class="form-label">Projektstatus</label>
-                  <div class="input-with-icon">
-                    <span class="input-icon" aria-hidden="true">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <!-- 2. Zähler und Hausanschluss -->
+                <div class="config-card config-card-multiselect" data-value="Zähler und Hausanschluss" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                        <rect x="8" y="6" width="8" height="4" rx="1"></rect>
+                        <circle cx="12" cy="16" r="2"></circle>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Zähler und Hausanschluss</div>
+                </div>
+
+                <!-- 3. Wallbox und E-Mobilität -->
+                <div class="config-card config-card-multiselect" data-value="Wallbox und E-Mobilität" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path>
+                        <circle cx="7" cy="17" r="2"></circle>
+                        <path d="M9 17h6"></path>
+                        <circle cx="17" cy="17" r="2"></circle>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Wallbox und E-Mobilität</div>
+                </div>
+
+                <!-- 4. Smart Home und KNX -->
+                <div class="config-card config-card-multiselect" data-value="Smart Home und KNX" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <path d="M9 13a3 3 0 0 1 6 0"></path>
+                        <path d="M7 11a5.5 5.5 0 0 1 10 0"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Smart Home und KNX</div>
+                </div>
+
+                <!-- 5. Beleuchtung -->
+                <div class="config-card config-card-multiselect" data-value="Beleuchtung" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18h6"></path>
+                        <path d="M10 22h4"></path>
+                        <path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.3 4.7 3.2 6H15.8c1.9-1.3 3.2-3.5 3.2-6a7 7 0 0 0-7-7z"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Beleuchtung</div>
+                </div>
+
+                <!-- 6. Netzwerk und Kommunikation -->
+                <div class="config-card config-card-multiselect" data-value="Netzwerk und Kommunikation" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="2" width="6" height="6" rx="1"></rect>
+                        <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+                        <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+                        <path d="M12 8v4"></path>
+                        <path d="M5 16v-2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Netzwerk und Kommunikation</div>
+                </div>
+
+                <!-- 7. Prüfung und Wartung -->
+                <div class="config-card config-card-multiselect" data-value="Prüfung und Wartung" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <polyline points="9 12 11 14 15 10"></polyline>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Prüfung und Wartung</div>
+                </div>
+
+                <!-- 8. Störung und Reparatur -->
+                <div class="config-card config-card-multiselect" data-value="Störung und Reparatur" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Störung und Reparatur</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 2: PROPERTY TYPE (SINGLE-SELECT)
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep2" data-step="2">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Um welche Immobilie handelt es sich?</h3>
+                <p class="config-step-subtitle">Für welches Gebäude oder Objekt benötigen Sie unsere Unterstützung?</p>
+              </div>
+
+              <div class="config-cards-grid config-grid-4x2" role="radiogroup" aria-label="Immobilienart">
+                <!-- 1. Einfamilienhaus -->
+                <div class="config-card config-card-singleselect is-selected" data-group="property" data-value="Einfamilienhaus" tabindex="0" role="radio" aria-checked="true">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Einfamilienhaus</div>
+                </div>
+
+                <!-- 2. Mehrfamilienhaus -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Mehrfamilienhaus" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                        <line x1="8" y1="6" x2="10" y2="6"></line>
+                        <line x1="14" y1="6" x2="16" y2="6"></line>
+                        <line x1="8" y1="10" x2="10" y2="10"></line>
+                        <line x1="14" y1="10" x2="16" y2="10"></line>
+                        <line x1="8" y1="14" x2="10" y2="14"></line>
+                        <line x1="14" y1="14" x2="16" y2="14"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Mehrfamilienhaus</div>
+                </div>
+
+                <!-- 3. Wohnung -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Wohnung" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                        <circle cx="14" cy="12" r="1"></circle>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Wohnung</div>
+                </div>
+
+                <!-- 4. Bürogebäude -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Bürogebäude" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                        <path d="M6 12H4a2 2 0 0 0-2 2v8"></path>
+                        <path d="M18 9h2a2 2 0 0 1 2 2v11"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Bürogebäude</div>
+                </div>
+
+                <!-- 5. Einzelhandel -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Einzelhandel" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l2-5h14l2 5"></path>
+                        <path d="M21 9v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9"></path>
+                        <line x1="10" y1="12" x2="14" y2="12"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Einzelhandel</div>
+                </div>
+
+                <!-- 6. Werkstatt oder Halle -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Werkstatt oder Halle" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 20h20"></path>
+                        <path d="M5 20V8l7-4 7 4v12"></path>
+                        <line x1="9" y1="14" x2="15" y2="14"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Werkstatt oder Halle</div>
+                </div>
+
+                <!-- 7. Öffentliches Gebäude -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Öffentliches Gebäude" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="2" y1="20" x2="22" y2="20"></line>
+                        <line x1="4" y1="10" x2="4" y2="20"></line>
+                        <line x1="9" y1="10" x2="9" y2="20"></line>
+                        <line x1="15" y1="10" x2="15" y2="20"></line>
+                        <line x1="20" y1="10" x2="20" y2="20"></line>
+                        <polygon points="12 2 2 7 22 7 12 2"></polygon>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Öffentliches Gebäude</div>
+                </div>
+
+                <!-- 8. Sonstiges -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Sonstiges" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Sonstiges</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 3: PROJECT STATUS / PHASE (SINGLE-SELECT)
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep3" data-step="3">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">In welcher Phase befindet sich Ihr Projekt?</h3>
+                <p class="config-step-subtitle">Teilen Sie uns mit, wie weit Ihre Planung bereits ist.</p>
+              </div>
+
+              <div class="config-cards-grid config-grid-3x2" role="radiogroup" aria-label="Projektphase">
+                <!-- 1. Erste Idee -->
+                <div class="config-card config-card-singleselect is-selected" data-group="phase" data-value="Erste Idee" tabindex="0" role="radio" aria-checked="true">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Erste Idee</div>
+                  <div class="config-card-sublabel">Wir beraten Sie von Grund auf und finden die optimale Lösung.</div>
+                </div>
+
+                <!-- 2. Angebot gewünscht -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Angebot gewünscht" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="8" y1="13" x2="16" y2="13"></line>
+                        <line x1="8" y1="17" x2="12" y2="17"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Angebot gewünscht</div>
+                  <div class="config-card-sublabel">Sie wünschen ein transparentes, unverbindliches Angebot.</div>
+                </div>
+
+                <!-- 3. Planung bereits vorhanden -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Planung bereits vorhanden" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                         <polyline points="2 17 12 22 22 17"></polyline>
                         <polyline points="2 12 12 17 22 12"></polyline>
                       </svg>
-                    </span>
-                    <select id="projektstatusSelect" name="projektstatus" class="form-control">
-                      <option value="">Bitte wählen</option>
-                      <option value="Idee oder erste Orientierung">Idee oder erste Orientierung</option>
-                      <option value="Angebot gewünscht">Angebot gewünscht</option>
-                      <option value="Konkrete Planung vorhanden">Konkrete Planung vorhanden</option>
-                      <option value="Bau bereits begonnen">Bau bereits begonnen</option>
-                      <option value="Störung oder Ausfall">Störung oder Ausfall</option>
-                      <option value="Dringender Termin erforderlich">Dringender Termin erforderlich</option>
-                    </select>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
                   </div>
+                  <div class="config-card-label">Planung bereits vorhanden</div>
+                  <div class="config-card-sublabel">Pläne, Leistungsverzeichnis oder Skizzen liegen bereits vor.</div>
                 </div>
 
-                <!-- Field 4: Umfang (Adaptive based on Anliegen) -->
-                <div class="form-group">
-                  <label for="umfangSelect" class="form-label">Umfang</label>
-                  <div class="input-with-icon">
-                    <span class="input-icon" aria-hidden="true">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
-                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                        <line x1="6" y1="20" x2="6" y2="14"></line>
-                      </svg>
-                    </span>
-                    <select id="umfangSelect" name="umfang" class="form-control">
-                      <option value="">Bitte wählen</option>
-                      <option value="small">Kleineres Vorhaben (&lt; 1 Tag)</option>
-                      <option value="medium">Mittleres Projekt (mehrere Tage)</option>
-                      <option value="large">Großprojekt / Gesamtanlage</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- Field 5: Nachricht (optional) -->
-                <div class="form-group">
-                  <label for="nachrichtInput" class="form-label">Nachricht <span style="font-weight: 500; color: #888;">(optional)</span></label>
-                  <div class="input-with-icon">
-                    <span class="input-icon" style="top: 18px;" aria-hidden="true">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                      </svg>
-                    </span>
-                    <textarea id="nachrichtInput" name="nachricht" class="form-control" placeholder="Beschreiben Sie Ihr Projekt kurz ..."></textarea>
-                  </div>
-                </div>
-
-                <!-- Field 6: Dateien hochladen (optional) -->
-                <div class="form-group">
-                  <label class="form-label">Dateien hochladen <span style="font-weight: 500; color: #888;">(optional)</span></label>
-                  <div class="upload-dropzone" id="fileDropzone" role="button" tabindex="0" aria-label="Dateien hochladen">
-                    <div class="upload-icon" aria-hidden="true">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                <!-- 4. Bauarbeiten haben begonnen -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Bauarbeiten haben begonnen" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 18h20"></path>
+                        <path d="M12 2a7 7 0 0 0-7 7v7h14V9a7 7 0 0 0-7-7z"></path>
                       </svg>
                     </div>
-                    <div class="upload-text-wrap">
-                      <span class="upload-main-text">Bilder oder Dokumente auswählen</span>
-                      <span class="upload-hint-text">(JPG, PNG, PDF – max. 10 MB)</span>
-                    </div>
-                    <input type="file" id="fileUploadInput" name="files[]" multiple accept=".jpg,.jpeg,.png,.pdf,.webp" style="display: none;">
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
                   </div>
-                  <div class="file-list" id="fileListContainer" aria-live="polite"></div>
+                  <div class="config-card-label">Bauarbeiten haben begonnen</div>
+                  <div class="config-card-sublabel">Das Bauprojekt läuft bereits – zeitnahe Umsetzung gefragt.</div>
+                </div>
+
+                <!-- 5. Bestehende Anlage soll modernisiert werden -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Bestehende Anlage soll modernisiert werden" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2v6h-6"></path>
+                        <path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Bestehende Anlage modernisieren</div>
+                  <div class="config-card-sublabel">Erweiterung, Teilsanierung oder Austausch alter Installationen.</div>
+                </div>
+
+                <!-- 6. Störung oder dringender Reparaturbedarf -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Störung oder dringender Reparaturbedarf" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Störung oder Reparatur</div>
+                  <div class="config-card-sublabel">Akuter Ausfall, Sicherungsproblem oder Fehlersuche.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 4: PROJECT DETAILS & SCOPE (DYNAMIC ADAPTATION)
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep4" data-step="4">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Erzählen Sie uns mehr über Ihr Vorhaben.</h3>
+                <p class="config-step-subtitle">Mit ein paar zusätzlichen Angaben können wir Ihren Bedarf besser einschätzen.</p>
+              </div>
+
+              <!-- Container populated dynamically with fields for selected services -->
+              <div class="config-dynamic-fields" id="configDynamicFields">
+                <!-- Dynamically populated via JS -->
+              </div>
+
+              <!-- Always-present Message Textarea -->
+              <div class="config-field-group">
+                <label for="configProjectMessage" class="config-field-label">
+                  <span>Projektbeschreibung oder besondere Anforderungen</span>
+                  <small class="text-muted">(optional)</small>
+                </label>
+                <textarea 
+                  id="configProjectMessage" 
+                  name="projectMessage" 
+                  class="config-textarea" 
+                  rows="3" 
+                  placeholder="Beschreiben Sie Ihr Projekt kurz, z.B. besondere Zeitpläne, spezielle Wünsche oder bestehende Gegebenheiten vor Ort..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 5: FILE UPLOADS (OPTIONAL)
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep5" data-step="5">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Haben Sie Bilder oder Dokumente zu Ihrem Projekt?</h3>
+                <p class="config-step-subtitle">Zusätzliche Unterlagen helfen uns, Ihr Vorhaben besser einzuschätzen.</p>
+              </div>
+
+              <!-- Upload Dropzone -->
+              <div class="config-dropzone-wrap">
+                <div class="config-dropzone" id="configDropzone" tabindex="0" role="button" aria-label="Dateien hochladen">
+                  <input type="file" id="configFileUpload" multiple accept=".jpg,.jpeg,.png,.webp,.pdf" class="config-file-input">
+                  <div class="config-dropzone-icon" aria-hidden="true">
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                    </svg>
+                  </div>
+                  <div class="config-dropzone-text">
+                    <strong class="config-dropzone-headline">Bilder oder Dokumente auswählen</strong>
+                    <span class="config-dropzone-sub">oder per Drag &amp; Drop hier ablegen (JPG, PNG, PDF – max. 10 MB pro Datei)</span>
+                  </div>
+                </div>
+
+                <!-- Suggestions Pills -->
+                <div class="config-upload-suggestions">
+                  <span class="config-sugg-title">Nützliche Unterlagen:</span>
+                  <span class="config-sugg-tag">📸 Fotos bestehender Verteilungen</span>
+                  <span class="config-sugg-tag">📐 Grundrisse &amp; Baupläne</span>
+                  <span class="config-sugg-tag">📄 Angebote &amp; Skizzen</span>
+                </div>
+
+                <!-- File List Preview -->
+                <div class="config-file-list" id="configFileList" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 6: CONTACT DETAILS & SUMMARY
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep6" data-step="6">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Wie können wir Sie erreichen?</h3>
+                <p class="config-step-subtitle">Übermitteln Sie uns Ihre Kontaktdaten, damit wir uns zu Ihrem Projekt melden können.</p>
+              </div>
+
+              <!-- Contact Inputs Grid (2x2) -->
+              <div class="config-contact-grid">
+                <div class="config-field-group">
+                  <label for="configVorname" class="config-field-label">
+                    Vorname <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="configVorname" name="vorname" class="config-input" placeholder="Max" required autocomplete="given-name">
+                  <span class="config-field-error" id="errVorname">Bitte geben Sie Ihren Vornamen an.</span>
+                </div>
+
+                <div class="config-field-group">
+                  <label for="configNachname" class="config-field-label">
+                    Nachname <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="configNachname" name="nachname" class="config-input" placeholder="Mustermann" required autocomplete="family-name">
+                  <span class="config-field-error" id="errNachname">Bitte geben Sie Ihren Nachnamen an.</span>
+                </div>
+
+                <div class="config-field-group">
+                  <label for="configEmail" class="config-field-label">
+                    E-Mail-Adresse <span class="required-star">*</span>
+                  </label>
+                  <input type="email" id="configEmail" name="email" class="config-input" placeholder="ihre.email@beispiel.de" required autocomplete="email">
+                  <span class="config-field-error" id="errEmail">Bitte geben Sie eine gültige E-Mail-Adresse an.</span>
+                </div>
+
+                <div class="config-field-group">
+                  <label for="configTelefon" class="config-field-label">
+                    Telefonnummer <span class="required-star">*</span>
+                  </label>
+                  <input type="tel" id="configTelefon" name="telefon" class="config-input" placeholder="0151 12345678" required autocomplete="tel">
+                  <span class="config-field-error" id="errTelefon">Bitte geben Sie Ihre Telefonnummer an.</span>
                 </div>
               </div>
 
-              <!-- Bevorzugte Rückmeldung -->
-              <div class="preferred-contact-group">
-                <span class="preferred-label">Bevorzugte Rückmeldung:</span>
-                <label class="radio-pill">
-                  <input type="radio" name="rueckmeldung" value="E-Mail" checked>
-                  <span>E-Mail</span>
-                </label>
-                <label class="radio-pill">
-                  <input type="radio" name="rueckmeldung" value="Telefon">
-                  <span>Telefon</span>
-                </label>
-                <label class="radio-pill">
-                  <input type="radio" name="rueckmeldung" value="WhatsApp">
-                  <span>WhatsApp</span>
-                </label>
+              <!-- Preferred Contact Method & Preferred Time -->
+              <div class="config-contact-prefs">
+                <div class="config-field-group">
+                  <label class="config-field-label">Bevorzugter Rückmeldeweg</label>
+                  <div class="config-pref-buttons" role="radiogroup" aria-label="Rückmeldeweg">
+                    <button type="button" class="config-pref-btn active" data-pref="E-Mail" role="radio" aria-checked="true">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                      <span>E-Mail</span>
+                    </button>
+                    <button type="button" class="config-pref-btn" data-pref="Telefon" role="radio" aria-checked="false">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                      </svg>
+                      <span>Telefon</span>
+                    </button>
+                    <button type="button" class="config-pref-btn" data-pref="WhatsApp" role="radio" aria-checked="false">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                      </svg>
+                      <span>WhatsApp</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="config-field-group">
+                  <label for="configContactTime" class="config-field-label">
+                    <span>Erreichbarkeit</span>
+                    <small class="text-muted">(optional)</small>
+                  </label>
+                  <div class="config-select-wrap">
+                    <select id="configContactTime" class="config-select">
+                      <option value="Jederzeit">Jederzeit erreichbar</option>
+                      <option value="Vormittags">Vormittags (08:00 – 12:00 Uhr)</option>
+                      <option value="Nachmittags">Nachmittags (12:00 – 17:00 Uhr)</option>
+                      <option value="Abends">Abends (17:00 – 19:00 Uhr)</option>
+                    </select>
+                    <svg class="config-select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </div>
+                </div>
               </div>
 
-              <!-- Datenschutz Consent Checkbox -->
-              <div class="consent-group">
-                <label class="checkbox-label">
-                  <input type="checkbox" id="datenschutzCheckbox" name="datenschutz" required aria-required="true">
-                  <span>Ich habe die <a href="#datenschutz">Datenschutzerklärung</a> zur Kenntnis genommen und willige in die Verarbeitung meiner eingegebenen Daten zur Beantwortung meiner Anfrage ein. <span class="req">*</span></span>
-                </label>
+              <!-- Compact Live Project Summary -->
+              <div class="config-summary-box">
+                <div class="config-summary-header">
+                  <span class="config-summary-title">Ihre Projektkonfiguration im Überblick:</span>
+                  <button type="button" class="config-summary-edit-btn" id="btnEditConfig">Korrigieren</button>
+                </div>
+                <div class="config-summary-grid">
+                  <div class="config-sum-item">
+                    <span class="config-sum-label">Leistungen:</span>
+                    <strong class="config-sum-val" id="sumServices">-</strong>
+                  </div>
+                  <div class="config-sum-item">
+                    <span class="config-sum-label">Objektart:</span>
+                    <strong class="config-sum-val" id="sumProperty">-</strong>
+                  </div>
+                  <div class="config-sum-item">
+                    <span class="config-sum-label">Projektphase:</span>
+                    <strong class="config-sum-val" id="sumPhase">-</strong>
+                  </div>
+                  <div class="config-sum-item">
+                    <span class="config-sum-label">Dateianhänge:</span>
+                    <strong class="config-sum-val" id="sumFiles">Keine</strong>
+                  </div>
+                </div>
               </div>
 
-              <!-- Submit Button -->
-              <button type="submit" class="btn-submit-inquiry" id="submitInquiryBtn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              <!-- Privacy Consent Checkbox -->
+              <div class="config-privacy-wrap">
+                <label class="config-checkbox-label">
+                  <input type="checkbox" id="configDatenschutz" name="datenschutz" required class="config-privacy-input">
+                  <span class="config-custom-checkbox"></span>
+                  <span class="config-privacy-text">
+                    Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage erhoben und verarbeitet werden. <span class="required-star">*</span>
+                  </span>
+                </label>
+                <span class="config-field-error" id="errDatenschutz">Bitte stimmen Sie der Datenschutzerklärung zu.</span>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 CONFIRMATION SCREEN (STEP 7 / SUCCESS STATE)
+                 =========================================================== -->
+            <div class="config-confirmation-panel" id="configConfirmation" style="display: none;">
+              <div class="config-success-badge" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
                 </svg>
-                <span>Anfrage senden</span>
+              </div>
+
+              <h3 class="config-success-headline">Vielen Dank für Ihre Anfrage!</h3>
+              <p class="config-success-text">
+                Wir haben Ihre Projektdaten erfolgreich erhalten und werden uns schnellstmöglich bei Ihnen melden.
+              </p>
+
+              <div class="config-success-details">
+                <div class="config-success-row">
+                  <span>Referenz-Nummer:</span>
+                  <strong id="confirmRefId">#MLK-2026-8492</strong>
+                </div>
+                <div class="config-success-row">
+                  <span>Bestätigung gesendet an:</span>
+                  <strong id="confirmEmailDisplay">-</strong>
+                </div>
+                <div class="config-success-row">
+                  <span>Dringende Fragen?</span>
+                  <a href="tel:+4915125383578" class="config-success-phone">0151 25 38 35 78</a>
+                </div>
+              </div>
+
+              <button type="button" class="btn-config-next" id="btnResetConfigurator" style="display: inline-flex; margin-top: 10px;">
+                <span>Neue Anfrage starten</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <polyline points="1 4 1 10 7 10"></polyline>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
               </button>
+            </div>
 
-              <!-- Feedback Messages -->
-              <div class="form-feedback-alert success" id="formFeedbackSuccess" role="alert"></div>
-              <div class="form-feedback-alert error" id="formFeedbackError" role="alert"></div>
+          </form>
 
-            </form>
+          <!-- Card Navigation Footer (Zurück & Weiter Buttons) -->
+          <div class="config-nav-footer" id="configNavFooter">
+            <button type="button" class="btn-config-back" id="btnConfigBack" disabled aria-label="Zurück zum vorherigen Schritt">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Zurück</span>
+            </button>
+
+            <button type="button" class="btn-primary-orange btn-config-next" id="btnConfigNext">
+              <span id="btnNextText">Weiter</span>
+              <svg id="btnNextIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
           </div>
-        </div>
+
+        </main>
       </div>
     </section>
+
 
     <!-- =====================================================================
          SECTION 04: UNSER EINSATZGEBIET (KIEL & REGION MAP)

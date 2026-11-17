@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initKeyboardNav();
   initEinsatzgebietMap();
   initProjectsPage();
-  initContactPage();
+  initInteractiveConfigurator();
   initSolutionsSelector();
   initScrollReveal();
 });
@@ -402,252 +402,778 @@ function initProjectsPage() {
   }
 }
 
-/**
- * Initialize Contact Page Interactions (Form validation, conditional fields, file uploads)
- */
-function initContactPage() {
-  const form = document.getElementById('projectInquiryForm');
-  if (!form) return;
+/* ==========================================================================
+   INTERACTIVE 6-STEP PROJECT CONFIGURATOR (MALAWKO KONTAKT PAGE)
+   ========================================================================== */
+function initInteractiveConfigurator() {
+  const form = document.getElementById('projectConfiguratorForm');
+  const card = document.getElementById('configuratorCard');
+  if (!form || !card) return;
 
-  const anliegenSelect = document.getElementById('anliegenSelect');
-  const umfangSelect = document.getElementById('umfangSelect');
-  const fileInput = document.getElementById('fileUploadInput');
-  const fileDropzone = document.getElementById('fileDropzone');
-  const fileListContainer = document.getElementById('fileListContainer');
-  const feedbackSuccess = document.getElementById('formFeedbackSuccess');
-  const feedbackError = document.getElementById('formFeedbackError');
+  // Navigation elements
+  const btnNext = document.getElementById('btnConfigNext');
+  const btnBack = document.getElementById('btnConfigBack');
+  const btnNextText = document.getElementById('btnNextText');
+  const btnNextIcon = document.getElementById('btnNextIcon');
+  const stepCounter = document.getElementById('configStepCounter');
+  const progressBar = document.getElementById('configProgressBar');
+  const alertBox = document.getElementById('configAlertBox');
+  const navFooter = document.getElementById('configNavFooter');
+  const confirmationPanel = document.getElementById('configConfirmation');
+  const btnReset = document.getElementById('btnResetConfigurator');
 
-  // Track uploaded files
-  let attachedFiles = [];
-
-  // 1. Conditional Scope Options based on Selected Service / Anliegen
-  const scopeOptionsMap = {
-    'wallbox': [
-      { val: '1_point', text: '1 Ladepunkt (z.B. Einfamilienhaus)' },
-      { val: '2_points', text: '2 Ladepunkte (Doppelgarage / Carport)' },
-      { val: 'fleet', text: 'Gewerbliche Ladeinfrastruktur (> 3 Ladepunkte)' }
-    ],
-    'smarthome': [
-      { val: 'complete', text: 'Komplettes Gebäude (KNX Neubau / Sanierung)' },
-      { val: 'retrofit', text: 'Nachrüstung einzelner Räume / Funk-System' },
-      { val: 'lighting_shading', text: 'Smarte Beleuchtung & Beschattung' }
-    ],
-    'sanierung': [
-      { val: 'new_build', text: 'Neubauinstallation' },
-      { val: 'core_renovation', text: 'Komplette Kernsanierung' },
-      { val: 'partial_renovation', text: 'Teilsanierung (z.B. Küche / Bad)' }
-    ],
-    'modernisierung': [
-      { val: 'distribution_board', text: 'Zählerschrank & Unterverteilung' },
-      { val: 'wiring_switches', text: 'Erneuerung Leitungen & Schaltermaterial' },
-      { val: 'led_lighting', text: 'Umstellung auf energieeffiziente LED-Beleuchtung' }
-    ],
-    'stoerung': [
-      { val: 'power_loss', text: 'Teilweiser oder kompletter Stromausfall' },
-      { val: 'rccb_tripped', text: 'FI-Schutzschalter löst wiederholt aus' },
-      { val: 'appliance_fault', text: 'Defekt an Großgerät / Heizungsanschluss' }
-    ],
-    'wartung': [
-      { val: 'e_check_private', text: 'E-Check Prüfung für Privathaushalt' },
-      { val: 'dguv_v3_commercial', text: 'DGUV V3 Prüfung für Gewerbe & Betrieb' },
-      { val: 'annual_inspection', text: 'Wiederkehrende Anlagenwartung' }
-    ]
+  // Step panels
+  const panels = {
+    1: document.getElementById('configStep1'),
+    2: document.getElementById('configStep2'),
+    3: document.getElementById('configStep3'),
+    4: document.getElementById('configStep4'),
+    5: document.getElementById('configStep5'),
+    6: document.getElementById('configStep6')
   };
 
-  const defaultScopeOptions = [
-    { val: 'small', text: 'Kleineres Vorhaben (< 1 Tag)' },
-    { val: 'medium', text: 'Mittleres Projekt (mehrere Tage)' },
-    { val: 'large', text: 'Großprojekt / Gesamtanlage' }
-  ];
+  // State
+  let currentStep = 1;
+  const totalSteps = 6;
+  const state = {
+    services: ['Elektroinstallation'],
+    property: 'Einfamilienhaus',
+    phase: 'Erste Idee',
+    details: {},
+    message: '',
+    files: [],
+    contact: {
+      vorname: '',
+      nachname: '',
+      email: '',
+      telefon: '',
+      preferredContact: 'E-Mail',
+      contactTime: 'Jederzeit',
+      datenschutz: false
+    }
+  };
 
-  if (anliegenSelect && umfangSelect) {
-    anliegenSelect.addEventListener('change', () => {
-      const selectedAnliegen = anliegenSelect.value;
-      let optionsToUse = defaultScopeOptions;
+  // --------------------------------------------------------------------------
+  // Helpers
+  // --------------------------------------------------------------------------
+  function showAlert(msg) {
+    if (!alertBox) return;
+    alertBox.textContent = msg;
+    alertBox.style.display = 'block';
+    alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 
-      if (selectedAnliegen.includes('wallbox')) optionsToUse = scopeOptionsMap.wallbox;
-      else if (selectedAnliegen.includes('smarthome') || selectedAnliegen.includes('knx')) optionsToUse = scopeOptionsMap.smarthome;
-      else if (selectedAnliegen.includes('baue') || selectedAnliegen.includes('saniere')) optionsToUse = scopeOptionsMap.sanierung;
-      else if (selectedAnliegen.includes('modernisieren')) optionsToUse = scopeOptionsMap.modernisierung;
-      else if (selectedAnliegen.includes('stoerung') || selectedAnliegen.includes('notfall')) optionsToUse = scopeOptionsMap.stoerung;
-      else if (selectedAnliegen.includes('pruefung') || selectedAnliegen.includes('wartung')) optionsToUse = scopeOptionsMap.wartung;
+  function hideAlert() {
+    if (!alertBox) return;
+    alertBox.style.display = 'none';
+    alertBox.textContent = '';
+  }
 
-      umfangSelect.innerHTML = '<option value="">Bitte wählen</option>';
-      optionsToUse.forEach(opt => {
-        const optionEl = document.createElement('option');
-        optionEl.value = opt.val;
-        optionEl.textContent = opt.text;
-        umfangSelect.appendChild(optionEl);
+  function updateProgress(step) {
+    if (stepCounter) {
+      stepCounter.textContent = `Schritt ${step} von ${totalSteps}`;
+    }
+    if (progressBar) {
+      progressBar.setAttribute('aria-valuenow', String(step));
+      const segments = progressBar.querySelectorAll('.config-progress-seg');
+      segments.forEach((seg, idx) => {
+        if (idx < step) {
+          seg.classList.add('active');
+        } else {
+          seg.classList.remove('active');
+        }
       });
+    }
+  }
+
+  function updateNavButtons(step) {
+    if (!btnBack || !btnNext) return;
+    btnBack.disabled = (step === 1);
+
+    if (step === totalSteps) {
+      btnNextText.textContent = 'Anfrage senden';
+      btnNext.classList.add('btn-submit-mode');
+      btnNextIcon.innerHTML = `
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+      `;
+    } else {
+      btnNextText.textContent = 'Weiter';
+      btnNext.classList.remove('btn-submit-mode');
+      btnNextIcon.innerHTML = `
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      `;
+    }
+  }
+
+  function goToStep(targetStep) {
+    if (targetStep < 1 || targetStep > totalSteps) return;
+    hideAlert();
+
+    // Hide all panels
+    Object.values(panels).forEach(panel => {
+      if (panel) panel.classList.remove('active');
+    });
+
+    // Show target panel
+    const targetPanel = panels[targetStep];
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+    }
+
+    currentStep = targetStep;
+    updateProgress(currentStep);
+    updateNavButtons(currentStep);
+
+    // Dynamic actions per step
+    if (currentStep === 4) {
+      renderDynamicStep4Fields();
+    } else if (currentStep === 6) {
+      updateStep6Summary();
+    }
+
+    // Scroll to configurator if needed on mobile
+    if (window.innerWidth <= 768) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // STEP 1: Multi-Select Service Cards
+  // --------------------------------------------------------------------------
+  const step1Cards = panels[1].querySelectorAll('.config-card-multiselect');
+  step1Cards.forEach(cardEl => {
+    const toggleSelection = () => {
+      const val = cardEl.getAttribute('data-value');
+      const isSelected = cardEl.classList.toggle('is-selected');
+      cardEl.setAttribute('aria-checked', String(isSelected));
+
+      if (isSelected) {
+        if (!state.services.includes(val)) state.services.push(val);
+      } else {
+        state.services = state.services.filter(s => s !== val);
+      }
+      hideAlert();
+    };
+
+    cardEl.addEventListener('click', toggleSelection);
+    cardEl.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        toggleSelection();
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // STEP 2: Single-Select Property Cards
+  // --------------------------------------------------------------------------
+  const step2Cards = panels[2].querySelectorAll('.config-card-singleselect');
+  step2Cards.forEach(cardEl => {
+    const selectProperty = () => {
+      step2Cards.forEach(c => {
+        c.classList.remove('is-selected');
+        c.setAttribute('aria-checked', 'false');
+      });
+      cardEl.classList.add('is-selected');
+      cardEl.setAttribute('aria-checked', 'true');
+      state.property = cardEl.getAttribute('data-value');
+      hideAlert();
+    };
+
+    cardEl.addEventListener('click', selectProperty);
+    cardEl.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        selectProperty();
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // STEP 3: Single-Select Project Phase Cards
+  // --------------------------------------------------------------------------
+  const step3Cards = panels[3].querySelectorAll('.config-card-singleselect');
+  step3Cards.forEach(cardEl => {
+    const selectPhase = () => {
+      step3Cards.forEach(c => {
+        c.classList.remove('is-selected');
+        c.setAttribute('aria-checked', 'false');
+      });
+      cardEl.classList.add('is-selected');
+      cardEl.setAttribute('aria-checked', 'true');
+      state.phase = cardEl.getAttribute('data-value');
+      hideAlert();
+    };
+
+    cardEl.addEventListener('click', selectPhase);
+    cardEl.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        selectPhase();
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // STEP 4: Dynamic Fields Tailored to Selected Services
+  // --------------------------------------------------------------------------
+  const dynamicContainer = document.getElementById('configDynamicFields');
+  const projectMsgTextarea = document.getElementById('configProjectMessage');
+
+  function renderDynamicStep4Fields() {
+    if (!dynamicContainer) return;
+    dynamicContainer.innerHTML = '';
+
+    const services = state.services;
+    let fieldCount = 0;
+
+    // Helper to create a segmented group
+    function createSegmentedGroup(label, key, options, defaultVal) {
+      fieldCount++;
+      const group = document.createElement('div');
+      group.className = 'config-field-group';
+
+      const lbl = document.createElement('label');
+      lbl.className = 'config-field-label';
+      lbl.textContent = label;
+      group.appendChild(lbl);
+
+      const row = document.createElement('div');
+      row.className = 'config-segmented-row';
+
+      const currentVal = state.details[key] || defaultVal || options[0];
+      state.details[key] = currentVal;
+
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'config-seg-btn' + (opt === currentVal ? ' active' : '');
+        btn.textContent = opt;
+        btn.addEventListener('click', () => {
+          row.querySelectorAll('.config-seg-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.details[key] = opt;
+        });
+        row.appendChild(btn);
+      });
+
+      group.appendChild(row);
+      dynamicContainer.appendChild(group);
+    }
+
+    // 1. Elektroinstallation
+    if (services.includes('Elektroinstallation')) {
+      createSegmentedGroup(
+        'Elektroinstallation: Bauvorhaben',
+        'elektro_type',
+        ['Neubau', 'Komplettsanierung', 'Teilsanierung', 'Erweiterung'],
+        'Neubau'
+      );
+      createSegmentedGroup(
+        'Umfang der Räume',
+        'elektro_rooms',
+        ['1 – 3 Räume', '4 – 6 Räume', '7+ Räume', 'Ganzes Gebäude'],
+        '4 – 6 Räume'
+      );
+    }
+
+    // 2. Zähler und Hausanschluss
+    if (services.includes('Zähler und Hausanschluss')) {
+      createSegmentedGroup(
+        'Zähler & Hausanschluss: Bestehender Zählerschrank vorhanden?',
+        'zaehler_schrank',
+        ['Ja, vorhanden', 'Nein (Neubau)', 'Nicht sicher / Vor-Ort-Check'],
+        'Ja, vorhanden'
+      );
+      createSegmentedGroup(
+        'Gewünschte Maßnahme',
+        'zaehler_action',
+        ['Zählerplatz-Modernisierung', 'Anschlussverstärkung', 'Zusammenlegung', 'Neuanschluss'],
+        'Zählerplatz-Modernisierung'
+      );
+    }
+
+    // 3. Wallbox und E-Mobilität
+    if (services.includes('Wallbox und E-Mobilität')) {
+      createSegmentedGroup(
+        'Wallbox: Anzahl gewünschter Ladepunkte',
+        'wallbox_points',
+        ['1 Ladepunkt (11/22 kW)', '2 Ladepunkte', 'Flottenlösung (> 2)'],
+        '1 Ladepunkt (11/22 kW)'
+      );
+      createSegmentedGroup(
+        'Montageort',
+        'wallbox_location',
+        ['Garage', 'Carport', 'Außenstellplatz', 'Tiefgarage'],
+        'Garage'
+      );
+    }
+
+    // 4. Smart Home und KNX
+    if (services.includes('Smart Home und KNX')) {
+      createSegmentedGroup(
+        'Smart Home: Systemstatus',
+        'smarthome_status',
+        ['Neubau (KNX geplant)', 'Nachrüstung Bestandsbau', 'Beratung offen'],
+        'Neubau (KNX geplant)'
+      );
+      createSegmentedGroup(
+        'Gewünschte Schwerpunkte',
+        'smarthome_focus',
+        ['Beleuchtung & Beschattung', 'Heizung & Energie', 'Gesamtautomatisation'],
+        'Beleuchtung & Beschattung'
+      );
+    }
+
+    // 5. Beleuchtung
+    if (services.includes('Beleuchtung')) {
+      createSegmentedGroup(
+        'Beleuchtung: Einsatzbereich',
+        'lighting_area',
+        ['Wohnraum / Innenbereich', 'Garten & Außenfassade', 'Gewerbe / Büro'],
+        'Wohnraum / Innenbereich'
+      );
+    }
+
+    // 6. Netzwerk und Kommunikation
+    if (services.includes('Netzwerk und Kommunikation')) {
+      createSegmentedGroup(
+        'Netzwerk: Geschätzte Anschlüsse / Ports',
+        'network_ports',
+        ['1 – 6 Ports', '7 – 16 Ports', '17+ Ports (Strukturierte Firmenverkabelung)'],
+        '7 – 16 Ports'
+      );
+    }
+
+    // 7. Prüfung und Wartung
+    if (services.includes('Prüfung und Wartung')) {
+      createSegmentedGroup(
+        'Prüfung & Wartung: Art der Prüfung',
+        'pruefung_type',
+        ['E-Check für Privat', 'DGUV V3 für Gewerbe', 'Wiederholungsprüfung'],
+        'E-Check für Privat'
+      );
+    }
+
+    // 8. Störung und Reparatur
+    if (services.includes('Störung und Reparatur')) {
+      createSegmentedGroup(
+        'Störung & Reparatur: Dringlichkeit',
+        'stoerung_urgency',
+        ['Dringend / Akuter Teilausfall', 'Totalausfall', 'Normaler Servicetermin'],
+        'Dringend / Akuter Teilausfall'
+      );
+    }
+
+    // Fallback if no specific services
+    if (fieldCount === 0) {
+      createSegmentedGroup(
+        'Projektumfang',
+        'general_scope',
+        ['Kleinprojekt / Einzelmaßnahme', 'Mittleres Vorhaben', 'Großprojekt'],
+        'Mittleres Vorhaben'
+      );
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // STEP 5: File Upload & Drag-and-Drop
+  // --------------------------------------------------------------------------
+  const dropzone = document.getElementById('configDropzone');
+  const fileInput = document.getElementById('configFileUpload');
+  const fileList = document.getElementById('configFileList');
+
+  function renderFileList() {
+    if (!fileList) return;
+    fileList.innerHTML = '';
+
+    if (state.files.length === 0) {
+      fileList.innerHTML = '';
+      return;
+    }
+
+    state.files.forEach((file, index) => {
+      const item = document.createElement('div');
+      item.className = 'config-file-item';
+
+      const info = document.createElement('div');
+      info.className = 'config-file-info';
+
+      const sizeKb = (file.size / 1024).toFixed(0);
+      const sizeStr = sizeKb > 1024 ? (sizeKb / 1024).toFixed(1) + ' MB' : sizeKb + ' KB';
+
+      info.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+        </svg>
+        <span title="${escapeHtml(file.name)}"><strong>${escapeHtml(file.name)}</strong> (${sizeStr})</span>
+      `;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'config-file-remove';
+      removeBtn.setAttribute('aria-label', `Datei ${file.name} entfernen`);
+      removeBtn.innerHTML = '&times; Entfernen';
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        state.files.splice(index, 1);
+        renderFileList();
+      });
+
+      item.appendChild(info);
+      item.appendChild(removeBtn);
+      fileList.appendChild(item);
     });
   }
 
-  // 2. File Upload & Drag-and-Drop Handling
-  if (fileDropzone && fileInput) {
-    fileDropzone.addEventListener('click', (e) => {
-      if (e.target.closest('.file-remove-btn')) return;
-      fileInput.click();
+  function handleFiles(files) {
+    const validFiles = Array.from(files).filter(f => {
+      const validTypes = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
+      const ext = f.name.toLowerCase().split('.').pop();
+      const validExts = ['jpg', 'jpeg', 'png', 'webp', 'pdf'];
+      const isTypeValid = validTypes.includes(f.type) || validExts.includes(ext);
+
+      if (!isTypeValid) {
+        showAlert(`Format nicht unterstützt: ${f.name} (Erlaubt: JPG, PNG, PDF)`);
+        return false;
+      }
+      if (f.size > 10 * 1024 * 1024) {
+        showAlert(`Datei zu groß: ${f.name} (Maximal 10 MB pro Datei)`);
+        return false;
+      }
+      return true;
     });
 
-    ['dragenter', 'dragover'].forEach(eventName => {
-      fileDropzone.addEventListener(eventName, (e) => {
-        e.preventDefault();
-        fileDropzone.style.backgroundColor = '#FFF4EC';
-        fileDropzone.style.borderColor = '#D9541E';
-      });
+    state.files = state.files.concat(validFiles).slice(0, 8); // max 8 files
+    renderFileList();
+  }
+
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('dragover');
     });
 
-    ['dragleave', 'drop'].forEach(eventName => {
-      fileDropzone.addEventListener(eventName, (e) => {
-        e.preventDefault();
-        fileDropzone.style.backgroundColor = '';
-        fileDropzone.style.borderColor = '';
-      });
+    dropzone.addEventListener('dragleave', () => {
+      dropzone.classList.remove('dragover');
     });
 
-    fileDropzone.addEventListener('drop', (e) => {
-      if (e.dataTransfer && e.dataTransfer.files) {
-        handleFiles(Array.from(e.dataTransfer.files));
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      if (e.dataTransfer.files) {
+        handleFiles(e.dataTransfer.files);
       }
     });
 
     fileInput.addEventListener('change', () => {
       if (fileInput.files) {
-        handleFiles(Array.from(fileInput.files));
+        handleFiles(fileInput.files);
+        fileInput.value = ''; // reset so same file can be re-selected
       }
     });
   }
 
-  function handleFiles(files) {
-    const validExtensions = ['jpg', 'jpeg', 'png', 'pdf', 'webp'];
-    const maxSizeBytes = 10 * 1024 * 1024; // 10MB
-
-    files.forEach(file => {
-      const ext = file.name.split('.').pop().toLowerCase();
-      if (!validExtensions.includes(ext)) {
-        alert(`Dateityp nicht zulässig: ${file.name}. Erlaubt sind JPG, PNG, PDF.`);
-        return;
-      }
-      if (file.size > maxSizeBytes) {
-        alert(`Datei ist zu groß: ${file.name} (${(file.size / (1024*1024)).toFixed(1)} MB). Maximal erlaubt sind 10 MB.`);
-        return;
-      }
-      if (!attachedFiles.some(f => f.name === file.name && f.size === file.size)) {
-        attachedFiles.push(file);
-      }
-    });
-
-    renderFileList();
-  }
-
-  function renderFileList() {
-    if (!fileListContainer) return;
-    fileListContainer.innerHTML = '';
-    attachedFiles.forEach((file, index) => {
-      const tag = document.createElement('span');
-      tag.className = 'file-tag';
-      tag.innerHTML = `
-        📄 <span>${escapeHtml(file.name)} (${(file.size / 1024).toFixed(0)} KB)</span>
-        <button type="button" class="file-remove-btn" aria-label="Datei entfernen" data-index="${index}">&times;</button>
-      `;
-      fileListContainer.appendChild(tag);
-    });
-
-    fileListContainer.querySelectorAll('.file-remove-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const idx = parseInt(btn.getAttribute('data-index'), 10);
-        attachedFiles.splice(idx, 1);
-        renderFileList();
+  // --------------------------------------------------------------------------
+  // STEP 6: Preferred Contact Methods & Summary
+  // --------------------------------------------------------------------------
+  const prefButtons = panels[6].querySelectorAll('.config-pref-btn');
+  prefButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      prefButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-checked', 'false');
       });
+      btn.classList.add('active');
+      btn.setAttribute('aria-checked', 'true');
+      state.contact.preferredContact = btn.getAttribute('data-pref');
+    });
+  });
+
+  const sumServices = document.getElementById('sumServices');
+  const sumProperty = document.getElementById('sumProperty');
+  const sumPhase = document.getElementById('sumPhase');
+  const sumFiles = document.getElementById('sumFiles');
+  const btnEditConfig = document.getElementById('btnEditConfig');
+
+  if (btnEditConfig) {
+    btnEditConfig.addEventListener('click', () => {
+      goToStep(1);
     });
   }
 
-  // 3. Form Validation & Structured Submission
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  function updateStep6Summary() {
+    if (sumServices) sumServices.textContent = state.services.join(', ') || 'Keine gewählt';
+    if (sumProperty) sumProperty.textContent = state.property || '-';
+    if (sumPhase) sumPhase.textContent = state.phase || '-';
+    if (sumFiles) {
+      const count = state.files.length;
+      sumFiles.textContent = count === 0 ? 'Keine' : `${count} Datei${count > 1 ? 'en' : ''} angehängt`;
+    }
+  }
 
-    if (feedbackSuccess) feedbackSuccess.style.display = 'none';
-    if (feedbackError) feedbackError.style.display = 'none';
+  // --------------------------------------------------------------------------
+  // Step Validation
+  // --------------------------------------------------------------------------
+  function validateStep(step) {
+    hideAlert();
 
-    // Retrieve form fields
-    const anliegen = form.elements['anliegen'] ? form.elements['anliegen'].value.trim() : '';
-    const objektart = form.elements['objektart'] ? form.elements['objektart'].value.trim() : '';
-    const projektstatus = form.elements['projektstatus'] ? form.elements['projektstatus'].value.trim() : '';
-    const umfang = form.elements['umfang'] ? form.elements['umfang'].value.trim() : '';
-    const nachricht = form.elements['nachricht'] ? form.elements['nachricht'].value.trim() : '';
-
-    const vorname = form.elements['vorname'] ? form.elements['vorname'].value.trim() : '';
-    const nachname = form.elements['nachname'] ? form.elements['nachname'].value.trim() : '';
-    const email = form.elements['email'] ? form.elements['email'].value.trim() : '';
-    const telefon = form.elements['telefon'] ? form.elements['telefon'].value.trim() : '';
-    const rueckmeldung = form.querySelector('input[name="rueckmeldung"]:checked') ? form.querySelector('input[name="rueckmeldung"]:checked').value : 'E-Mail';
-    const datenschutz = form.elements['datenschutz'] ? form.elements['datenschutz'].checked : false;
-
-    // Validate Required Fields
-    let missing = [];
-    if (!anliegen) missing.push('Ihr Anliegen');
-    if (!objektart) missing.push('Die Objektart');
-    if (!vorname) missing.push('Ihr Vorname');
-    if (!nachname) missing.push('Ihr Nachname');
-    if (!email || !validateEmail(email)) missing.push('Eine gültige E-Mail-Adresse');
-    if (!telefon) missing.push('Ihre Telefonnummer');
-    if (!datenschutz) missing.push('Zustimmung zur Datenschutzerklärung');
-
-    if (missing.length > 0) {
-      if (feedbackError) {
-        feedbackError.innerHTML = `<strong>Bitte überprüfen Sie Ihre Angaben:</strong><br>Folgende Pflichtfelder fehlen oder sind unvollständig: ${missing.join(', ')}.`;
-        feedbackError.style.display = 'block';
-        feedbackError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (step === 1) {
+      if (!state.services || state.services.length === 0) {
+        showAlert('Bitte wählen Sie mindestens eine gewünschte Leistung aus.');
+        return false;
       }
-      return;
+      return true;
     }
 
-    // Prepare Structured Inquiry Payload
-    const submissionTimestamp = new Date().toISOString();
+    if (step === 2) {
+      if (!state.property) {
+        showAlert('Bitte wählen Sie die Art der Immobilie aus.');
+        return false;
+      }
+      return true;
+    }
+
+    if (step === 3) {
+      if (!state.phase) {
+        showAlert('Bitte wählen Sie den aktuellen Status Ihres Projekts aus.');
+        return false;
+      }
+      return true;
+    }
+
+    if (step === 4) {
+      if (projectMsgTextarea) {
+        state.message = projectMsgTextarea.value.trim();
+      }
+      return true;
+    }
+
+    if (step === 5) {
+      return true; // Files are optional
+    }
+
+    if (step === 6) {
+      const vornameEl = document.getElementById('configVorname');
+      const nachnameEl = document.getElementById('configNachname');
+      const emailEl = document.getElementById('configEmail');
+      const telefonEl = document.getElementById('configTelefon');
+      const datenschutzEl = document.getElementById('configDatenschutz');
+      const timeEl = document.getElementById('configContactTime');
+
+      const errVorname = document.getElementById('errVorname');
+      const errNachname = document.getElementById('errNachname');
+      const errEmail = document.getElementById('errEmail');
+      const errTelefon = document.getElementById('errTelefon');
+      const errDatenschutz = document.getElementById('errDatenschutz');
+
+      let isValid = true;
+
+      // Vorname
+      if (!vornameEl.value.trim()) {
+        vornameEl.classList.add('has-error');
+        if (errVorname) errVorname.style.display = 'block';
+        isValid = false;
+      } else {
+        vornameEl.classList.remove('has-error');
+        if (errVorname) errVorname.style.display = 'none';
+      }
+
+      // Nachname
+      if (!nachnameEl.value.trim()) {
+        nachnameEl.classList.add('has-error');
+        if (errNachname) errNachname.style.display = 'block';
+        isValid = false;
+      } else {
+        nachnameEl.classList.remove('has-error');
+        if (errNachname) errNachname.style.display = 'none';
+      }
+
+      // Email
+      const emailVal = emailEl.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailVal || !emailRegex.test(emailVal)) {
+        emailEl.classList.add('has-error');
+        if (errEmail) errEmail.style.display = 'block';
+        isValid = false;
+      } else {
+        emailEl.classList.remove('has-error');
+        if (errEmail) errEmail.style.display = 'none';
+      }
+
+      // Telefon
+      const telVal = telefonEl.value.trim();
+      if (!telVal || telVal.length < 6) {
+        telefonEl.classList.add('has-error');
+        if (errTelefon) errTelefon.style.display = 'block';
+        isValid = false;
+      } else {
+        telefonEl.classList.remove('has-error');
+        if (errTelefon) errTelefon.style.display = 'none';
+      }
+
+      // Datenschutz
+      if (!datenschutzEl.checked) {
+        if (errDatenschutz) errDatenschutz.style.display = 'block';
+        isValid = false;
+      } else {
+        if (errDatenschutz) errDatenschutz.style.display = 'none';
+      }
+
+      if (!isValid) {
+        showAlert('Bitte füllen Sie alle erforderlichen Pflichtfelder (*) korrekt aus.');
+        return false;
+      }
+
+      // Save state
+      state.contact.vorname = vornameEl.value.trim();
+      state.contact.nachname = nachnameEl.value.trim();
+      state.contact.email = emailVal;
+      state.contact.telefon = telVal;
+      state.contact.contactTime = timeEl ? timeEl.value : 'Jederzeit';
+      state.contact.datenschutz = true;
+
+      return true;
+    }
+
+    return true;
+  }
+
+  // --------------------------------------------------------------------------
+  // Navigation Button Handlers
+  // --------------------------------------------------------------------------
+  if (btnNext) {
+    btnNext.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (!validateStep(currentStep)) return;
+
+      if (currentStep < totalSteps) {
+        goToStep(currentStep + 1);
+      } else {
+        submitConfiguratorInquiry();
+      }
+    });
+  }
+
+  if (btnBack) {
+    btnBack.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (currentStep > 1) {
+        goToStep(currentStep - 1);
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // Form Submission
+  // --------------------------------------------------------------------------
+  function submitConfiguratorInquiry() {
+    btnNext.disabled = true;
+    btnNextText.textContent = 'Wird übermittelt...';
+
+    const timestamp = new Date().toISOString();
     const formattedDate = new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
+    const refId = '#MLK-' + Math.floor(1000 + Math.random() * 9000);
 
     const inquiryPayload = {
+      referenceId: refId,
       customer: {
-        firstName: vorname,
-        lastName: nachname,
-        email: email,
-        phone: telefon,
-        preferredContact: rueckmeldung
+        firstName: state.contact.vorname,
+        lastName: state.contact.nachname,
+        email: state.contact.email,
+        phone: state.contact.telefon,
+        preferredContact: state.contact.preferredContact,
+        contactTime: state.contact.contactTime
       },
       project: {
-        service: anliegen,
-        propertyType: objektart,
-        status: projektstatus || 'Nicht angegeben',
-        scope: umfang || 'Nicht angegeben',
-        message: nachricht || 'Keine zusätzliche Nachricht'
+        services: state.services,
+        propertyType: state.property,
+        phase: state.phase,
+        scopeDetails: state.details,
+        message: state.message || 'Keine zusätzliche Nachricht'
       },
-      attachments: attachedFiles.map(f => ({ name: f.name, size: f.size, type: f.type })),
+      attachments: state.files.map(f => ({ name: f.name, size: f.size, type: f.type })),
       metadata: {
-        submittedAt: submissionTimestamp,
+        submittedAt: timestamp,
         formattedDate: formattedDate,
         recipient: 'info@malawko-elektrotechnik.de'
       }
     };
 
-    console.log('--- MALAWKO NEUE PROJEKTANFRAGE (STRUKTURIERTE E-MAIL DATEN) ---', inquiryPayload);
+    console.log('--- MALAWKO INTERAKTIVE PROJEKTANFRAGE (STRUKTURIERTE E-MAIL DATEN) ---', inquiryPayload);
 
-    // Provide friendly success feedback
-    if (feedbackSuccess) {
-      feedbackSuccess.innerHTML = `
-        <strong>✓ Vielen Dank, ${escapeHtml(vorname)} ${escapeHtml(nachname)}!</strong><br>
-        Ihre Projektanfrage zu <em>${escapeHtml(anliegen)}</em> wurde erfolgreich erfasst.<br>
-        Wir prüfen Ihre Angaben und melden uns zeitnah per ${escapeHtml(rueckmeldung)} (${escapeHtml(email)}) bei Ihnen.
-      `;
-      feedbackSuccess.style.display = 'block';
-      feedbackSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    // Simulate reliable submission transition
+    setTimeout(() => {
+      // Hide step panels and card header, keep form container visible
+      Object.values(panels).forEach(p => { if (p) p.style.display = 'none'; });
+      const cardHeader = card.querySelector('.config-card-header');
+      if (cardHeader) cardHeader.style.display = 'none';
+      if (navFooter) navFooter.style.display = 'none';
 
-    // Reset form inputs (preserve success message)
-    form.reset();
-    attachedFiles = [];
-    renderFileList();
-  });
+      // Update and show confirmation panel
+      const confirmRef = document.getElementById('confirmRefId');
+      const confirmEmail = document.getElementById('confirmEmailDisplay');
+
+      if (confirmRef) confirmRef.textContent = refId;
+      if (confirmEmail) confirmEmail.textContent = state.contact.email;
+
+      if (confirmationPanel) {
+        confirmationPanel.style.display = 'block';
+        confirmationPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 600);
+  }
+
+  // --------------------------------------------------------------------------
+  // Reset Configurator
+  // --------------------------------------------------------------------------
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      // Reset state
+      state.services = ['Elektroinstallation'];
+      state.property = 'Einfamilienhaus';
+      state.phase = 'Erste Idee';
+      state.details = {};
+      state.message = '';
+      state.files = [];
+
+      form.reset();
+      const cardHeader = card.querySelector('.config-card-header');
+      if (cardHeader) cardHeader.style.display = 'flex';
+      if (navFooter) navFooter.style.display = 'flex';
+      if (confirmationPanel) confirmationPanel.style.display = 'none';
+
+      // Reset step 1 cards
+      step1Cards.forEach(c => {
+        const isDefault = c.getAttribute('data-value') === 'Elektroinstallation';
+        c.classList.toggle('is-selected', isDefault);
+        c.setAttribute('aria-checked', String(isDefault));
+      });
+
+      // Reset step 2 cards
+      step2Cards.forEach(c => {
+        const isDefault = c.getAttribute('data-value') === 'Einfamilienhaus';
+        c.classList.toggle('is-selected', isDefault);
+        c.setAttribute('aria-checked', String(isDefault));
+      });
+
+      // Reset step 3 cards
+      step3Cards.forEach(c => {
+        const isDefault = c.getAttribute('data-value') === 'Erste Idee';
+        c.classList.toggle('is-selected', isDefault);
+        c.setAttribute('aria-checked', String(isDefault));
+      });
+
+      renderFileList();
+      goToStep(1);
+    });
+  }
+
+  // Initialize Step 1
+  goToStep(1);
 }
 
 function validateEmail(email) {
