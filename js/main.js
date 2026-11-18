@@ -230,25 +230,26 @@ function initKeyboardNav() {
 }
 
 /**
- * Initialize Interactive Einsatzgebiet Leaflet Map (Kiel & Schleswig-Holstein)
+ * Initialize Interactive Einsatzgebiet Leaflet Map (Hamburg & Metropolregion)
+ * Centered on Elektrotechnik Malawko GmbH: Schreyerring 49, 22309 Hamburg
  */
 function initEinsatzgebietMap() {
   const mapContainer = document.getElementById('einsatzgebietMap');
   if (!mapContainer || typeof L === 'undefined') return;
 
-  // Kiel coordinates
-  const kielLat = 54.3233;
-  const kielLng = 10.1228;
+  // Schreyerring 49, 22309 Hamburg coordinates
+  const hmbLat = 53.6109;
+  const hmbLng = 10.0594;
   
-  // Center map slightly southwest so the floating top-right card leaves the Kiel area clearly visible
-  const viewCenter = [54.26, 10.16];
+  // Center map slightly southwest so the floating top-right card leaves the Hamburg area clearly visible
+  const viewCenter = [53.58, 10.03];
 
   try {
     const map = L.map('einsatzgebietMap', {
       center: viewCenter,
-      zoom: 9,
+      zoom: 10,
       minZoom: 8,
-      maxZoom: 13,
+      maxZoom: 14,
       scrollWheelZoom: false,
       zoomControl: false, // We'll add it in bottomleft
       attributionControl: false
@@ -270,9 +271,9 @@ function initEinsatzgebietMap() {
       position: 'bottomleft'
     }).addTo(map);
 
-    // Outer service radius circle (covers Rendsburg, Eckernförde, Plön, Segeberg, Ostholstein)
-    L.circle([kielLat, kielLng], {
-      radius: 44000,
+    // Outer service radius circle (covers Metropolregion Hamburg, Stormarn, Pinneberg, Segeberg, Harburg Umland ~35 km)
+    L.circle([hmbLat, hmbLng], {
+      radius: 35000,
       color: '#D9541E',
       weight: 1.5,
       opacity: 0.55,
@@ -281,9 +282,9 @@ function initEinsatzgebietMap() {
       fillOpacity: 0.04
     }).addTo(map);
 
-    // Core central service radius (Kiel & direct surroundings)
-    L.circle([kielLat, kielLng], {
-      radius: 20000,
+    // Core central service radius (Hamburg & direct surroundings ~15 km)
+    L.circle([hmbLat, hmbLng], {
+      radius: 15000,
       color: '#D9541E',
       weight: 2,
       opacity: 0.75,
@@ -296,7 +297,7 @@ function initEinsatzgebietMap() {
       className: 'map-pulse-marker',
       html: `
         <div class="map-pulse-halo"></div>
-        <div class="map-pin-icon-wrap" title="Elektrotechnik Malawko Zentrale Kiel">
+        <div class="map-pin-icon-wrap" title="Elektrotechnik Malawko GmbH – Schreyerring 49, 22309 Hamburg">
           <svg width="34" height="42" viewBox="0 0 24 30" fill="none">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 9 12 18 12 18s12-9 12-18c0-6.63-5.37-12-12-12z" fill="#D9541E"/>
             <circle cx="12" cy="11" r="4.5" fill="#FFFFFF"/>
@@ -308,13 +309,14 @@ function initEinsatzgebietMap() {
       popupAnchor: [0, -42]
     });
 
-    const marker = L.marker([kielLat, kielLng], { icon: customIcon }).addTo(map);
+    const marker = L.marker([hmbLat, hmbLng], { icon: customIcon }).addTo(map);
 
     // Click popup
     marker.bindPopup(`
       <div style="font-family: 'Plus Jakarta Sans', sans-serif; padding: 4px 6px; text-align: center;">
         <strong style="color: #111; font-size: 14px; display: block; margin-bottom: 2px;">Elektrotechnik Malawko GmbH</strong>
-        <span style="color: #D9541E; font-size: 12px; font-weight: 700;">Zentrale Kiel & Region Schleswig-Holstein</span>
+        <span style="color: #555; font-size: 12px; display: block; margin-bottom: 4px;">Schreyerring 49, 22309 Hamburg</span>
+        <span style="color: #D9541E; font-size: 12px; font-weight: 700;">Zentrale Hamburg &amp; Metropolregion</span>
       </div>
     `);
 
@@ -571,10 +573,42 @@ function initInteractiveConfigurator() {
   }
 
   // --------------------------------------------------------------------------
-  // STEP 1: Multi-Select Service Cards
+  // STEP 1: Single-Select Property Cards
   // --------------------------------------------------------------------------
-  const step1Cards = panels[1].querySelectorAll('.config-card-multiselect');
+  const step1Cards = panels[1].querySelectorAll('.config-card-singleselect');
   step1Cards.forEach(cardEl => {
+    const selectProperty = () => {
+      step1Cards.forEach(c => {
+        c.classList.remove('is-selected');
+        c.setAttribute('aria-checked', 'false');
+      });
+      cardEl.classList.add('is-selected');
+      cardEl.setAttribute('aria-checked', 'true');
+      state.property = cardEl.getAttribute('data-value');
+      hideAlert();
+
+      // Auto-advance to Step 2 on single choice selection
+      setTimeout(() => {
+        if (currentStep === 1) {
+          goToStep(2);
+        }
+      }, 260);
+    };
+
+    cardEl.addEventListener('click', selectProperty);
+    cardEl.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        selectProperty();
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // STEP 2: Multi-Select Service Cards
+  // --------------------------------------------------------------------------
+  const step2Cards = panels[2].querySelectorAll('.config-card-multiselect');
+  step2Cards.forEach(cardEl => {
     const toggleSelection = () => {
       const val = cardEl.getAttribute('data-value');
       const isSelected = cardEl.classList.toggle('is-selected');
@@ -593,38 +627,6 @@ function initInteractiveConfigurator() {
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
         toggleSelection();
-      }
-    });
-  });
-
-  // --------------------------------------------------------------------------
-  // STEP 2: Single-Select Property Cards
-  // --------------------------------------------------------------------------
-  const step2Cards = panels[2].querySelectorAll('.config-card-singleselect');
-  step2Cards.forEach(cardEl => {
-    const selectProperty = () => {
-      step2Cards.forEach(c => {
-        c.classList.remove('is-selected');
-        c.setAttribute('aria-checked', 'false');
-      });
-      cardEl.classList.add('is-selected');
-      cardEl.setAttribute('aria-checked', 'true');
-      state.property = cardEl.getAttribute('data-value');
-      hideAlert();
-
-      // Auto-advance to Step 3 on single choice selection
-      setTimeout(() => {
-        if (currentStep === 2) {
-          goToStep(3);
-        }
-      }, 260);
-    };
-
-    cardEl.addEventListener('click', selectProperty);
-    cardEl.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        selectProperty();
       }
     });
   });
@@ -967,16 +969,16 @@ function initInteractiveConfigurator() {
     hideAlert();
 
     if (step === 1) {
-      if (!state.services || state.services.length === 0) {
-        showAlert('Bitte wählen Sie mindestens eine gewünschte Leistung aus.');
+      if (!state.property) {
+        showAlert('Bitte wählen Sie die Art der Immobilie aus.');
         return false;
       }
       return true;
     }
 
     if (step === 2) {
-      if (!state.property) {
-        showAlert('Bitte wählen Sie die Art der Immobilie aus.');
+      if (!state.services || state.services.length === 0) {
+        showAlert('Bitte wählen Sie mindestens eine gewünschte Leistung aus.');
         return false;
       }
       return true;
