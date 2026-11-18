@@ -2,22 +2,58 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/index.html",
-      "destination": "/home",
-      "permanent": true
-    },
-    {
-      "source": "/index",
-      "destination": "/home",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/home",
       "destination": "/index.html"
+    },
+    {
+      "source": "/kontakt",
+      "destination": "/kontakt.html"
+    },
+    {
+      "source": "/projekte",
+      "destination": "/projekte.html"
+    },
+    {
+      "source": "/elektroinstallation",
+      "destination": "/elektroinstallation.html"
+    },
+    {
+      "source": "/zaehler-hausanschluss",
+      "destination": "/zaehler-hausanschluss.html"
+    },
+    {
+      "source": "/wallbox-emobilitaet",
+      "destination": "/wallbox-emobilitaet.html"
+    },
+    {
+      "source": "/smart-home",
+      "destination": "/smart-home.html"
+    },
+    {
+      "source": "/beleuchtung",
+      "destination": "/beleuchtung.html"
+    },
+    {
+      "source": "/netzwerk-kommunikation",
+      "destination": "/netzwerk-kommunikation.html"
+    },
+    {
+      "source": "/pruefung-wartung",
+      "destination": "/pruefung-wartung.html"
+    },
+    {
+      "source": "/stoerung-reparatur",
+      "destination": "/stoerung-reparatur.html"
+    },
+    {
+      "source": "/impressum",
+      "destination": "/impressum.html"
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/datenschutz.html"
     }
   ]
 }
