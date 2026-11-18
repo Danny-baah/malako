@@ -1250,8 +1250,8 @@ img, picture {
 
 .services-bento-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
 }
 
 .service-bento-card {
@@ -3771,7 +3771,7 @@ a.direct-card-value:hover {
 }
 
 .config-grid-4x2 {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .config-grid-3x2 {

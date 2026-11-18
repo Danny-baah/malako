@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photovoltaik & Stromspeicher Hamburg | Elektrotechnik Malawko GmbH</title>
+  <meta name="description" content="Planung, Montage & Zähleranschluss für Photovoltaikanlagen und moderne Stromspeicher in Hamburg. Meisterbetrieb Elektrotechnik Malawko. 0% MwSt. & schlüsselfertige Netzanmeldung.">
+  
+  <!-- Preload Critical Hero Image -->
+  <link rel="preload" as="image" href="assets/images/service-hero-photovoltaik-2x.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/logos/malawko-logo.png" type="image/png">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet Map CSS for Einsatzgebiet Section -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER & NAVIGATION BAR (IDENTICAL SHARED NAVBAR)
+       ===================================================================== -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <nav class="liquid-navbar" aria-label="Hauptnavigation">
+        <!-- Malawko Logo Container -->
+        <a href="/" class="brand-card" aria-label="Elektrotechnik Malawko GmbH Startseite">
+          <img 
+            src="assets/logos/malawko-logo.png" 
+            srcset="assets/logos/malawko-logo@3x.png 2x" 
+            alt="Elektrotechnik Malawko GmbH Logo" 
+            class="brand-logo"
+            width="170" 
+            height="46"
+          >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktopNavLinks">
+          <li class="nav-item">
+            <a href="/" class="nav-link">Startseite</a>
+          </li>
+          <li class="nav-item">
+            <a href="/#ueber-uns" class="nav-link">Über uns</a>
+          </li>
+          <li class="nav-item has-dropdown active" id="servicesDropdownTrigger">
+            <button 
+              type="button" 
+              class="nav-link dropdown-toggle active" 
+              aria-expanded="false" 
+              aria-haspopup="true"
+              aria-controls="servicesDropdown"
+            >
+              <span>Leistungen</span>
+              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            
+            <!-- Services Dropdown (Liquid Glass Card) -->
+            <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
+              <div class="dropdown-inner">
+                <a href="/elektroinstallation" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">01</span>
+                  <div class="dropdown-text">
+                    <strong>Elektroinstallation</strong>
+                    <small>Neu- &amp; Altbauinstallationen</small>
+                  </div>
+                </a>
+                <a href="/zaehler-hausanschluss" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">02</span>
+                  <div class="dropdown-text">
+                    <strong>Zähler und Hausanschluss</strong>
+                    <small>Zähleranlagen &amp; Modernisierung</small>
+                  </div>
+                </a>
+                <a href="/wallbox-emobilitaet" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">03</span>
+                  <div class="dropdown-text">
+                    <strong>Wallbox &amp; E-Mobilität</strong>
+                    <small>Ladeinfrastruktur Heim &amp; Gewerbe</small>
+                  </div>
+                </a>
+                <a href="/smart-home" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">04</span>
+                  <div class="dropdown-text">
+                    <strong>Smart Home &amp; KNX</strong>
+                    <small>Intelligente Gebäudeautomation</small>
+                  </div>
+                </a>
+                <a href="/beleuchtung" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">05</span>
+                  <div class="dropdown-text">
+                    <strong>Beleuchtung</strong>
+                    <small>Lichtplanung &amp; energieeffiziente LEDs</small>
+                  </div>
+                </a>
+                <a href="/netzwerk-kommunikation" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">06</span>
+                  <div class="dropdown-text">
+                    <strong>Netzwerk &amp; Kommunikation</strong>
+                    <small>Strukturierte Datenverkabelung</small>
+                  </div>
+                </a>
+                <a href="/pruefung-wartung" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">07</span>
+                  <div class="dropdown-text">
+                    <strong>Prüfung &amp; Wartung</strong>
+                    <small>E-Check &amp; DGUV V3 Prüfungen</small>
+                  </div>
+                </a>
+                <a href="/stoerung-reparatur" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">08</span>
+                  <div class="dropdown-text">
+                    <strong>Störung &amp; Reparatur</strong>
+                    <small>Schnelle Diagnose &amp; Behebung</small>
+                  </div>
+                </a>
+                <a href="/photovoltaik" class="dropdown-item active" role="menuitem">
+                  <span class="dropdown-num">09</span>
+                  <div class="dropdown-text">
+                    <strong>Photovoltaik</strong>
+                    <small>Solaranlagen &amp; Stromspeicher</small>
+                  </div>
+                </a>
+                <a href="/waermepumpe" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">10</span>
+                  <div class="dropdown-text">
+                    <strong>Wärmepumpe</strong>
+                    <small>Elektrischer Anschluss &amp; § 14a EnWG</small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="/projekte" class="nav-link">Referenzen</a>
+          </li>
+          <li class="nav-item">
+            <a href="/kontakt" class="nav-link">Kontakt</a>
+          </li>
+        </ul>
+
+        <!-- Right Quick Action / Call CTA -->
+        <div class="nav-actions">
+          <span class="nav-divider" aria-hidden="true"></span>
+          
+          <a href="/kontakt#projektanfrage" class="btn-project-cta" aria-label="Projekt anfragen">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Projekt anfragen</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button 
+            type="button" 
+            class="hamburger-btn" 
+            id="mobileMenuToggle" 
+            aria-label="Menü öffnen" 
+            aria-expanded="false" 
+            aria-controls="mobileDrawer"
+          >
+            <span class="bar bar-top"></span>
+            <span class="bar bar-mid"></span>
+            <span class="bar bar-bot"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-content">
+        <ul class="mobile-nav-list">
+          <li><a href="/" class="mobile-nav-link">Startseite</a></li>
+          <li><a href="/#ueber-uns" class="mobile-nav-link">Über uns</a></li>
+          <li class="mobile-has-sub">
+            <button type="button" class="mobile-nav-link mobile-sub-toggle active" id="mobileSubToggle" aria-expanded="true">
+              <span>Leistungen</span>
+              <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="mobile-submenu open" id="mobileSubmenu">
+              <li><a href="/elektroinstallation">1. Elektroinstallation</a></li>
+              <li><a href="/zaehler-hausanschluss">2. Zähler und Hausanschluss</a></li>
+              <li><a href="/wallbox-emobilitaet">3. Wallbox &amp; E-Mobilität</a></li>
+              <li><a href="/smart-home">4. Smart Home &amp; KNX</a></li>
+              <li><a href="/beleuchtung">5. Beleuchtung</a></li>
+              <li><a href="/netzwerk-kommunikation">6. Netzwerk &amp; Kommunikation</a></li>
+              <li><a href="/pruefung-wartung">7. Prüfung &amp; Wartung</a></li>
+              <li><a href="/stoerung-reparatur">8. Störung &amp; Reparatur</a></li>
+              <li><a href="/photovoltaik" class="active">9. Photovoltaik</a></li>
+              <li><a href="/waermepumpe">10. Wärmepumpe</a></li>
+            </ul>
+          </li>
+          <li><a href="/projekte" class="mobile-nav-link">Referenzen</a></li>
+          <li><a href="/kontakt" class="mobile-nav-link">Kontakt</a></li>
+        </ul>
+
+        <div class="mobile-actions">
+          <a href="tel:+4915125383578" class="btn-call-orange btn-block">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>Sofort anrufen (0151 25 38 35 78)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- =====================================================================
+         SECTION 01: SERVICE HERO
+         ===================================================================== -->
+    <section class="service-hero-section" id="hero" aria-labelledby="serviceHeroTitle">
+      <div class="service-hero-bg-wrap" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/service-hero-photovoltaik-2x.webp" type="image/webp">
+          <img src="assets/images/service-hero-photovoltaik.jpg" alt="Photovoltaik & Stromspeicher Meisterbetrieb Malawko Hamburg" class="service-hero-bg-img" fetchpriority="high">
+        </picture>
+        <div class="service-hero-overlay"></div>
+      </div>
+
+      <div class="service-hero-container">
+        <div class="service-hero-content">
+          <!-- Breadcrumb Navigation -->
+          <nav class="breadcrumbs" aria-label="Brotkrumen-Navigation">
+            <a href="/" class="breadcrumb-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Startseite</span>
+            </a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <a href="/#leistungen" class="breadcrumb-item">Leistungen</a>
+            <span class="breadcrumb-sep">&gt;</span>
+            <span class="breadcrumb-current" aria-current="page">Photovoltaik</span>
+          </nav>
+
+          <!-- Category Badge -->
+          <div class="service-hero-badge">
+            <span class="badge-line" aria-hidden="true"></span>
+            <span class="badge-text">Photovoltaik &amp; Stromspeicher</span>
+          </div>
+
+          <!-- Hero Headline -->
+          <h1 class="service-hero-title" id="serviceHeroTitle">
+            Eigener Sonnenstrom für Hamburg – <span class="highlight-orange">Intelligent gespeichert.</span>
+          </h1>
+
+          <!-- Dual Hero Buttons -->
+          <div class="service-hero-actions">
+            <a href="/kontakt#projektanfrage" class="btn-primary-orange btn-lg">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>PV-Anlage anfragen</span>
+            </a>
+
+            <a href="tel:+4915125383578" class="btn-hero-glass-call">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Jetzt anrufen</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4-Item Glass Feature Strip -->
+        <div class="service-trust-bar" aria-label="Qualitätsmerkmale">
+          <div class="service-trust-item">
+            <div class="service-trust-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </div>
+            <span class="service-trust-text">Bis zu 80% Unabhängigkeit</span>
+          </div>
+          <div class="service-trust-divider" aria-hidden="true"></div>
+          <div class="service-trust-item">
+            <div class="service-trust-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <span class="service-trust-text">Modulare Stromspeicher</span>
+          </div>
+          <div class="service-trust-divider" aria-hidden="true"></div>
+          <div class="service-trust-item">
+            <div class="service-trust-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+            </div>
+            <span class="service-trust-text">100% Netzanmeldung Hamburg</span>
+          </div>
+          <div class="service-trust-divider" aria-hidden="true"></div>
+          <div class="service-trust-item">
+            <div class="service-trust-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <span class="service-trust-text">0% Mehrwertsteuer nach § 12 UStG</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 02: SERVICE INTRODUCTION
+         ===================================================================== -->
+    <section class="service-intro-section" id="ueber-die-leistung" aria-labelledby="serviceIntroTitle">
+      <div class="service-intro-container">
+        <!-- Left: Text & 3 Benefit Items -->
+        <div class="service-intro-left">
+          <div class="service-intro-badge">
+            <span class="badge-line" aria-hidden="true"></span>
+            <span class="badge-text">ÜBER DIE LEISTUNG</span>
+          </div>
+
+          <h2 class="service-intro-title" id="serviceIntroTitle">
+            Nachhaltige Energie für Hamburg,<br>die <span class="highlight-orange">sich schnell rechnet.</span>
+          </h2>
+
+          <p class="service-intro-desc">
+            Mit einer eigenen Photovoltaikanlage senken Sie Ihre Stromkosten dauerhaft und machen sich unabhängig von steigenden Energiepreisen. Als eingetragener Hamburger Elektro-Meisterbetrieb installieren wir Ihre Solaranlage schlüsselfertig: von den Hochleistungsmodulen auf dem Dach über den Hybrid-Wechselrichter bis zur Zählerschrank-Erweiterung und offiziellen Netzanmeldung bei Stromnetz Hamburg.
+          </p>
+
+          <div class="service-intro-benefits">
+            <div class="service-benefit-item">
+              <div class="service-benefit-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              </div>
+              <div class="service-benefit-info">
+                <h3 class="service-benefit-title">Höchste Energieerträge</h3>
+                <p class="service-benefit-text">Monokristalline Glas-Glas Module neuester Generation für maximalen Wirkungsgrad auch bei diffusem Nordlicht.</p>
+              </div>
+            </div>
+            <div class="service-benefit-item">
+              <div class="service-benefit-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              <div class="service-benefit-info">
+                <h3 class="service-benefit-title">Stromspeicher &amp; Notstrom</h3>
+                <p class="service-benefit-text">Nutzen Sie Ihren Solarstrom abends und nachts. Auf Wunsch mit echter 3-phasiger Notstrom-Umschaltung.</p>
+              </div>
+            </div>
+            <div class="service-benefit-item">
+              <div class="service-benefit-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <div class="service-benefit-info">
+                <h3 class="service-benefit-title">Alles aus Meisterhand</h3>
+                <p class="service-benefit-text">Keine Subunternehmer: Fachgerechte Dachmontage, normgerechter AC-Anschluss und Zählertausch durch unsere festen Techniker.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Glass Info Card -->
+        <div class="service-intro-right">
+          <div class="service-intro-card">
+            <div class="service-card-header">
+              <span class="badge-dash" aria-hidden="true"></span>
+              <span class="badge-text">SCHNELLCHECK PHOTOVOLTAIK</span>
+            </div>
+            <h3 class="service-card-title">Ihre Vorteile auf einen Blick</h3>
+            <ul class="service-checklist">
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>0% Mehrwertsteuer</strong> beim Kauf für private Wohngebäude</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Bis zu 80% Unabhängigkeit</strong> durch moderne LiFePO4-Speicher</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>PV-Überschussladen</strong> für Ihre Wallbox &amp; Wärmepumpe</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Komplette Netzanmeldung</strong> bei Stromnetz Hamburg inklusive</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>25-30 Jahre Leistungsgarantie</strong> auf Premium-Solarmodule</span>
+              </li>
+            </ul>
+            <div class="service-card-cta">
+              <a href="/kontakt#projektanfrage" class="btn-primary-orange btn-block">
+                <span>Jetzt kostenlose Dachprüfung anfragen</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 03: OFFERINGS BENTO GRID
+         ===================================================================== -->
+    <section class="offerings-section" id="leistungen-detail" aria-labelledby="offeringsHeading">
+      <div class="offerings-container">
+        <div class="section-center-header">
+          <div class="section-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">UNSERE LEISTUNGEN IM DETAIL</span>
+          </div>
+          <h2 class="section-main-headline" id="offeringsHeading">
+            Photovoltaik &amp; Speicher <span class="highlight-orange">ohne Kompromisse.</span>
+          </h2>
+          <p class="section-sub-headline">
+            Durchdachte Solartechnik, abgestimmt auf Ihren individuellen Strombedarf und Ihre Dachgegebenheiten.
+          </p>
+        </div>
+
+        <div class="offerings-bento-grid">
+          <!-- Card 1: Dachanlagen -->
+          <div class="offering-card">
+            <div class="offering-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </div>
+            <h3 class="offering-title">Dachanlagen &amp; Solarmodule</h3>
+            <p class="offering-desc">
+              Hocheffiziente Full-Black Glas-Glas Module für Steildächer, Flachdächer oder Gewerbeobjekte mit bis zu 30 Jahren Garantie.
+            </p>
+            <ul class="offering-features">
+              <li>Ästhetische Full-Black Optik</li>
+              <li>Robuste Hagel- &amp; Schneelastfestigkeit</li>
+              <li>Optimiert für diffuse Lichtverhältnisse</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Stromspeicher -->
+          <div class="offering-card">
+            <div class="offering-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <h3 class="offering-title">Batteriespeicher &amp; Stromspeicher</h3>
+            <p class="offering-desc">
+              Modulare Lithium-Eisenphosphat-Speicher (LiFePO4) speichern überschüssigen Solarstrom für die Abend- und Nachtstunden.
+            </p>
+            <ul class="offering-features">
+              <li>Kapazität von 5 bis 30+ kWh modular erweiterbar</li>
+              <li>Über 6.000 Ladezyklen &amp; höchste Sicherheit</li>
+              <li>Echzeit-Monitoring per Smartphone-App</li>
+            </ul>
+          </div>
+
+          <!-- Card 3: Hybrid-Wechselrichter -->
+          <div class="offering-card">
+            <div class="offering-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="offering-title">Hybrid-Wechselrichter &amp; Steuerung</h3>
+            <p class="offering-desc">
+              Modernste 3-phasige Wechselrichter namhafter Hersteller (SMA, Fronius, SolarEdge) wandeln den Gleichstrom verlustarm in Haushaltsstrom um.
+            </p>
+            <ul class="offering-features">
+              <li>Integrierter MPP-Tracker bei Teilverschattung</li>
+              <li>Smarte Energiemanager zur Eigenverbrauchsoptimierung</li>
+              <li>Kompakte Wandmontage im Hausanschlussraum</li>
+            </ul>
+          </div>
+
+          <!-- Card 4: Wallbox-Kopplung -->
+          <div class="offering-card">
+            <div class="offering-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2">
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2 11.2 2 11.7 2 12.2V16c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle>
+              </svg>
+            </div>
+            <h3 class="offering-title">PV-Überschussladen &amp; Sektorenkopplung</h3>
+            <p class="offering-desc">
+              Verbinden Sie Ihre Solaranlage mit Ihrer Wallbox und Wärmepumpe. Laden Sie Ihr Elektroauto automatisch nur mit reiner Sonnenenergie.
+            </p>
+            <ul class="offering-features">
+              <li>Dynamische Umschaltung 1-phasig / 3-phasig</li>
+              <li>Intelligente Wärmepumpen-Ansteuerung (SG-Ready)</li>
+              <li>Maximale Kostenersparnis bei der Mobilität</li>
+            </ul>
+          </div>
+
+          <!-- Card 5: Netzanmeldung -->
+          <div class="offering-card">
+            <div class="offering-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2">
+                <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+                <line x1="9" y1="7" x2="15" y2="7"></line>
+                <circle cx="12" cy="14" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="offering-title">Netzanmeldung &amp; Zählertausch</h3>
+            <p class="offering-desc">
+              Wir übernehmen die gesamte bürokratische und technische Abwicklung mit Stromnetz Hamburg, Schleswig-Holstein Netz oder Ihrem regionalen Versorger.
+            </p>
+            <ul class="offering-features">
+              <li>Antragstellung &amp; Inbetriebsetzungsanzeige (E.8)</li>
+              <li>Zweirichtungszähler-Koordination</li>
+              <li>Eintragung im Marktstammdatenregister (MaStR)</li>
+            </ul>
+          </div>
+
+          <!-- Card 6: Notstrom & Backup -->
+          <div class="offering-card">
+            <div class="offering-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+            </div>
+            <h3 class="offering-title">Notstrom- &amp; Backup-Systeme</h3>
+            <p class="offering-desc">
+              Ausfallsicherheit bei Netzausfall: Mit einer automatischen Notstrom-Umschaltung versorgt Ihre PV-Batterie wichtige Verbraucher unterbrechungsfrei weiter.
+            </p>
+            <ul class="offering-features">
+              <li>Echte 3-phasige Ersatzstromversorgung</li>
+              <li>Schwarzstartfähigkeit auch ohne externes Netz</li>
+              <li>Schutz für Gefriertruhe, Heizung &amp; Router</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 04: 4-STEP PROCESS
+         ===================================================================== -->
+    <section class="service-process-section" id="ablauf" aria-labelledby="processHeading">
+      <div class="process-container">
+        <div class="section-center-header">
+          <div class="section-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">SCHRITT FÜR SCHRITT</span>
+          </div>
+          <h2 class="section-main-headline" id="processHeading">
+            In 4 Schritten zu Ihrer <span class="highlight-orange">eigenen PV-Anlage.</span>
+          </h2>
+          <p class="section-sub-headline">
+            Transparenter Ablauf ohne versteckte Kosten – von der ersten Dachprüfung bis zum fließenden Sonnenstrom.
+          </p>
+        </div>
+
+        <div class="service-process-grid">
+          <div class="service-step-card">
+            <div class="step-num">01</div>
+            <h3 class="step-title">Vor-Ort-Check &amp; Dachanalyse</h3>
+            <p class="step-desc">
+              Wir prüfen Dachneigung, Ausrichtung, Statik sowie Ihren Zählerschrank und berechnen Ihren individuellen Strombedarf.
+            </p>
+          </div>
+
+          <div class="service-step-card">
+            <div class="step-num">02</div>
+            <h3 class="step-title">Planung &amp; Festpreis-Angebot</h3>
+            <p class="step-desc">
+              Sie erhalten eine präzise 3D-Belegungsplanung, eine Wirtschaftlichkeitsberechnung und ein verbindliches Festpreisangebot.
+            </p>
+          </div>
+
+          <div class="service-step-card">
+            <div class="step-num">03</div>
+            <h3 class="step-title">Meistermontage &amp; AC-Anschluss</h3>
+            <p class="step-desc">
+              Unsere Fachhandwerker montieren die Module sicher auf dem Dach und unser Elektro-Meisterteam schließt Wechselrichter und Speicher an.
+            </p>
+          </div>
+
+          <div class="service-step-card">
+            <div class="step-num">04</div>
+            <h3 class="step-title">Inbetriebnahme &amp; Netzanmeldung</h3>
+            <p class="step-desc">
+              Wir führen die normgerechte VDE-Messung durch, übergeben Ihnen die Monitoring-App und melden die Anlage beim Hamburger Netzbetreiber an.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 05: FAQ ACCORDION
+         ===================================================================== -->
+    <section class="service-faq-section" id="faq" aria-labelledby="faqHeading">
+      <div class="faq-container">
+        <div class="section-center-header">
+          <div class="section-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">HÄUFIGE FRAGEN</span>
+          </div>
+          <h2 class="section-main-headline" id="faqHeading">
+            Wissenswertes rund um <span class="highlight-orange">Photovoltaik.</span>
+          </h2>
+        </div>
+
+        <div class="faq-accordion" id="faqAccordion">
+          <div class="faq-item">
+            <button type="button" class="faq-toggle" aria-expanded="false">
+              <span>Lohnt sich Photovoltaik in Hamburg auch bei Ost-/West-Dächern oder Bewölkung?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>
+                Ja, absolut. Moderne Halbzellen- und Glas-Glas-Module erzielen auch bei diffusem Licht hervorragende Erträge. Ein Ost-/West-Dach hat sogar den Vorteil, dass der Solarstrom gleichmäßig über den Tag verteilt morgens und abends erzeugt wird – genau dann, wenn im Haushalt der höchste Verbrauch anfällt.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-toggle" aria-expanded="false">
+              <span>Gilt der Nullsteuersatz (0% Mehrwertsteuer) weiterhin für private Solaranlagen?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>
+                Ja. Gemäß § 12 Abs. 3 UStG entfällt für Photovoltaikanlagen auf Wohngebäuden sowie für Batteriespeicher und wesentliche Komponenten die Mehrwertsteuer vollständig (0% MwSt.). Sie sparen somit 19% direkt beim Kauf und der Installation.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-toggle" aria-expanded="false">
+              <span>Kann ich meine bestehende PV-Anlage mit einem Speicher oder einer Wallbox nachrüsten?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>
+                Ja, eine Nachrüstung ist bei den allermeisten Anlagen problemlos möglich. Je nach vorhandenem Wechselrichter setzen wir auf ein AC-gekoppeltes Speichersystem oder tauschen den alten Wechselrichter gegen ein modernes Hybrid-Gerät mit integriertem Speichermanager aus.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-toggle" aria-expanded="false">
+              <span>Wer kümmert sich um die Netzanmeldung bei Stromnetz Hamburg?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>
+                Wir übernehmen den gesamten Prozess für Sie: Als eingetragener Elektro-Fachbetrieb reichen wir das Netzanschlussbegehren ein, erstellen die Inbetriebsetzungsanzeige (E.8 Protokoll) und koordinieren den Tausch Ihres alten Stromzählers gegen einen modernen Zweirichtungszähler.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 06: UNSER EINSATZGEBIET (HAMBURG MASTER)
+         ===================================================================== -->
+    <section class="service-einsatz-section" id="einsatzgebiet" aria-labelledby="serviceEinsatzHeading">
+      <div class="einsatz-container">
+        <div class="section-center-header">
+          <div class="section-intro-badge">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">VOR ORT FÜR SIE</span>
+          </div>
+          <h2 class="section-main-headline" id="serviceEinsatzHeading">
+            Unser Einsatzgebiet in <span class="highlight-orange">Hamburg &amp; Umgebung.</span>
+          </h2>
+          <p class="section-sub-headline">
+            Von unserem Betriebssitz im Hamburger Nordosten betreuen wir Kunden in ganz Hamburg und der Metropolregion mit schnellen Anfahrtswegen.
+          </p>
+        </div>
+
+        <div class="einsatz-layout-grid">
+          <!-- Left: Information Cards & Operational Scope -->
+          <div class="einsatz-info-panel">
+            <div class="einsatz-hq-card">
+              <div class="einsatz-hq-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="einsatz-hq-text">
+                <span class="hq-label">Betriebssitz Hamburg</span>
+                <strong class="hq-address">Schreyerring 49, 22309 Hamburg</strong>
+                <span class="hq-reach">Zentral gelegen für ganz Hamburg &amp; Umland</span>
+              </div>
+            </div>
+
+            <div class="einsatz-districts-card">
+              <h3 class="districts-title">Regelmäßig für Sie im Einsatz:</h3>
+              <div class="districts-grid">
+                <div class="district-badge">Hamburg-Nord</div>
+                <div class="district-badge">Wandsbek</div>
+                <div class="district-badge">Hamburg-Mitte</div>
+                <div class="district-badge">Altona</div>
+                <div class="district-badge">Eimsbüttel</div>
+                <div class="district-badge">Bergedorf</div>
+                <div class="district-badge">Norderstedt</div>
+                <div class="district-badge">Ahrensburg</div>
+              </div>
+            </div>
+
+            <div class="einsatz-dispatch-notice">
+              <div class="dispatch-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <p class="dispatch-text">
+                <strong>Schnelle Reaktionszeiten:</strong> Termintreue Beratung und zeitnahe Montagen in ganz Hamburg und der Metropolregion.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Leaflet Map -->
+          <div class="einsatz-map-panel">
+            <div class="map-wrapper" id="einsatzMap" role="region" aria-label="Interaktive Einsatzgebiet Karte Hamburg">
+              <!-- Leaflet Map rendered via main.js -->
+            </div>
+            <div class="map-legend-bar">
+              <div class="legend-item">
+                <span class="legend-dot dot-primary"></span>
+                <span>Kernzone Hamburg (Anfahrt kurzfristig)</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot dot-secondary"></span>
+                <span>Erweiterte Metropolregion (Umland bis 35 km)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 07: CTA BANNER
+         ===================================================================== -->
+    <section class="service-cta-banner-section" aria-label="Projektanfrage">
+      <div class="cta-banner-container">
+        <div class="cta-banner-inner">
+          <div class="cta-banner-badge">
+            <span class="badge-line" aria-hidden="true"></span>
+            <span class="badge-text">JETZT SONNENENERGIE NUTZEN</span>
+          </div>
+          <h2 class="cta-banner-title">
+            Bereit für Ihre eigene <span class="highlight-orange">Photovoltaikanlage?</span>
+          </h2>
+          <p class="cta-banner-desc">
+            Sichern Sie sich jetzt Ihr maßgeschneidertes Festpreis-Angebot inklusive Vor-Ort-Besichtigung in Hamburg.
+          </p>
+          <div class="cta-banner-actions">
+            <a href="/kontakt#projektanfrage" class="btn-primary-orange btn-lg">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Jetzt Anfrage starten</span>
+            </a>
+            <a href="tel:+4915125383578" class="btn-hero-glass-call">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>0151 25 38 35 78</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       SITE FOOTER ("MALAWKO Elektrotechnik")
+       ===================================================================== -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-glow footer-glow-left" aria-hidden="true"></div>
+    <div class="footer-glow footer-glow-right" aria-hidden="true"></div>
+
+    <div class="footer-container">
+      <div class="footer-main-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <div class="footer-logo-wrap">
+            <img src="assets/logos/malawko-footer-logo-clean.png" alt="MALAWKO Elektrotechnik Logo" class="footer-brand-logo" width="180" height="55">
+          </div>
+          <p class="footer-brand-desc">
+            Ihr zuverlässiger Partner für moderne Elektrotechnik in Privat, Gewerbe und öffentlichen Einrichtungen.
+          </p>
+        </div>
+
+        <!-- Col 2: Schnellzugriff -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Schnellzugriff</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="/" class="footer-link">Startseite</a></li>
+            <li><a href="/#ueber-uns" class="footer-link">Über uns</a></li>
+            <li><a href="/#leistungen" class="footer-link">Leistungen</a></li>
+            <li><a href="/projekte" class="footer-link">Referenzen</a></li>
+            <li><a href="/kontakt" class="footer-link">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Unsere Leistungen -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Unsere Leistungen</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="/elektroinstallation" class="footer-link">Elektroinstallation</a></li>
+            <li><a href="/zaehler-hausanschluss" class="footer-link">Zähler &amp; Hausanschluss</a></li>
+            <li><a href="/wallbox-emobilitaet" class="footer-link">Wallbox &amp; E-Mobilität</a></li>
+            <li><a href="/photovoltaik" class="footer-link">Photovoltaik &amp; Speicher</a></li>
+            <li><a href="/waermepumpe" class="footer-link">Wärmepumpen-Anschluss</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Kontakt -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Kontakt</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-contact-list">
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+4915125383578" class="contact-link">0151 25 38 35 78</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:kontakt@elektrotechnik-malawko.de" class="contact-link">kontakt@elektrotechnik-malawko.de</a>
+            </li>
+            <li class="contact-item">
+              <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span class="contact-text">Schreyerring 49, 22309 Hamburg</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Malawko Elektrotechnik. Alle Rechte vorbehalten.
+        </div>
+        <div class="footer-credit">
+          Webdesign by <a href="https://emancopys.com/" target="_blank" rel="noopener noreferrer" class="credit-link"><span class="highlight-orange">EmanCopys</span></a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="/impressum">Impressum</a>
+          <span class="legal-sep">|</span>
+          <a href="/datenschutz">Datenschutz</a>
+          <span class="legal-sep">|</span>
+          <a href="#cookies">Cookie-Einstellungen</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet Interactive Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

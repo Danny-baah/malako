@@ -608,6 +608,26 @@ function initInteractiveConfigurator() {
   // STEP 2: Multi-Select Service Cards
   // --------------------------------------------------------------------------
   const step2Cards = panels[2].querySelectorAll('.config-card-multiselect');
+  // Pre-select service from URL query param if present
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramService = urlParams.get('service');
+    if (paramService) {
+      step2Cards.forEach(cardEl => {
+        const val = cardEl.getAttribute('data-value');
+        if (val && val.toLowerCase() === paramService.toLowerCase()) {
+          step2Cards.forEach(c => {
+            c.classList.remove('is-selected');
+            c.setAttribute('aria-checked', 'false');
+          });
+          state.services = [val];
+          cardEl.classList.add('is-selected');
+          cardEl.setAttribute('aria-checked', 'true');
+        }
+      });
+    }
+  } catch (err) {}
+
   step2Cards.forEach(cardEl => {
     const toggleSelection = () => {
       const val = cardEl.getAttribute('data-value');
@@ -813,6 +833,38 @@ function initInteractiveConfigurator() {
         'Dringend / Akuter Teilausfall'
       );
     }
+    // 9. Photovoltaik
+    if (services.includes('Photovoltaik')) {
+      createSegmentedGroup(
+        'Photovoltaik: Geplante Dacheindeckung & Gebäude',
+        'pv_roof',
+        ['Satteldach / Ziegeldach', 'Flachdach', 'Blech- / Trapezdach', 'Freifläche / Carport'],
+        'Satteldach / Ziegeldach'
+      );
+      createSegmentedGroup(
+        'Gewünschter Stromspeicher',
+        'pv_storage',
+        ['Mit Stromspeicher (5 – 15 kWh)', 'Großspeicher (> 15 kWh)', 'Ohne Speicher', 'Beratung gewünscht'],
+        'Mit Stromspeicher (5 – 15 kWh)'
+      );
+    }
+
+    // 10. Wärmepumpe
+    if (services.includes('Wärmepumpe')) {
+      createSegmentedGroup(
+        'Wärmepumpen-Anschluss: Art der Wärmepumpe',
+        'wp_type',
+        ['Luft-Wasser-Wärmepumpe', 'Sole-Wasser (Erdwärme)', 'Hybrid-System', 'Noch in Planung'],
+        'Luft-Wasser-Wärmepumpe'
+      );
+      createSegmentedGroup(
+        '§ 14a EnWG & Messkonzept',
+        'wp_measure',
+        ['Zählerkaskade (Haushalt + PV + WP)', 'Separater Zählerplatz', 'Nur Zuleitung & Absicherung', 'Beratung offen'],
+        'Zählerkaskade (Haushalt + PV + WP)'
+      );
+    }
+
 
     // Fallback if no specific services
     if (fieldCount === 0) {

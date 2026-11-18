@@ -58,6 +58,14 @@
     {
       "source": "/datenschutz",
       "destination": "/datenschutz.html"
+    },
+    {
+      "source": "/photovoltaik",
+      "destination": "/photovoltaik.html"
+    },
+    {
+      "source": "/waermepumpe",
+      "destination": "/waermepumpe.html"
     }
   ]
 }
