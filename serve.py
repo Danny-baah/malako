@@ -18,8 +18,8 @@ class CleanURLHandler(http.server.SimpleHTTPRequestHandler):
         # Strip query string and fragment
         clean_path = path.split('?')[0].split('#')[0]
 
-        # 1. /home or /index.html -> index.html
-        if clean_path in ('/home', '/home/', '/index.html'):
+        # 1. /startseite, /home or /index.html -> index.html
+        if clean_path in ('/startseite', '/startseite/', '/home', '/home/', '/index.html'):
             return os.path.join(DIRECTORY, 'index.html')
 
         # 2. Check if clean_path + '.html' exists

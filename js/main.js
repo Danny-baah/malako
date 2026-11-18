@@ -3,15 +3,15 @@
  * Vanilla JavaScript implementation for interactions, accessibility and responsiveness.
  */
 
-// Clean URLs in address bar: strips .html extension and maps /index to /home
+// Clean URLs in address bar: strips .html extension and maps /index or /index.html to /
 (function cleanUrlExtension() {
   if (typeof window === 'undefined' || !window.location) return;
   if (window.location.protocol.startsWith('http')) {
     const pathname = window.location.pathname;
-    if (pathname.endsWith('.html') || pathname.endsWith('/index')) {
+    if (pathname.endsWith('.html') || pathname === '/index' || pathname.endsWith('/index')) {
       let clean = pathname.replace(/\.html$/, '');
       if (clean === '/index' || clean.endsWith('/index')) {
-        clean = clean.slice(0, -6) + '/home';
+        clean = clean.slice(0, -6) || '/';
       }
       const newUrl = clean + window.location.search + window.location.hash;
       window.history.replaceState(null, '', newUrl);
@@ -28,7 +28,7 @@
       const [path, hash] = href.split('#');
       if (path && !path.includes('.')) {
         e.preventDefault();
-        const base = (path === 'home' || path === '/home' || path === '/') ? 'index.html' : (path.replace(/^\//, '') + '.html');
+        const base = (path === '/' || path === 'home' || path === '/home' || path === 'startseite' || path === '/startseite') ? 'index.html' : (path.replace(/^\//, '') + '.html');
         window.location.href = base + (hash ? '#' + hash : '');
       }
     });
