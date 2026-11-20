@@ -1265,6 +1265,266 @@
       </div>
     </section>
 
+    <!-- =====================================================================
+         SECTION 03b: STÖRUNG MELDEN (INTERACTIVE 3-STEP FAULT REPORT)
+         ===================================================================== -->
+    <section class="stoerung-section" id="stoerung-melden" aria-labelledby="stoerungTitle">
+      <div id="stoerung" class="anchor-offset"></div>
+      <div class="stoerung-container">
+
+        <!-- White Form Card Container -->
+        <div class="stoerung-card" id="stoerungCard">
+
+          <!-- Card Header -->
+          <div class="stoerung-card-header">
+            <div class="stoerung-badge">
+              <span class="stoerung-badge-line" aria-hidden="true"></span>
+              <span class="stoerung-badge-text">STÖRUNG MELDEN</span>
+            </div>
+            <h2 class="stoerung-title" id="stoerungTitle">Technisches Problem melden</h2>
+            <p class="stoerung-subtitle">In wenigen Schritten zu Ihrer Störungsmeldung.</p>
+          </div>
+
+          <!-- 3-Step Progress Tracker -->
+          <div class="stoerung-progress-tracker" aria-label="Fortschritt der Störungsmeldung" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" id="stoerungProgressBar">
+            <div class="stoerung-step-item active" id="stoerungStepIndicator1">
+              <div class="stoerung-step-circle">1</div>
+              <span class="stoerung-step-label">Ihre Angaben</span>
+            </div>
+
+            <div class="stoerung-progress-connector" id="stoerungConnector1">
+              <div class="stoerung-connector-fill"></div>
+            </div>
+
+            <div class="stoerung-step-item" id="stoerungStepIndicator2">
+              <div class="stoerung-step-circle">2</div>
+              <span class="stoerung-step-label">Problem auswählen</span>
+            </div>
+
+            <div class="stoerung-progress-connector" id="stoerungConnector2">
+              <div class="stoerung-connector-fill"></div>
+            </div>
+
+            <div class="stoerung-step-item" id="stoerungStepIndicator3">
+              <div class="stoerung-step-circle">3</div>
+              <span class="stoerung-step-label">Nachricht senden</span>
+            </div>
+          </div>
+
+          <!-- Alert Notification Banner (Hidden by default) -->
+          <div class="stoerung-alert-box" id="stoerungAlertBox" role="alert" style="display: none;"></div>
+
+          <!-- Form Element -->
+          <form id="stoerungForm" class="stoerung-form" novalidate>
+
+            <!-- STEP 1: IHRE ANGABEN -->
+            <div class="stoerung-step-panel active" id="stoerungStep1" role="region" aria-label="Schritt 1 von 3: Ihre Kontaktdaten">
+              <div class="stoerung-fields-grid">
+
+                <!-- Field: Name -->
+                <div class="stoerung-field-group">
+                  <label for="stoerungName" class="stoerung-label">
+                    Ihr Name <span class="stoerung-required">*</span>
+                  </label>
+                  <input type="text" id="stoerungName" name="name" class="stoerung-input" placeholder="z. B. Max Mustermann" required autocomplete="name">
+                  <div class="stoerung-error-msg" id="errStoerungName"></div>
+                </div>
+
+                <!-- Field: Firma -->
+                <div class="stoerung-field-group">
+                  <label for="stoerungCompany" class="stoerung-label">
+                    Firma <span class="stoerung-optional">(optional)</span>
+                  </label>
+                  <input type="text" id="stoerungCompany" name="company" class="stoerung-input" placeholder="z. B. Muster GmbH" autocomplete="organization">
+                </div>
+
+                <!-- Field: E-Mail -->
+                <div class="stoerung-field-group">
+                  <label for="stoerungEmail" class="stoerung-label">
+                    E-Mail-Adresse <span class="stoerung-required">*</span>
+                  </label>
+                  <input type="email" id="stoerungEmail" name="email" class="stoerung-input" placeholder="z. B. max@beispiel.de" required autocomplete="email">
+                  <div class="stoerung-error-msg" id="errStoerungEmail"></div>
+                </div>
+
+                <!-- Field: Telefon -->
+                <div class="stoerung-field-group">
+                  <label for="stoerungPhone" class="stoerung-label">
+                    Telefonnummer <span class="stoerung-required">*</span>
+                  </label>
+                  <input type="tel" id="stoerungPhone" name="phone" class="stoerung-input" placeholder="z. B. 0151 12345678" required autocomplete="tel">
+                  <div class="stoerung-error-msg" id="errStoerungPhone"></div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- STEP 2: PROBLEM AUSWÄHLEN -->
+            <div class="stoerung-step-panel" id="stoerungStep2" role="region" aria-label="Schritt 2 von 3: Problem auswählen" style="display: none;">
+              <div class="stoerung-panel-intro">
+                <h3 class="stoerung-panel-title">Welches Problem liegt vor?</h3>
+                <p class="stoerung-panel-desc">Wählen Sie den Bereich aus, der Ihr Anliegen am besten beschreibt.</p>
+              </div>
+
+              <!-- 8 Compact Selection Cards -->
+              <div class="stoerung-options-grid" role="radiogroup" aria-label="Art des technischen Problems">
+
+                <div class="stoerung-option-card is-selected" data-value="Stromausfall / keine Spannung" tabindex="0" role="radio" aria-checked="true">
+                  <span class="stoerung-option-text">Stromausfall / keine Spannung</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+                <div class="stoerung-option-card" data-value="Defekte Steckdose oder Schalter" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">Defekte Steckdose oder Schalter</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+                <div class="stoerung-option-card" data-value="Beleuchtung funktioniert nicht" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">Beleuchtung funktioniert nicht</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+                <div class="stoerung-option-card" data-value="Probleme mit Wallbox / E-Mobilität" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">Probleme mit Wallbox / E-Mobilität</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+                <div class="stoerung-option-card" data-value="Störung im Smart Home / KNX" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">Störung im Smart Home / KNX</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+                <div class="stoerung-option-card" data-value="Netzwerk- oder Kommunikationsproblem" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">Netzwerk- oder Kommunikationsproblem</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+                <div class="stoerung-option-card" data-value="Problem mit Zähler oder Hausanschluss" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">Problem mit Zähler oder Hausanschluss</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+                <div class="stoerung-option-card" data-value="Sonstiges" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">Sonstiges</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+              </div>
+              <div class="stoerung-error-msg" id="errStoerungCategory"></div>
+            </div>
+
+            <!-- STEP 3: NACHRICHT SENDEN -->
+            <div class="stoerung-step-panel" id="stoerungStep3" role="region" aria-label="Schritt 3 von 3: Nachricht senden" style="display: none;">
+              <div class="stoerung-panel-intro">
+                <h3 class="stoerung-panel-title">Beschreiben Sie Ihr Problem</h3>
+                <p class="stoerung-panel-desc">Teilen Sie uns kurz mit, was passiert ist und seit wann das Problem besteht.</p>
+              </div>
+
+              <!-- Message Textarea -->
+              <div class="stoerung-field-group mb-4">
+                <label for="stoerungMessage" class="stoerung-label">
+                  Nachricht <span class="stoerung-required">*</span>
+                </label>
+                <textarea id="stoerungMessage" name="message" class="stoerung-textarea" rows="5" placeholder="Beschreiben Sie das Problem möglichst genau ..." required></textarea>
+                <div class="stoerung-error-msg" id="errStoerungMessage"></div>
+              </div>
+
+              <!-- Optional File Upload Dropzone -->
+              <div class="stoerung-field-group mb-4">
+                <label class="stoerung-label">
+                  Foto oder Dokument hochladen <span class="stoerung-optional">(optional)</span>
+                </label>
+                <div class="stoerung-dropzone" id="stoerungDropzone" tabindex="0" role="button" aria-label="Dateien zum Hochladen auswählen">
+                  <input type="file" id="stoerungFileInput" multiple accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stoerung-dropzone-icon" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <p class="stoerung-dropzone-prompt">
+                    Datei hierhin ziehen oder <span class="stoerung-dropzone-browse">durchsuchen</span>
+                  </p>
+                  <p class="stoerung-dropzone-hint">Erlaubte Formate: JPG, PNG, PDF (max. 10 MB)</p>
+                </div>
+                <div class="stoerung-file-list" id="stoerungFileList"></div>
+              </div>
+
+              <!-- Privacy Consent Checkbox -->
+              <div class="stoerung-consent-group">
+                <label class="stoerung-checkbox-label">
+                  <input type="checkbox" id="stoerungDatenschutz" name="datenschutz" class="stoerung-checkbox" required>
+                  <span class="stoerung-checkbox-custom" aria-hidden="true"></span>
+                  <span class="stoerung-consent-text">
+                    Ich habe die <a href="datenschutz.html" target="_blank" class="link-orange">Datenschutzerklärung</a> zur Kenntnis genommen und stimme der Verarbeitung meiner Daten zu. <span class="stoerung-required">*</span>
+                  </span>
+                </label>
+                <div class="stoerung-error-msg" id="errStoerungDatenschutz"></div>
+              </div>
+
+            </div>
+
+            <!-- Form Navigation Footer -->
+            <div class="stoerung-nav-footer" id="stoerungNavFooter">
+              <button type="button" id="stoerungBtnBack" class="btn-stoerung-back" disabled aria-label="Vorheriger Schritt">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Zurück</span>
+              </button>
+
+              <button type="button" id="stoerungBtnNext" class="btn-stoerung-next" aria-label="Nächster Schritt">
+                <span id="stoerungBtnNextText">Weiter</span>
+                <svg id="stoerungBtnNextIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Confirmation / Success State (Hidden by default) -->
+          <div class="stoerung-confirmation-panel" id="stoerungConfirmation" style="display: none;" role="status">
+            <div class="stoerung-confirm-icon-wrap" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+
+            <h3 class="stoerung-confirm-title">Vielen Dank für Ihre Meldung!</h3>
+            <p class="stoerung-confirm-desc">Wir haben Ihre Angaben erhalten und werden uns schnellstmöglich bei Ihnen melden.</p>
+
+            <div class="stoerung-confirm-details-card">
+              <div class="stoerung-confirm-row">
+                <span class="confirm-label">Meldungsnummer:</span>
+                <strong class="confirm-value text-orange" id="stoerungConfirmRef">#ST-2049</strong>
+              </div>
+              <div class="stoerung-confirm-row">
+                <span class="confirm-label">Gemeldetes Problem:</span>
+                <span class="confirm-value" id="stoerungConfirmCategory">Stromausfall / keine Spannung</span>
+              </div>
+              <div class="stoerung-confirm-row">
+                <span class="confirm-label">Kontaktperson:</span>
+                <span class="confirm-value" id="stoerungConfirmContact">Max Mustermann (max@beispiel.de)</span>
+              </div>
+            </div>
+
+            <div class="stoerung-confirm-actions">
+              <button type="button" class="btn-stoerung-reset" id="btnResetStoerung">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="1 4 1 10 7 10"></polyline>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
+                <span>Weitere Störung melden</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- =====================================================================
          SECTION 04: UNSER EINSATZGEBIET (HAMBURG & METROPOLREGION MAP)

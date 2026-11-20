@@ -678,6 +678,180 @@ img, picture {
 }
 
 /* --------------------------------------------------------------------------
+   Homepage Hero Ken Burns Slider
+   -------------------------------------------------------------------------- */
+.hero-slider-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-slides-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.8s;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.hero-slide picture,
+.hero-slide-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.0);
+  will-change: transform;
+}
+
+/* Three distinct, elegant Ken Burns cinematic motions */
+.hero-slide.active .kenburns-1 {
+  animation: kenBurnsZoomIn 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.hero-slide.active .kenburns-2 {
+  animation: kenBurnsPanRight 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.hero-slide.active .kenburns-3 {
+  animation: kenBurnsZoomOut 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes kenBurnsZoomIn {
+  0% {
+    transform: scale(1.0) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.10) translate(-1.5%, -1%);
+  }
+}
+
+@keyframes kenBurnsPanRight {
+  0% {
+    transform: scale(1.10) translate(-1%, 0);
+  }
+  100% {
+    transform: scale(1.02) translate(1.5%, -1%);
+  }
+}
+
+@keyframes kenBurnsZoomOut {
+  0% {
+    transform: scale(1.10) translate(1%, -1%);
+  }
+  100% {
+    transform: scale(1.0) translate(-0.5%, 0);
+  }
+}
+
+/* Subtle overlay gradient to preserve bright sunny feel while ensuring text contrast */
+.hero-slider-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(250, 245, 240, 0.32) 0%,
+    rgba(250, 245, 240, 0.08) 45%,
+    rgba(20, 20, 25, 0.15) 100%
+  );
+}
+
+/* Elegant indicator pills / dots */
+.hero-slider-indicators {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-slider-dot {
+  width: 32px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.hero-slider-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.hero-slider-dot.active {
+  width: 52px;
+  background: var(--color-brand-orange, #D9541E);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.active .kenburns-1,
+  .hero-slide.active .kenburns-2,
+  .hero-slide.active .kenburns-3 {
+    animation: none !important;
+    transform: scale(1.0) !important;
+  }
+  .hero-slide {
+    transition: opacity 0.5s ease !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slider-indicators {
+    bottom: 16px;
+    right: 16px;
+  }
+  .hero-slider-dot {
+    width: 24px;
+    height: 4px;
+  }
+  .hero-slider-dot.active {
+    width: 38px;
+  }
+}
+
+/* --------------------------------------------------------------------------
    8. Hero Container & Left Content Panel
    -------------------------------------------------------------------------- */
 .hero-container {
@@ -4658,6 +4832,681 @@ a.direct-card-value:hover {
   }
 }
 
+
+/* ==========================================================================
+   33b. KONTAKT PAGE: 3-STEP STÖRUNG MELDEN SECTION
+   ========================================================================== */
+#stoerung-melden,
+#stoerung,
+.stoerung-section,
+.stoerung-card {
+  scroll-margin-top: 90px;
+}
+
+.stoerung-section {
+  background: #FAF8F5;
+  padding: 80px 24px 100px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.stoerung-container {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.stoerung-card {
+  background: #FFFFFF;
+  border-radius: 28px;
+  padding: 48px 56px 44px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Card Header */
+.stoerung-card-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.stoerung-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.stoerung-badge-line {
+  width: 18px;
+  height: 3.5px;
+  background: var(--color-orange, #D9541E);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.stoerung-badge-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary-text, #1A1D20);
+}
+
+.stoerung-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(26px, 3.6vw, 38px);
+  font-weight: 800;
+  color: var(--color-primary-text, #1A1D20);
+  letter-spacing: -0.025em;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.stoerung-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15.5px;
+  color: #6B7280;
+  margin: 0;
+  text-align: center;
+}
+
+/* Progress Tracker */
+.stoerung-progress-tracker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto 38px;
+  position: relative;
+}
+
+.stoerung-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  min-width: 110px;
+}
+
+.stoerung-step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #F3F4F6;
+  border: 1.5px solid #E5E7EB;
+  color: #6B7280;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.stoerung-step-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6B7280;
+  margin-top: 8px;
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.stoerung-step-item.active .stoerung-step-circle {
+  background: var(--color-orange, #D9541E);
+  border-color: var(--color-orange, #D9541E);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 3px 12px rgba(217, 84, 30, 0.3);
+}
+
+.stoerung-step-item.active .stoerung-step-label {
+  color: var(--color-primary-text, #1A1D20);
+  font-weight: 700;
+}
+
+.stoerung-step-item.completed .stoerung-step-circle {
+  background: var(--color-orange, #D9541E);
+  border-color: var(--color-orange, #D9541E);
+  color: #FFFFFF;
+}
+
+.stoerung-step-item.completed .stoerung-step-label {
+  color: var(--color-primary-text, #1A1D20);
+  font-weight: 600;
+}
+
+.stoerung-progress-connector {
+  flex: 1;
+  height: 2px;
+  background: #E5E7EB;
+  margin: 0 -15px;
+  transform: translateY(-13px);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.stoerung-connector-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--color-orange, #D9541E);
+  transition: width 0.3s ease;
+}
+
+.stoerung-progress-connector.active .stoerung-connector-fill {
+  width: 100%;
+}
+
+/* Alert Box */
+.stoerung-alert-box {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #B91C1C;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-bottom: 24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Step Panels */
+.stoerung-step-panel {
+  display: none;
+  animation: stoerungFadeIn 0.3s ease forwards;
+}
+
+.stoerung-step-panel.active {
+  display: block;
+}
+
+@keyframes stoerungFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stoerung-panel-intro {
+  margin-bottom: 24px;
+}
+
+.stoerung-panel-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary-text, #1A1D20);
+  margin: 0 0 6px;
+}
+
+.stoerung-panel-desc {
+  font-size: 14.5px;
+  color: #6B7280;
+  margin: 0;
+}
+
+/* Form Fields */
+.stoerung-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+}
+
+.stoerung-field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.stoerung-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary-text, #1A1D20);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stoerung-required {
+  color: var(--color-orange, #D9541E);
+  font-weight: 700;
+}
+
+.stoerung-optional {
+  color: #9CA3AF;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.stoerung-input,
+.stoerung-textarea {
+  background: #FAF8F5;
+  border: 1.5px solid #EAE5DE;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  color: var(--color-primary-text, #1A1D20);
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.stoerung-input::placeholder,
+.stoerung-textarea::placeholder {
+  color: #9CA3AF;
+}
+
+.stoerung-input:focus,
+.stoerung-textarea:focus {
+  background: #FFFFFF;
+  border-color: var(--color-orange, #D9541E);
+  outline: none;
+  box-shadow: 0 0 0 3.5px rgba(217, 84, 30, 0.12);
+}
+
+.stoerung-input.has-error,
+.stoerung-textarea.has-error {
+  border-color: #EF4444;
+  background: #FFF5F5;
+}
+
+.stoerung-error-msg {
+  color: #DC2626;
+  font-size: 12.5px;
+  margin-top: 5px;
+  display: none;
+}
+
+.stoerung-error-msg.visible {
+  display: block;
+}
+
+/* Step 2: Problem Selection Cards */
+.stoerung-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 16px;
+}
+
+.stoerung-option-card {
+  background: #FAF8F5;
+  border: 1.5px solid #EAE5DE;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.stoerung-option-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-primary-text, #1A1D20);
+}
+
+.stoerung-radio-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid #D1D5DB;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.stoerung-option-card:hover {
+  border-color: var(--color-orange, #D9541E);
+  background: #FFF9F5;
+}
+
+.stoerung-option-card.is-selected {
+  border-color: var(--color-orange, #D9541E);
+  background: #FFF5EE;
+  box-shadow: 0 2px 10px rgba(217, 84, 30, 0.1);
+}
+
+.stoerung-option-card.is-selected .stoerung-radio-dot {
+  border-color: var(--color-orange, #D9541E);
+}
+
+.stoerung-option-card.is-selected .stoerung-radio-dot::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-orange, #D9541E);
+}
+
+/* Step 3: Textarea & File Upload */
+.stoerung-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.stoerung-dropzone {
+  border: 1.5px dashed #D5CFC7;
+  background: #FAF8F5;
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.stoerung-dropzone:hover,
+.stoerung-dropzone.dragover {
+  border-color: var(--color-orange, #D9541E);
+  background: #FFF8F3;
+}
+
+.stoerung-dropzone-icon {
+  margin: 0 auto 10px;
+  display: block;
+}
+
+.stoerung-dropzone-prompt {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--color-primary-text, #1A1D20);
+  margin: 0 0 4px;
+}
+
+.stoerung-dropzone-browse {
+  color: var(--color-orange, #D9541E);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.stoerung-dropzone-hint {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin: 0;
+}
+
+.stoerung-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.stoerung-file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F3F4F6;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.stoerung-file-remove {
+  background: none;
+  border: none;
+  color: #9CA3AF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 4px;
+}
+
+.stoerung-file-remove:hover {
+  color: #EF4444;
+}
+
+/* Privacy Consent */
+.stoerung-consent-group {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.stoerung-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.stoerung-checkbox {
+  width: 19px;
+  height: 19px;
+  accent-color: var(--color-orange, #D9541E);
+  margin-top: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.stoerung-consent-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #4B5563;
+}
+
+.stoerung-consent-text a {
+  color: var(--color-orange, #D9541E);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Navigation Footer */
+.stoerung-nav-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid #F0ECE6;
+}
+
+.btn-stoerung-back {
+  background: #EFECE6;
+  color: #555555;
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-stoerung-back:hover:not(:disabled) {
+  background: #E5E0D8;
+  color: #222222;
+}
+
+.btn-stoerung-back:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-stoerung-next {
+  background: var(--color-orange, #D9541E);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 32px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(217, 84, 30, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-stoerung-next:hover:not(:disabled) {
+  background: #B84314;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(217, 84, 30, 0.35);
+}
+
+.btn-stoerung-next:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* Confirmation Panel */
+.stoerung-confirmation-panel {
+  text-align: center;
+  padding: 20px 0 10px;
+  animation: stoerungFadeIn 0.35s ease;
+}
+
+.stoerung-confirm-icon-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #FFF4EE;
+  color: var(--color-orange, #D9541E);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.stoerung-confirm-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-primary-text, #1A1D20);
+  margin: 0 0 10px;
+}
+
+.stoerung-confirm-desc {
+  font-size: 15.5px;
+  color: #4B5563;
+  max-width: 500px;
+  margin: 0 auto 28px;
+  line-height: 1.5;
+}
+
+.stoerung-confirm-details-card {
+  background: #FAF8F5;
+  border: 1px solid #EAE5DE;
+  border-radius: 16px;
+  padding: 20px 24px;
+  max-width: 480px;
+  margin: 0 auto 28px;
+  text-align: left;
+}
+
+.stoerung-confirm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #EFECE6;
+  font-size: 14px;
+}
+
+.stoerung-confirm-row:last-child {
+  border-bottom: none;
+}
+
+.stoerung-confirm-row .confirm-label {
+  color: #6B7280;
+}
+
+.stoerung-confirm-row .confirm-value {
+  color: var(--color-primary-text, #1A1D20);
+  font-weight: 600;
+}
+
+.btn-stoerung-reset {
+  background: #FAF8F5;
+  border: 1px solid #D5CFC7;
+  color: var(--color-primary-text, #1A1D20);
+  border-radius: 9999px;
+  padding: 10px 24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-stoerung-reset:hover {
+  background: #EFECE6;
+  border-color: #B5AFA7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stoerung-card {
+    padding: 32px 20px 28px;
+    border-radius: 20px;
+  }
+  .stoerung-fields-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .stoerung-options-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .stoerung-progress-tracker {
+    max-width: 100%;
+    margin-bottom: 28px;
+  }
+  .stoerung-step-item {
+    flex: 1;
+    min-width: 0;
+  }
+  .stoerung-step-label {
+    font-size: 11px;
+    white-space: normal;
+    line-height: 1.25;
+    text-align: center;
+    padding: 0 4px;
+  }
+  .stoerung-progress-connector {
+    margin: 0 -8px;
+  }
+  .stoerung-step-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+  .stoerung-nav-footer {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .btn-stoerung-back,
+  .btn-stoerung-next {
+    padding: 11px 20px;
+    font-size: 14px;
+  }
+}
 
 /* ==========================================================================
    34. ELEKTROINSTALLATION SERVICE PAGE STYLES

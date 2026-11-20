@@ -41,8 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initServicesDropdown();
   initKeyboardNav();
   initEinsatzgebietMap();
+  initHomeHeroSlider();
   initProjectsPage();
   initInteractiveConfigurator();
+  initStoerungForm();
   initSolutionsSelector();
   initScrollReveal();
 });
@@ -1292,6 +1294,517 @@ function escapeHtml(str) {
 }
 
 /**
+ * ----------------------------------------------------------------------------
+ * 3-STEP INTERACTIVE STÖRUNG MELDEN (FAULT REPORT) FORM
+ * ----------------------------------------------------------------------------
+ */
+function initStoerungForm() {
+  const form = document.getElementById('stoerungForm');
+  const card = document.getElementById('stoerungCard');
+  if (!form || !card) return;
+
+  // Navigation elements
+  const btnNext = document.getElementById('stoerungBtnNext');
+  const btnBack = document.getElementById('stoerungBtnBack');
+  const btnNextText = document.getElementById('stoerungBtnNextText');
+  const btnNextIcon = document.getElementById('stoerungBtnNextIcon');
+  const alertBox = document.getElementById('stoerungAlertBox');
+  const confirmationPanel = document.getElementById('stoerungConfirmation');
+  const btnReset = document.getElementById('btnResetStoerung');
+
+  // Step Indicators & Connectors
+  const indicators = {
+    1: document.getElementById('stoerungStepIndicator1'),
+    2: document.getElementById('stoerungStepIndicator2'),
+    3: document.getElementById('stoerungStepIndicator3')
+  };
+  const connectors = {
+    1: document.getElementById('stoerungConnector1'),
+    2: document.getElementById('stoerungConnector2')
+  };
+
+  // Step panels
+  const panels = {
+    1: document.getElementById('stoerungStep1'),
+    2: document.getElementById('stoerungStep2'),
+    3: document.getElementById('stoerungStep3')
+  };
+
+  // State
+  let currentStep = 1;
+  const totalSteps = 3;
+  let isSubmitting = false;
+
+  const state = {
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    category: 'Stromausfall / keine Spannung',
+    message: '',
+    files: [],
+    datenschutz: false
+  };
+
+  // Input Elements
+  const inputName = document.getElementById('stoerungName');
+  const inputCompany = document.getElementById('stoerungCompany');
+  const inputEmail = document.getElementById('stoerungEmail');
+  const inputPhone = document.getElementById('stoerungPhone');
+  const inputMessage = document.getElementById('stoerungMessage');
+  const inputDatenschutz = document.getElementById('stoerungDatenschutz');
+
+  // Error Message Elements
+  const errName = document.getElementById('errStoerungName');
+  const errEmail = document.getElementById('errStoerungEmail');
+  const errPhone = document.getElementById('errStoerungPhone');
+  const errCategory = document.getElementById('errStoerungCategory');
+  const errMessage = document.getElementById('errStoerungMessage');
+  const errDatenschutz = document.getElementById('errStoerungDatenschutz');
+
+  // Dropzone Elements
+  const dropzone = document.getElementById('stoerungDropzone');
+  const fileInput = document.getElementById('stoerungFileInput');
+  const fileList = document.getElementById('stoerungFileList');
+
+  // --------------------------------------------------------------------------
+  // Helpers
+  // --------------------------------------------------------------------------
+  function showAlert(msg) {
+    if (!alertBox) return;
+    alertBox.textContent = msg;
+    alertBox.style.display = 'block';
+  }
+
+  function hideAlert() {
+    if (!alertBox) return;
+    alertBox.style.display = 'none';
+    alertBox.textContent = '';
+  }
+
+  function setFieldError(inputEl, errEl, msg) {
+    if (inputEl) inputEl.classList.add('has-error');
+    if (errEl) {
+      errEl.textContent = msg;
+      errEl.classList.add('visible');
+    }
+  }
+
+  function clearFieldError(inputEl, errEl) {
+    if (inputEl) inputEl.classList.remove('has-error');
+    if (errEl) {
+      errEl.textContent = '';
+      errEl.classList.remove('visible');
+    }
+  }
+
+  // Clear errors on input
+  if (inputName) inputName.addEventListener('input', () => clearFieldError(inputName, errName));
+  if (inputEmail) inputEmail.addEventListener('input', () => clearFieldError(inputEmail, errEmail));
+  if (inputPhone) inputPhone.addEventListener('input', () => clearFieldError(inputPhone, errPhone));
+  if (inputMessage) inputMessage.addEventListener('input', () => clearFieldError(inputMessage, errMessage));
+  if (inputDatenschutz) inputDatenschutz.addEventListener('change', () => clearFieldError(null, errDatenschutz));
+
+  function updateTracker(step) {
+    // Step items
+    for (let i = 1; i <= totalSteps; i++) {
+      const ind = indicators[i];
+      if (!ind) continue;
+      ind.classList.remove('active', 'completed');
+      if (i === step) {
+        ind.classList.add('active');
+      } else if (i < step) {
+        ind.classList.add('completed');
+      }
+    }
+
+    // Connectors
+    if (connectors[1]) {
+      if (step >= 2) connectors[1].classList.add('active');
+      else connectors[1].classList.remove('active');
+    }
+    if (connectors[2]) {
+      if (step >= 3) connectors[2].classList.add('active');
+      else connectors[2].classList.remove('active');
+    }
+  }
+
+  function updateNav(step) {
+    if (btnBack) {
+      btnBack.disabled = (step === 1);
+    }
+    if (btnNext && btnNextText && btnNextIcon) {
+      if (step === totalSteps) {
+        btnNextText.textContent = 'Störung melden';
+        btnNextIcon.innerHTML = `
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        `;
+      } else {
+        btnNextText.textContent = 'Weiter';
+        btnNextIcon.innerHTML = `
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        `;
+      }
+    }
+  }
+
+  function goToStep(targetStep) {
+    if (targetStep < 1 || targetStep > totalSteps) return;
+    hideAlert();
+
+    // Hide all step panels
+    Object.values(panels).forEach(panel => {
+      if (panel) {
+        panel.style.display = 'none';
+        panel.classList.remove('active');
+      }
+    });
+
+    // Show target step panel
+    const targetPanel = panels[targetStep];
+    if (targetPanel) {
+      targetPanel.style.display = 'block';
+      targetPanel.classList.add('active');
+    }
+
+    currentStep = targetStep;
+    updateTracker(currentStep);
+    updateNav(currentStep);
+
+    // Smooth scroll into view if card is scrolled off-screen
+    const rect = card.getBoundingClientRect();
+    if (rect.top < 60 || rect.top > window.innerHeight) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Step 2: Option Selection Cards
+  // --------------------------------------------------------------------------
+  const optionCards = card.querySelectorAll('.stoerung-option-card');
+  optionCards.forEach(c => {
+    const selectOption = () => {
+      optionCards.forEach(item => {
+        item.classList.remove('is-selected');
+        item.setAttribute('aria-checked', 'false');
+      });
+      c.classList.add('is-selected');
+      c.setAttribute('aria-checked', 'true');
+      state.category = c.getAttribute('data-value') || '';
+      clearFieldError(null, errCategory);
+    };
+
+    c.addEventListener('click', selectOption);
+    c.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        selectOption();
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // Step 3: File Upload Dropzone
+  // --------------------------------------------------------------------------
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
+
+    ['dragenter', 'dragover'].forEach(evt => {
+      dropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      dropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+      });
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      if (e.dataTransfer && e.dataTransfer.files) {
+        handleFiles(e.dataTransfer.files);
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files) {
+        handleFiles(fileInput.files);
+      }
+    });
+  }
+
+  function handleFiles(fileListObj) {
+    const allowed = ['image/jpeg', 'image/png', 'application/pdf', '.jpg', '.jpeg', '.png', '.pdf'];
+    const maxSizeBytes = 10 * 1024 * 1024; // 10MB
+
+    Array.from(fileListObj).forEach(file => {
+      const ext = '.' + file.name.split('.').pop().toLowerCase();
+      if (!allowed.includes(file.type) && !allowed.includes(ext)) {
+        showAlert(`Format nicht unterstützt: ${file.name} (Erlaubt: JPG, PNG, PDF)`);
+        return;
+      }
+      if (file.size > maxSizeBytes) {
+        showAlert(`Datei zu groß: ${file.name} (Maximal 10 MB erlaubt)`);
+        return;
+      }
+      // Check if duplicate
+      if (!state.files.some(f => f.name === file.name && f.size === file.size)) {
+        state.files.push(file);
+      }
+    });
+    renderFileList();
+  }
+
+  function renderFileList() {
+    if (!fileList) return;
+    fileList.innerHTML = '';
+    state.files.forEach((file, index) => {
+      const item = document.createElement('div');
+      item.className = 'stoerung-file-item';
+      const sizeStr = (file.size / 1024 > 1000) ? (file.size / (1024 * 1024)).toFixed(1) + ' MB' : Math.round(file.size / 1024) + ' KB';
+      item.innerHTML = `
+        <span>${escapeHtml(file.name)} <small style="color:#6B7280;">(${sizeStr})</small></span>
+        <button type="button" class="stoerung-file-remove" aria-label="Datei entfernen" data-index="${index}">&times;</button>
+      `;
+      const removeBtn = item.querySelector('.stoerung-file-remove');
+      if (removeBtn) {
+        removeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          state.files.splice(index, 1);
+          renderFileList();
+        });
+      }
+      fileList.appendChild(item);
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // Step Validation
+  // --------------------------------------------------------------------------
+  function validateStep(step) {
+    let isValid = true;
+    hideAlert();
+
+    if (step === 1) {
+      state.name = inputName ? inputName.value.trim() : '';
+      state.company = inputCompany ? inputCompany.value.trim() : '';
+      state.email = inputEmail ? inputEmail.value.trim() : '';
+      state.phone = inputPhone ? inputPhone.value.trim() : '';
+
+      if (!state.name) {
+        setFieldError(inputName, errName, 'Bitte geben Sie Ihren Namen ein.');
+        isValid = false;
+      } else {
+        clearFieldError(inputName, errName);
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!state.email || !emailRegex.test(state.email)) {
+        setFieldError(inputEmail, errEmail, 'Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+        isValid = false;
+      } else {
+        clearFieldError(inputEmail, errEmail);
+      }
+
+      const phoneClean = state.phone.replace(/[\s\-\/\(\)]/g, '');
+      if (!state.phone || phoneClean.length < 6) {
+        setFieldError(inputPhone, errPhone, 'Bitte geben Sie eine gültige Telefonnummer ein.');
+        isValid = false;
+      } else {
+        clearFieldError(inputPhone, errPhone);
+      }
+
+      if (!isValid) {
+        showAlert('Bitte füllen Sie alle erforderlichen Pflichtfelder korrekt aus.');
+      }
+    } else if (step === 2) {
+      if (!state.category) {
+        setFieldError(null, errCategory, 'Bitte wählen Sie die Art der Störung aus.');
+        isValid = false;
+      } else {
+        clearFieldError(null, errCategory);
+      }
+    } else if (step === 3) {
+      state.message = inputMessage ? inputMessage.value.trim() : '';
+      state.datenschutz = inputDatenschutz ? inputDatenschutz.checked : false;
+
+      if (!state.message || state.message.length < 5) {
+        setFieldError(inputMessage, errMessage, 'Bitte beschreiben Sie das aufgetretene Problem kurz.');
+        isValid = false;
+      } else {
+        clearFieldError(inputMessage, errMessage);
+      }
+
+      if (!state.datenschutz) {
+        setFieldError(null, errDatenschutz, 'Bitte stimmen Sie der Datenschutzerklärung zu.');
+        isValid = false;
+      } else {
+        clearFieldError(null, errDatenschutz);
+      }
+
+      if (!isValid) {
+        showAlert('Bitte überprüfen Sie Ihre Eingaben und stimmen Sie der Datenschutzerklärung zu.');
+      }
+    }
+
+    return isValid;
+  }
+
+  // --------------------------------------------------------------------------
+  // Navigation Event Handlers
+  // --------------------------------------------------------------------------
+  if (btnNext) {
+    btnNext.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isSubmitting) return;
+
+      if (!validateStep(currentStep)) return;
+
+      if (currentStep < totalSteps) {
+        goToStep(currentStep + 1);
+      } else {
+        submitStoerungReport();
+      }
+    });
+  }
+
+  if (btnBack) {
+    btnBack.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isSubmitting) return;
+
+      if (currentStep > 1) {
+        goToStep(currentStep - 1);
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // Submission
+  // --------------------------------------------------------------------------
+  function submitStoerungReport() {
+    isSubmitting = true;
+    btnNext.disabled = true;
+    btnNextText.textContent = 'Wird übermittelt...';
+
+    const timestamp = new Date().toISOString();
+    const formattedDate = new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
+    const refId = '#ST-' + Math.floor(1000 + Math.random() * 9000);
+
+    const payload = {
+      subject: 'Neue Störungsmeldung – Malawko Website',
+      referenceId: refId,
+      submittedAt: timestamp,
+      formattedDate: formattedDate,
+      customer: {
+        name: state.name,
+        company: state.company || null,
+        email: state.email,
+        phone: state.phone
+      },
+      fault: {
+        category: state.category,
+        message: state.message,
+        attachments: state.files.map(f => ({ name: f.name, size: f.size, type: f.type }))
+      },
+      privacyConsent: true,
+      recipient: 'kontakt@elektrotechnik-malawko.de'
+    };
+
+    console.log('--- NEUE STÖRUNGSMELDUNG (STRUKTURIERTE E-MAIL) ---', payload);
+
+    // Reliable transition to confirmation panel
+    setTimeout(() => {
+      // Hide form steps and header
+      form.style.display = 'none';
+      const cardHeader = card.querySelector('.stoerung-card-header');
+      if (cardHeader) cardHeader.style.display = 'none';
+      const tracker = card.querySelector('.stoerung-progress-tracker');
+      if (tracker) tracker.style.display = 'none';
+
+      // Update confirmation details
+      const confirmRef = document.getElementById('stoerungConfirmRef');
+      const confirmCat = document.getElementById('stoerungConfirmCategory');
+      const confirmContact = document.getElementById('stoerungConfirmContact');
+
+      if (confirmRef) confirmRef.textContent = refId;
+      if (confirmCat) confirmCat.textContent = state.category;
+      if (confirmContact) {
+        confirmContact.textContent = state.name + (state.company ? ` (${state.company})` : '') + ` • ${state.email}`;
+      }
+
+      if (confirmationPanel) {
+        confirmationPanel.style.display = 'block';
+        confirmationPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      isSubmitting = false;
+      btnNext.disabled = false;
+      btnNextText.textContent = 'Störung melden';
+    }, 600);
+  }
+
+  // --------------------------------------------------------------------------
+  // Reset
+  // --------------------------------------------------------------------------
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      // Reset state
+      state.name = '';
+      state.company = '';
+      state.email = '';
+      state.phone = '';
+      state.category = 'Stromausfall / keine Spannung';
+      state.message = '';
+      state.files = [];
+      state.datenschutz = false;
+
+      // Reset form controls
+      form.reset();
+      renderFileList();
+
+      // Reset option cards
+      optionCards.forEach((c, idx) => {
+        if (idx === 0) {
+          c.classList.add('is-selected');
+          c.setAttribute('aria-checked', 'true');
+        } else {
+          c.classList.remove('is-selected');
+          c.setAttribute('aria-checked', 'false');
+        }
+      });
+
+      // Show header & form, hide confirmation
+      const cardHeader = card.querySelector('.stoerung-card-header');
+      if (cardHeader) cardHeader.style.display = 'block';
+      const tracker = card.querySelector('.stoerung-progress-tracker');
+      if (tracker) tracker.style.display = 'flex';
+      form.style.display = 'block';
+      if (confirmationPanel) confirmationPanel.style.display = 'none';
+
+      goToStep(1);
+    });
+  }
+
+  // Handle direct navigation via URL hash (#stoerung or #stoerung-melden)
+  if (window.location.hash === '#stoerung' || window.location.hash === '#stoerung-melden') {
+    setTimeout(() => {
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+  }
+}
+
+/**
  * Interactive Service Selector for Solutions in Detail (Elektroinstallation Page)
  */
 function initSolutionsSelector() {
@@ -1536,4 +2049,79 @@ function initScrollReveal() {
   } else {
     toObserve.forEach(el => el.classList.add('is-revealed'));
   }
+}
+
+
+/**
+ * Homepage Hero Ken Burns Slider
+ */
+function initHomeHeroSlider() {
+  const wrapper = document.querySelector('.hero-slider-wrapper');
+  if (!wrapper) return;
+
+  const slides = wrapper.querySelectorAll('.hero-slide');
+  const dots = wrapper.querySelectorAll('.hero-slider-dot');
+  if (slides.length <= 1) return;
+
+  let currentIndex = 0;
+  let intervalId = null;
+  const slideDuration = 7000; // Exactly 7s per slide as requested
+
+  function goToSlide(index) {
+    if (index === currentIndex) return;
+
+    // Remove active from current
+    slides[currentIndex].classList.remove('active');
+    if (dots[currentIndex]) {
+      dots[currentIndex].classList.remove('active');
+      dots[currentIndex].setAttribute('aria-selected', 'false');
+    }
+
+    // Set new index
+    currentIndex = (index + slides.length) % slides.length;
+
+    // Add active to new
+    slides[currentIndex].classList.add('active');
+    if (dots[currentIndex]) {
+      dots[currentIndex].classList.add('active');
+      dots[currentIndex].setAttribute('aria-selected', 'true');
+    }
+  }
+
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    intervalId = setInterval(nextSlide, slideDuration);
+  }
+
+  function stopAutoplay() {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+  }
+
+  // Dot click handlers
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.getAttribute('data-slide'), 10);
+      if (!isNaN(idx)) {
+        goToSlide(idx);
+        startAutoplay();
+      }
+    });
+  });
+
+  // Pause on hover over hero section if user is interacting with desktop mouse
+  const heroSection = document.querySelector('.hero-section');
+  if (heroSection) {
+    heroSection.addEventListener('mouseenter', stopAutoplay);
+    heroSection.addEventListener('mouseleave', startAutoplay);
+  }
+
+  // Start autoplay
+  startAutoplay();
 }
