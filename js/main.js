@@ -147,7 +147,7 @@ function initMobileMenu() {
  */
 function initServicesDropdown() {
   const dropdownTrigger = document.getElementById('servicesDropdownTrigger');
-  const toggleBtn = dropdownTrigger ? dropdownTrigger.querySelector('.dropdown-toggle') : null;
+  const toggleBtn = dropdownTrigger ? (dropdownTrigger.querySelector('.dropdown-toggle-btn') || dropdownTrigger.querySelector('.dropdown-toggle')) : null;
   const dropdown = document.getElementById('servicesDropdown');
 
   if (!dropdownTrigger || !toggleBtn || !dropdown) return;
@@ -1302,7 +1302,7 @@ function initSolutionsSelector() {
     verteiler: {
       title: 'Verteilertechnik',
       desc: 'Planung, Aufbau und Modernisierung von Verteilungen – für eine sichere und zuverlässige Stromversorgung in Wohn- und Gewerbegebäuden.',
-      image: 'assets/images/service-clean-v3-1-2x.jpg',
+      image: 'assets/images/client/solution-elektro.jpg',
       imageAlt: 'Fachgerecht verdrahteter Elektro-Verteilerkasten mit Sicherungsautomaten',
       iconSvg: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>',
       checklist: [
@@ -1315,7 +1315,7 @@ function initSolutionsSelector() {
     beleuchtung: {
       title: 'Beleuchtungsinstallation',
       desc: 'Individuelle Lichtplanung und energieeffiziente LED-Beleuchtungssysteme für stimmungsvolle Wohnräume und funktionale Arbeitsbereiche.',
-      image: 'assets/images/project-lighting-rings-2x.jpg',
+      image: 'assets/images/client/solution-beleuchtung.jpg',
       imageAlt: 'Moderne energieeffiziente Deckenbeleuchtung und LED-Lichtkonzepte',
       iconSvg: '<path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.5 4.5 3 6h8c1.5-1.5 3-3.5 3-6a7 7 0 0 0-7-7z"></path>',
       checklist: [
@@ -1341,7 +1341,7 @@ function initSolutionsSelector() {
     smarthome: {
       title: 'Smart Home & KNX',
       desc: 'Intelligente Gebäudesteuerung vernetzt Licht, Heizung, Beschattung und Sicherheit zu einem harmonischen, energieeffizienten Gesamtsystem.',
-      image: 'assets/images/service-clean-v3-4-2x.jpg',
+      image: 'assets/images/client/solution-smarthome.jpg',
       imageAlt: 'Wandmontiertes Smart Home Touch-Panel zur intelligenten Gebäudesteuerung',
       iconSvg: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>',
       checklist: [
@@ -1354,7 +1354,7 @@ function initSolutionsSelector() {
     emobilitaet: {
       title: 'Wallbox & E-Mobilität',
       desc: 'Zukunftssichere Ladelösungen für private Haushalte, Mehrfamilienhäuser und gewerbliche Fuhrparks inklusive Lastmanagement und Netzanmeldung.',
-      image: 'assets/images/service-clean-v3-3-2x.jpg',
+      image: 'assets/images/client/solution-wallbox.jpg',
       imageAlt: 'Moderne Wallbox-Ladestation an einer Wohngebäude-Außenwand',
       iconSvg: '<rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 15h10"></path><path d="M10 9l4 6"></path>',
       checklist: [

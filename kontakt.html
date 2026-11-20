@@ -49,18 +49,21 @@
             <a href="/#ueber-uns" class="nav-link">Über uns</a>
           </li>
           <li class="nav-item has-dropdown" id="servicesDropdownTrigger">
-            <button 
-              type="button" 
-              class="nav-link dropdown-toggle" 
-              aria-expanded="false" 
-              aria-haspopup="true"
-              aria-controls="servicesDropdown"
-            >
-              <span>Leistungen</span>
-              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <div class="nav-link-dropdown-wrap">
+              <a href="/leistungen" class="nav-link nav-link-main">Leistungen</a>
+              <button 
+                type="button" 
+                class="dropdown-toggle-btn" 
+                aria-label="Leistungen Untermenü öffnen"
+                aria-expanded="false" 
+                aria-haspopup="true"
+                aria-controls="servicesDropdown"
+              >
+                <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             
             <!-- Services Dropdown (Liquid Glass Card) -->
             <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
@@ -181,13 +184,16 @@
           <li><a href="/" class="mobile-nav-link">Startseite</a></li>
           <li><a href="/#ueber-uns" class="mobile-nav-link">Über uns</a></li>
           <li class="mobile-has-sub">
-            <button type="button" class="mobile-nav-link mobile-sub-toggle" id="mobileSubToggle" aria-expanded="false">
-              <span>Leistungen</span>
-              <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <div class="mobile-sub-header">
+              <a href="/leistungen" class="mobile-nav-link">Leistungen</a>
+              <button type="button" class="mobile-sub-toggle-btn" id="mobileSubToggle" aria-label="Leistungen Untermenü umschalten" aria-expanded="false">
+                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             <ul class="mobile-submenu" id="mobileSubmenu">
+              <li><a href="/leistungen" class="mobile-submenu-overview"><strong>&rarr; Alle Leistungen im Überblick</strong></a></li>
               <li><a href="/elektroinstallation">1. Elektroinstallation</a></li>
               <li><a href="/zaehler-hausanschluss">2. Zähler und Hausanschluss</a></li>
               <li><a href="/wallbox-emobilitaet">3. Wallbox &amp; E-Mobilität</a></li>
@@ -224,8 +230,8 @@
     <section class="contact-hero-section" id="hero" aria-labelledby="contactHeroTitle">
       <div class="contact-hero-bg-wrap" aria-hidden="true">
         <picture>
-          <source srcset="assets/images/contact-hero-bg-2x.webp 2x, assets/images/contact-hero-bg.webp 1x" type="image/webp">
-          <img src="assets/images/contact-hero-bg.jpg" alt="Elektroniker mit Smart Home Steuerung vor moderner Villa bei Dämmerung" class="contact-hero-bg-img" fetchpriority="high">
+          <source srcset="assets/images/client/hero-kontakt.webp" type="image/webp">
+          <img src="assets/images/client/hero-kontakt.jpg" alt="Kontakt Malawko Elektrotechnik Meisterbetrieb Hamburg" class="contact-hero-bg-img" fetchpriority="high">
         </picture>
         <div class="contact-hero-overlay"></div>
       </div>
@@ -428,8 +434,8 @@
         <!-- Right: Architectural Photograph of Company Premises & Van -->
         <div class="direkter-kontakt-right">
           <picture>
-            <source srcset="assets/images/contact-office-premises-2x.webp 2x, assets/images/contact-office-premises.webp 1x" type="image/webp">
-            <img src="assets/images/contact-office-premises.jpg" alt="Malawko Elektrotechnik Firmenstandort mit beleuchtetem Eingang und Firmenfahrzeug" class="direkter-office-img" loading="lazy">
+            <source srcset="assets/images/client/contact-office-real-2x.webp 2x, assets/images/client/contact-office-real.webp 1x" type="image/webp">
+            <img src="assets/images/client/contact-office-real.jpg" alt="Malawko Elektrotechnik Einsatzfahrzeug vor Ort in Hamburg" class="direkter-office-img" loading="lazy">
           </picture>
         </div>
       </div>

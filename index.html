@@ -48,18 +48,21 @@
             <a href="#ueber-uns" class="nav-link">Über uns</a>
           </li>
           <li class="nav-item has-dropdown" id="servicesDropdownTrigger">
-            <button 
-              type="button" 
-              class="nav-link dropdown-toggle" 
-              aria-expanded="false" 
-              aria-haspopup="true"
-              aria-controls="servicesDropdown"
-            >
-              <span>Leistungen</span>
-              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <div class="nav-link-dropdown-wrap">
+              <a href="/leistungen" class="nav-link nav-link-main">Leistungen</a>
+              <button 
+                type="button" 
+                class="dropdown-toggle-btn" 
+                aria-label="Leistungen Untermenü öffnen"
+                aria-expanded="false" 
+                aria-haspopup="true"
+                aria-controls="servicesDropdown"
+              >
+                <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             
             <!-- Services Dropdown (Liquid Glass Card) -->
             <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
@@ -183,13 +186,16 @@
           <li><a href="/" class="mobile-nav-link active">Startseite</a></li>
           <li><a href="#ueber-uns" class="mobile-nav-link">Über uns</a></li>
           <li class="mobile-has-sub">
-            <button type="button" class="mobile-nav-link mobile-sub-toggle" id="mobileSubToggle" aria-expanded="false">
-              <span>Leistungen</span>
-              <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <div class="mobile-sub-header">
+              <a href="/leistungen" class="mobile-nav-link">Leistungen</a>
+              <button type="button" class="mobile-sub-toggle-btn" id="mobileSubToggle" aria-label="Leistungen Untermenü umschalten" aria-expanded="false">
+                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             <ul class="mobile-submenu" id="mobileSubmenu">
+              <li><a href="/leistungen" class="mobile-submenu-overview"><strong>&rarr; Alle Leistungen im Überblick</strong></a></li>
               <li><a href="/elektroinstallation">1. Elektroinstallation</a></li>
               <li><a href="/zaehler-hausanschluss">2. Zähler und Hausanschluss</a></li>
               <li><a href="/wallbox-emobilitaet">3. Wallbox &amp; E-Mobilität</a></li>
@@ -363,11 +369,10 @@
         <div class="about-visual-col">
           <div class="about-collage-wrapper">
             <picture>
-              <source srcset="assets/images/about-collage-2x.webp 2x, assets/images/about-collage.webp 1x" type="image/webp">
+              <source srcset="assets/images/client/about-van-team.webp" type="image/webp">
               <img 
-                src="assets/images/about-collage.png" 
-                srcset="assets/images/about-collage-2x.png 2x" 
-                alt="Elektrotechnik Malawko Fachbetrieb — Elektroinstallation, Wallbox Ladeinfrastruktur und Photovoltaik" 
+                src="assets/images/client/about-van-team.jpg" 
+                alt="Elektrotechnik Malawko Fachbetrieb — Einsatzfahrzeug und Kundenprojekt in Hamburg" 
                 class="about-collage-img"
                 loading="lazy"
                 width="415" 
@@ -487,8 +492,8 @@
           <a href="/elektroinstallation" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-1.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-1.jpg" alt="Elektroinstallation Verteilerkasten" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-1.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-1.jpg" alt="Elektroinstallation Verteilerkasten" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -511,8 +516,8 @@
           <a href="/zaehler-hausanschluss" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-2.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-2.jpg" alt="Zähler und Hausanschluss" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-2.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-2.jpg" alt="Zähler und Hausanschluss" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -537,8 +542,8 @@
           <a href="/wallbox-emobilitaet" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-3.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-3.jpg" alt="Wallbox und E-Mobilität" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-3.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-3.jpg" alt="Wallbox und E-Mobilität" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -564,8 +569,8 @@
           <a href="/smart-home" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-4.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-4.jpg" alt="Smart Home und KNX" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-4.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-4.jpg" alt="Smart Home und KNX" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -589,8 +594,8 @@
           <a href="/beleuchtung" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-5.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-5.jpg" alt="Moderne Beleuchtung" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-5.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-5.jpg" alt="Moderne Beleuchtung" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -615,8 +620,8 @@
           <a href="/netzwerk-kommunikation" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-6.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-6.jpg" alt="Netzwerk und Kommunikation" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-6.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-6.jpg" alt="Netzwerk und Kommunikation" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -643,8 +648,8 @@
           <a href="/pruefung-wartung" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-7.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-7.jpg" alt="Prüfung und Wartung" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-7.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-7.jpg" alt="Prüfung und Wartung" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -669,8 +674,8 @@
           <a href="/stoerung-reparatur" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-8.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-8.jpg" alt="Störung und Reparatur Kundendienst" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-8.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-8.jpg" alt="Störung und Reparatur Kundendienst" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -693,8 +698,8 @@
           <a href="/photovoltaik" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-9.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-9.jpg" alt="Photovoltaik und Solaranlagen" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-9.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-9.jpg" alt="Photovoltaik und Solaranlagen" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -725,8 +730,8 @@
           <a href="/waermepumpe" class="service-bento-card">
             <div class="service-card-photo-wrap">
               <picture>
-                <source srcset="assets/images/service-clean-v3-10.webp" type="image/webp">
-                <img src="assets/images/service-clean-v3-10.jpg" alt="Wärmepumpen-Elektrik und § 14a EnWG" class="service-card-photo" loading="lazy">
+                <source srcset="assets/images/client/service-bento-10.webp" type="image/webp">
+                <img src="assets/images/client/service-bento-10.jpg" alt="Wärmepumpen-Elektrik und § 14a EnWG" class="service-card-photo" loading="lazy">
               </picture>
             </div>
             <div class="service-card-glass-pill">
@@ -883,8 +888,8 @@
           <div class="project-bento-card project-card-large">
             <div class="project-bg-img-wrap">
               <picture>
-                <source srcset="assets/images/project-1.webp" type="image/webp">
-                <img src="assets/images/project-1.jpg" alt="Elektroinstallation Einfamilienhaus" class="project-bg-img" loading="lazy">
+                <source srcset="assets/images/client/ref-project-neubau.webp" type="image/webp">
+                <img src="assets/images/client/ref-project-neubau.jpg" alt="Elektroinstallation und Solaranlage Einfamilienhaus" class="project-bg-img" loading="lazy">
               </picture>
               <div class="project-card-overlay"></div>
             </div>
@@ -893,7 +898,7 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
               </svg>
-              <span>Neubau</span>
+              <span>Neubau &amp; Solar</span>
             </div>
 
             <div class="project-card-bottom-glass">
@@ -931,8 +936,8 @@
             <div class="project-bento-card project-card-small">
               <div class="project-bg-img-wrap">
                 <picture>
-                  <source srcset="assets/images/project-2.webp" type="image/webp">
-                  <img src="assets/images/project-2.jpg" alt="Wallbox-Installation" class="project-bg-img" loading="lazy">
+                  <source srcset="assets/images/client/ref-project-wallbox.webp" type="image/webp">
+                  <img src="assets/images/client/ref-project-wallbox.jpg" alt="Wallbox-Installation" class="project-bg-img" loading="lazy">
                 </picture>
                 <div class="project-card-overlay"></div>
               </div>
@@ -962,8 +967,8 @@
             <div class="project-bento-card project-card-small">
               <div class="project-bg-img-wrap">
                 <picture>
-                  <source srcset="assets/images/project-3.webp" type="image/webp">
-                  <img src="assets/images/project-3.jpg" alt="Zähleranlage und Hausanschluss" class="project-bg-img" loading="lazy">
+                  <source srcset="assets/images/client/ref-project-zaehler.webp" type="image/webp">
+                  <img src="assets/images/client/ref-project-zaehler.jpg" alt="Zähleranlage und Hausanschluss" class="project-bg-img" loading="lazy">
                 </picture>
                 <div class="project-card-overlay"></div>
               </div>
@@ -1087,8 +1092,8 @@
         <div class="why-visual-col">
           <div class="why-photo-card">
             <picture>
-              <source srcset="assets/images/why-van-clean.webp" type="image/webp">
-              <img src="assets/images/why-van-clean.jpg" alt="Malawko Elektrotechnik Einsatzfahrzeug vor modernem Wohnhaus" class="why-van-img" loading="lazy">
+              <source srcset="assets/images/client/why-van-real.webp" type="image/webp">
+              <img src="assets/images/client/why-van-real.jpg" alt="Malawko Elektrotechnik Einsatzfahrzeug vor Ort" class="why-van-img" loading="lazy">
             </picture>
 
             <!-- Floating Stats Bar -->

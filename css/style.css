@@ -232,6 +232,96 @@ img, picture {
   transform: rotate(180deg);
 }
 
+/* Split Dropdown Trigger: Main clickable link + chevron button */
+.nav-link-dropdown-wrap {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  border-radius: 9999px;
+  transition: all var(--transition-fast);
+}
+
+.nav-link-dropdown-wrap:hover {
+  background: rgba(217, 84, 30, 0.08);
+}
+
+.nav-link-dropdown-wrap .nav-link-main {
+  padding: 6px 4px 6px 14px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-primary-text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.nav-link-dropdown-wrap .nav-link-main:hover {
+  color: var(--color-orange);
+}
+
+.nav-link-dropdown-wrap.active,
+.nav-link-dropdown-wrap .nav-link-main.active {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border-radius: 9999px;
+}
+
+.nav-link-dropdown-wrap.active .dropdown-toggle-btn,
+.nav-link-dropdown-wrap .nav-link-main.active ~ .dropdown-toggle-btn {
+  color: var(--color-white);
+}
+
+.dropdown-toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 6px 10px 6px 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-text);
+  transition: color var(--transition-fast);
+}
+
+.dropdown-toggle-btn:hover {
+  color: var(--color-orange);
+}
+
+/* Mobile Submenu Split Header */
+.mobile-sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile-sub-header .mobile-nav-link {
+  flex: 1;
+}
+
+.mobile-sub-toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-text);
+}
+
+.mobile-has-sub.open .mobile-sub-toggle-btn .chevron-icon,
+.mobile-sub-toggle-btn[aria-expanded="true"] .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.mobile-submenu-overview {
+  font-weight: 700 !important;
+  color: var(--color-orange) !important;
+  padding: 10px 14px !important;
+  display: block;
+}
+
 /* --------------------------------------------------------------------------
    4. Services Dropdown Menu (Liquid Glass Card)
    -------------------------------------------------------------------------- */

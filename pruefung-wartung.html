@@ -49,18 +49,21 @@
             <a href="/#ueber-uns" class="nav-link">Über uns</a>
           </li>
           <li class="nav-item has-dropdown active" id="servicesDropdownTrigger">
-            <button 
-              type="button" 
-              class="nav-link dropdown-toggle active" 
-              aria-expanded="false" 
-              aria-haspopup="true"
-              aria-controls="servicesDropdown"
-            >
-              <span>Leistungen</span>
-              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <div class="nav-link-dropdown-wrap active">
+              <a href="/leistungen" class="nav-link nav-link-main active">Leistungen</a>
+              <button 
+                type="button" 
+                class="dropdown-toggle-btn" 
+                aria-label="Leistungen Untermenü öffnen"
+                aria-expanded="false" 
+                aria-haspopup="true"
+                aria-controls="servicesDropdown"
+              >
+                <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             
             <!-- Services Dropdown (Liquid Glass Card) -->
             <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
@@ -181,13 +184,16 @@
           <li><a href="/" class="mobile-nav-link">Startseite</a></li>
           <li><a href="/#ueber-uns" class="mobile-nav-link">Über uns</a></li>
           <li class="mobile-has-sub">
-            <button type="button" class="mobile-nav-link mobile-sub-toggle active" id="mobileSubToggle" aria-expanded="true">
-              <span>Leistungen</span>
-              <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <div class="mobile-sub-header">
+              <a href="/leistungen" class="mobile-nav-link active">Leistungen</a>
+              <button type="button" class="mobile-sub-toggle-btn" id="mobileSubToggle" aria-label="Leistungen Untermenü umschalten" aria-expanded="false">
+                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             <ul class="mobile-submenu open" id="mobileSubmenu">
+              <li><a href="/leistungen" class="mobile-submenu-overview"><strong>&rarr; Alle Leistungen im Überblick</strong></a></li>
               <li><a href="/elektroinstallation">1. Elektroinstallation</a></li>
               <li><a href="/zaehler-hausanschluss">2. Zähler und Hausanschluss</a></li>
               <li><a href="/wallbox-emobilitaet">3. Wallbox &amp; E-Mobilität</a></li>
@@ -224,8 +230,8 @@
     <section class="service-hero-section" id="hero" aria-labelledby="serviceHeroTitle">
       <div class="service-hero-bg-wrap" aria-hidden="true">
         <picture>
-          <source srcset="assets/images/service-hero-pruefung-2x.webp" type="image/webp">
-          <img src="assets/images/service-hero-pruefung.jpg" alt="Prüfung & Wartung Meisterbetrieb Malawko" class="service-hero-bg-img" fetchpriority="high">
+          <source srcset="assets/images/client/hero-pruefung.webp" type="image/webp">
+          <img src="assets/images/client/hero-pruefung.jpg" alt="Prüfung und Wartung DGUV V3 E-Check Malawko" class="service-hero-bg-img" fetchpriority="high">
         </picture>
         <div class="service-hero-overlay"></div>
       </div>
@@ -387,7 +393,7 @@
         <!-- Right: Overlapping Image Composition -->
         <div class="service-intro-right">
           <div class="service-intro-main-photo-wrap">
-            <img src="assets/images/project-1-2x.jpg" alt="Prüfung & Wartung Referenzobjekt" class="service-intro-main-photo" loading="lazy">
+            <img src="assets/images/client/intro-pruefung.jpg" alt="Fachgerechte Messung und Prüfung von Elektroanlagen" class="service-intro-main-photo" loading="lazy">
           </div>
           <div class="service-intro-inset-photo-wrap">
             <img src="assets/images/service-clean-v3-7-2x.jpg" alt="Prüfung & Wartung Detailansicht" class="service-intro-inset-photo" loading="lazy">
@@ -612,7 +618,7 @@
           <!-- Col 2: Center Photo Card -->
           <div class="solutions-photo-card">
             <img 
-              src="assets/images/service-clean-v3-7-2x.jpg" 
+              src="assets/images/client/solution-pruefung.jpg" 
               alt="Prüfung eines Elektrogeräts mit VDE Prüfgerät" 
               class="solutions-photo-img" 
               id="solutionsPhotoImg"
@@ -1057,7 +1063,7 @@
   "dguv3": {
     "title": "DGUV Vorschrift 3 für Betriebe & Praxen",
     "desc": "Als Arbeitgeber sind Sie gesetzlich verpflichtet, alle elektrischen Geräte und Anlagen regelmäßig auf Arbeitssicherheit prüfen zu lassen. Wir führen die Prüfung effizient und störungsarm durch.",
-    "image": "assets/images/service-clean-v3-7-2x.jpg",
+    "image": "assets/images/client/solution-pruefung.jpg",
     "imageAlt": "Prüfung eines Elektrogeräts mit VDE Prüfgerät",
     "iconSvg": "<path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"></path><rect x=\"8\" y=\"2\" width=\"8\" height=\"4\" rx=\"1\" ry=\"1\"></rect><polyline points=\"9 14 11 16 15 11\"></polyline>",
     "checklist": [

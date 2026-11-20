@@ -46,18 +46,21 @@
             <a href="/#ueber-uns" class="nav-link">Über uns</a>
           </li>
           <li class="nav-item has-dropdown" id="servicesDropdownTrigger">
-            <button 
-              type="button" 
-              class="nav-link dropdown-toggle" 
-              aria-expanded="false" 
-              aria-haspopup="true"
-              aria-controls="servicesDropdown"
-            >
-              <span>Leistungen</span>
-              <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <div class="nav-link-dropdown-wrap">
+              <a href="/leistungen" class="nav-link nav-link-main">Leistungen</a>
+              <button 
+                type="button" 
+                class="dropdown-toggle-btn" 
+                aria-label="Leistungen Untermenü öffnen"
+                aria-expanded="false" 
+                aria-haspopup="true"
+                aria-controls="servicesDropdown"
+              >
+                <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             
             <!-- Services Dropdown (Liquid Glass Card) -->
             <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
@@ -178,13 +181,16 @@
           <li><a href="/" class="mobile-nav-link">Startseite</a></li>
           <li><a href="/#ueber-uns" class="mobile-nav-link">Über uns</a></li>
           <li class="mobile-has-sub">
-            <button type="button" class="mobile-nav-link mobile-sub-toggle" id="mobileSubToggle" aria-expanded="false">
-              <span>Leistungen</span>
-              <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <div class="mobile-sub-header">
+              <a href="/leistungen" class="mobile-nav-link">Leistungen</a>
+              <button type="button" class="mobile-sub-toggle-btn" id="mobileSubToggle" aria-label="Leistungen Untermenü umschalten" aria-expanded="false">
+                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
             <ul class="mobile-submenu" id="mobileSubmenu">
+              <li><a href="/leistungen" class="mobile-submenu-overview"><strong>&rarr; Alle Leistungen im Überblick</strong></a></li>
               <li><a href="/elektroinstallation">1. Elektroinstallation</a></li>
               <li><a href="/zaehler-hausanschluss">2. Zähler und Hausanschluss</a></li>
               <li><a href="/wallbox-emobilitaet">3. Wallbox &amp; E-Mobilität</a></li>
@@ -221,8 +227,8 @@
     <section class="projects-hero-section" id="hero" aria-labelledby="heroTitle">
       <div class="projects-hero-bg-wrap" aria-hidden="true">
         <picture>
-          <source srcset="assets/images/hero-bg-2x.webp 2x, assets/images/hero-bg.webp 1x" type="image/webp">
-          <img src="assets/images/hero-bg.jpg" alt="Exklusive moderne Villa mit stimmungsvoller Beleuchtung" class="projects-hero-bg-img" fetchpriority="high">
+          <source srcset="assets/images/client/hero-projekte.webp" type="image/webp">
+          <img src="assets/images/client/hero-projekte.jpg" alt="Realisierte Kundenprojekte Malawko Elektrotechnik Hamburg" class="projects-hero-bg-img" fetchpriority="high">
         </picture>
         <div class="projects-hero-overlay"></div>
       </div>
@@ -314,7 +320,7 @@
           </div>
         </div>
 
-        <!-- Filter Navigation Pills -->
+                <!-- Filter Navigation Pills -->
         <div class="project-filter-bar" role="tablist" aria-label="Projekte nach Gewerk filtern">
           <button type="button" class="filter-pill active" data-filter="all" role="tab" aria-selected="true">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -333,12 +339,13 @@
             <span>Elektroinstallation</span>
           </button>
 
-          <button type="button" class="filter-pill" data-filter="smart-home" role="tab" aria-selected="false">
+          <button type="button" class="filter-pill" data-filter="zaehler" role="tab" aria-selected="false">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+              <line x1="8" y1="6" x2="16" y2="6"></line>
+              <circle cx="12" cy="14" r="3"></circle>
             </svg>
-            <span>Smart Home</span>
+            <span>Zähler &amp; Hausanschluss</span>
           </button>
 
           <button type="button" class="filter-pill" data-filter="wallbox" role="tab" aria-selected="false">
@@ -349,6 +356,37 @@
               <circle cx="18.5" cy="18.5" r="2.5"></circle>
             </svg>
             <span>Wallbox &amp; E-Mobilität</span>
+          </button>
+
+          <button type="button" class="filter-pill" data-filter="smart-home" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Smart Home</span>
+          </button>
+
+          <button type="button" class="filter-pill" data-filter="photovoltaik" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+            </svg>
+            <span>Photovoltaik</span>
+          </button>
+
+          <button type="button" class="filter-pill" data-filter="waermepumpe" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="18" rx="2"></rect>
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="7" x2="12" y2="17"></line>
+              <line x1="7" y1="12" x2="17" y2="12"></line>
+            </svg>
+            <span>Wärmepumpe</span>
           </button>
 
           <button type="button" class="filter-pill" data-filter="beleuchtung" role="tab" aria-selected="false">
@@ -377,14 +415,26 @@
             </svg>
             <span>Wartung &amp; Service</span>
           </button>
+
+          <button type="button" class="filter-pill" data-filter="stoerung" role="tab" aria-selected="false">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <span>Störung &amp; Notdienst</span>
+          </button>
         </div>
 
-        <!-- 3 Featured Project Showcase Cards -->
+        <!-- 10 Featured Project Showcase Cards (All Services) -->
         <div class="featured-projects-grid" id="featuredProjectsGrid">
-          <!-- Card 1: Einfamilienhaus – Komplettinstallation -->
+          <!-- Card 1: Elektroinstallation -->
           <article class="project-card-item" data-category="elektro" tabindex="0" aria-label="Einfamilienhaus – Komplettinstallation Projekt ansehen">
             <div class="project-card-photo-wrap">
-              <img src="assets/images/project-1-2x.webp" alt="Moderne Villa mit smarter Außenbeleuchtung" class="project-card-photo" loading="lazy">
+              <picture>
+                <source srcset="assets/images/client/proj-card-elektro.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-elektro.jpg" alt="Hauptverteilung und Elektroinstallation im Einfamilienhaus" class="project-card-photo" loading="lazy">
+              </picture>
             </div>
             <div class="project-card-glass-tag">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -410,15 +460,52 @@
             </div>
           </article>
 
-          <!-- Card 2: Wallbox-Installation im Eigenheim -->
+          <!-- Card 2: Zähler & Hausanschluss -->
+          <article class="project-card-item" data-category="zaehler" tabindex="0" aria-label="Zählerschrank-Modernisierung Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/client/proj-card-zaehler.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-zaehler.jpg" alt="Moderner Hager Zählerschrank nach TAB Hamburg" class="project-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <circle cx="12" cy="14" r="3"></circle>
+              </svg>
+              <span>Zähler &amp; Hausanschluss</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Zählerschrank-Modernisierung &amp; eHZ</h3>
+                <div class="project-card-meta">
+                  <span>📅 2 Tage</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Bestandsbau</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Wallbox-Installation -->
           <article class="project-card-item" data-category="wallbox" tabindex="0" aria-label="Wallbox-Installation im Eigenheim Projekt ansehen">
             <div class="project-card-photo-wrap">
-              <img src="assets/images/project-2-2x.webp" alt="Wallbox-Installation an Hauswand mit Elektrofahrzeug" class="project-card-photo" loading="lazy">
+              <picture>
+                <source srcset="assets/images/client/proj-card-wallbox.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-wallbox.jpg" alt="Wallbox-Installation an Hauswand mit Ladekabel" class="project-card-photo" loading="lazy">
+              </picture>
             </div>
             <div class="project-card-glass-tag">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="1" y="3" width="15" height="13"></rect>
-                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
                 <circle cx="5.5" cy="18.5" r="2.5"></circle>
                 <circle cx="18.5" cy="18.5" r="2.5"></circle>
               </svg>
@@ -428,7 +515,7 @@
               <div class="project-card-info">
                 <h3 class="project-card-title">Wallbox-Installation im Eigenheim</h3>
                 <div class="project-card-meta">
-                  <span>📅 2 Tage</span>
+                  <span>📅 1 Tag</span>
                   <span class="project-card-meta-sep">|</span>
                   <span>📍 Privatkunde</span>
                 </div>
@@ -442,10 +529,13 @@
             </div>
           </article>
 
-          <!-- Card 3: Smart Home im Bestandsgebäude -->
+          <!-- Card 4: Smart Home -->
           <article class="project-card-item" data-category="smart-home" tabindex="0" aria-label="Smart Home im Bestandsgebäude Projekt ansehen">
             <div class="project-card-photo-wrap">
-              <img src="assets/images/service-clean-v3-4-2x.webp" alt="Smart Home KNX Touchdisplay im Wohnbereich" class="project-card-photo" loading="lazy">
+              <picture>
+                <source srcset="assets/images/client/proj-card-smarthome.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-smarthome.jpg" alt="Smart Home Touchdisplay und Steuerung" class="project-card-photo" loading="lazy">
+              </picture>
             </div>
             <div class="project-card-glass-tag">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -461,6 +551,209 @@
                   <span>📅 3 Wochen</span>
                   <span class="project-card-meta-sep">|</span>
                   <span>📍 Wohngebäude</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Photovoltaik -->
+          <article class="project-card-item" data-category="photovoltaik" tabindex="0" aria-label="Aufdach-Photovoltaikanlage Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/client/proj-card-photovoltaik.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-photovoltaik.jpg" alt="Aufdach-Photovoltaikanlage auf Hamburger Wohnhaus" class="project-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+              </svg>
+              <span>Photovoltaik</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Aufdach-Photovoltaik &amp; Stromspeicher</h3>
+                <div class="project-card-meta">
+                  <span>📅 1 Woche</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Privatkunde</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Wärmepumpe -->
+          <article class="project-card-item" data-category="waermepumpe" tabindex="0" aria-label="Wärmepumpen-Anschluss Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/client/proj-card-waermepumpe.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-waermepumpe.jpg" alt="Bosch Wärmepumpen-Außeneinheit fachgerecht angeschlossen" class="project-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="18" rx="2"></rect>
+                <circle cx="12" cy="12" r="5"></circle>
+              </svg>
+              <span>Wärmepumpe</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Wärmepumpen-Anschluss § 14a EnWG</h3>
+                <div class="project-card-meta">
+                  <span>📅 3 Tage</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Neubau &amp; Sanierung</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7: Beleuchtung -->
+          <article class="project-card-item" data-category="beleuchtung" tabindex="0" aria-label="LED-Beleuchtungskonzept Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/client/proj-card-beleuchtung.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-beleuchtung.jpg" alt="Moderne LED-Wohnraumbeleuchtung und Akzentlicht" class="project-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="9" y1="18" x2="15" y2="18"></line>
+                <line x1="10" y1="22" x2="14" y2="22"></line>
+                <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+              </svg>
+              <span>Beleuchtung</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">LED-Architektur-Lichtkonzept</h3>
+                <div class="project-card-meta">
+                  <span>📅 2 Wochen</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Wohnresidenz</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8: Netzwerk -->
+          <article class="project-card-item" data-category="netzwerk" tabindex="0" aria-label="Netzwerkinstallation Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/client/proj-card-netzwerk.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-netzwerk.jpg" alt="Cat.7 Netzwerkverkabelung und Patchpanel" class="project-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              <span>Netzwerk &amp; IT</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Strukturierte Cat.7 Verkabelung</h3>
+                <div class="project-card-meta">
+                  <span>📅 5 Tage</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Büro &amp; Gewerbe</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 9: Prüfung & Wartung -->
+          <article class="project-card-item" data-category="wartung" tabindex="0" aria-label="DGUV V3 Prüfung Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/client/proj-card-pruefung.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-pruefung.jpg" alt="VDE und DGUV V3 Prüfung mit Messgerät" class="project-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+              <span>Wartung &amp; Service</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">DGUV V3 &amp; VDE E-Check Prüfung</h3>
+                <div class="project-card-meta">
+                  <span>📅 Wiederkehrend</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Gewerbe &amp; Privat</span>
+                </div>
+              </div>
+              <div class="project-card-action-circle" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 10: Störung & Notdienst -->
+          <article class="project-card-item" data-category="stoerung" tabindex="0" aria-label="Störung & Notdienst Projekt ansehen">
+            <div class="project-card-photo-wrap">
+              <picture>
+                <source srcset="assets/images/client/proj-card-stoerung.webp" type="image/webp">
+                <img src="assets/images/client/proj-card-stoerung.jpg" alt="Malawko Notdienst Einsatzfahrzeug vor Ort" class="project-card-photo" loading="lazy">
+              </picture>
+            </div>
+            <div class="project-card-glass-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span>Störung &amp; Notdienst</span>
+            </div>
+            <div class="project-card-content">
+              <div class="project-card-info">
+                <h3 class="project-card-title">Schnelle Entstörung &amp; Kundendienst</h3>
+                <div class="project-card-meta">
+                  <span>📅 Sofort-Einsatz</span>
+                  <span class="project-card-meta-sep">|</span>
+                  <span>📍 Hamburg &amp; Umland</span>
                 </div>
               </div>
               <div class="project-card-action-circle" aria-hidden="true">
@@ -494,7 +787,7 @@
           <!-- Left Column: Gallery & Interactive Thumbnails -->
           <div class="detail-gallery-column">
             <div class="detail-main-display">
-              <img src="assets/images/project-1-2x.webp" id="detailMainImg" alt="Detailansicht: Modernes Einfamilienhaus mit Smart-Home-Beleuchtung" class="detail-main-photo">
+              <img src="assets/images/client/proj-detail-1.webp" id="detailMainImg" alt="Echtes Kundenprojekt Malawko Elektrotechnik" class="detail-main-photo">
               
               <div class="project-card-glass-tag" style="top: 18px; left: 18px;">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -519,22 +812,22 @@
               </button>
             </div>
 
-            <!-- 5 Thumbnails Strip -->
+                        <!-- 5 Thumbnails Strip (Real Client Projects) -->
             <div class="detail-thumbnails-row" role="tablist" aria-label="Bildergalerie Thumbnails">
-              <button type="button" class="detail-thumb-btn active" data-img="assets/images/project-1-2x.webp" aria-label="Bild 1: Außenansicht Villa">
-                <img src="assets/images/project-1-2x.webp" alt="Außenansicht Villa">
+              <button type="button" class="detail-thumb-btn active" data-img="assets/images/client/proj-detail-1.webp" aria-label="Bild 1: Solaranlage Dachanlage">
+                <img src="assets/images/client/proj-thumb-1.webp" alt="Aufdach-Photovoltaik Solaranlage">
               </button>
-              <button type="button" class="detail-thumb-btn" data-img="assets/images/service-clean-v3-5-2x.webp" aria-label="Bild 2: Wohnbereich mit Lichtkonzept">
-                <img src="assets/images/service-clean-v3-5-2x.webp" alt="Wohnbereich mit Lichtkonzept">
+              <button type="button" class="detail-thumb-btn" data-img="assets/images/client/proj-detail-2.webp" aria-label="Bild 2: Moderne Beleuchtung">
+                <img src="assets/images/client/proj-thumb-2.webp" alt="Moderne LED Beleuchtung Wohnbereich">
               </button>
-              <button type="button" class="detail-thumb-btn" data-img="assets/images/project-3-2x.webp" aria-label="Bild 3: KNX Touchpanel">
-                <img src="assets/images/project-3-2x.webp" alt="KNX Touchpanel">
+              <button type="button" class="detail-thumb-btn" data-img="assets/images/client/proj-detail-3.webp" aria-label="Bild 3: Smart Home Steuerung">
+                <img src="assets/images/client/proj-thumb-3.webp" alt="KNX Smart Home Touch-Panel">
               </button>
-              <button type="button" class="detail-thumb-btn" data-img="assets/images/service-clean-v3-1-2x.webp" aria-label="Bild 4: Verteilerschrank und Absicherung">
-                <img src="assets/images/service-clean-v3-1-2x.webp" alt="Verteilerschrank und Absicherung">
+              <button type="button" class="detail-thumb-btn" data-img="assets/images/client/proj-detail-4.webp" aria-label="Bild 4: Verteilerschrank und Absicherung">
+                <img src="assets/images/client/proj-thumb-4.webp" alt="Fachgerechter Verteilerschrank">
               </button>
-              <button type="button" class="detail-thumb-btn" data-img="assets/images/project-lighting-rings-2x.webp" aria-label="Bild 5: Designer LED-Ringbeleuchtung">
-                <img src="assets/images/project-lighting-rings-2x.webp" alt="Designer LED-Ringbeleuchtung">
+              <button type="button" class="detail-thumb-btn" data-img="assets/images/client/proj-detail-5.webp" aria-label="Bild 5: Wallbox Ladestation">
+                <img src="assets/images/client/proj-thumb-5.webp" alt="Wallbox Ladeinfrastruktur">
               </button>
             </div>
           </div>
@@ -681,7 +974,7 @@
           <!-- Card 1: Wohnhaus – Komplettinstallation -->
           <article class="project-card-item" tabindex="0" aria-label="Wohnhaus – Komplettinstallation Projekt ansehen">
             <div class="project-card-photo-wrap">
-              <img src="assets/images/project-1-2x.webp" alt="Wohnhaus mit moderner Architektur und Außenbeleuchtung" class="project-card-photo" loading="lazy">
+              <img src="assets/images/client/proj-card-photovoltaik.webp" alt="Wohnhaus mit Photovoltaikanlage und Elektroinstallation" class="project-card-photo" loading="lazy">
             </div>
             <div class="project-card-glass-tag">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -710,7 +1003,7 @@
           <!-- Card 2: Wallbox-Installation -->
           <article class="project-card-item" tabindex="0" aria-label="Wallbox-Installation Projekt ansehen">
             <div class="project-card-photo-wrap">
-              <img src="assets/images/project-2-2x.webp" alt="Wallbox-Installation im Eigenheim" class="project-card-photo" loading="lazy">
+              <img src="assets/images/client/proj-card-wallbox.webp" alt="Wallbox-Installation im Eigenheim" class="project-card-photo" loading="lazy">
             </div>
             <div class="project-card-glass-tag">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -742,7 +1035,7 @@
           <!-- Card 3: Smart Home Nachrüstung -->
           <article class="project-card-item" tabindex="0" aria-label="Smart Home Nachrüstung Projekt ansehen">
             <div class="project-card-photo-wrap">
-              <img src="assets/images/service-5-2x.webp" alt="Wohnraum mit integrierter Smart-Home-Technik und Ambiente-Licht" class="project-card-photo" loading="lazy">
+              <img src="assets/images/client/proj-card-waermepumpe.webp" alt="Wärmepumpen-Installation und elektrischer Anschluss" class="project-card-photo" loading="lazy">
             </div>
             <div class="project-card-glass-tag">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -772,7 +1065,7 @@
           <!-- Card 4: LED-Beleuchtungskonzept -->
           <article class="project-card-item" tabindex="0" aria-label="LED-Beleuchtungskonzept Projekt ansehen">
             <div class="project-card-photo-wrap">
-              <img src="assets/images/project-lighting-rings-2x.webp" alt="Design-Küche und Essbereich mit abgehängten LED-Ringleuchten und warmer Akzentbeleuchtung" class="project-card-photo" loading="lazy">
+              <img src="assets/images/client/proj-card-beleuchtung.webp" alt="Design-Wohnbereich mit moderner LED-Akzentbeleuchtung" class="project-card-photo" loading="lazy">
             </div>
             <div class="project-card-glass-tag">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -803,7 +1096,7 @@
           <!-- Card 5: Netzwerkinstallation im Büro -->
           <article class="project-card-item" tabindex="0" aria-label="Netzwerkinstallation im Büro Projekt ansehen">
             <div class="project-card-photo-wrap">
-              <img src="assets/images/service-clean-v3-6-2x.webp" alt="Strukturierte Datenverkabelung im Serverschrank" class="project-card-photo" loading="lazy">
+              <img src="assets/images/client/proj-card-netzwerk.webp" alt="Strukturierte Datenverkabelung im Serverschrank" class="project-card-photo" loading="lazy">
             </div>
             <div class="project-card-glass-tag">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -836,7 +1129,7 @@
           <!-- Card 6: Prüfung & Wartung nach VDE -->
           <article class="project-card-item" tabindex="0" aria-label="Prüfung & Wartung nach VDE Projekt ansehen">
             <div class="project-card-photo-wrap">
-              <img src="assets/images/service-clean-v3-7-2x.webp" alt="Elektrische Prüfung mit Messgerät an Hauptverteilung" class="project-card-photo" loading="lazy">
+              <img src="assets/images/client/proj-card-zaehler.webp" alt="Zählerschrank und Hauptverteilung nach VDE" class="project-card-photo" loading="lazy">
             </div>
             <div class="project-card-glass-tag">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1017,7 +1310,7 @@
         <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 12px;">Projektvideo</h3>
         <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; color: #aaa; margin-bottom: 24px;">Erleben Sie unsere Meisterarbeit im Detail.</p>
         <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-          <img src="assets/images/project-1-2x.webp" alt="Projektvideo Vorschau" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.65;">
+          <img src="assets/images/client/proj-detail-1.webp" alt="Projektvideo Vorschau" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.65;">
           <div style="position: absolute; width: 68px; height: 68px; border-radius: 50%; background: var(--color-orange); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 8px 24px rgba(217, 84, 30, 0.5); cursor: pointer;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
           </div>

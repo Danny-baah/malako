@@ -29,11 +29,11 @@
     },
     {
       "source": "/leistungen",
-      "destination": "/index.html"
+      "destination": "/leistungen.html"
     },
     {
       "source": "/services",
-      "destination": "/index.html"
+      "destination": "/leistungen.html"
     },
     {
       "source": "/ueber-uns",
