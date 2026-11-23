@@ -734,7 +734,7 @@ img, picture {
   will-change: transform;
 }
 
-/* Three distinct, elegant Ken Burns cinematic motions */
+/* Four distinct, elegant Ken Burns cinematic motions */
 .hero-slide.active .kenburns-1 {
   animation: kenBurnsZoomIn 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
@@ -745,6 +745,10 @@ img, picture {
 
 .hero-slide.active .kenburns-3 {
   animation: kenBurnsZoomOut 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.hero-slide.active .kenburns-4 {
+  animation: kenBurnsPanLeft 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes kenBurnsZoomIn {
@@ -771,6 +775,15 @@ img, picture {
   }
   100% {
     transform: scale(1.0) translate(-0.5%, 0);
+  }
+}
+
+@keyframes kenBurnsPanLeft {
+  0% {
+    transform: scale(1.02) translate(1.5%, 0);
+  }
+  100% {
+    transform: scale(1.10) translate(-1%, -1%);
   }
 }
 
@@ -828,7 +841,8 @@ img, picture {
 @media (prefers-reduced-motion: reduce) {
   .hero-slide.active .kenburns-1,
   .hero-slide.active .kenburns-2,
-  .hero-slide.active .kenburns-3 {
+  .hero-slide.active .kenburns-3,
+  .hero-slide.active .kenburns-4 {
     animation: none !important;
     transform: scale(1.0) !important;
   }

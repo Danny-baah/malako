@@ -80,8 +80,8 @@ function initMobileMenu() {
   if (!mobileToggle || !mobileDrawer) return;
 
   const toggleDrawer = (forceState) => {
-    const isOpen = typeof forceState === 'boolean' 
-      ? forceState 
+    const isOpen = typeof forceState === 'boolean'
+      ? forceState
       : !mobileDrawer.classList.contains('open');
 
     mobileDrawer.classList.toggle('open', isOpen);
@@ -121,9 +121,9 @@ function initMobileMenu() {
 
   // Close drawer when clicking outside
   document.addEventListener('click', (e) => {
-    if (mobileDrawer.classList.contains('open') && 
-        !mobileDrawer.contains(e.target) && 
-        !mobileToggle.contains(e.target)) {
+    if (mobileDrawer.classList.contains('open') &&
+      !mobileDrawer.contains(e.target) &&
+      !mobileToggle.contains(e.target)) {
       toggleDrawer(false);
     }
   });
@@ -242,7 +242,7 @@ function initEinsatzgebietMap() {
   // Schreyerring 49, 22309 Hamburg coordinates
   const hmbLat = 53.6109;
   const hmbLng = 10.0594;
-  
+
   // Center map slightly southwest so the floating top-right card leaves the Hamburg area clearly visible
   const viewCenter = [53.58, 10.03];
 
@@ -628,7 +628,7 @@ function initInteractiveConfigurator() {
         }
       });
     }
-  } catch (err) {}
+  } catch (err) { }
 
   step2Cards.forEach(cardEl => {
     const toggleSelection = () => {
@@ -2018,9 +2018,9 @@ function initScrollReveal() {
   const toObserve = [];
   candidates.forEach(el => {
     if (
-      el.closest('.service-hero-section') || 
-      el.closest('.hero-section') || 
-      el.closest('.contact-hero-section') || 
+      el.closest('.service-hero-section') ||
+      el.closest('.hero-section') ||
+      el.closest('.contact-hero-section') ||
       el.closest('.projects-hero-section')
     ) {
       return;
@@ -2115,13 +2115,6 @@ function initHomeHeroSlider() {
     });
   });
 
-  // Pause on hover over hero section if user is interacting with desktop mouse
-  const heroSection = document.querySelector('.hero-section');
-  if (heroSection) {
-    heroSection.addEventListener('mouseenter', stopAutoplay);
-    heroSection.addEventListener('mouseleave', startAutoplay);
-  }
-
-  // Start autoplay
+  // Start autoplay (rotates exactly every 7s)
   startAutoplay();
 }
