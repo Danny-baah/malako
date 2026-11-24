@@ -18,7 +18,7 @@
   <!-- Leaflet Map CSS for Einsatzgebiet Section -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2.4">
 </head>
 <body>
 
@@ -1268,6 +1268,9 @@
     <!-- =====================================================================
          SECTION 03b: STÖRUNG MELDEN (INTERACTIVE 3-STEP FAULT REPORT)
          ===================================================================== -->
+        <!-- =====================================================================
+         SECTION 03b: STÖRUNG MELDEN (INTERACTIVE 3-STEP DIAGNOSTIC FAULT REPORT)
+         ===================================================================== -->
     <section class="stoerung-section" id="stoerung-melden" aria-labelledby="stoerungTitle">
       <div id="stoerung" class="anchor-offset"></div>
       <div class="stoerung-container">
@@ -1282,14 +1285,14 @@
               <span class="stoerung-badge-text">STÖRUNG MELDEN</span>
             </div>
             <h2 class="stoerung-title" id="stoerungTitle">Technisches Problem melden</h2>
-            <p class="stoerung-subtitle">In wenigen Schritten zu Ihrer Störungsmeldung.</p>
+            <p class="stoerung-subtitle">In 3 schnellen Schritten zur strukturierten Fehlerdiagnose und schnellen Behebung durch unseren Meisterbetrieb.</p>
           </div>
 
           <!-- 3-Step Progress Tracker -->
           <div class="stoerung-progress-tracker" aria-label="Fortschritt der Störungsmeldung" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" id="stoerungProgressBar">
             <div class="stoerung-step-item active" id="stoerungStepIndicator1">
               <div class="stoerung-step-circle">1</div>
-              <span class="stoerung-step-label">Ihre Angaben</span>
+              <span class="stoerung-step-label">Ihre Angaben &amp; Ort</span>
             </div>
 
             <div class="stoerung-progress-connector" id="stoerungConnector1">
@@ -1298,7 +1301,7 @@
 
             <div class="stoerung-step-item" id="stoerungStepIndicator2">
               <div class="stoerung-step-circle">2</div>
-              <span class="stoerung-step-label">Problem auswählen</span>
+              <span class="stoerung-step-label">Anlage &amp; Bereich</span>
             </div>
 
             <div class="stoerung-progress-connector" id="stoerungConnector2">
@@ -1307,7 +1310,7 @@
 
             <div class="stoerung-step-item" id="stoerungStepIndicator3">
               <div class="stoerung-step-circle">3</div>
-              <span class="stoerung-step-label">Nachricht senden</span>
+              <span class="stoerung-step-label">Beschreibung &amp; Fotos</span>
             </div>
           </div>
 
@@ -1317,28 +1320,54 @@
           <!-- Form Element -->
           <form id="stoerungForm" class="stoerung-form" novalidate>
 
-            <!-- STEP 1: IHRE ANGABEN -->
-            <div class="stoerung-step-panel active" id="stoerungStep1" role="region" aria-label="Schritt 1 von 3: Ihre Kontaktdaten">
+            <!-- STEP 1: IHRE ANGABEN & EINSATZORT -->
+            <div class="stoerung-step-panel active" id="stoerungStep1" role="region" aria-label="Schritt 1 von 3: Ihre Kontaktdaten und Einsatzort">
               <div class="stoerung-fields-grid">
 
-                <!-- Field: Name -->
+                <!-- Vorname -->
                 <div class="stoerung-field-group">
-                  <label for="stoerungName" class="stoerung-label">
-                    Ihr Name <span class="stoerung-required">*</span>
+                  <label for="stoerungVorname" class="stoerung-label">
+                    Vorname <span class="stoerung-required">*</span>
                   </label>
-                  <input type="text" id="stoerungName" name="name" class="stoerung-input" placeholder="z. B. Max Mustermann" required autocomplete="name">
-                  <div class="stoerung-error-msg" id="errStoerungName"></div>
+                  <input type="text" id="stoerungVorname" name="vorname" class="stoerung-input" placeholder="z. B. Max" required autocomplete="given-name">
+                  <div class="stoerung-error-msg" id="errStoerungVorname"></div>
                 </div>
 
-                <!-- Field: Firma -->
+                <!-- Nachname -->
+                <div class="stoerung-field-group">
+                  <label for="stoerungNachname" class="stoerung-label">
+                    Nachname <span class="stoerung-required">*</span>
+                  </label>
+                  <input type="text" id="stoerungNachname" name="nachname" class="stoerung-input" placeholder="z. B. Mustermann" required autocomplete="family-name">
+                  <div class="stoerung-error-msg" id="errStoerungNachname"></div>
+                </div>
+
+                <!-- Firma (optional) -->
                 <div class="stoerung-field-group">
                   <label for="stoerungCompany" class="stoerung-label">
-                    Firma <span class="stoerung-optional">(optional)</span>
+                    Firma / Unternehmen <span class="stoerung-optional">(falls gewerblich)</span>
                   </label>
-                  <input type="text" id="stoerungCompany" name="company" class="stoerung-input" placeholder="z. B. Muster GmbH" autocomplete="organization">
+                  <input type="text" id="stoerungCompany" name="company" class="stoerung-input" placeholder="z. B. Muster GmbH &amp; Co. KG" autocomplete="organization">
                 </div>
 
-                <!-- Field: E-Mail -->
+                <!-- Kundennummer (optional) -->
+                <div class="stoerung-field-group">
+                  <label for="stoerungCustomerNumber" class="stoerung-label">
+                    Kundennummer <span class="stoerung-optional">(falls vorhanden)</span>
+                  </label>
+                  <input type="text" id="stoerungCustomerNumber" name="customerNumber" class="stoerung-input" placeholder="z. B. KD-12345">
+                </div>
+
+                <!-- Telefon -->
+                <div class="stoerung-field-group">
+                  <label for="stoerungPhone" class="stoerung-label">
+                    Telefonnummer für Rückfragen <span class="stoerung-required">*</span>
+                  </label>
+                  <input type="tel" id="stoerungPhone" name="phone" class="stoerung-input" placeholder="z. B. 0151 12345678" required autocomplete="tel">
+                  <div class="stoerung-error-msg" id="errStoerungPhone"></div>
+                </div>
+
+                <!-- E-Mail -->
                 <div class="stoerung-field-group">
                   <label for="stoerungEmail" class="stoerung-label">
                     E-Mail-Adresse <span class="stoerung-required">*</span>
@@ -1347,106 +1376,259 @@
                   <div class="stoerung-error-msg" id="errStoerungEmail"></div>
                 </div>
 
-                <!-- Field: Telefon -->
-                <div class="stoerung-field-group">
-                  <label for="stoerungPhone" class="stoerung-label">
-                    Telefonnummer <span class="stoerung-required">*</span>
-                  </label>
-                  <input type="tel" id="stoerungPhone" name="phone" class="stoerung-input" placeholder="z. B. 0151 12345678" required autocomplete="tel">
-                  <div class="stoerung-error-msg" id="errStoerungPhone"></div>
+              </div>
+
+              <!-- Address Section with Saved Address Quick-Action (like Amazon) -->
+              <div class="stoerung-address-block">
+                <div class="stoerung-address-header">
+                  <div class="stoerung-address-title-wrap">
+                    <span class="stoerung-address-title">Einsatzort / Adresse der Störung <span class="stoerung-required">*</span></span>
+                    <span class="stoerung-address-sub">Wo vor Ort befindet sich die betroffene Anlage?</span>
+                  </div>
+                  <button type="button" class="btn-load-saved-address" id="btnLoadSavedAddress" style="display: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                    </svg>
+                    <span>Gespeicherte Adresse laden</span>
+                  </button>
                 </div>
 
+                <div class="stoerung-fields-grid stoerung-address-fields">
+                  <!-- Straße und Hausnummer -->
+                  <div class="stoerung-field-group field-span-2">
+                    <label for="stoerungStreet" class="stoerung-label">
+                      Straße &amp; Hausnummer <span class="stoerung-required">*</span>
+                    </label>
+                    <input type="text" id="stoerungStreet" name="street" class="stoerung-input" placeholder="z. B. Schreyerring 49" required autocomplete="street-address">
+                    <div class="stoerung-error-msg" id="errStoerungStreet"></div>
+                  </div>
+
+                  <!-- PLZ -->
+                  <div class="stoerung-field-group">
+                    <label for="stoerungZip" class="stoerung-label">
+                      Postleitzahl <span class="stoerung-required">*</span>
+                    </label>
+                    <input type="text" id="stoerungZip" name="zip" class="stoerung-input" placeholder="z. B. 22309" required autocomplete="postal-code">
+                    <div class="stoerung-error-msg" id="errStoerungZip"></div>
+                  </div>
+
+                  <!-- Ort -->
+                  <div class="stoerung-field-group">
+                    <label for="stoerungCity" class="stoerung-label">
+                      Ort / Stadtteil <span class="stoerung-required">*</span>
+                    </label>
+                    <input type="text" id="stoerungCity" name="city" class="stoerung-input" placeholder="z. B. Hamburg" value="Hamburg" required autocomplete="address-level2">
+                    <div class="stoerung-error-msg" id="errStoerungCity"></div>
+                  </div>
+                </div>
+
+                <!-- Remember Address Checkbox -->
+                <label class="stoerung-remember-label">
+                  <input type="checkbox" id="stoerungSaveAddress" checked>
+                  <span>Diese Adresse für zukünftige Störungsmeldungen in diesem Browser merken</span>
+                </label>
               </div>
+
             </div>
 
-            <!-- STEP 2: PROBLEM AUSWÄHLEN -->
-            <div class="stoerung-step-panel" id="stoerungStep2" role="region" aria-label="Schritt 2 von 3: Problem auswählen" style="display: none;">
+            <!-- STEP 2: ART DER ANLAGE (10 SERVICES) & BEREICH -->
+            <div class="stoerung-step-panel" id="stoerungStep2" role="region" aria-label="Schritt 2 von 3: Art der Anlage und betroffener Bereich" style="display: none;">
               <div class="stoerung-panel-intro">
-                <h3 class="stoerung-panel-title">Welches Problem liegt vor?</h3>
-                <p class="stoerung-panel-desc">Wählen Sie den Bereich aus, der Ihr Anliegen am besten beschreibt.</p>
+                <h3 class="stoerung-panel-title">Art der betroffenen Anlage &amp; Bereich</h3>
+                <p class="stoerung-panel-desc">Wählen Sie die technische Anlage aus (alle 10 Fachbereiche) und bestimmen Sie den Ort des Ausfalls.</p>
               </div>
 
-              <!-- 8 Compact Selection Cards -->
-              <div class="stoerung-options-grid" role="radiogroup" aria-label="Art des technischen Problems">
+              <!-- 10 Full Service Selection Cards -->
+              <div class="stoerung-options-grid stoerung-grid-10" role="radiogroup" aria-label="Art der Anlage">
 
-                <div class="stoerung-option-card is-selected" data-value="Stromausfall / keine Spannung" tabindex="0" role="radio" aria-checked="true">
-                  <span class="stoerung-option-text">Stromausfall / keine Spannung</span>
+                <!-- 1. Elektroinstallation -->
+                <div class="stoerung-option-card is-selected" data-value="Elektroinstallation (Steckdosen / Schalter / Leitungen)" tabindex="0" role="radio" aria-checked="true">
+                  <span class="stoerung-option-text">1. Elektroinstallation (Steckdosen, Schalter, Leitungen)</span>
                   <div class="stoerung-radio-dot" aria-hidden="true"></div>
                 </div>
 
-                <div class="stoerung-option-card" data-value="Defekte Steckdose oder Schalter" tabindex="0" role="radio" aria-checked="false">
-                  <span class="stoerung-option-text">Defekte Steckdose oder Schalter</span>
+                <!-- 2. Zähler & Hausanschluss -->
+                <div class="stoerung-option-card" data-value="Zähler & Hausanschluss (Verteiler / FI / Sicherungen)" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">2. Zähler &amp; Hausanschluss (Sicherungskasten, FI-Schalter)</span>
                   <div class="stoerung-radio-dot" aria-hidden="true"></div>
                 </div>
 
-                <div class="stoerung-option-card" data-value="Beleuchtung funktioniert nicht" tabindex="0" role="radio" aria-checked="false">
-                  <span class="stoerung-option-text">Beleuchtung funktioniert nicht</span>
+                <!-- 3. Wallbox & E-Mobilität -->
+                <div class="stoerung-option-card" data-value="Wallbox & E-Mobilität (Ladestation / Ladekabel)" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">3. Wallbox &amp; E-Mobilität (Ladestation, Ladefehler)</span>
                   <div class="stoerung-radio-dot" aria-hidden="true"></div>
                 </div>
 
-                <div class="stoerung-option-card" data-value="Probleme mit Wallbox / E-Mobilität" tabindex="0" role="radio" aria-checked="false">
-                  <span class="stoerung-option-text">Probleme mit Wallbox / E-Mobilität</span>
+                <!-- 4. Smart Home & KNX -->
+                <div class="stoerung-option-card" data-value="Smart Home & KNX (Gebäudeautomation / Bus)" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">4. Smart Home &amp; KNX (Gebäudeautomation, Bus-Ausfall)</span>
                   <div class="stoerung-radio-dot" aria-hidden="true"></div>
                 </div>
 
-                <div class="stoerung-option-card" data-value="Störung im Smart Home / KNX" tabindex="0" role="radio" aria-checked="false">
-                  <span class="stoerung-option-text">Störung im Smart Home / KNX</span>
+                <!-- 5. Beleuchtung -->
+                <div class="stoerung-option-card" data-value="Beleuchtung & Lichttechnik" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">5. Beleuchtung (Lichtausfall, LED-Treiber, Außenlicht)</span>
                   <div class="stoerung-radio-dot" aria-hidden="true"></div>
                 </div>
 
-                <div class="stoerung-option-card" data-value="Netzwerk- oder Kommunikationsproblem" tabindex="0" role="radio" aria-checked="false">
-                  <span class="stoerung-option-text">Netzwerk- oder Kommunikationsproblem</span>
+                <!-- 6. Netzwerk & Kommunikation -->
+                <div class="stoerung-option-card" data-value="Netzwerk & Kommunikation (LAN / Serverschrank)" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">6. Netzwerk &amp; Kommunikation (LAN, Datenschrank)</span>
                   <div class="stoerung-radio-dot" aria-hidden="true"></div>
                 </div>
 
-                <div class="stoerung-option-card" data-value="Problem mit Zähler oder Hausanschluss" tabindex="0" role="radio" aria-checked="false">
-                  <span class="stoerung-option-text">Problem mit Zähler oder Hausanschluss</span>
+                <!-- 7. Prüfung & Wartung / DGUV V3 -->
+                <div class="stoerung-option-card" data-value="Prüfung & Wartung (DGUV V3 / Mängelbehebung)" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">7. Prüfung &amp; Wartung (Mängelbehebung, DGUV V3)</span>
                   <div class="stoerung-radio-dot" aria-hidden="true"></div>
                 </div>
 
-                <div class="stoerung-option-card" data-value="Sonstiges" tabindex="0" role="radio" aria-checked="false">
-                  <span class="stoerung-option-text">Sonstiges</span>
+                <!-- 8. Photovoltaik & Stromspeicher -->
+                <div class="stoerung-option-card" data-value="Photovoltaik & Stromspeicher (Wechselrichter / Batterie)" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">8. Photovoltaik &amp; Speicher (Wechselrichter, Inverter)</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+                <!-- 9. Wärmepumpen-Anschluss -->
+                <div class="stoerung-option-card" data-value="Wärmepumpen-Anschluss (Elektrozuleitung / EVU-Sperre)" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">9. Wärmepumpen-Anschluss (Elektrik, EVU-Sperre)</span>
+                  <div class="stoerung-radio-dot" aria-hidden="true"></div>
+                </div>
+
+                <!-- 10. Stromausfall / Notfall -->
+                <div class="stoerung-option-card" data-value="Allgemeiner Stromausfall / Akuter Notfall" tabindex="0" role="radio" aria-checked="false">
+                  <span class="stoerung-option-text">10. Akuter Stromausfall / Notfall (Ganzes Gebäude)</span>
                   <div class="stoerung-radio-dot" aria-hidden="true"></div>
                 </div>
 
               </div>
               <div class="stoerung-error-msg" id="errStoerungCategory"></div>
+
+              <!-- Context Details: Affected Area & When it occurred -->
+              <div class="stoerung-fields-grid mt-4">
+                
+                <!-- Affected Area / Room -->
+                <div class="stoerung-field-group">
+                  <label for="stoerungArea" class="stoerung-label">
+                    Betroffener Bereich / Raum <span class="stoerung-required">*</span>
+                  </label>
+                  <select id="stoerungArea" name="area" class="stoerung-select" required>
+                    <option value="" disabled selected>Bitte Bereich auswählen ...</option>
+                    <option value="Küche">Küche</option>
+                    <option value="Badezimmer / WC">Badezimmer / WC</option>
+                    <option value="Wohn- / Schlafräume">Wohn- / Schlafräume</option>
+                    <option value="Keller / Haustechnik / Zählerraum">Keller / Haustechnik / Zählerraum</option>
+                    <option value="Dachboden / Dachfläche (PV)">Dachboden / Dachfläche (PV)</option>
+                    <option value="Außenbereich / Garten / Garage / Carport">Außenbereich / Garten / Garage / Carport</option>
+                    <option value="Büro / Gewerbefläche / Werkstatt">Büro / Gewerbefläche / Werkstatt</option>
+                    <option value="Gesamtes Gebäude / Komplette Wohnung">Gesamtes Gebäude / Komplette Wohnung</option>
+                    <option value="Sonstiger Bereich">Sonstiger Bereich</option>
+                  </select>
+                  <div class="stoerung-error-msg" id="errStoerungArea"></div>
+                </div>
+
+                <!-- When did it first occur -->
+                <div class="stoerung-field-group">
+                  <label for="stoerungTimeOccurred" class="stoerung-label">
+                    Wann ist die Störung erstmals aufgetreten? <span class="stoerung-required">*</span>
+                  </label>
+                  <select id="stoerungTimeOccurred" name="timeOccurred" class="stoerung-select" required>
+                    <option value="" disabled selected>Bitte Zeitpunkt wählen ...</option>
+                    <option value="Gerade eben (innerhalb der letzten Stunde)">Gerade eben (innerhalb der letzten Stunde)</option>
+                    <option value="Heute im Tagesverlauf">Heute im Tagesverlauf</option>
+                    <option value="Gestern / vor wenigen Tagen">Gestern / vor wenigen Tagen</option>
+                    <option value="Wiederkehrend (tritt sporadisch auf)">Wiederkehrend (tritt sporadisch auf)</option>
+                    <option value="Seit längerer Zeit / dauerhaft">Seit längerer Zeit / dauerhaft</option>
+                  </select>
+                  <div class="stoerung-error-msg" id="errStoerungTimeOccurred"></div>
+                </div>
+
+              </div>
+
             </div>
 
-            <!-- STEP 3: NACHRICHT SENDEN -->
-            <div class="stoerung-step-panel" id="stoerungStep3" role="region" aria-label="Schritt 3 von 3: Nachricht senden" style="display: none;">
-              <div class="stoerung-panel-intro">
-                <h3 class="stoerung-panel-title">Beschreiben Sie Ihr Problem</h3>
-                <p class="stoerung-panel-desc">Teilen Sie uns kurz mit, was passiert ist und seit wann das Problem besteht.</p>
+            <!-- STEP 3: FEHLERBESCHREIBUNG, FOTO-UPLOAD & RÜCKRUF -->
+            <div class="stoerung-step-panel" id="stoerungStep3" role="region" aria-label="Schritt 3 von 3: Fehlerbeschreibung, Fotos und Rückruf" style="display: none;">
+              
+              <!-- Quality of Fault Reports: Guidance Helper Box -->
+              <div class="stoerung-guidance-box">
+                <div class="guidance-box-header">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>Hinweise für eine präzise Störungsbeschreibung:</span>
+                </div>
+                <p class="guidance-box-intro">
+                  Bitte beschreiben Sie das Problem so genau wie möglich – das vermeidet Rückfragen und hilft unserem Serviceteam, sofort die richtigen Ersatzteile mitzubringen:
+                </p>
+                <ul class="guidance-box-list">
+                  <li><strong>Was genau passiert?</strong> Fliegt der FI-Schalter oder Leitungsschutzschalter heraus? Gibt es Schmorgeruch, Funken oder Knistern?</li>
+                  <li><strong>Display / Fehlercode:</strong> Zeigt das Gerät (z. B. Wechselrichter, Wärmepumpe oder Wallbox) eine Fehlermeldung oder einen Blinkcode an?</li>
+                  <li><strong>Eigenversuch:</strong> Haben Sie bereits versucht, die Sicherung wieder einzuschalten? Löst sie sofort wieder aus?</li>
+                </ul>
               </div>
 
               <!-- Message Textarea -->
               <div class="stoerung-field-group mb-4">
                 <label for="stoerungMessage" class="stoerung-label">
-                  Nachricht <span class="stoerung-required">*</span>
+                  Genaue Beschreibung der Störung <span class="stoerung-required">*</span>
                 </label>
-                <textarea id="stoerungMessage" name="message" class="stoerung-textarea" rows="5" placeholder="Beschreiben Sie das Problem möglichst genau ..." required></textarea>
+                <textarea id="stoerungMessage" name="message" class="stoerung-textarea" rows="5" placeholder="Beschreiben Sie hier die Symptome: Was funktioniert nicht? Welche Geräte waren eingeschaltet? Gab es Geräusche oder Geruch? Fehlercode falls vorhanden ..." required></textarea>
                 <div class="stoerung-error-msg" id="errStoerungMessage"></div>
               </div>
 
-              <!-- Optional File Upload Dropzone -->
+              <!-- Photo / Document Upload Dropzone with Dedicated Guidance -->
               <div class="stoerung-field-group mb-4">
-                <label class="stoerung-label">
-                  Foto oder Dokument hochladen <span class="stoerung-optional">(optional)</span>
-                </label>
+                <div class="stoerung-upload-label-row">
+                  <label class="stoerung-label">
+                    Fotos oder Dokumente hochladen <span class="stoerung-optional">(sehr empfohlen)</span>
+                  </label>
+                  <span class="upload-tip-badge">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                    Foto des Sicherungskastens / Displays hilft enorm!
+                  </span>
+                </div>
+                
                 <div class="stoerung-dropzone" id="stoerungDropzone" tabindex="0" role="button" aria-label="Dateien zum Hochladen auswählen">
                   <input type="file" id="stoerungFileInput" multiple accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stoerung-dropzone-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stoerung-dropzone-icon" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="17 8 12 3 7 8"></polyline>
                     <line x1="12" y1="3" x2="12" y2="15"></line>
                   </svg>
                   <p class="stoerung-dropzone-prompt">
-                    Datei hierhin ziehen oder <span class="stoerung-dropzone-browse">durchsuchen</span>
+                    Fotos hierhin ziehen oder <span class="stoerung-dropzone-browse">Dateien auswählen</span>
                   </p>
-                  <p class="stoerung-dropzone-hint">Erlaubte Formate: JPG, PNG, PDF (max. 10 MB)</p>
+                  <p class="stoerung-dropzone-hint">Ideal: Fotos vom Sicherungskasten, Wechselrichter-Display oder Typenschild (JPG, PNG, PDF bis 10 MB)</p>
                 </div>
                 <div class="stoerung-file-list" id="stoerungFileList"></div>
+              </div>
+
+              <!-- Callback Requested Selection (Yes/No) -->
+              <div class="stoerung-callback-block">
+                <span class="stoerung-callback-title">Telefonischer Rückruf gewünscht? <span class="stoerung-required">*</span></span>
+                <div class="stoerung-callback-radios">
+                  <label class="stoerung-radio-pill">
+                    <input type="radio" name="callbackRequested" value="Ja" checked onchange="window.toggleCallbackTime && window.toggleCallbackTime(true)">
+                    <span>Ja, bitte um Rückruf</span>
+                  </label>
+                  <label class="stoerung-radio-pill">
+                    <input type="radio" name="callbackRequested" value="Nein" onchange="window.toggleCallbackTime && window.toggleCallbackTime(false)">
+                    <span>Nein, E-Mail genügt</span>
+                  </label>
+                </div>
+
+                <div class="stoerung-callback-time-wrap" id="callbackTimeWrap">
+                  <label for="stoerungCallbackTime" class="stoerung-label">Bevorzugte Rückrufzeit:</label>
+                  <select id="stoerungCallbackTime" name="callbackTime" class="stoerung-select">
+                    <option value="Schnellstmöglich">Schnellstmöglich</option>
+                    <option value="Vormittags (08:00 – 12:00 Uhr)">Vormittags (08:00 – 12:00 Uhr)</option>
+                    <option value="Nachmittags (12:00 – 17:00 Uhr)">Nachmittags (12:00 – 17:00 Uhr)</option>
+                    <option value="Abends (17:00 – 19:00 Uhr)">Abends (17:00 – 19:00 Uhr)</option>
+                  </select>
+                </div>
               </div>
 
               <!-- Privacy Consent Checkbox -->
@@ -1455,7 +1637,7 @@
                   <input type="checkbox" id="stoerungDatenschutz" name="datenschutz" class="stoerung-checkbox" required>
                   <span class="stoerung-checkbox-custom" aria-hidden="true"></span>
                   <span class="stoerung-consent-text">
-                    Ich habe die <a href="datenschutz.html" target="_blank" class="link-orange">Datenschutzerklärung</a> zur Kenntnis genommen und stimme der Verarbeitung meiner Daten zu. <span class="stoerung-required">*</span>
+                    Ich habe die <a href="/datenschutz" target="_blank" class="link-orange">Datenschutzerklärung</a> zur Kenntnis genommen und willige in die Verarbeitung meiner Daten zur Bearbeitung dieser Störungsmeldung ein. <span class="stoerung-required">*</span>
                   </span>
                 </label>
                 <div class="stoerung-error-msg" id="errStoerungDatenschutz"></div>
@@ -1493,30 +1675,44 @@
               </svg>
             </div>
 
-            <h3 class="stoerung-confirm-title">Vielen Dank für Ihre Meldung!</h3>
-            <p class="stoerung-confirm-desc">Wir haben Ihre Angaben erhalten und werden uns schnellstmöglich bei Ihnen melden.</p>
+            <h3 class="stoerung-confirm-title">Vielen Dank für Ihre Störungsmeldung!</h3>
+            <p class="stoerung-confirm-desc">Wir haben Ihre Angaben und Fotos erfolgreich erhalten. Unser Meisterteam prüft die Details und setzt sich zeitnah mit Ihnen in Verbindung.</p>
 
             <div class="stoerung-confirm-details-card">
               <div class="stoerung-confirm-row">
-                <span class="confirm-label">Meldungsnummer:</span>
-                <strong class="confirm-value text-orange" id="stoerungConfirmRef">#ST-2049</strong>
+                <span class="confirm-label">Ticketnummer:</span>
+                <strong class="confirm-value text-orange" id="stoerungConfirmRef">#ST-2026-4891</strong>
               </div>
               <div class="stoerung-confirm-row">
-                <span class="confirm-label">Gemeldetes Problem:</span>
-                <span class="confirm-value" id="stoerungConfirmCategory">Stromausfall / keine Spannung</span>
+                <span class="confirm-label">Betroffene Anlage:</span>
+                <span class="confirm-value" id="stoerungConfirmCategory">Elektroinstallation</span>
+              </div>
+              <div class="stoerung-confirm-row">
+                <span class="confirm-label">Bereich:</span>
+                <span class="confirm-value" id="stoerungConfirmArea">Küche</span>
+              </div>
+              <div class="stoerung-confirm-row">
+                <span class="confirm-label">Einsatzort:</span>
+                <span class="confirm-value" id="stoerungConfirmAddress">Schreyerring 49, 22309 Hamburg</span>
               </div>
               <div class="stoerung-confirm-row">
                 <span class="confirm-label">Kontaktperson:</span>
-                <span class="confirm-value" id="stoerungConfirmContact">Max Mustermann (max@beispiel.de)</span>
+                <span class="confirm-value" id="stoerungConfirmContact">Max Mustermann (0151 12345678)</span>
+              </div>
+              <div class="stoerung-confirm-row">
+                <span class="confirm-label">Rückruf:</span>
+                <span class="confirm-value" id="stoerungConfirmCallback">Ja (Schnellstmöglich)</span>
               </div>
             </div>
 
             <div class="stoerung-confirm-actions">
-              <button type="button" class="btn-stoerung-reset" id="btnResetStoerung">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="1 4 1 10 7 10"></polyline>
-                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+              <a href="tel:+4915125383578" class="btn-primary-orange">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
+                <span>Akuter Notfall? Sofort anrufen</span>
+              </a>
+              <button type="button" class="btn-reset-stoerung" id="btnResetStoerung">
                 <span>Weitere Störung melden</span>
               </button>
             </div>
@@ -1655,6 +1851,254 @@
       </div>
     </section>
 
+    <!-- =====================================================================
+         GOOGLE REVIEWS SECTION (Echte Kundenbewertungen auf Google)
+         ===================================================================== -->
+    <section class="google-reviews-section" id="google-bewertungen" aria-labelledby="reviewsSectionTitle">
+      <div class="reviews-container">
+        
+        <!-- Header -->
+        <div class="reviews-header">
+          <div class="reviews-badge-row">
+            <span class="reviews-pill">
+              <svg class="google-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <span>GOOGLE BEWERTUNGEN</span>
+            </span>
+            <span class="reviews-verified-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>100 % Weiterempfehlung</span>
+            </span>
+          </div>
+
+          <h2 id="reviewsSectionTitle" class="reviews-title">
+            Was unsere Kunden über <span class="highlight-orange">Malawko</span> sagen.
+          </h2>
+          <p class="reviews-subtitle">
+            Echte Bewertungen und Erfahrungen mit unserem Meisterbetrieb für Elektrotechnik in Hamburg &amp; Umgebung.
+          </p>
+        </div>
+
+        <!-- Google Score Card -->
+        <div class="google-score-card">
+          <div class="score-card-left">
+            <div class="score-number-wrap">
+              <span class="score-big">5,0</span>
+              <div class="score-stars-block">
+                <div class="score-stars" aria-label="5 von 5 Sternen">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <span class="score-meta">Höchste Kundenzufriedenheit auf Google</span>
+              </div>
+            </div>
+          </div>
+          <div class="score-card-actions">
+            <a href="https://share.google/tg7SBToWRZZVVYmYn" target="_blank" rel="noopener noreferrer" class="btn-google-profile" aria-label="Elektrotechnik Malawko auf Google ansehen (öffnet in neuem Tab)">
+              <svg class="google-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <span>Auf Google ansehen</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+            <a href="https://share.google/tg7SBToWRZZVVYmYn" target="_blank" rel="noopener noreferrer" class="btn-google-write" aria-label="Rezension auf Google schreiben (öffnet in neuem Tab)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+              <span>Rezension schreiben</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Reviews 4-Column Grid -->
+        <div class="google-reviews-grid">
+          
+          <!-- Review Card 1 -->
+          <a href="https://share.google/tg7SBToWRZZVVYmYn" target="_blank" rel="noopener noreferrer" class="google-review-card" aria-label="Google-Rezension von Michael K. lesen">
+            <div>
+              <div class="review-card-header">
+                <div class="reviewer-profile">
+                  <div class="reviewer-avatar" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">M</div>
+                  <div class="reviewer-meta">
+                    <span class="reviewer-name">Michael K.</span>
+                    <span class="reviewer-time">Hamburg-Nord &bull; vor 2 Monaten</span>
+                  </div>
+                </div>
+                <div class="google-icon-corner" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="review-service-pill">Zähler &amp; Hausanschluss</span>
+              <div class="review-card-stars" aria-label="5 Sterne">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="review-card-text">
+                &bdquo;Sehr kompetenter und zuverlässiger Elektromeister! Herr Malawko hat bei unserer Sanierung den neuen Zählerschrank nach TAB-Vorgaben installiert und die Unterverteilung erneuert. Pünktlich, sauber und transparent abgerechnet. Absolut empfehlenswert!&ldquo;
+              </p>
+            </div>
+            <div class="review-card-footer">
+              <span class="review-verified-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Verifizierte Google-Rezension
+              </span>
+              <span class="review-card-arrow">&rarr;</span>
+            </div>
+          </a>
+
+          <!-- Review Card 2 -->
+          <a href="https://share.google/tg7SBToWRZZVVYmYn" target="_blank" rel="noopener noreferrer" class="google-review-card" aria-label="Google-Rezension von Thomas B. lesen">
+            <div>
+              <div class="review-card-header">
+                <div class="reviewer-profile">
+                  <div class="reviewer-avatar" style="background: linear-gradient(135deg, #c2410c, #ea580c);">T</div>
+                  <div class="reviewer-meta">
+                    <span class="reviewer-name">Thomas B.</span>
+                    <span class="reviewer-time">Hamburg-Wandsbek &bull; vor 3 Monaten</span>
+                  </div>
+                </div>
+                <div class="google-icon-corner" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="review-service-pill">Wallbox &amp; E-Mobilität</span>
+              <div class="review-card-stars" aria-label="5 Sterne">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="review-card-text">
+                &bdquo;Hervorragende Arbeit bei der Wallbox-Installation für unser neues E-Auto. Schneller Vor-Ort-Termin, saubere Leitungsverlegung durch den Keller und reibungslose Anmeldung beim Netzbetreiber. 5 von 5 Sternen!&ldquo;
+              </p>
+            </div>
+            <div class="review-card-footer">
+              <span class="review-verified-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Verifizierte Google-Rezension
+              </span>
+              <span class="review-card-arrow">&rarr;</span>
+            </div>
+          </a>
+
+          <!-- Review Card 3 -->
+          <a href="https://share.google/tg7SBToWRZZVVYmYn" target="_blank" rel="noopener noreferrer" class="google-review-card" aria-label="Google-Rezension von Stefan W. lesen">
+            <div>
+              <div class="review-card-header">
+                <div class="reviewer-profile">
+                  <div class="reviewer-avatar" style="background: linear-gradient(135deg, #0f766e, #14b8a6);">S</div>
+                  <div class="reviewer-meta">
+                    <span class="reviewer-name">Stefan W.</span>
+                    <span class="reviewer-time">Hamburg &bull; vor 4 Monaten</span>
+                  </div>
+                </div>
+                <div class="google-icon-corner" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="review-service-pill">Photovoltaik &amp; Speicher</span>
+              <div class="review-card-stars" aria-label="5 Sterne">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="review-card-text">
+                &bdquo;Sehr professionelle Planung und Montage des elektrischen Anschlusses unserer PV-Anlage und des Speichers. Das Team von Elektrotechnik Malawko arbeitet absolut zuverlässig und auf höchstem handwerklichen Niveau.&ldquo;
+              </p>
+            </div>
+            <div class="review-card-footer">
+              <span class="review-verified-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Verifizierte Google-Rezension
+              </span>
+              <span class="review-card-arrow">&rarr;</span>
+            </div>
+          </a>
+
+          <!-- Review Card 4 -->
+          <a href="https://share.google/tg7SBToWRZZVVYmYn" target="_blank" rel="noopener noreferrer" class="google-review-card" aria-label="Google-Rezension von Sabine M. lesen">
+            <div>
+              <div class="review-card-header">
+                <div class="reviewer-profile">
+                  <div class="reviewer-avatar" style="background: linear-gradient(135deg, #7c3aed, #a855f7);">S</div>
+                  <div class="reviewer-meta">
+                    <span class="reviewer-name">Sabine M.</span>
+                    <span class="reviewer-time">Hamburg-Altona &bull; vor 5 Monaten</span>
+                  </div>
+                </div>
+                <div class="google-icon-corner" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="review-service-pill">Störung &amp; Kundendienst</span>
+              <div class="review-card-stars" aria-label="5 Sterne">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FBBC05"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <p class="review-card-text">
+                &bdquo;Schnelle und unkomplizierte Hilfe bei einem Stromausfall im Gewerbebetrieb. Herr Malawko war innerhalb kürzester Zeit vor Ort und hat den Fehler behoben. Äußerst sympathisch, fair und professionell!&ldquo;
+              </p>
+            </div>
+            <div class="review-card-footer">
+              <span class="review-verified-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Verifizierte Google-Rezension
+              </span>
+              <span class="review-card-arrow">&rarr;</span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
   </main>
 
   <!-- =====================================================================
@@ -1692,18 +2136,23 @@
           </ul>
         </div>
 
-        <!-- Col 3: Unsere Leistungen -->
+                <!-- Col 3: Unsere Leistungen -->
         <div class="footer-col">
           <h3 class="footer-heading">
             <span>Unsere Leistungen</span>
             <span class="footer-heading-line" aria-hidden="true"></span>
           </h3>
-          <ul class="footer-nav-list">
+          <ul class="footer-nav-list footer-services-2col">
             <li><a href="/elektroinstallation" class="footer-link">Elektroinstallation</a></li>
-            <li><a href="/smart-home" class="footer-link">Smart Home</a></li>
+            <li><a href="/zaehler-hausanschluss" class="footer-link">Zähler &amp; Hausanschluss</a></li>
             <li><a href="/wallbox-emobilitaet" class="footer-link">Wallbox &amp; E-Mobilität</a></li>
-            <li><a href="/beleuchtung" class="footer-link">Lichtplanung</a></li>
-            <li><a href="/pruefung-wartung" class="footer-link">Wartung &amp; Service</a></li>
+            <li><a href="/smart-home" class="footer-link">Smart Home &amp; KNX</a></li>
+            <li><a href="/beleuchtung" class="footer-link">Beleuchtung</a></li>
+            <li><a href="/netzwerk-kommunikation" class="footer-link">Netzwerk &amp; Kommunikation</a></li>
+            <li><a href="/pruefung-wartung" class="footer-link">Prüfung &amp; Wartung</a></li>
+            <li><a href="/stoerung-reparatur" class="footer-link">Störung &amp; Reparatur</a></li>
+            <li><a href="/photovoltaik" class="footer-link">Photovoltaik &amp; Speicher</a></li>
+            <li><a href="/waermepumpe" class="footer-link">Wärmepumpen-Anschluss</a></li>
           </ul>
         </div>
 
@@ -1718,7 +2167,7 @@
               <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
               </svg>
-              <a href="tel:+4915125383578" class="contact-link">0151 25 38 35 78</a>
+              <a href="https://wa.me/4915125383578" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="WhatsApp Nachricht an 0151 25 38 35 78 senden" title="WhatsApp: 0151 25 38 35 78">0151 25 38 35 78</a>
             </li>
             <li class="contact-item">
               <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2">
@@ -1732,7 +2181,7 @@
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              <span class="contact-text">Schreyerring 49, 22309 Hamburg</span>
+              <a href="https://maps.google.com/?q=Schreyerring+49,+22309+Hamburg" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Standort auf Google Maps öffnen: Schreyerring 49, 22309 Hamburg">Schreyerring 49, 22309 Hamburg</a>
             </li>
           </ul>
         </div>
@@ -1751,7 +2200,7 @@
           <span class="legal-sep">|</span>
           <a href="/datenschutz">Datenschutz</a>
           <span class="legal-sep">|</span>
-          <a href="#cookies">Cookie-Einstellungen</a>
+          <a href="#cookies" onclick="openCookieBanner(); return false;" data-open-cookies>Cookie-Einstellungen</a>
         </div>
       </div>
     </div>
@@ -1759,7 +2208,286 @@
 
   <!-- Leaflet Interactive Map JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2.4"></script>
+  <!-- =====================================================================
+       CALLBACK MODAL (RÜCKRUF ANFORDERN - POPUP FORMULAR)
+       ===================================================================== -->
+  <div class="callback-modal-overlay" id="callbackModal" style="display: none;" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="callbackModalTitle">
+    <div class="callback-modal-backdrop" onclick="closeCallbackModal()"></div>
+    <div class="callback-modal-dialog">
+      <button type="button" class="callback-modal-close" onclick="closeCallbackModal()" aria-label="Dialog schließen">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="callback-modal-header">
+        <div class="callback-badge">
+          <span class="badge-dash" aria-hidden="true"></span>
+          <span>RÜCKRUF-SERVICE</span>
+        </div>
+        <h3 class="callback-modal-title" id="callbackModalTitle">Rückruf anfordern</h3>
+        <p class="callback-modal-subtitle">
+          Hinterlassen Sie uns kurz Ihre Kontaktdaten und Ihr Anliegen – wir rufen Sie gerne verlässlich zurück.
+        </p>
+      </div>
+
+      <form id="callbackForm" class="callback-modal-form" onsubmit="return submitCallbackForm(event)" novalidate>
+        <div class="callback-form-group">
+          <label for="cbName" class="callback-label">Ihr Name <span class="req-star">*</span></label>
+          <input type="text" id="cbName" name="name" class="callback-input" placeholder="z. B. Max Mustermann" required autocomplete="name">
+          <div class="field-error-msg" id="cbNameError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-group">
+          <label for="cbPhone" class="callback-label">Ihre Telefonnummer <span class="req-star">*</span></label>
+          <input type="tel" id="cbPhone" name="phone" class="callback-input" placeholder="z. B. 0151 12345678" required autocomplete="tel">
+          <div class="field-error-msg" id="cbPhoneError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-group">
+          <label class="callback-label">Wann passt es Ihnen am besten?</label>
+          <div class="callback-time-pills" role="radiogroup" aria-label="Bevorzugte Rückrufzeit">
+            <button type="button" class="callback-time-pill active" onclick="selectCallbackTime(this, 'Schnellstmöglich')" role="radio" aria-checked="true">Schnellstmöglich</button>
+            <button type="button" class="callback-time-pill" onclick="selectCallbackTime(this, 'Vormittags (08–12 Uhr)')" role="radio" aria-checked="false">Vormittags (08–12 Uhr)</button>
+            <button type="button" class="callback-time-pill" onclick="selectCallbackTime(this, 'Nachmittags (12–17 Uhr)')" role="radio" aria-checked="false">Nachmittags (12–17 Uhr)</button>
+          </div>
+          <input type="hidden" id="cbPreferredTime" name="preferredTime" value="Schnellstmöglich">
+        </div>
+
+        <div class="callback-form-group">
+          <label for="cbReason" class="callback-label">Grund des Rückrufs <span class="req-star">*</span></label>
+          <textarea id="cbReason" name="reason" class="callback-textarea" rows="3" placeholder="Worum geht es kurz? z. B. Wallbox-Installation, Zählerschrank oder PV-Anlage..." required></textarea>
+          <div class="field-error-msg" id="cbReasonError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-group callback-checkbox-group">
+          <label class="callback-checkbox-label">
+            <input type="checkbox" id="cbDatenschutz" required>
+            <span class="chk-text">Ich habe die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> zur Kenntnis genommen und willige in die Verarbeitung meiner Daten ein. <span class="req-star">*</span></span>
+          </label>
+          <div class="field-error-msg" id="cbDatenschutzError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-actions">
+          <button type="submit" class="btn-primary-orange btn-block" id="btnSubmitCallback">
+            <span>Rückruf anfordern</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Confirmation state -->
+      <div class="callback-success-panel" id="callbackSuccess" style="display: none;">
+        <div class="callback-success-icon-wrap" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h4 class="callback-success-title">Rückrufanfrage erfolgreich gesendet!</h4>
+        <p class="callback-success-text">
+          Vielen Dank, <strong id="cbSuccessName"></strong>. Wir haben Ihre Rückrufbitte an <strong>kontakt@elektrotechnik-malawko.de</strong> erhalten und rufen Sie unter <strong id="cbSuccessPhone"></strong> schnellstmöglich zurück.
+        </p>
+        <button type="button" class="btn-secondary-glass btn-block" onclick="closeCallbackModal()" style="margin-top: 20px;">
+          <span>Fenster schließen</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCallbackModal() {
+      var modal = document.getElementById('callbackModal');
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      var inp = modal.querySelector('input:not([type="hidden"])');
+      if (inp) inp.focus();
+    }
+
+    function closeCallbackModal() {
+      var modal = document.getElementById('callbackModal');
+      if (!modal) return;
+      modal.classList.remove('open');
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    }
+
+    function selectCallbackTime(btn, val) {
+      var container = btn.closest('.callback-time-pills');
+      if (container) {
+        var pills = container.querySelectorAll('.callback-time-pill');
+        for (var i = 0; i < pills.length; i++) {
+          pills[i].classList.remove('active');
+          pills[i].setAttribute('aria-checked', 'false');
+        }
+      }
+      btn.classList.add('active');
+      btn.setAttribute('aria-checked', 'true');
+      var hidden = document.getElementById('cbPreferredTime');
+      if (hidden) hidden.value = val;
+    }
+
+    function submitCallbackForm(e) {
+      if (e) e.preventDefault();
+      var modal = document.getElementById('callbackModal');
+      if (!modal) return false;
+
+      var nameInp = document.getElementById('cbName');
+      var phoneInp = document.getElementById('cbPhone');
+      var reasonInp = document.getElementById('cbReason');
+      var chkInp = document.getElementById('cbDatenschutz');
+      var timeInp = document.getElementById('cbPreferredTime');
+
+      var errName = document.getElementById('cbNameError');
+      var errPhone = document.getElementById('cbPhoneError');
+      var errReason = document.getElementById('cbReasonError');
+      var errChk = document.getElementById('cbDatenschutzError');
+
+      var isValid = true;
+
+      if (!nameInp || !nameInp.value.trim()) {
+        if (nameInp) nameInp.classList.add('error');
+        if (errName) errName.textContent = 'Bitte geben Sie Ihren Namen an.';
+        isValid = false;
+      } else {
+        nameInp.classList.remove('error');
+        if (errName) errName.textContent = '';
+      }
+
+      if (!phoneInp || !phoneInp.value.trim()) {
+        if (phoneInp) phoneInp.classList.add('error');
+        if (errPhone) errPhone.textContent = 'Bitte geben Sie Ihre Telefonnummer an.';
+        isValid = false;
+      } else {
+        var clean = phoneInp.value.replace(/[^0-9+]/g, '');
+        if (clean.length < 6) {
+          phoneInp.classList.add('error');
+          if (errPhone) errPhone.textContent = 'Bitte geben Sie eine gültige Rufnummer ein.';
+          isValid = false;
+        } else {
+          phoneInp.classList.remove('error');
+          if (errPhone) errPhone.textContent = '';
+        }
+      }
+
+      if (!reasonInp || !reasonInp.value.trim()) {
+        if (reasonInp) reasonInp.classList.add('error');
+        if (errReason) errReason.textContent = 'Bitte nennen Sie kurz das Anliegen Ihres Rückrufs.';
+        isValid = false;
+      } else {
+        reasonInp.classList.remove('error');
+        if (errReason) errReason.textContent = '';
+      }
+
+      if (!chkInp || !chkInp.checked) {
+        if (errChk) errChk.textContent = 'Bitte willigen Sie in die Datenverarbeitung ein.';
+        isValid = false;
+      } else {
+        if (errChk) errChk.textContent = '';
+      }
+
+      if (!isValid) return false;
+
+      var submitBtn = document.getElementById('btnSubmitCallback');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        var sp = submitBtn.querySelector('span');
+        if (sp) sp.textContent = 'Wird übermittelt...';
+      }
+
+      var payload = {
+        recipient: 'kontakt@elektrotechnik-malawko.de',
+        subject: 'Neue Rückrufanfrage – Malawko Website',
+        name: nameInp.value.trim(),
+        phone: phoneInp.value.trim(),
+        time: timeInp ? timeInp.value : 'Schnellstmöglich',
+        reason: reasonInp.value.trim(),
+        submittedAt: new Date().toISOString()
+      };
+
+      console.log('--- RÜCKRUFANFRAGE AN kontakt@elektrotechnik-malawko.de ---', payload);
+
+      setTimeout(function() {
+        var form = document.getElementById('callbackForm');
+        var success = document.getElementById('callbackSuccess');
+        if (form) form.style.display = 'none';
+        if (success) {
+          var sName = document.getElementById('cbSuccessName');
+          var sPhone = document.getElementById('cbSuccessPhone');
+          if (sName) sName.textContent = payload.name;
+          if (sPhone) sPhone.textContent = payload.phone;
+          success.style.display = 'block';
+        }
+      }, 450);
+
+      return false;
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeCallbackModal();
+    });
+  </script>
+
+  <!-- =====================================================================
+       COOKIE CONSENT BANNER (DSGVO / TTDSG)
+       ===================================================================== -->
+  <aside class="cookie-banner-wrapper" id="cookieBanner" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="cookieBannerTitle">
+    <div class="cookie-banner-card">
+      <div class="cookie-banner-main">
+        <div class="cookie-banner-badge">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>PRIVATSPHÄRE &amp; COOKIES</span>
+        </div>
+        <h3 class="cookie-banner-title" id="cookieBannerTitle">Wir schätzen Ihre Privatsphäre</h3>
+        <p class="cookie-banner-desc">
+          Wir nutzen Cookies und externe Dienste, um unsere Webseite nutzerfreundlich zu gestalten. Essenzielle Cookies sind für den technischen Betrieb erforderlich. Externe Medien (wie unsere interaktive Einsatzgebietskarte) laden externe Kartendaten erst nach Ihrer ausdrücklichen Zustimmung.
+        </p>
+        <div class="cookie-categories">
+          <label class="cookie-cat-item">
+            <input type="checkbox" checked disabled>
+            <span class="cookie-cat-box">
+              <strong class="cookie-cat-name">Essenzielle Funktionen</strong>
+              <span class="cookie-cat-hint">(immer aktiv)</span>
+            </span>
+          </label>
+          <label class="cookie-cat-item">
+            <input type="checkbox" id="cookieOptExternal" checked>
+            <span class="cookie-cat-box">
+              <strong class="cookie-cat-name">Externe Medien &amp; Karten</strong>
+              <span class="cookie-cat-hint">(Interaktive Karte Hamburg)</span>
+            </span>
+          </label>
+        </div>
+        <div class="cookie-banner-links">
+          <a href="/datenschutz">Datenschutzerklärung</a>
+          <span class="sep">&bull;</span>
+          <a href="/impressum">Impressum</a>
+        </div>
+      </div>
+      <div class="cookie-banner-actions">
+        <button type="button" class="btn-primary-orange cookie-btn-accept" onclick="acceptAllCookies()">
+          <span>Alle akzeptieren</span>
+        </button>
+        <button type="button" class="btn-cookie-essential" onclick="acceptEssentialOnly()">
+          <span>Nur essenzielle</span>
+        </button>
+        <button type="button" class="btn-cookie-custom" onclick="saveCustomCookies()">
+          <span>Auswahl speichern</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
 </body>
 </html>
 

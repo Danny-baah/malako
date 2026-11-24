@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initStoerungForm();
   initSolutionsSelector();
   initScrollReveal();
+  initCallbackModal();
+  initCookieConsent();
 });
 
 /**
@@ -235,15 +237,17 @@ function initKeyboardNav() {
  * Initialize Interactive Einsatzgebiet Leaflet Map (Hamburg & Metropolregion)
  * Centered on Elektrotechnik Malawko GmbH: Schreyerring 49, 22309 Hamburg
  */
-function initEinsatzgebietMap() {
-  const mapContainer = document.getElementById('einsatzgebietMap');
-  if (!mapContainer || typeof L === 'undefined') return;
+let einsatzgebietMapInstance = null;
 
-  // Schreyerring 49, 22309 Hamburg coordinates
+function renderEinsatzgebietMap() {
+  const mapContainer = document.getElementById('einsatzgebietMap');
+  if (!mapContainer || typeof L === 'undefined' || einsatzgebietMapInstance) return;
+
+  const placeholder = mapContainer.querySelector('.map-consent-placeholder');
+  if (placeholder) placeholder.remove();
+
   const hmbLat = 53.6109;
   const hmbLng = 10.0594;
-
-  // Center map slightly southwest so the floating top-right card leaves the Hamburg area clearly visible
   const viewCenter = [53.58, 10.03];
 
   try {
@@ -253,77 +257,101 @@ function initEinsatzgebietMap() {
       minZoom: 8,
       maxZoom: 14,
       scrollWheelZoom: false,
-      zoomControl: false, // We'll add it in bottomleft
+      zoomControl: false,
       attributionControl: false
     });
+    einsatzgebietMapInstance = map;
 
-    // Add Esri World Light Gray Canvas tiles (clean, light, architectural, no API key required)
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 16,
       attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // City labels and road reference layer
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 16
     }).addTo(map);
 
-    // Zoom controls in bottom-left corner
-    L.control.zoom({
-      position: 'bottomleft'
-    }).addTo(map);
+    L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
-    // Outer service radius circle (covers Metropolregion Hamburg, Stormarn, Pinneberg, Segeberg, Harburg Umland ~35 km)
     L.circle([hmbLat, hmbLng], {
       radius: 35000,
       color: '#D9541E',
       weight: 1.5,
-      opacity: 0.55,
-      dashArray: '6, 8',
+      opacity: 0.7,
       fillColor: '#D9541E',
-      fillOpacity: 0.04
+      fillOpacity: 0.04,
+      dashArray: '6, 6'
     }).addTo(map);
 
-    // Core central service radius (Hamburg & direct surroundings ~15 km)
     L.circle([hmbLat, hmbLng], {
-      radius: 15000,
+      radius: 16000,
       color: '#D9541E',
       weight: 2,
-      opacity: 0.75,
+      opacity: 0.9,
       fillColor: '#D9541E',
-      fillOpacity: 0.12
+      fillOpacity: 0.08
     }).addTo(map);
 
-    // Custom pulsing orange pin icon
-    const customIcon = L.divIcon({
+    const customPulseIcon = L.divIcon({
       className: 'map-pulse-marker',
       html: `
-        <div class="map-pulse-halo"></div>
-        <div class="map-pin-icon-wrap" title="Elektrotechnik Malawko GmbH – Schreyerring 49, 22309 Hamburg">
-          <svg width="34" height="42" viewBox="0 0 24 30" fill="none">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 9 12 18 12 18s12-9 12-18c0-6.63-5.37-12-12-12z" fill="#D9541E"/>
-            <circle cx="12" cy="11" r="4.5" fill="#FFFFFF"/>
-          </svg>
+        <div style="position: relative; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;">
+          <div style="position: absolute; width: 34px; height: 34px; border-radius: 50%; background: rgba(217, 84, 30, 0.25); animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+          <div style="position: relative; width: 14px; height: 14px; border-radius: 50%; background: #D9541E; border: 2.5px solid #FFFFFF; box-shadow: 0 2px 6px rgba(0,0,0,0.3);"></div>
         </div>
       `,
-      iconSize: [40, 48],
-      iconAnchor: [20, 42],
-      popupAnchor: [0, -42]
+      iconSize: [34, 34],
+      iconAnchor: [17, 17]
     });
 
-    const marker = L.marker([hmbLat, hmbLng], { icon: customIcon }).addTo(map);
-
-    // Click popup
+    const marker = L.marker([hmbLat, hmbLng], { icon: customPulseIcon }).addTo(map);
     marker.bindPopup(`
-      <div style="font-family: 'Plus Jakarta Sans', sans-serif; padding: 4px 6px; text-align: center;">
-        <strong style="color: #111; font-size: 14px; display: block; margin-bottom: 2px;">Elektrotechnik Malawko GmbH</strong>
-        <span style="color: #555; font-size: 12px; display: block; margin-bottom: 4px;">Schreyerring 49, 22309 Hamburg</span>
+      <div style="font-family: inherit; font-size: 13px; color: #1E293B; line-height: 1.4; padding: 2px;">
+        <strong style="color: #0F172A; display: block; margin-bottom: 2px;">Elektrotechnik Malawko</strong>
+        <span>Schreyerring 49, 22309 Hamburg</span><br>
         <span style="color: #D9541E; font-size: 12px; font-weight: 700;">Zentrale Hamburg &amp; Metropolregion</span>
       </div>
     `);
-
   } catch (err) {
     console.error('Error initializing Einsatzgebiet map:', err);
+  }
+}
+
+function showMapConsentPlaceholder(mapContainer) {
+  if (!mapContainer || mapContainer.querySelector('.map-consent-placeholder')) return;
+  mapContainer.innerHTML = `
+    <div class="map-consent-placeholder" id="mapConsentPlaceholder">
+      <div class="map-consent-card">
+        <div class="map-consent-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <h4 class="map-consent-title">Interaktive Karte deaktiviert</h4>
+        <p class="map-consent-text">
+          Aus Datenschutzgründen werden externe Kartendaten (Esri / OpenStreetMap) erst nach Ihrer Einwilligung geladen.
+        </p>
+        <button type="button" class="btn-primary-orange map-consent-btn" onclick="acceptExternalMedia()">
+          <span>Karte laden &amp; zustimmen</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <a href="/datenschutz" class="map-consent-link" target="_blank">Datenschutzerklärung lesen</a>
+      </div>
+    </div>
+  `;
+}
+
+function initEinsatzgebietMap() {
+  const mapContainer = document.getElementById('einsatzgebietMap');
+  if (!mapContainer) return;
+
+  const consent = localStorage.getItem('malawko_cookie_consent');
+  if (consent === 'all') {
+    renderEinsatzgebietMap();
+  } else {
+    showMapConsentPlaceholder(mapContainer);
   }
 }
 
@@ -1336,29 +1364,56 @@ function initStoerungForm() {
   let isSubmitting = false;
 
   const state = {
-    name: '',
+    vorname: '',
+    nachname: '',
     company: '',
+    customerNumber: '',
     email: '',
     phone: '',
-    category: 'Stromausfall / keine Spannung',
+    street: '',
+    zip: '',
+    city: 'Hamburg',
+    category: 'Elektroinstallation (Steckdosen / Schalter / Leitungen)',
+    area: '',
+    timeOccurred: '',
     message: '',
     files: [],
+    callbackRequested: 'Ja',
+    callbackTime: 'Schnellstmöglich',
     datenschutz: false
   };
 
-  // Input Elements
-  const inputName = document.getElementById('stoerungName');
+  // Inputs
+  const inputVorname = document.getElementById('stoerungVorname');
+  const inputNachname = document.getElementById('stoerungNachname');
   const inputCompany = document.getElementById('stoerungCompany');
+  const inputCustomerNumber = document.getElementById('stoerungCustomerNumber');
   const inputEmail = document.getElementById('stoerungEmail');
   const inputPhone = document.getElementById('stoerungPhone');
+  const inputStreet = document.getElementById('stoerungStreet');
+  const inputZip = document.getElementById('stoerungZip');
+  const inputCity = document.getElementById('stoerungCity');
+  const inputSaveAddress = document.getElementById('stoerungSaveAddress');
+  const btnLoadSavedAddress = document.getElementById('btnLoadSavedAddress');
+
+  const selectArea = document.getElementById('stoerungArea');
+  const selectTimeOccurred = document.getElementById('stoerungTimeOccurred');
   const inputMessage = document.getElementById('stoerungMessage');
   const inputDatenschutz = document.getElementById('stoerungDatenschutz');
+  const callbackTimeWrap = document.getElementById('callbackTimeWrap');
+  const selectCallbackTime = document.getElementById('stoerungCallbackTime');
 
-  // Error Message Elements
-  const errName = document.getElementById('errStoerungName');
+  // Errors
+  const errVorname = document.getElementById('errStoerungVorname');
+  const errNachname = document.getElementById('errStoerungNachname');
   const errEmail = document.getElementById('errStoerungEmail');
   const errPhone = document.getElementById('errStoerungPhone');
+  const errStreet = document.getElementById('errStoerungStreet');
+  const errZip = document.getElementById('errStoerungZip');
+  const errCity = document.getElementById('errStoerungCity');
   const errCategory = document.getElementById('errStoerungCategory');
+  const errArea = document.getElementById('errStoerungArea');
+  const errTimeOccurred = document.getElementById('errStoerungTimeOccurred');
   const errMessage = document.getElementById('errStoerungMessage');
   const errDatenschutz = document.getElementById('errStoerungDatenschutz');
 
@@ -1399,26 +1454,86 @@ function initStoerungForm() {
   }
 
   // Clear errors on input
-  if (inputName) inputName.addEventListener('input', () => clearFieldError(inputName, errName));
+  if (inputVorname) inputVorname.addEventListener('input', () => clearFieldError(inputVorname, errVorname));
+  if (inputNachname) inputNachname.addEventListener('input', () => clearFieldError(inputNachname, errNachname));
   if (inputEmail) inputEmail.addEventListener('input', () => clearFieldError(inputEmail, errEmail));
   if (inputPhone) inputPhone.addEventListener('input', () => clearFieldError(inputPhone, errPhone));
+  if (inputStreet) inputStreet.addEventListener('input', () => clearFieldError(inputStreet, errStreet));
+  if (inputZip) inputZip.addEventListener('input', () => clearFieldError(inputZip, errZip));
+  if (inputCity) inputCity.addEventListener('input', () => clearFieldError(inputCity, errCity));
+  if (selectArea) selectArea.addEventListener('change', () => clearFieldError(selectArea, errArea));
+  if (selectTimeOccurred) selectTimeOccurred.addEventListener('change', () => clearFieldError(selectTimeOccurred, errTimeOccurred));
   if (inputMessage) inputMessage.addEventListener('input', () => clearFieldError(inputMessage, errMessage));
   if (inputDatenschutz) inputDatenschutz.addEventListener('change', () => clearFieldError(null, errDatenschutz));
 
+  // --------------------------------------------------------------------------
+  // Saved Address Feature (like Amazon)
+  // --------------------------------------------------------------------------
+  const STORAGE_KEY = 'malawko_saved_address';
+  function checkSavedAddress() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && btnLoadSavedAddress) {
+        btnLoadSavedAddress.style.display = 'inline-flex';
+      }
+    } catch (e) {
+      // localStorage disabled / unavailable
+    }
+  }
+
+  function loadSavedAddress() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      if (data.vorname && inputVorname && !inputVorname.value) inputVorname.value = data.vorname;
+      if (data.nachname && inputNachname && !inputNachname.value) inputNachname.value = data.nachname;
+      if (data.phone && inputPhone && !inputPhone.value) inputPhone.value = data.phone;
+      if (data.email && inputEmail && !inputEmail.value) inputEmail.value = data.email;
+      if (data.company && inputCompany && !inputCompany.value) inputCompany.value = data.company;
+      if (data.customerNumber && inputCustomerNumber && !inputCustomerNumber.value) inputCustomerNumber.value = data.customerNumber;
+      if (data.street && inputStreet) inputStreet.value = data.street;
+      if (data.zip && inputZip) inputZip.value = data.zip;
+      if (data.city && inputCity) inputCity.value = data.city;
+
+      // Visual flash feedback on button
+      if (btnLoadSavedAddress) {
+        const origHTML = btnLoadSavedAddress.innerHTML;
+        btnLoadSavedAddress.innerHTML = '<span>✓ Adresse geladen!</span>';
+        btnLoadSavedAddress.style.borderColor = '#16a34a';
+        btnLoadSavedAddress.style.color = '#16a34a';
+        setTimeout(() => {
+          btnLoadSavedAddress.innerHTML = origHTML;
+          btnLoadSavedAddress.style.borderColor = '';
+          btnLoadSavedAddress.style.color = '';
+        }, 2200);
+      }
+    } catch (e) {
+      console.warn('Could not load address from storage', e);
+    }
+  }
+  if (btnLoadSavedAddress) {
+    btnLoadSavedAddress.addEventListener('click', loadSavedAddress);
+  }
+  checkSavedAddress();
+
+  // Callback selection toggle
+  window.toggleCallbackTime = function(isWanted) {
+    state.callbackRequested = isWanted ? 'Ja' : 'Nein';
+    if (callbackTimeWrap) {
+      callbackTimeWrap.style.display = isWanted ? 'block' : 'none';
+    }
+  };
+
   function updateTracker(step) {
-    // Step items
     for (let i = 1; i <= totalSteps; i++) {
       const ind = indicators[i];
       if (!ind) continue;
       ind.classList.remove('active', 'completed');
-      if (i === step) {
-        ind.classList.add('active');
-      } else if (i < step) {
-        ind.classList.add('completed');
-      }
+      if (i === step) ind.classList.add('active');
+      else if (i < step) ind.classList.add('completed');
     }
 
-    // Connectors
     if (connectors[1]) {
       if (step >= 2) connectors[1].classList.add('active');
       else connectors[1].classList.remove('active');
@@ -1430,21 +1545,14 @@ function initStoerungForm() {
   }
 
   function updateNav(step) {
-    if (btnBack) {
-      btnBack.disabled = (step === 1);
-    }
+    if (btnBack) btnBack.disabled = (step === 1);
     if (btnNext && btnNextText && btnNextIcon) {
       if (step === totalSteps) {
-        btnNextText.textContent = 'Störung melden';
-        btnNextIcon.innerHTML = `
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-        `;
+        btnNextText.textContent = 'Störung verbindlich melden';
+        btnNextIcon.innerHTML = `<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>`;
       } else {
         btnNextText.textContent = 'Weiter';
-        btnNextIcon.innerHTML = `
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        `;
+        btnNextIcon.innerHTML = `<line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>`;
       }
     }
   }
@@ -1453,7 +1561,6 @@ function initStoerungForm() {
     if (targetStep < 1 || targetStep > totalSteps) return;
     hideAlert();
 
-    // Hide all step panels
     Object.values(panels).forEach(panel => {
       if (panel) {
         panel.style.display = 'none';
@@ -1461,7 +1568,6 @@ function initStoerungForm() {
       }
     });
 
-    // Show target step panel
     const targetPanel = panels[targetStep];
     if (targetPanel) {
       targetPanel.style.display = 'block';
@@ -1472,7 +1578,6 @@ function initStoerungForm() {
     updateTracker(currentStep);
     updateNav(currentStep);
 
-    // Smooth scroll into view if card is scrolled off-screen
     const rect = card.getBoundingClientRect();
     if (rect.top < 60 || rect.top > window.innerHeight) {
       card.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1480,7 +1585,7 @@ function initStoerungForm() {
   }
 
   // --------------------------------------------------------------------------
-  // Step 2: Option Selection Cards
+  // Step 2: 10 Service Option Cards
   // --------------------------------------------------------------------------
   const optionCards = card.querySelectorAll('.stoerung-option-card');
   optionCards.forEach(c => {
@@ -1557,7 +1662,6 @@ function initStoerungForm() {
         showAlert(`Datei zu groß: ${file.name} (Maximal 10 MB erlaubt)`);
         return;
       }
-      // Check if duplicate
       if (!state.files.some(f => f.name === file.name && f.size === file.size)) {
         state.files.push(file);
       }
@@ -1571,41 +1675,58 @@ function initStoerungForm() {
     state.files.forEach((file, index) => {
       const item = document.createElement('div');
       item.className = 'stoerung-file-item';
-      const sizeStr = (file.size / 1024 > 1000) ? (file.size / (1024 * 1024)).toFixed(1) + ' MB' : Math.round(file.size / 1024) + ' KB';
-      item.innerHTML = `
-        <span>${escapeHtml(file.name)} <small style="color:#6B7280;">(${sizeStr})</small></span>
-        <button type="button" class="stoerung-file-remove" aria-label="Datei entfernen" data-index="${index}">&times;</button>
-      `;
-      const removeBtn = item.querySelector('.stoerung-file-remove');
-      if (removeBtn) {
-        removeBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          state.files.splice(index, 1);
-          renderFileList();
-        });
-      }
+
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'stoerung-file-name';
+      const sizeKb = (file.size / 1024).toFixed(0);
+      nameSpan.textContent = `${file.name} (${sizeKb} KB)`;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'stoerung-file-remove';
+      removeBtn.innerHTML = '&times; Entfernen';
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        state.files.splice(index, 1);
+        renderFileList();
+      });
+
+      item.appendChild(nameSpan);
+      item.appendChild(removeBtn);
       fileList.appendChild(item);
     });
   }
 
   // --------------------------------------------------------------------------
-  // Step Validation
+  // Validation per Step
   // --------------------------------------------------------------------------
   function validateStep(step) {
     let isValid = true;
     hideAlert();
 
     if (step === 1) {
-      state.name = inputName ? inputName.value.trim() : '';
+      state.vorname = inputVorname ? inputVorname.value.trim() : '';
+      state.nachname = inputNachname ? inputNachname.value.trim() : '';
       state.company = inputCompany ? inputCompany.value.trim() : '';
+      state.customerNumber = inputCustomerNumber ? inputCustomerNumber.value.trim() : '';
       state.email = inputEmail ? inputEmail.value.trim() : '';
       state.phone = inputPhone ? inputPhone.value.trim() : '';
+      state.street = inputStreet ? inputStreet.value.trim() : '';
+      state.zip = inputZip ? inputZip.value.trim() : '';
+      state.city = inputCity ? inputCity.value.trim() : '';
 
-      if (!state.name) {
-        setFieldError(inputName, errName, 'Bitte geben Sie Ihren Namen ein.');
+      if (!state.vorname || state.vorname.length < 2) {
+        setFieldError(inputVorname, errVorname, 'Bitte geben Sie Ihren Vornamen ein.');
         isValid = false;
       } else {
-        clearFieldError(inputName, errName);
+        clearFieldError(inputVorname, errVorname);
+      }
+
+      if (!state.nachname || state.nachname.length < 2) {
+        setFieldError(inputNachname, errNachname, 'Bitte geben Sie Ihren Nachnamen ein.');
+        isValid = false;
+      } else {
+        clearFieldError(inputNachname, errNachname);
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1616,44 +1737,90 @@ function initStoerungForm() {
         clearFieldError(inputEmail, errEmail);
       }
 
-      const phoneClean = state.phone.replace(/[\s\-\/\(\)]/g, '');
-      if (!state.phone || phoneClean.length < 6) {
+      const cleanPhone = state.phone.replace(/[^0-9+]/g, '');
+      if (!state.phone || cleanPhone.length < 6) {
         setFieldError(inputPhone, errPhone, 'Bitte geben Sie eine gültige Telefonnummer ein.');
         isValid = false;
       } else {
         clearFieldError(inputPhone, errPhone);
       }
 
+      if (!state.street || state.street.length < 3) {
+        setFieldError(inputStreet, errStreet, 'Bitte geben Sie die Straße und Hausnummer des Einsatzorts an.');
+        isValid = false;
+      } else {
+        clearFieldError(inputStreet, errStreet);
+      }
+
+      if (!state.zip || state.zip.length < 4) {
+        setFieldError(inputZip, errZip, 'Bitte geben Sie die Postleitzahl des Einsatzorts an.');
+        isValid = false;
+      } else {
+        clearFieldError(inputZip, errZip);
+      }
+
+      if (!state.city || state.city.length < 2) {
+        setFieldError(inputCity, errCity, 'Bitte geben Sie den Ort an.');
+        isValid = false;
+      } else {
+        clearFieldError(inputCity, errCity);
+      }
+
       if (!isValid) {
-        showAlert('Bitte füllen Sie alle erforderlichen Pflichtfelder korrekt aus.');
+        showAlert('Bitte füllen Sie alle erforderlichen Pflichtfelder für Kontaktdaten und Einsatzort aus.');
       }
     } else if (step === 2) {
+      state.area = selectArea ? selectArea.value : '';
+      state.timeOccurred = selectTimeOccurred ? selectTimeOccurred.value : '';
+
       if (!state.category) {
-        setFieldError(null, errCategory, 'Bitte wählen Sie die Art der Störung aus.');
+        setFieldError(null, errCategory, 'Bitte wählen Sie die Art der betroffenen Anlage aus.');
         isValid = false;
       } else {
         clearFieldError(null, errCategory);
+      }
+
+      if (!state.area) {
+        setFieldError(selectArea, errArea, 'Bitte wählen Sie den betroffenen Bereich oder Raum aus.');
+        isValid = false;
+      } else {
+        clearFieldError(selectArea, errArea);
+      }
+
+      if (!state.timeOccurred) {
+        setFieldError(selectTimeOccurred, errTimeOccurred, 'Bitte wählen Sie den Zeitpunkt aus, seit wann die Störung besteht.');
+        isValid = false;
+      } else {
+        clearFieldError(selectTimeOccurred, errTimeOccurred);
+      }
+
+      if (!isValid) {
+        showAlert('Bitte wählen Sie Anlage, betroffenen Bereich und Zeitpunkt aus.');
       }
     } else if (step === 3) {
       state.message = inputMessage ? inputMessage.value.trim() : '';
       state.datenschutz = inputDatenschutz ? inputDatenschutz.checked : false;
 
-      if (!state.message || state.message.length < 5) {
-        setFieldError(inputMessage, errMessage, 'Bitte beschreiben Sie das aufgetretene Problem kurz.');
+      const radioCb = document.querySelector('input[name="callbackRequested"]:checked');
+      state.callbackRequested = radioCb ? radioCb.value : 'Ja';
+      state.callbackTime = selectCallbackTime ? selectCallbackTime.value : 'Schnellstmöglich';
+
+      if (!state.message || state.message.length < 10) {
+        setFieldError(inputMessage, errMessage, 'Bitte beschreiben Sie das aufgetretene Problem möglichst genau (mind. 10 Zeichen).');
         isValid = false;
       } else {
         clearFieldError(inputMessage, errMessage);
       }
 
       if (!state.datenschutz) {
-        setFieldError(null, errDatenschutz, 'Bitte stimmen Sie der Datenschutzerklärung zu.');
+        setFieldError(null, errDatenschutz, 'Bitte willigen Sie in die Datenschutzerklärung ein.');
         isValid = false;
       } else {
         clearFieldError(null, errDatenschutz);
       }
 
       if (!isValid) {
-        showAlert('Bitte überprüfen Sie Ihre Eingaben und stimmen Sie der Datenschutzerklärung zu.');
+        showAlert('Bitte überprüfen Sie Ihre Fehlerbeschreibung und stimmen Sie der Datenschutzerklärung zu.');
       }
     }
 
@@ -1697,116 +1864,115 @@ function initStoerungForm() {
     btnNext.disabled = true;
     btnNextText.textContent = 'Wird übermittelt...';
 
+    // Save address to localStorage if checked (Amazon-style)
+    if (inputSaveAddress && inputSaveAddress.checked) {
+      try {
+        const addressToSave = {
+          vorname: state.vorname,
+          nachname: state.nachname,
+          company: state.company,
+          customerNumber: state.customerNumber,
+          phone: state.phone,
+          email: state.email,
+          street: state.street,
+          zip: state.zip,
+          city: state.city
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(addressToSave));
+        if (btnLoadSavedAddress) btnLoadSavedAddress.style.display = 'inline-flex';
+      } catch (e) {
+        // Storage fail ignored
+      }
+    }
+
     const timestamp = new Date().toISOString();
     const formattedDate = new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
-    const refId = '#ST-' + Math.floor(1000 + Math.random() * 9000);
+    const refId = '#ST-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
 
     const payload = {
-      subject: 'Neue Störungsmeldung – Malawko Website',
+      subject: 'Neue Störungsmeldung – Malawko Meisterbetrieb',
       referenceId: refId,
       submittedAt: timestamp,
       formattedDate: formattedDate,
       customer: {
-        name: state.name,
+        name: `${state.vorname} ${state.nachname}`,
+        vorname: state.vorname,
+        nachname: state.nachname,
         company: state.company || null,
+        customerNumber: state.customerNumber || null,
         email: state.email,
-        phone: state.phone
+        phone: state.phone,
+        address: `${state.street}, ${state.zip} ${state.city}`,
+        street: state.street,
+        zip: state.zip,
+        city: state.city
       },
       fault: {
         category: state.category,
+        area: state.area,
+        timeOccurred: state.timeOccurred,
         message: state.message,
+        callbackRequested: state.callbackRequested,
+        callbackTime: state.callbackRequested === 'Ja' ? state.callbackTime : 'Nicht gewünscht',
         attachments: state.files.map(f => ({ name: f.name, size: f.size, type: f.type }))
       },
       privacyConsent: true,
       recipient: 'kontakt@elektrotechnik-malawko.de'
     };
 
-    console.log('--- NEUE STÖRUNGSMELDUNG (STRUKTURIERTE E-MAIL) ---', payload);
+    console.log('[STÖRUNGSMELDUNG PAYLOAD]', payload);
 
-    // Reliable transition to confirmation panel
     setTimeout(() => {
-      // Hide form steps and header
       form.style.display = 'none';
-      const cardHeader = card.querySelector('.stoerung-card-header');
-      if (cardHeader) cardHeader.style.display = 'none';
-      const tracker = card.querySelector('.stoerung-progress-tracker');
-      if (tracker) tracker.style.display = 'none';
-
-      // Update confirmation details
-      const confirmRef = document.getElementById('stoerungConfirmRef');
-      const confirmCat = document.getElementById('stoerungConfirmCategory');
-      const confirmContact = document.getElementById('stoerungConfirmContact');
-
-      if (confirmRef) confirmRef.textContent = refId;
-      if (confirmCat) confirmCat.textContent = state.category;
-      if (confirmContact) {
-        confirmContact.textContent = state.name + (state.company ? ` (${state.company})` : '') + ` • ${state.email}`;
-      }
+      const progressWrap = card.querySelector('.stoerung-progress-tracker');
+      if (progressWrap) progressWrap.style.display = 'none';
 
       if (confirmationPanel) {
         confirmationPanel.style.display = 'block';
-        confirmationPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        const confRef = document.getElementById('stoerungConfirmRef');
+        const confCat = document.getElementById('stoerungConfirmCategory');
+        const confArea = document.getElementById('stoerungConfirmArea');
+        const confAddr = document.getElementById('stoerungConfirmAddress');
+        const confContact = document.getElementById('stoerungConfirmContact');
+        const confCallback = document.getElementById('stoerungConfirmCallback');
+
+        if (confRef) confRef.textContent = refId;
+        if (confCat) confCat.textContent = state.category;
+        if (confArea) confArea.textContent = state.area;
+        if (confAddr) confAddr.textContent = `${state.street}, ${state.zip} ${state.city}`;
+        if (confContact) confContact.textContent = `${state.vorname} ${state.nachname} (${state.phone})`;
+        if (confCallback) {
+          confCallback.textContent = state.callbackRequested === 'Ja' ? `Ja (${state.callbackTime})` : 'Nein (E-Mail)';
+        }
       }
 
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
       isSubmitting = false;
       btnNext.disabled = false;
-      btnNextText.textContent = 'Störung melden';
-    }, 600);
+      btnNextText.textContent = 'Störung verbindlich melden';
+    }, 700);
   }
 
-  // --------------------------------------------------------------------------
-  // Reset
-  // --------------------------------------------------------------------------
+  // Reset handler
   if (btnReset) {
     btnReset.addEventListener('click', () => {
-      // Reset state
-      state.name = '';
-      state.company = '';
-      state.email = '';
-      state.phone = '';
-      state.category = 'Stromausfall / keine Spannung';
-      state.message = '';
-      state.files = [];
-      state.datenschutz = false;
-
-      // Reset form controls
       form.reset();
+      state.files = [];
       renderFileList();
+      hideAlert();
 
-      // Reset option cards
-      optionCards.forEach((c, idx) => {
-        if (idx === 0) {
-          c.classList.add('is-selected');
-          c.setAttribute('aria-checked', 'true');
-        } else {
-          c.classList.remove('is-selected');
-          c.setAttribute('aria-checked', 'false');
-        }
-      });
-
-      // Show header & form, hide confirmation
-      const cardHeader = card.querySelector('.stoerung-card-header');
-      if (cardHeader) cardHeader.style.display = 'block';
-      const tracker = card.querySelector('.stoerung-progress-tracker');
-      if (tracker) tracker.style.display = 'flex';
-      form.style.display = 'block';
       if (confirmationPanel) confirmationPanel.style.display = 'none';
+      const progressWrap = card.querySelector('.stoerung-progress-tracker');
+      if (progressWrap) progressWrap.style.display = 'flex';
 
+      form.style.display = 'block';
       goToStep(1);
     });
   }
-
-  // Handle direct navigation via URL hash (#stoerung or #stoerung-melden)
-  if (window.location.hash === '#stoerung' || window.location.hash === '#stoerung-melden') {
-    setTimeout(() => {
-      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
-  }
 }
 
-/**
- * Interactive Service Selector for Solutions in Detail (Elektroinstallation Page)
- */
+
 function initSolutionsSelector() {
   const container = document.getElementById('solutionsInteractiveGrid');
   if (!container) return;
@@ -2118,3 +2284,468 @@ function initHomeHeroSlider() {
   // Start autoplay (rotates exactly every 7s)
   startAutoplay();
 }
+
+/**
+ * Interactive Callback Request Modal (Rückruf anfordern)
+ */
+function getCallbackModalMarkup() {
+  return `
+    <div class="callback-modal-backdrop" data-close-callback></div>
+    <div class="callback-modal-dialog">
+      <button type="button" class="callback-modal-close" data-close-callback aria-label="Dialog schließen">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="callback-modal-header">
+        <div class="callback-badge">
+          <span class="badge-dash" aria-hidden="true"></span>
+          <span>RÜCKRUF-SERVICE</span>
+        </div>
+        <h3 class="callback-modal-title" id="callbackModalTitle">Rückruf anfordern</h3>
+        <p class="callback-modal-subtitle">
+          Hinterlassen Sie uns kurz Ihre Kontaktdaten und Ihr Anliegen – wir rufen Sie gerne verlässlich zurück.
+        </p>
+      </div>
+
+      <form id="callbackForm" class="callback-modal-form" novalidate>
+        <div class="callback-form-group">
+          <label for="cbName" class="callback-label">Ihr Name <span class="req-star">*</span></label>
+          <input type="text" id="cbName" name="name" class="callback-input" placeholder="z. B. Max Mustermann" required autocomplete="name">
+          <div class="field-error-msg" id="cbNameError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-group">
+          <label for="cbPhone" class="callback-label">Ihre Telefonnummer <span class="req-star">*</span></label>
+          <input type="tel" id="cbPhone" name="phone" class="callback-input" placeholder="z. B. 0151 12345678" required autocomplete="tel">
+          <div class="field-error-msg" id="cbPhoneError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-group">
+          <label class="callback-label">Wann passt es Ihnen am besten?</label>
+          <div class="callback-time-pills" role="radiogroup" aria-label="Bevorzugte Rückrufzeit">
+            <button type="button" class="callback-time-pill active" data-time="Schnellstmöglich" role="radio" aria-checked="true">Schnellstmöglich</button>
+            <button type="button" class="callback-time-pill" data-time="Vormittags (08–12 Uhr)" role="radio" aria-checked="false">Vormittags (08–12 Uhr)</button>
+            <button type="button" class="callback-time-pill" data-time="Nachmittags (12–17 Uhr)" role="radio" aria-checked="false">Nachmittags (12–17 Uhr)</button>
+          </div>
+          <input type="hidden" id="cbPreferredTime" name="preferredTime" value="Schnellstmöglich">
+        </div>
+
+        <div class="callback-form-group">
+          <label for="cbReason" class="callback-label">Grund des Rückrufs <span class="req-star">*</span></label>
+          <textarea id="cbReason" name="reason" class="callback-textarea" rows="3" placeholder="Worum geht es kurz? z. B. Wallbox-Installation, Zählerschrank oder PV-Anlage..." required></textarea>
+          <div class="field-error-msg" id="cbReasonError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-group callback-checkbox-group">
+          <label class="callback-checkbox-label">
+            <input type="checkbox" id="cbDatenschutz" required>
+            <span class="chk-text">Ich habe die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> zur Kenntnis genommen und willige in die Verarbeitung meiner Daten ein. <span class="req-star">*</span></span>
+          </label>
+          <div class="field-error-msg" id="cbDatenschutzError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-actions">
+          <button type="submit" class="btn-primary-orange btn-block" id="btnSubmitCallback">
+            <span>Rückruf anfordern</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Confirmation state -->
+      <div class="callback-success-panel" id="callbackSuccess" style="display: none;">
+        <div class="callback-success-icon-wrap" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h4 class="callback-success-title">Rückrufbitte erfolgreich gesendet!</h4>
+        <p class="callback-success-text">
+          Vielen Dank, <strong id="cbSuccessName"></strong>. Wir haben Ihre Rückrufanfrage erhalten und melden uns unter <strong id="cbSuccessPhone"></strong> bei Ihnen.
+        </p>
+        <button type="button" class="btn-secondary-glass btn-block" data-close-callback style="margin-top: 20px;">
+          <span>Fenster schließen</span>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function initCallbackModal() {
+  function ensureModal() {
+    let modal = document.getElementById('callbackModal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'callbackModal';
+      modal.className = 'callback-modal-overlay';
+      modal.style.display = 'none';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', 'callbackModalTitle');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.innerHTML = getCallbackModalMarkup();
+      document.body.appendChild(modal);
+      bindModalEvents(modal);
+    }
+    return modal;
+  }
+
+  function bindModalEvents(modal) {
+    const closeBtns = modal.querySelectorAll('[data-close-callback]');
+    const form = modal.querySelector('#callbackForm');
+    const successPanel = modal.querySelector('#callbackSuccess');
+    const timePills = modal.querySelectorAll('.callback-time-pill');
+    const hiddenTimeInput = modal.querySelector('#cbPreferredTime');
+
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal();
+      });
+    });
+
+    // Time pills selection
+    timePills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        timePills.forEach(p => {
+          p.classList.remove('active');
+          p.setAttribute('aria-checked', 'false');
+        });
+        pill.classList.add('active');
+        pill.setAttribute('aria-checked', 'true');
+        if (hiddenTimeInput) {
+          hiddenTimeInput.value = pill.getAttribute('data-time') || 'Schnellstmöglich';
+        }
+      });
+    });
+
+    // Form submission
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const inputName = modal.querySelector('#cbName');
+        const inputPhone = modal.querySelector('#cbPhone');
+        const inputReason = modal.querySelector('#cbReason');
+        const chkDatenschutz = modal.querySelector('#cbDatenschutz');
+
+        const errName = modal.querySelector('#cbNameError');
+        const errPhone = modal.querySelector('#cbPhoneError');
+        const errReason = modal.querySelector('#cbReasonError');
+        const errDatenschutz = modal.querySelector('#cbDatenschutzError');
+
+        let isValid = true;
+
+        // Validate Name
+        if (!inputName || !inputName.value.trim()) {
+          if (inputName) inputName.classList.add('error');
+          if (errName) errName.textContent = 'Bitte geben Sie Ihren Namen ein.';
+          isValid = false;
+        } else {
+          inputName.classList.remove('error');
+          if (errName) errName.textContent = '';
+        }
+
+        // Validate Phone
+        if (!inputPhone) {
+          isValid = false;
+        } else {
+          const cleanPhone = inputPhone.value.replace(/[\s\-\/\(\)]/g, '');
+          if (!inputPhone.value.trim() || cleanPhone.length < 6) {
+            inputPhone.classList.add('error');
+            if (errPhone) errPhone.textContent = 'Bitte geben Sie eine gültige Telefonnummer an.';
+            isValid = false;
+          } else {
+            inputPhone.classList.remove('error');
+            if (errPhone) errPhone.textContent = '';
+          }
+        }
+
+        // Validate Reason
+        if (!inputReason || !inputReason.value.trim() || inputReason.value.trim().length < 3) {
+          if (inputReason) inputReason.classList.add('error');
+          if (errReason) errReason.textContent = 'Bitte nennen Sie uns kurz den Grund Ihres Rückrufs.';
+          isValid = false;
+        } else {
+          inputReason.classList.remove('error');
+          if (errReason) errReason.textContent = '';
+        }
+
+        // Validate Datenschutz
+        if (!chkDatenschutz || !chkDatenschutz.checked) {
+          if (errDatenschutz) errDatenschutz.textContent = 'Bitte stimmen Sie der Datenschutzerklärung zu.';
+          isValid = false;
+        } else {
+          if (errDatenschutz) errDatenschutz.textContent = '';
+        }
+
+        if (!isValid) return;
+
+        const submitBtn = modal.querySelector('#btnSubmitCallback');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          const submitSpan = submitBtn.querySelector('span');
+          if (submitSpan) submitSpan.textContent = 'Wird gesendet...';
+        }
+
+        console.log('--- RÜCKRUF-ANFRAGE GESENDET ---', {
+          name: inputName.value.trim(),
+          phone: inputPhone.value.trim(),
+          preferredTime: hiddenTimeInput ? hiddenTimeInput.value : 'Schnellstmöglich',
+          reason: inputReason.value.trim(),
+          timestamp: new Date().toISOString()
+        });
+
+        setTimeout(() => {
+          form.style.display = 'none';
+          if (successPanel) {
+            const sName = modal.querySelector('#cbSuccessName');
+            const sPhone = modal.querySelector('#cbSuccessPhone');
+            if (sName) sName.textContent = inputName.value.trim();
+            if (sPhone) sPhone.textContent = inputPhone.value.trim();
+            successPanel.style.display = 'block';
+          }
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            const submitSpan = submitBtn.querySelector('span');
+            if (submitSpan) submitSpan.textContent = 'Rückruf anfordern';
+          }
+        }, 500);
+      });
+    }
+  }
+
+  function openModal() {
+    const modal = ensureModal();
+    modal.style.display = 'flex';
+    // Force layout reflow before triggering transition
+    modal.offsetHeight;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    const firstInput = modal.querySelector('input:not([type="hidden"])');
+    if (firstInput) setTimeout(() => firstInput.focus(), 150);
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('callbackModal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    setTimeout(() => {
+      if (!modal.classList.contains('open')) {
+        modal.style.display = 'none';
+      }
+    }, 300);
+  }
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-open-callback], #openCallbackModal');
+    if (trigger) {
+      e.preventDefault();
+      openModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('callbackModal');
+      if (modal && modal.classList.contains('open')) {
+        closeModal();
+      }
+    }
+  });
+}
+
+/**
+ * =====================================================================
+ * COOKIE CONSENT & PRIVACY BANNER MANAGEMENT (DSGVO / TTDSG)
+ * =====================================================================
+ */
+function initCookieConsent() {
+  const banner = document.getElementById('cookieBanner');
+  const consent = localStorage.getItem('malawko_cookie_consent');
+
+  if (!consent && banner) {
+    setTimeout(() => {
+      banner.style.display = 'block';
+      setTimeout(() => banner.classList.add('open'), 20);
+    }, 600);
+  }
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href="#cookies"], [data-open-cookies]');
+    if (a) {
+      e.preventDefault();
+      openCookieBanner();
+    }
+  });
+}
+
+function openCookieBanner() {
+  const banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+  const optExternal = document.getElementById('cookieOptExternal');
+  const currentConsent = localStorage.getItem('malawko_cookie_consent');
+  if (optExternal) {
+    optExternal.checked = (currentConsent === 'all');
+  }
+  banner.style.display = 'block';
+  setTimeout(() => banner.classList.add('open'), 10);
+}
+
+function closeCookieBanner() {
+  const banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+  banner.classList.remove('open');
+  setTimeout(() => {
+    if (!banner.classList.contains('open')) {
+      banner.style.display = 'none';
+    }
+  }, 350);
+}
+
+function acceptAllCookies() {
+  localStorage.setItem('malawko_cookie_consent', 'all');
+  closeCookieBanner();
+  renderEinsatzgebietMap();
+}
+
+function acceptEssentialOnly() {
+  localStorage.setItem('malawko_cookie_consent', 'essential');
+  closeCookieBanner();
+}
+
+function saveCustomCookies() {
+  const optExternal = document.getElementById('cookieOptExternal');
+  if (optExternal && optExternal.checked) {
+    acceptAllCookies();
+  } else {
+    acceptEssentialOnly();
+  }
+}
+
+function acceptExternalMedia() {
+  localStorage.setItem('malawko_cookie_consent', 'all');
+  closeCookieBanner();
+  renderEinsatzgebietMap();
+}
+
+// Global exposure for direct inline calls
+window.openCookieBanner = openCookieBanner;
+window.closeCookieBanner = closeCookieBanner;
+window.acceptAllCookies = acceptAllCookies;
+window.acceptEssentialOnly = acceptEssentialOnly;
+window.saveCustomCookies = saveCustomCookies;
+window.acceptExternalMedia = acceptExternalMedia;
+
+/**
+ * =====================================================================
+ * PROJECT IMAGE REVIEW LIGHTBOX (PROJEKTE.HTML)
+ * =====================================================================
+ */
+let currentLightboxGallery = [];
+let currentLightboxIndex = 0;
+
+function openProjectLightbox(cardEl) {
+  const lightbox = document.getElementById('imageLightbox');
+  if (!lightbox) return;
+
+  let gallery = [];
+  try {
+    const raw = cardEl.getAttribute('data-gallery');
+    if (raw) {
+      gallery = JSON.parse(raw);
+    }
+  } catch (err) {
+    console.warn('Could not parse data-gallery:', err);
+  }
+
+  if (!gallery || gallery.length === 0) {
+    const img = cardEl.querySelector('.project-card-photo');
+    if (img && img.src) {
+      gallery = [img.src];
+    }
+  }
+
+  if (gallery.length === 0) return;
+
+  currentLightboxGallery = gallery;
+  currentLightboxIndex = 0;
+
+  updateLightboxContent();
+
+  lightbox.style.display = 'flex';
+  setTimeout(() => {
+    lightbox.classList.add('open');
+    document.body.classList.add('modal-open');
+  }, 10);
+}
+
+function updateLightboxContent() {
+  const imgEl = document.getElementById('lightboxImg');
+  const counterEl = document.getElementById('lightboxCounter');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+
+  if (!imgEl || currentLightboxGallery.length === 0) return;
+
+  const currentSrc = currentLightboxGallery[currentLightboxIndex];
+  imgEl.src = currentSrc;
+
+  if (currentLightboxGallery.length > 1) {
+    if (prevBtn) prevBtn.style.display = 'flex';
+    if (nextBtn) nextBtn.style.display = 'flex';
+    if (counterEl) {
+      counterEl.style.display = 'block';
+      counterEl.textContent = `${currentLightboxIndex + 1} / ${currentLightboxGallery.length}`;
+    }
+  } else {
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+    if (counterEl) counterEl.style.display = 'none';
+  }
+}
+
+function closeImageLightbox() {
+  const lightbox = document.getElementById('imageLightbox');
+  if (!lightbox) return;
+
+  lightbox.classList.remove('open');
+  document.body.classList.remove('modal-open');
+  setTimeout(() => {
+    if (!lightbox.classList.contains('open')) {
+      lightbox.style.display = 'none';
+    }
+  }, 250);
+}
+
+function navigateLightbox(direction) {
+  if (currentLightboxGallery.length <= 1) return;
+  currentLightboxIndex = (currentLightboxIndex + direction + currentLightboxGallery.length) % currentLightboxGallery.length;
+  updateLightboxContent();
+}
+
+// Global exposure
+window.openProjectLightbox = openProjectLightbox;
+window.closeImageLightbox = closeImageLightbox;
+window.navigateLightbox = navigateLightbox;
+
+document.addEventListener('keydown', (e) => {
+  const lightbox = document.getElementById('imageLightbox');
+  if (!lightbox || !lightbox.classList.contains('open')) return;
+
+  if (e.key === 'Escape') {
+    closeImageLightbox();
+  } else if (e.key === 'ArrowLeft') {
+    navigateLightbox(-1);
+  } else if (e.key === 'ArrowRight') {
+    navigateLightbox(1);
+  }
+});
