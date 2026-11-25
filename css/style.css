@@ -9361,3 +9361,92 @@ body.cookie-banner-active .cookie-floating-btn {
     padding: 24px 22px;
   }
 }
+
+/* ============================================================
+   STÖRUNG NOTFALL-ANRUF-BOX (unter Störungsformular)
+   ============================================================ */
+.stoerung-notfall-box {
+  max-width: 820px;
+  margin: 48px auto 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 32px 28px;
+  background: linear-gradient(135deg, #fff7f2 0%, #ffece0 100%);
+  border: 2px solid #d93f1e;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(217, 63, 30, 0.12);
+}
+.stoerung-notfall-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d93f1e;
+  color: #ffffff;
+}
+.stoerung-notfall-content { flex: 1; }
+.stoerung-notfall-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #d93f1e;
+  margin-bottom: 8px;
+}
+.stoerung-notfall-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 10px;
+  line-height: 1.25;
+}
+.stoerung-notfall-desc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #3a3a3a;
+  margin: 0 0 18px;
+}
+.stoerung-notfall-desc strong { color: #d93f1e; }
+.stoerung-notfall-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.stoerung-notfall-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.stoerung-notfall-btn:hover { transform: translateY(-2px); }
+.stoerung-notfall-btn-primary {
+  background-color: #D9541E;
+  color: #ffffff;
+}
+.stoerung-notfall-btn-primary:hover { box-shadow: 0 6px 16px rgba(217, 84, 30, 0.35); }
+.stoerung-notfall-btn-emergency {
+  background-color: #ffffff;
+  color: #d93f1e;
+  border: 2px solid #d93f1e;
+}
+.stoerung-notfall-btn-emergency:hover { box-shadow: 0 6px 16px rgba(217, 63, 30, 0.2); }
+
+@media (max-width: 640px) {
+  .stoerung-notfall-box {
+    flex-direction: column;
+    padding: 24px 22px;
+    gap: 16px;
+  }
+  .stoerung-notfall-actions { flex-direction: column; }
+  .stoerung-notfall-btn { justify-content: center; }
+}

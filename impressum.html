@@ -134,8 +134,47 @@
           <li class="nav-item">
             <a href="/projekte" class="nav-link">Referenzen</a>
           </li>
-          <li class="nav-item">
-            <a href="/kontakt" class="nav-link">Kontakt</a>
+          <li class="nav-item has-dropdown" id="contactDropdownTrigger">
+            <div class="nav-link-dropdown-wrap">
+              <a href="/kontakt" class="nav-link nav-link-main ">Kontakt</a>
+              <button
+                type="button"
+                class="dropdown-toggle-btn"
+                aria-label="Kontakt Untermenü öffnen"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="contactDropdown"
+              >
+                <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="services-dropdown" id="contactDropdown" role="menu" aria-label="Kontakt Untermenü">
+              <div class="dropdown-inner">
+                <a href="/kontakt" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">01</span>
+                  <div class="dropdown-text">
+                    <strong>Kontaktseite</strong>
+                    <small>Telefon, E-Mail, Adresse &amp; Überblick</small>
+                  </div>
+                </a>
+                <a href="/angebot" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">02</span>
+                  <div class="dropdown-text">
+                    <strong>Neues Projekt</strong>
+                    <small>Projektanfrage &amp; unverbindliches Angebot</small>
+                  </div>
+                </a>
+                <a href="/stoerung-melden" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">03</span>
+                  <div class="dropdown-text">
+                    <strong>Störung melden</strong>
+                    <small>Strukturiertes Fehler-Meldeformular</small>
+                  </div>
+                </a>
+              </div>
+            </div>
           </li>
         </ul>
 
@@ -213,7 +252,21 @@
             </ul>
           </li>
           <li><a href="/projekte" class="mobile-nav-link">Referenzen</a></li>
-          <li><a href="/kontakt" class="mobile-nav-link">Kontakt</a></li>
+          <li class="mobile-has-sub">
+            <div class="mobile-sub-header">
+              <a href="/kontakt" class="mobile-nav-link ">Kontakt</a>
+              <button type="button" class="mobile-sub-toggle-btn" id="mobileContactSubToggle" aria-label="Kontakt Untermenü umschalten" aria-expanded="false">
+                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+            <ul class="mobile-submenu" id="mobileContactSubmenu">
+              <li><a href="/kontakt" class="mobile-submenu-overview"><strong>&rarr; Kontaktseite &amp; Überblick</strong></a></li>
+              <li><a href="/angebot">Neues Projekt / Angebot</a></li>
+              <li><a href="/stoerung-melden">Störung melden</a></li>
+            </ul>
+          </li>
         </ul>
         <div class="mobile-drawer-cta">
           <a href="/kontakt#projektanfrage" class="btn-primary-orange btn-block">

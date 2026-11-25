@@ -121,6 +121,21 @@ function initMobileMenu() {
     });
   }
 
+  // Kontakt accordion in mobile menu
+  const contactSubToggle = document.getElementById('mobileContactSubToggle');
+  const contactSubmenu = document.getElementById('mobileContactSubmenu');
+  if (contactSubToggle && contactSubmenu) {
+    contactSubToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isSubOpen = contactSubmenu.classList.toggle('open');
+      contactSubToggle.setAttribute('aria-expanded', String(isSubOpen));
+      const icon = contactSubToggle.querySelector('.chevron-icon');
+      if (icon) {
+        icon.style.transform = isSubOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+      }
+    });
+  }
+
   // Close drawer when clicking outside
   document.addEventListener('click', (e) => {
     if (mobileDrawer.classList.contains('open') &&
@@ -147,58 +162,57 @@ function initMobileMenu() {
 }
 
 /**
- * Services Dropdown handling on Desktop
+ * Generic Desktop Dropdown handler (hover + keyboard)
  */
-function initServicesDropdown() {
-  const dropdownTrigger = document.getElementById('servicesDropdownTrigger');
+function initDesktopDropdown(triggerId, dropdownId) {
+  const dropdownTrigger = document.getElementById(triggerId);
   const toggleBtn = dropdownTrigger ? (dropdownTrigger.querySelector('.dropdown-toggle-btn') || dropdownTrigger.querySelector('.dropdown-toggle')) : null;
-  const dropdown = document.getElementById('servicesDropdown');
+  const dropdown = document.getElementById(dropdownId);
 
   if (!dropdownTrigger || !toggleBtn || !dropdown) return;
 
   let closeTimer = null;
-
-  // Graceful hover on desktop: bridge delay prevents flickering when moving from trigger to menu
   dropdownTrigger.addEventListener('mouseenter', () => {
     if (closeTimer) clearTimeout(closeTimer);
     toggleBtn.setAttribute('aria-expanded', 'true');
     dropdownTrigger.classList.add('open');
   });
-
   dropdownTrigger.addEventListener('mouseleave', () => {
     closeTimer = setTimeout(() => {
       toggleBtn.setAttribute('aria-expanded', 'false');
       dropdownTrigger.classList.remove('open');
     }, 240);
   });
-
   dropdown.addEventListener('mouseenter', () => {
     if (closeTimer) clearTimeout(closeTimer);
     dropdownTrigger.classList.add('open');
   });
-
   dropdown.addEventListener('mouseleave', () => {
     closeTimer = setTimeout(() => {
       toggleBtn.setAttribute('aria-expanded', 'false');
       dropdownTrigger.classList.remove('open');
     }, 240);
   });
-
-  // Toggle on button click for keyboard or touch accessibility
   toggleBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
     toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
     dropdownTrigger.classList.toggle('open', !isExpanded);
   });
-
-  // Close when focus leaves the dropdown
   dropdownTrigger.addEventListener('focusout', (e) => {
     if (!dropdownTrigger.contains(e.relatedTarget)) {
       toggleBtn.setAttribute('aria-expanded', 'false');
       dropdownTrigger.classList.remove('open');
     }
   });
+}
+
+/**
+ * Services Dropdown handling on Desktop
+ */
+function initServicesDropdown() {
+  initDesktopDropdown('servicesDropdownTrigger', 'servicesDropdown');
+  initDesktopDropdown('contactDropdownTrigger', 'contactDropdown');
 }
 
 /**
