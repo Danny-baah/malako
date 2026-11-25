@@ -9672,6 +9672,67 @@ body.cookie-banner-active .cookie-floating-btn {
 
 .stoerung-location-fields { margin-top: 10px; }
 
+/* "Selbe Adresse wie vorher uebernehmen"-Button */
+.stoerung-use-saved-btn {
+  display: none;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px 18px;
+  background: #f7f8fa;
+  border: 1.5px dashed rgba(217, 84, 30, 0.35);
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+.stoerung-use-saved-btn:hover {
+  background: rgba(217, 84, 30, 0.04);
+  border-color: #D9541E;
+  border-style: solid;
+}
+.stoerung-use-saved-btn.is-applied {
+  background: #f0f9f3;
+  border-color: #3fb869;
+  border-style: solid;
+}
+.stoerung-use-saved-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(217, 84, 30, 0.1);
+  color: #D9541E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.stoerung-use-saved-btn.is-applied .stoerung-use-saved-icon {
+  background: #d4f1dc;
+  color: #2a6e3f;
+}
+.stoerung-use-saved-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.stoerung-use-saved-text strong {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0b1320;
+}
+.stoerung-use-saved-text small {
+  font-size: 0.8125rem;
+  color: #6a6a6a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Datenschutz row */
 .stoerung-datenschutz-row { margin-top: 24px; }
 .stoerung-datenschutz-label {

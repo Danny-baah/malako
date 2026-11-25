@@ -705,20 +705,8 @@
                 <p>Letzter Schritt: Wo genau ist das Problem und wie möchten Sie erreicht werden?</p>
               </div>
 
-              <div class="stoerung-field-group">
-                <label class="stoerung-label">Wo befindet sich die Störung?</label>
-                <div class="stoerung-radio-row" role="radiogroup">
-                  <label class="stoerung-radio-pill"><input type="radio" name="locationChoice" value="saved" id="stoerungLocationSaved"><span>Gespeicherte Adresse verwenden</span></label>
-                  <label class="stoerung-radio-pill"><input type="radio" name="locationChoice" value="new" id="stoerungLocationNew" checked><span>Andere Adresse eingeben</span></label>
-                </div>
-                <div class="stoerung-saved-address-hint" id="stoerungSavedAddressHint" style="display:none;">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span id="stoerungSavedAddressText">Gespeicherte Adresse wird verwendet.</span>
-                  <button type="button" class="btn-load-saved-address" id="btnLoadSavedAddress">Erneut laden</button>
-                </div>
-              </div>
-
               <div class="stoerung-location-fields" id="stoerungLocationFields">
+                <label class="stoerung-label" style="margin-bottom: 14px; display: block; font-weight: 600;">Adresse der Störung <span class="stoerung-required">*</span></label>
                 <div class="stoerung-fields-grid">
                   <div class="stoerung-field-group stoerung-field-span-2">
                     <label for="stoerungStreet" class="stoerung-label">Straße &amp; Hausnummer <span class="stoerung-required">*</span></label>
@@ -736,6 +724,17 @@
                     <div class="stoerung-error-msg" id="errStoerungCity"></div>
                   </div>
                 </div>
+
+                <button type="button" class="stoerung-use-saved-btn" id="btnUseSavedAddress" style="display:none;">
+                  <span class="stoerung-use-saved-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  <span class="stoerung-use-saved-text">
+                    <strong>Selbe Adresse wie vorher übernehmen</strong>
+                    <small id="stoerungUseSavedPreview"></small>
+                  </span>
+                </button>
+
                 <div class="stoerung-save-address-toggle">
                   <label>
                     <input type="checkbox" id="stoerungSaveAddress" name="saveAddress">
@@ -1012,7 +1011,7 @@
               </a>
             </li>
             <li class="contact-item">
-              <a href="/kontakt#stoerung-melden" class="contact-link" aria-label="Störung online melden">
+              <a href="/stoerung-melden" class="contact-link" aria-label="Störung online melden">
                 <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
                   <line x1="12" y1="9" x2="12" y2="13"></line>

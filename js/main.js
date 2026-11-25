@@ -1669,42 +1669,43 @@ function initStoerungForm() {
   const chk = document.querySelector('input[name="category"]:checked');
   if (chk) state.category = chk.value;
 
-  // Location Choice (Step 9): toggle felder
-  function updateLocationVisibility() {
-    const sel = document.querySelector('input[name="locationChoice"]:checked');
-    const val = sel ? sel.value : 'new';
-    state.locationChoice = val;
-    if (val === 'saved') {
-      if (locationFields) locationFields.style.display = 'none';
-      if (savedAddressHint) savedAddressHint.style.display = 'flex';
-      // Auto-load saved address into hidden inputs
-      try {
-        const raw = localStorage.getItem('malawko_saved_address');
-        if (raw) {
-          const data = JSON.parse(raw);
-          if (inputStreet && data.street) inputStreet.value = data.street;
-          if (inputZip && data.zip) inputZip.value = data.zip;
-          if (inputCity && data.city) inputCity.value = data.city;
-          const txt = document.getElementById('stoerungSavedAddressText');
-          if (txt) txt.textContent = (data.street || '') + ', ' + (data.zip || '') + ' ' + (data.city || '');
-        }
-      } catch (e) {}
-    } else {
-      if (locationFields) locationFields.style.display = 'block';
-      if (savedAddressHint) savedAddressHint.style.display = 'none';
-    }
+  // Saved-Address Button (Step 9): sichtbar nur wenn gespeicherte Adresse vorhanden
+  const btnUseSaved = document.getElementById('btnUseSavedAddress');
+  const useSavedPreview = document.getElementById('stoerungUseSavedPreview');
+  function initSavedAddressButton() {
+    if (!btnUseSaved) return;
+    try {
+      const raw = localStorage.getItem('malawko_saved_address');
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      const street = (data.street || '').trim();
+      const zip = (data.zip || '').trim();
+      const city = (data.city || '').trim();
+      if (!street && !zip) return;
+      btnUseSaved.style.display = 'flex';
+      if (useSavedPreview) {
+        useSavedPreview.textContent = street + ', ' + zip + ' ' + city;
+      }
+      btnUseSaved.addEventListener('click', () => {
+        if (inputStreet) inputStreet.value = street;
+        if (inputZip) inputZip.value = zip;
+        if (inputCity) inputCity.value = city;
+        // mark as "aktiv" + clear errors
+        if (inputStreet) clearFieldError(inputStreet, errStreet);
+        if (inputZip) clearFieldError(inputZip, errZip);
+        if (inputCity) clearFieldError(inputCity, errCity);
+        btnUseSaved.classList.add('is-applied');
+        const strong = btnUseSaved.querySelector('strong');
+        if (strong) strong.textContent = 'Adresse übernommen ✓';
+        setTimeout(() => {
+          btnUseSaved.classList.remove('is-applied');
+          if (strong) strong.textContent = 'Selbe Adresse wie vorher übernehmen';
+        }, 2200);
+        state.locationChoice = 'saved';
+      });
+    } catch (e) {}
   }
-  document.querySelectorAll('input[name="locationChoice"]').forEach(cb => {
-    cb.addEventListener('change', updateLocationVisibility);
-  });
-  // Show "saved" option only if there is a saved address
-  try {
-    const hasSaved = !!localStorage.getItem('malawko_saved_address');
-    if (!hasSaved) {
-      const savedOption = document.getElementById('stoerungLocationSaved');
-      if (savedOption && savedOption.parentElement) savedOption.parentElement.style.display = 'none';
-    }
-  } catch (e) {}
+  initSavedAddressButton();
 
   // Callback toggles (Step 9)
   function updateCallbackVisibility() {
@@ -1899,29 +1900,24 @@ function initStoerungForm() {
 
       if (!isValid) showAlert('Bitte alle Pflichtfelder Ihrer Kontaktdaten ausfüllen.');
     } else if (step === 9) {
-      const locSel = document.querySelector('input[name="locationChoice"]:checked');
-      state.locationChoice = locSel ? locSel.value : 'new';
+      state.street = inputStreet ? inputStreet.value.trim() : '';
+      state.zip = inputZip ? inputZip.value.trim() : '';
+      state.city = inputCity ? inputCity.value.trim() : '';
 
-      if (state.locationChoice === 'new') {
-        state.street = inputStreet ? inputStreet.value.trim() : '';
-        state.zip = inputZip ? inputZip.value.trim() : '';
-        state.city = inputCity ? inputCity.value.trim() : '';
+      if (!state.street || state.street.length < 3) {
+        setFieldError(inputStreet, errStreet, 'Straße fehlt.');
+        isValid = false;
+      } else clearFieldError(inputStreet, errStreet);
 
-        if (!state.street || state.street.length < 3) {
-          setFieldError(inputStreet, errStreet, 'Straße fehlt.');
-          isValid = false;
-        } else clearFieldError(inputStreet, errStreet);
+      if (!state.zip || state.zip.length < 4) {
+        setFieldError(inputZip, errZip, 'PLZ fehlt.');
+        isValid = false;
+      } else clearFieldError(inputZip, errZip);
 
-        if (!state.zip || state.zip.length < 4) {
-          setFieldError(inputZip, errZip, 'PLZ fehlt.');
-          isValid = false;
-        } else clearFieldError(inputZip, errZip);
-
-        if (!state.city || state.city.length < 2) {
-          setFieldError(inputCity, errCity, 'Ort fehlt.');
-          isValid = false;
-        } else clearFieldError(inputCity, errCity);
-      }
+      if (!state.city || state.city.length < 2) {
+        setFieldError(inputCity, errCity, 'Ort fehlt.');
+        isValid = false;
+      } else clearFieldError(inputCity, errCity);
 
       const rbCb = document.querySelector('input[name="callbackRequested"]:checked');
       state.callbackRequested = rbCb ? rbCb.value : 'Ja';
