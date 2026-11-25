@@ -9479,6 +9479,227 @@ body.cookie-banner-active .cookie-floating-btn {
   background-color: rgba(217, 84, 30, 0.06);
 }
 
+/* ============================================================
+   STÖRUNG 9-STEP FORM - Zusaetzliche Klassen
+   ============================================================ */
+.stoerung-step-heading {
+  margin-bottom: 20px;
+}
+.stoerung-step-heading h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #0b1320;
+  margin: 0 0 6px;
+}
+.stoerung-step-heading p {
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  margin: 0;
+}
+
+/* Category radio-grid (Step 1) */
+.stoerung-category-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.stoerung-category-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(11, 19, 32, 0.12);
+  border-radius: 12px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.stoerung-category-item input[type="radio"] {
+  margin-top: 3px;
+  accent-color: #D9541E;
+  flex-shrink: 0;
+}
+.stoerung-category-item:has(input:checked) {
+  border-color: #D9541E;
+  background: rgba(217, 84, 30, 0.04);
+  box-shadow: 0 4px 12px rgba(217, 84, 30, 0.08);
+}
+.stoerung-category-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.stoerung-category-label strong {
+  font-size: 0.9375rem;
+  color: #0b1320;
+  font-weight: 600;
+}
+.stoerung-category-label small {
+  font-size: 0.8125rem;
+  color: #6a6a6a;
+}
+.stoerung-category-item-emergency {
+  border-color: rgba(217, 63, 30, 0.35);
+  background: rgba(217, 63, 30, 0.04);
+}
+.stoerung-category-item-emergency strong { color: #d93f1e; }
+
+/* Checkbox pills (Step 6 symptoms) */
+.stoerung-check-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1.5px solid rgba(11, 19, 32, 0.15);
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.stoerung-check-pill input[type="checkbox"] { accent-color: #D9541E; }
+.stoerung-check-pill:has(input:checked) {
+  border-color: #D9541E;
+  background: rgba(217, 84, 30, 0.08);
+  color: #D9541E;
+}
+.stoerung-symptom-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* PV-Diagnostik Block */
+.stoerung-pv-block {
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(217, 84, 30, 0.04);
+  border: 1px solid rgba(217, 84, 30, 0.2);
+  border-radius: 12px;
+}
+.stoerung-pv-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #D9541E;
+  margin: 0 0 14px;
+}
+
+/* 2-col grid helper */
+.stoerung-field-span-2 { grid-column: span 2; }
+
+/* Saved-address hint */
+.stoerung-saved-address-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #f0f9f3;
+  border: 1px solid #bfe3cb;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  color: #2a6e3f;
+}
+.btn-load-saved-address {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #D9541E;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.8125rem;
+}
+.stoerung-save-address-toggle {
+  margin-top: 14px;
+  font-size: 0.875rem;
+  color: #4a4a4a;
+}
+.stoerung-save-address-toggle label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.stoerung-location-fields { margin-top: 10px; }
+
+/* Datenschutz row */
+.stoerung-datenschutz-row { margin-top: 24px; }
+.stoerung-datenschutz-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: #4a4a4a;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.stoerung-datenschutz-label input { margin-top: 3px; }
+.stoerung-datenschutz-label a { color: #D9541E; }
+
+/* Nav Footer */
+.stoerung-nav-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(11, 19, 32, 0.08);
+}
+.stoerung-step-counter {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #6a6a6a;
+  letter-spacing: 0.5px;
+}
+.stoerung-btn-back,
+.stoerung-btn-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+.stoerung-btn-back {
+  background: #ffffff;
+  border: 1.5px solid rgba(11, 19, 32, 0.15);
+  color: #4a4a4a;
+}
+.stoerung-btn-back:hover { border-color: #D9541E; color: #D9541E; }
+.stoerung-btn-next {
+  background: #D9541E;
+  color: #ffffff;
+}
+.stoerung-btn-next:hover { background: #c04618; }
+
+.stoerung-optional {
+  font-size: 0.8125rem;
+  color: #6a6a6a;
+  font-weight: 400;
+}
+
+/* Step-Panel visibility (JS toggles display) */
+.stoerung-step-panel { display: none; }
+.stoerung-step-panel.active { display: block; }
+
+/* Textarea */
+.stoerung-textarea { min-height: 140px; resize: vertical; }
+
+@media (max-width: 720px) {
+  .stoerung-category-group { grid-template-columns: 1fr; }
+  .stoerung-field-span-2 { grid-column: span 1; }
+  .stoerung-nav-footer { flex-wrap: wrap; }
+  .stoerung-step-counter { order: -1; width: 100%; text-align: center; margin-bottom: 8px; }
+}
+
 @media (max-width: 640px) {
   .stoerung-notfall-box {
     flex-direction: column;

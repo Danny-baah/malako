@@ -1365,27 +1365,25 @@ function initStoerungForm() {
   const btnReset = document.getElementById('btnResetStoerung');
   const btnMailtoSummary = document.getElementById('btnMailtoSummary');
 
-  // Step Indicators & Connectors
-  const indicators = {
-    1: document.getElementById('stoerungStepIndicator1'),
-    2: document.getElementById('stoerungStepIndicator2'),
-    3: document.getElementById('stoerungStepIndicator3')
-  };
-  const connectors = {
-    1: document.getElementById('stoerungConnector1'),
-    2: document.getElementById('stoerungConnector2')
-  };
+  // Step Indicators & Connectors (9 Steps)
+  const indicators = {};
+  const connectors = {};
+  const panels = {};
+  for (let i = 1; i <= 9; i++) {
+    indicators[i] = document.getElementById('stoerungStepIndicator' + i);
+    panels[i] = document.getElementById('stoerungStep' + i);
+    if (i < 9) connectors[i] = document.getElementById('stoerungConnector' + i);
+  }
 
-  // Step panels
-  const panels = {
-    1: document.getElementById('stoerungStep1'),
-    2: document.getElementById('stoerungStep2'),
-    3: document.getElementById('stoerungStep3')
-  };
+  const stepCounter = document.getElementById('stoerungStepCounter');
+  const locationFields = document.getElementById('stoerungLocationFields');
+  const savedAddressHint = document.getElementById('stoerungSavedAddressHint');
+  const callbackWayGroup = document.getElementById('stoerungCallbackWay');
+  const callbackTimeGroup = document.getElementById('stoerungCallbackTimeGroup');
 
   // State
   let currentStep = 1;
-  const totalSteps = 3;
+  const totalSteps = 9;
   let isSubmitting = false;
 
   const state = {
@@ -1410,7 +1408,9 @@ function initStoerungForm() {
     pvOutputStatus: 'Komplettausfall (keine Stromerzeugung, Anlage steht)',
     message: '',
     files: [],
+    locationChoice: 'new',
     callbackRequested: 'Ja',
+    contactWay: 'Telefon',
     callbackTime: 'Schnellstmöglich',
     datenschutz: false
   };
@@ -1581,19 +1581,20 @@ function initStoerungForm() {
       if (i === step) ind.classList.add('active');
       else if (i < step) ind.classList.add('completed');
     }
-
-    if (connectors[1]) {
-      if (step >= 2) connectors[1].classList.add('active');
-      else connectors[1].classList.remove('active');
-    }
-    if (connectors[2]) {
-      if (step >= 3) connectors[2].classList.add('active');
-      else connectors[2].classList.remove('active');
+    for (let i = 1; i < totalSteps; i++) {
+      const c = connectors[i];
+      if (!c) continue;
+      if (step > i) c.classList.add('active');
+      else c.classList.remove('active');
     }
   }
 
   function updateNav(step) {
-    if (btnBack) btnBack.disabled = (step === 1);
+    if (btnBack) {
+      btnBack.disabled = (step === 1);
+      btnBack.style.visibility = (step === 1) ? 'hidden' : 'visible';
+    }
+    if (stepCounter) stepCounter.textContent = 'Schritt ' + step + ' von ' + totalSteps;
     if (btnNext && btnNextText && btnNextIcon) {
       if (step === totalSteps) {
         btnNextText.textContent = 'Störung verbindlich melden';
@@ -1607,7 +1608,9 @@ function initStoerungForm() {
 
   function checkPvToggle() {
     if (!pvDiagnosticBlock) return;
-    const isPv = (state.category || '').toLowerCase().includes('photovoltaik');
+    const checkedCat = document.querySelector('input[name="category"]:checked');
+    const catVal = checkedCat ? checkedCat.value : state.category;
+    const isPv = (catVal || '').toLowerCase().includes('photovoltaik');
     pvDiagnosticBlock.style.display = isPv ? 'block' : 'none';
   }
 
@@ -1628,7 +1631,7 @@ function initStoerungForm() {
       targetPanel.classList.add('active');
     }
 
-    if (targetStep === 3) {
+    if (targetStep === 5) {
       checkPvToggle();
     }
 
@@ -1642,28 +1645,71 @@ function initStoerungForm() {
     }
   }
 
-  // Step 2 Option Cards
-  const optionCards = card.querySelectorAll('.stoerung-option-card');
-  optionCards.forEach(c => {
-    const selectOption = () => {
-      optionCards.forEach(item => {
-        item.classList.remove('is-selected');
-        item.setAttribute('aria-checked', 'false');
-      });
-      c.classList.add('is-selected');
-      c.setAttribute('aria-checked', 'true');
-      state.category = c.getAttribute('data-value') || '';
-      clearFieldError(null, errCategory);
-      checkPvToggle();
-    };
-
-    c.addEventListener('click', selectOption);
-    c.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        selectOption();
+  // Category (Step 1) Radio
+  document.querySelectorAll('input[name="category"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (cb.checked) {
+        state.category = cb.value;
+        clearFieldError(null, errCategory);
+        checkPvToggle();
       }
     });
+  });
+  // Init state.category from checked radio
+  const chk = document.querySelector('input[name="category"]:checked');
+  if (chk) state.category = chk.value;
+
+  // Location Choice (Step 9): toggle felder
+  function updateLocationVisibility() {
+    const sel = document.querySelector('input[name="locationChoice"]:checked');
+    const val = sel ? sel.value : 'new';
+    state.locationChoice = val;
+    if (val === 'saved') {
+      if (locationFields) locationFields.style.display = 'none';
+      if (savedAddressHint) savedAddressHint.style.display = 'flex';
+      // Auto-load saved address into hidden inputs
+      try {
+        const raw = localStorage.getItem('malawko_saved_address');
+        if (raw) {
+          const data = JSON.parse(raw);
+          if (inputStreet && data.street) inputStreet.value = data.street;
+          if (inputZip && data.zip) inputZip.value = data.zip;
+          if (inputCity && data.city) inputCity.value = data.city;
+          const txt = document.getElementById('stoerungSavedAddressText');
+          if (txt) txt.textContent = (data.street || '') + ', ' + (data.zip || '') + ' ' + (data.city || '');
+        }
+      } catch (e) {}
+    } else {
+      if (locationFields) locationFields.style.display = 'block';
+      if (savedAddressHint) savedAddressHint.style.display = 'none';
+    }
+  }
+  document.querySelectorAll('input[name="locationChoice"]').forEach(cb => {
+    cb.addEventListener('change', updateLocationVisibility);
+  });
+  // Show "saved" option only if there is a saved address
+  try {
+    const hasSaved = !!localStorage.getItem('malawko_saved_address');
+    if (!hasSaved) {
+      const savedOption = document.getElementById('stoerungLocationSaved');
+      if (savedOption && savedOption.parentElement) savedOption.parentElement.style.display = 'none';
+    }
+  } catch (e) {}
+
+  // Callback toggles (Step 9)
+  function updateCallbackVisibility() {
+    const sel = document.querySelector('input[name="callbackRequested"]:checked');
+    const val = sel ? sel.value : 'Ja';
+    state.callbackRequested = val;
+    const show = (val === 'Ja');
+    if (callbackWayGroup) callbackWayGroup.style.display = show ? 'block' : 'none';
+    if (callbackTimeGroup) callbackTimeGroup.style.display = show ? 'block' : 'none';
+  }
+  document.querySelectorAll('input[name="callbackRequested"]').forEach(cb => {
+    cb.addEventListener('change', updateCallbackVisibility);
+  });
+  document.querySelectorAll('input[name="contactWay"]').forEach(cb => {
+    cb.addEventListener('change', () => { if (cb.checked) state.contactWay = cb.value; });
   });
 
   // Step 3 File Upload Dropzone
@@ -1752,148 +1798,134 @@ function initStoerungForm() {
     });
   }
 
-  // Validation
+  // Validation for 9-step form
   function validateStep(step) {
     let isValid = true;
     hideAlert();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (step === 1) {
+      const chk = document.querySelector('input[name="category"]:checked');
+      state.category = chk ? chk.value : '';
+      if (!state.category) {
+        setFieldError(null, errCategory, 'Bitte wählen Sie die Art der betroffenen Anlage aus.');
+        showAlert('Bitte wählen Sie eine Anlage.');
+        isValid = false;
+      } else {
+        clearFieldError(null, errCategory);
+      }
+    } else if (step === 2) {
+      state.area = selectArea ? selectArea.value : '';
+      if (!state.area) {
+        setFieldError(selectArea, errArea, 'Bitte wählen Sie den betroffenen Bereich aus.');
+        showAlert('Bitte wählen Sie einen Bereich.');
+        isValid = false;
+      } else {
+        clearFieldError(selectArea, errArea);
+      }
+    } else if (step === 3) {
+      state.timeOccurred = selectTimeOccurred ? selectTimeOccurred.value : '';
+      const rb = document.querySelector('input[name="behavior"]:checked');
+      state.behavior = rb ? rb.value : state.behavior;
+      if (!state.timeOccurred) {
+        setFieldError(selectTimeOccurred, errTimeOccurred, 'Bitte wählen Sie den Zeitpunkt aus.');
+        showAlert('Bitte Zeitpunkt wählen.');
+        isValid = false;
+      } else {
+        clearFieldError(selectTimeOccurred, errTimeOccurred);
+      }
+    } else if (step === 4) {
+      const rb = document.querySelector('input[name="breakers"]:checked');
+      state.breakers = rb ? rb.value : state.breakers;
+      // keine Pflicht
+    } else if (step === 5) {
+      state.errorCode = inputErrorCode ? inputErrorCode.value.trim() : '';
+      state.pvInverter = inputPvInverter ? inputPvInverter.value.trim() : '';
+      state.pvErrorCode = inputPvErrorCode ? inputPvErrorCode.value.trim() : '';
+      const rb = document.querySelector('input[name="pvOutputStatus"]:checked');
+      state.pvOutputStatus = rb ? rb.value : state.pvOutputStatus;
+      // optional
+    } else if (step === 6) {
+      state.symptoms = [];
+      document.querySelectorAll('input[name="symptoms"]:checked').forEach(cb => state.symptoms.push(cb.value));
+      // optional
+    } else if (step === 7) {
+      state.message = inputMessage ? inputMessage.value.trim() : '';
+      if (!state.message || state.message.length < 15) {
+        setFieldError(inputMessage, errMessage, 'Bitte beschreiben Sie das Problem genauer (mindestens 15 Zeichen).');
+        showAlert('Beschreibung ist zu kurz — mindestens 15 Zeichen.');
+        isValid = false;
+      } else {
+        clearFieldError(inputMessage, errMessage);
+      }
+    } else if (step === 8) {
       state.vorname = inputVorname ? inputVorname.value.trim() : '';
       state.nachname = inputNachname ? inputNachname.value.trim() : '';
       state.company = inputCompany ? inputCompany.value.trim() : '';
       state.customerNumber = inputCustomerNumber ? inputCustomerNumber.value.trim() : '';
       state.email = inputEmail ? inputEmail.value.trim() : '';
       state.phone = inputPhone ? inputPhone.value.trim() : '';
-      state.street = inputStreet ? inputStreet.value.trim() : '';
-      state.zip = inputZip ? inputZip.value.trim() : '';
-      state.city = inputCity ? inputCity.value.trim() : '';
 
       if (!state.vorname || state.vorname.length < 2) {
-        setFieldError(inputVorname, errVorname, 'Bitte geben Sie Ihren Vornamen ein.');
+        setFieldError(inputVorname, errVorname, 'Bitte Vornamen eingeben.');
         isValid = false;
-      } else {
-        clearFieldError(inputVorname, errVorname);
-      }
+      } else clearFieldError(inputVorname, errVorname);
 
       if (!state.nachname || state.nachname.length < 2) {
-        setFieldError(inputNachname, errNachname, 'Bitte geben Sie Ihren Nachnamen ein.');
+        setFieldError(inputNachname, errNachname, 'Bitte Nachnamen eingeben.');
         isValid = false;
-      } else {
-        clearFieldError(inputNachname, errNachname);
-      }
+      } else clearFieldError(inputNachname, errNachname);
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!state.email || !emailRegex.test(state.email)) {
-        setFieldError(inputEmail, errEmail, 'Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+        setFieldError(inputEmail, errEmail, 'Bitte gültige E-Mail eingeben.');
         isValid = false;
-      } else {
-        clearFieldError(inputEmail, errEmail);
-      }
+      } else clearFieldError(inputEmail, errEmail);
 
       const cleanPhone = state.phone.replace(/[^0-9+]/g, '');
       if (!state.phone || cleanPhone.length < 6) {
-        setFieldError(inputPhone, errPhone, 'Bitte geben Sie eine gültige Telefonnummer ein.');
+        setFieldError(inputPhone, errPhone, 'Bitte Telefonnummer eingeben.');
         isValid = false;
-      } else {
-        clearFieldError(inputPhone, errPhone);
+      } else clearFieldError(inputPhone, errPhone);
+
+      if (!isValid) showAlert('Bitte alle Pflichtfelder Ihrer Kontaktdaten ausfüllen.');
+    } else if (step === 9) {
+      const locSel = document.querySelector('input[name="locationChoice"]:checked');
+      state.locationChoice = locSel ? locSel.value : 'new';
+
+      if (state.locationChoice === 'new') {
+        state.street = inputStreet ? inputStreet.value.trim() : '';
+        state.zip = inputZip ? inputZip.value.trim() : '';
+        state.city = inputCity ? inputCity.value.trim() : '';
+
+        if (!state.street || state.street.length < 3) {
+          setFieldError(inputStreet, errStreet, 'Straße fehlt.');
+          isValid = false;
+        } else clearFieldError(inputStreet, errStreet);
+
+        if (!state.zip || state.zip.length < 4) {
+          setFieldError(inputZip, errZip, 'PLZ fehlt.');
+          isValid = false;
+        } else clearFieldError(inputZip, errZip);
+
+        if (!state.city || state.city.length < 2) {
+          setFieldError(inputCity, errCity, 'Ort fehlt.');
+          isValid = false;
+        } else clearFieldError(inputCity, errCity);
       }
 
-      if (!state.street || state.street.length < 3) {
-        setFieldError(inputStreet, errStreet, 'Bitte geben Sie die Straße und Hausnummer des Schadenorts an.');
-        isValid = false;
-      } else {
-        clearFieldError(inputStreet, errStreet);
-      }
-
-      if (!state.zip || state.zip.length < 4) {
-        setFieldError(inputZip, errZip, 'Bitte geben Sie die Postleitzahl des Schadenorts an.');
-        isValid = false;
-      } else {
-        clearFieldError(inputZip, errZip);
-      }
-
-      if (!state.city || state.city.length < 2) {
-        setFieldError(inputCity, errCity, 'Bitte geben Sie den Ort an.');
-        isValid = false;
-      } else {
-        clearFieldError(inputCity, errCity);
-      }
-
-      if (!isValid) {
-        showAlert('Bitte füllen Sie alle erforderlichen Pflichtfelder für Kontaktdaten und Einsatzort aus.');
-      }
-    } else if (step === 2) {
-      state.area = selectArea ? selectArea.value : '';
-      state.timeOccurred = selectTimeOccurred ? selectTimeOccurred.value : '';
-
-      const radioBehavior = document.querySelector('input[name="stoerungBehavior"]:checked');
-      state.behavior = radioBehavior ? radioBehavior.value : 'Dauerhaft (durchgehend vorhanden)';
-
-      const radioBreakers = document.querySelector('input[name="stoerungBreakers"]:checked');
-      state.breakers = radioBreakers ? radioBreakers.value : 'Ja – FI / Sicherung löst sofort wieder aus';
-
-      if (!state.category) {
-        setFieldError(null, errCategory, 'Bitte wählen Sie die Art der betroffenen Anlage aus.');
-        isValid = false;
-      } else {
-        clearFieldError(null, errCategory);
-      }
-
-      if (!state.area) {
-        setFieldError(selectArea, errArea, 'Bitte wählen Sie den betroffenen Bereich oder Raum aus.');
-        isValid = false;
-      } else {
-        clearFieldError(selectArea, errArea);
-      }
-
-      if (!state.timeOccurred) {
-        setFieldError(selectTimeOccurred, errTimeOccurred, 'Bitte wählen Sie den Zeitpunkt aus, seit wann die Störung besteht.');
-        isValid = false;
-      } else {
-        clearFieldError(selectTimeOccurred, errTimeOccurred);
-      }
-
-      if (!isValid) {
-        showAlert('Bitte wählen Sie Anlage, betroffenen Bereich und Zeitpunkt aus.');
-      }
-    } else if (step === 3) {
-      state.message = inputMessage ? inputMessage.value.trim() : '';
-      state.datenschutz = inputDatenschutz ? inputDatenschutz.checked : false;
-      state.errorCode = inputErrorCode ? inputErrorCode.value.trim() : '';
-
-      // Symptoms
-      state.symptoms = [];
-      document.querySelectorAll('input[name="symptoms"]:checked').forEach(cb => {
-        state.symptoms.push(cb.value);
-      });
-
-      // PV Specifics
-      state.pvInverter = inputPvInverter ? inputPvInverter.value.trim() : '';
-      state.pvErrorCode = inputPvErrorCode ? inputPvErrorCode.value.trim() : '';
-      const radioPv = document.querySelector('input[name="pvOutputStatus"]:checked');
-      state.pvOutputStatus = radioPv ? radioPv.value : 'Komplettausfall (keine Stromerzeugung, Anlage steht)';
-
-      const radioCb = document.querySelector('input[name="callbackRequested"]:checked');
-      state.callbackRequested = radioCb ? radioCb.value : 'Ja';
+      const rbCb = document.querySelector('input[name="callbackRequested"]:checked');
+      state.callbackRequested = rbCb ? rbCb.value : 'Ja';
+      const rbCw = document.querySelector('input[name="contactWay"]:checked');
+      state.contactWay = rbCw ? rbCw.value : 'Telefon';
       state.callbackTime = (selectCallbackTime && selectCallbackTime.value) ? selectCallbackTime.value : 'Schnellstmöglich';
-
-      if (!state.message || state.message.length < 15) {
-        setFieldError(inputMessage, errMessage, 'Bitte beschreiben Sie das aufgetretene Problem möglichst genau (mindestens 15 Zeichen), um unserem Meisterteam die Vorbereitung zu erleichtern.');
-        isValid = false;
-      } else {
-        clearFieldError(inputMessage, errMessage);
-      }
+      state.datenschutz = inputDatenschutz ? inputDatenschutz.checked : false;
 
       if (!state.datenschutz) {
-        setFieldError(null, errDatenschutz, 'Bitte willigen Sie in die Datenschutzerklärung ein.');
+        setFieldError(null, errDatenschutz, 'Bitte in Datenschutz einwilligen.');
         isValid = false;
-      } else {
-        clearFieldError(null, errDatenschutz);
-      }
+      } else clearFieldError(null, errDatenschutz);
 
-      if (!isValid) {
-        showAlert('Bitte überprüfen Sie Ihre Fehlerbeschreibung und willigen Sie in den Datenschutz ein.');
-      }
+      if (!isValid) showAlert('Bitte Störungsort angeben und in Datenschutz einwilligen.');
     }
 
     return isValid;
