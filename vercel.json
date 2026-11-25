@@ -90,6 +90,18 @@
     {
       "source": "/waermepumpe",
       "destination": "/waermepumpe.html"
+    },
+    {
+      "source": "/angebot",
+      "destination": "/angebot.html"
+    },
+    {
+      "source": "/projektanfrage",
+      "destination": "/angebot.html"
+    },
+    {
+      "source": "/stoerung-melden",
+      "destination": "/stoerung-melden.html"
     }
   ]
 }

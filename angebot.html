@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projektanfrage | Elektrotechnik Malawko GmbH</title>
+  <meta name="description" content="Konfigurieren Sie Ihr Elektroprojekt bei Elektrotechnik Malawko in Hamburg: Neubau, Sanierung, PV, Wallbox, Smart Home - unverbindlich.">
+  
+  <!-- Preload Critical Assets -->
+  <link rel="preload" as="image" href="assets/images/contact-hero-bg.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/logos/malawko-logo.png" type="image/png">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet Map CSS for Einsatzgebiet Section -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <link rel="stylesheet" href="css/style.css?v=2.4">
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER & NAVIGATION BAR (IDENTICAL SHARED NAVBAR)
+       ===================================================================== -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <nav class="liquid-navbar" aria-label="Hauptnavigation">
+        <!-- Malawko Logo Container -->
+        <a href="/" class="brand-card" aria-label="Elektrotechnik Malawko GmbH Startseite">
+          <img 
+            src="assets/logos/malawko-logo.png" 
+            srcset="assets/logos/malawko-logo@3x.png 2x" 
+            alt="Elektrotechnik Malawko GmbH Logo" 
+            class="brand-logo"
+            width="170" 
+            height="46"
+          >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" id="desktopNavLinks">
+          <li class="nav-item">
+            <a href="/" class="nav-link">Startseite</a>
+          </li>
+          <li class="nav-item">
+            <a href="/#ueber-uns" class="nav-link">Über uns</a>
+          </li>
+          <li class="nav-item has-dropdown" id="servicesDropdownTrigger">
+            <div class="nav-link-dropdown-wrap">
+              <a href="/leistungen" class="nav-link nav-link-main">Leistungen</a>
+              <button 
+                type="button" 
+                class="dropdown-toggle-btn" 
+                aria-label="Leistungen Untermenü öffnen"
+                aria-expanded="false" 
+                aria-haspopup="true"
+                aria-controls="servicesDropdown"
+              >
+                <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Services Dropdown (Liquid Glass Card) -->
+            <div class="services-dropdown" id="servicesDropdown" role="menu" aria-label="Leistungen Untermenü">
+              <div class="dropdown-inner">
+                <a href="/elektroinstallation" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">01</span>
+                  <div class="dropdown-text">
+                    <strong>Elektroinstallation</strong>
+                    <small>Neu- & Altbauinstallationen</small>
+                  </div>
+                </a>
+                <a href="/zaehler-hausanschluss" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">02</span>
+                  <div class="dropdown-text">
+                    <strong>Zähler und Hausanschluss</strong>
+                    <small>Zähleranlagen & Modernisierung</small>
+                  </div>
+                </a>
+                <a href="/wallbox-emobilitaet" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">03</span>
+                  <div class="dropdown-text">
+                    <strong>Wallbox & E-Mobilität</strong>
+                    <small>Ladeinfrastruktur Heim & Gewerbe</small>
+                  </div>
+                </a>
+                <a href="/smart-home" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">04</span>
+                  <div class="dropdown-text">
+                    <strong>Smart Home & KNX</strong>
+                    <small>Intelligente Gebäudeautomation</small>
+                  </div>
+                </a>
+                <a href="/beleuchtung" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">05</span>
+                  <div class="dropdown-text">
+                    <strong>Beleuchtung</strong>
+                    <small>Lichtplanung & energieeffiziente LEDs</small>
+                  </div>
+                </a>
+                <a href="/netzwerk-kommunikation" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">06</span>
+                  <div class="dropdown-text">
+                    <strong>Netzwerk & Kommunikation</strong>
+                    <small>Strukturierte Datenverkabelung</small>
+                  </div>
+                </a>
+                <a href="/pruefung-wartung" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">07</span>
+                  <div class="dropdown-text">
+                    <strong>Prüfung & Wartung</strong>
+                    <small>E-Check & DGUV V3 Prüfungen</small>
+                  </div>
+                </a>
+                <a href="/stoerung-reparatur" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">08</span>
+                  <div class="dropdown-text">
+                    <strong>Störung & Reparatur</strong>
+                    <small>Schnelle Diagnose & Behebung</small>
+                  </div>
+                </a>
+                              <a href="/photovoltaik" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">09</span>
+                  <div class="dropdown-text">
+                    <strong>Photovoltaik</strong>
+                    <small>Solaranlagen &amp; Stromspeicher</small>
+                  </div>
+                </a>
+                <a href="/waermepumpe" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-num">10</span>
+                  <div class="dropdown-text">
+                    <strong>Wärmepumpe</strong>
+                    <small>Elektrischer Anschluss &amp; § 14a EnWG</small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="/projekte" class="nav-link">Referenzen</a>
+          </li>
+          <li class="nav-item">
+            <a href="/kontakt" class="nav-link active" aria-current="page">Kontakt</a>
+          </li>
+        </ul>
+
+        <!-- Right Quick Action / Call CTA -->
+        <div class="nav-actions">
+          <span class="nav-divider" aria-hidden="true"></span>
+          
+          <a href="tel:+4915125383578" class="phone-circle-btn" aria-label="Telefonisch anrufen: 0151 25 38 35 78" title="Telefon: 0151 25 38 35 78">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+
+          <button type="button" class="btn-callback" onclick="openCallbackModal()" data-open-callback aria-label="Rückruf anfordern" title="Kostenlosen Rückruf anfordern">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Rückruf anfordern</span>
+          </button>
+
+          <a href="https://wa.me/4915125383578" target="_blank" rel="noopener noreferrer" class="btn-call-orange" aria-label="WhatsApp Nachricht an 0151 25 38 35 78 senden" title="WhatsApp: 0151 25 38 35 78">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button 
+            type="button" 
+            class="hamburger-btn" 
+            id="mobileMenuToggle" 
+            aria-label="Menü öffnen" 
+            aria-expanded="false" 
+            aria-controls="mobileDrawer"
+          >
+            <span class="bar bar-top"></span>
+            <span class="bar bar-mid"></span>
+            <span class="bar bar-bot"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="mobile-drawer-content">
+        <ul class="mobile-nav-list">
+          <li><a href="/" class="mobile-nav-link">Startseite</a></li>
+          <li><a href="/#ueber-uns" class="mobile-nav-link">Über uns</a></li>
+          <li class="mobile-has-sub">
+            <div class="mobile-sub-header">
+              <a href="/leistungen" class="mobile-nav-link">Leistungen</a>
+              <button type="button" class="mobile-sub-toggle-btn" id="mobileSubToggle" aria-label="Leistungen Untermenü umschalten" aria-expanded="false">
+                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+            <ul class="mobile-submenu" id="mobileSubmenu">
+              <li><a href="/leistungen" class="mobile-submenu-overview"><strong>&rarr; Alle Leistungen im Überblick</strong></a></li>
+              <li><a href="/elektroinstallation">1. Elektroinstallation</a></li>
+              <li><a href="/zaehler-hausanschluss">2. Zähler und Hausanschluss</a></li>
+              <li><a href="/wallbox-emobilitaet">3. Wallbox &amp; E-Mobilität</a></li>
+              <li><a href="/smart-home">4. Smart Home &amp; KNX</a></li>
+              <li><a href="/beleuchtung">5. Beleuchtung</a></li>
+              <li><a href="/netzwerk-kommunikation">6. Netzwerk &amp; Kommunikation</a></li>
+              <li><a href="/pruefung-wartung">7. Prüfung &amp; Wartung</a></li>
+              <li><a href="/stoerung-reparatur">8. Störung &amp; Reparatur</a></li>
+                          <li><a href="/photovoltaik">9. Photovoltaik</a></li>
+              <li><a href="/waermepumpe">10. Wärmepumpe</a></li>
+            </ul>
+          </li>
+          <li><a href="/projekte" class="mobile-nav-link">Referenzen</a></li>
+          <li><a href="/kontakt" class="mobile-nav-link active" aria-current="page">Kontakt</a></li>
+        </ul>
+
+        <div class="mobile-actions">
+          <a href="tel:+4915125383578" class="btn-call-orange btn-block">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>Sofort anrufen (0151 25 38 35 78)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- =====================================================================
+         SECTION 01: CONTACT HERO
+         ===================================================================== -->
+
+    <section class="contact-hero-section" id="hero" aria-labelledby="contactHeroTitle">
+      <div class="contact-hero-bg-wrap" aria-hidden="true">
+        <picture>
+          <source srcset="assets/images/client/hero-kontakt.webp" type="image/webp">
+          <img src="assets/images/client/hero-kontakt.jpg" alt="Kontakt Malawko Elektrotechnik Meisterbetrieb Hamburg" class="contact-hero-bg-img" fetchpriority="high">
+        </picture>
+        <div class="contact-hero-overlay"></div>
+      </div>
+
+      <div class="contact-hero-container">
+        <div class="contact-hero-content">
+          <!-- Breadcrumb Navigation -->
+          <nav class="breadcrumbs" aria-label="Brotkrumen-Navigation">
+            <a href="/" class="breadcrumb-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Startseite</span>
+            </a>
+            <span class="breadcrumb-sep" aria-hidden="true">&gt;</span>
+            <span class="breadcrumb-current" aria-current="page">Projektanfrage</span>
+          </nav>
+
+          <!-- Headline -->
+          <h1 id="contactHeroTitle" class="contact-hero-title">
+            Ihre <span class="highlight-orange">Projektanfrage</span><br>in wenigen Schritten.
+          </h1>
+
+          <!-- Supporting Text -->
+          <p class="contact-hero-desc">
+            Erzählen Sie uns von Ihrem Vorhaben – wir erstellen Ihnen eine passende, unverbindliche Lösung.</p>
+
+          <!-- Buttons -->
+          <div class="contact-hero-actions">
+            <a href="#projektanfrage" class="btn-primary-orange">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>Jetzt konfigurieren</span>
+            </a>
+
+            <a href="tel:+4915125383578" class="btn-outline-glass">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Sofort anrufen</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Bar Strip -->
+      <div class="contact-trust-bar-wrap">
+        <div class="contact-trust-bar" role="list" aria-label="Unsere Qualitätsversprechen">
+          <div class="contact-trust-item" role="listitem">
+            <div class="contact-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <div class="contact-trust-text">
+              <span class="trust-title">Zuverlässiger Partner</span>
+              <span class="trust-sub">Verlässliche Terminabsprache</span>
+            </div>
+          </div>
+
+          <span class="contact-trust-divider" aria-hidden="true"></span>
+
+          <div class="contact-trust-item" role="listitem">
+            <div class="contact-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="contact-trust-text">
+              <span class="trust-title">Erfahrung &amp; Kompetenz</span>
+              <span class="trust-sub">Zertifizierter Meisterbetrieb</span>
+            </div>
+          </div>
+
+          <span class="contact-trust-divider" aria-hidden="true"></span>
+
+          <div class="contact-trust-item" role="listitem">
+            <div class="contact-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <div class="contact-trust-text">
+              <span class="trust-title">Innovative Lösungen</span>
+              <span class="trust-sub">Zukunftssichere Smart-Tech</span>
+            </div>
+          </div>
+
+          <span class="contact-trust-divider" aria-hidden="true"></span>
+
+          <div class="contact-trust-item" role="listitem">
+            <div class="contact-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="contact-trust-text">
+              <span class="trust-title">Persönliche Beratung</span>
+              <span class="trust-sub">Individuelle Fachbetreuung</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projektanfrage-section" id="projektanfrage" aria-labelledby="configuratorTitle">
+      <div class="configurator-container">
+        
+        <!-- ===============================================================
+             LEFT COLUMN: INTRODUCTION PANEL (PERSISTENT ACROSS STEPS)
+             =============================================================== -->
+        <aside class="configurator-intro-col">
+          <div class="section-badge-inline">
+            <span class="badge-dash" aria-hidden="true"></span>
+            <span class="badge-text">PROJEKTANFRAGE</span>
+          </div>
+
+          <h2 id="configuratorTitle" class="configurator-intro-title">
+            Konfigurieren Sie<br>
+            Ihr <span class="highlight-orange">Elektroprojekt</span><br>
+            in wenigen Schritten.
+          </h2>
+
+          <p class="configurator-intro-desc">
+            Erzählen Sie uns von Ihrem Vorhaben – wir erstellen Ihnen eine passende und unverbindliche Lösung.
+          </p>
+
+          <!-- Large Rounded Photograph of Electrician at Distribution Board -->
+          <div class="configurator-intro-photo-wrap">
+            <picture>
+              <source srcset="assets/images/step-clean-4.webp" type="image/webp">
+              <img 
+                src="assets/images/step-clean-4.jpg" 
+                alt="Elektrofachkraft bei der professionellen Installation und Verdrahtung eines Verteilerkastens" 
+                class="configurator-intro-photo" 
+                width="640" 
+                height="480" 
+                loading="lazy"
+              >
+            </picture>
+          </div>
+
+          <!-- Three Concise Benefits -->
+          <div class="configurator-intro-benefits" aria-label="Ihre Vorteile bei der Projektanfrage">
+            <div class="config-benefit-item">
+              <div class="config-benefit-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <span class="config-benefit-text">Individuelle Beratung</span>
+            </div>
+
+            <div class="config-benefit-item">
+              <div class="config-benefit-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <span class="config-benefit-text">Passende Lösung für Ihr Projekt</span>
+            </div>
+
+            <div class="config-benefit-item">
+              <div class="config-benefit-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <span class="config-benefit-text">Schnelle Rückmeldung</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- ===============================================================
+             RIGHT COLUMN: INTERACTIVE CONFIGURATOR CARD
+             =============================================================== -->
+        <main class="configurator-card" id="configuratorCard" aria-live="polite">
+          
+          <!-- Card Header: Step Counter, Badge & 6-Segment Progress Bar -->
+          <div class="config-card-header">
+            <div class="config-header-meta">
+              <span class="config-step-counter" id="configStepCounter">Schritt 1 von 6</span>
+              <span class="config-badge-pill" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Projektanfrage</span>
+              </span>
+            </div>
+
+            <!-- 6-Segment Visual Progress Indicator -->
+            <div class="config-progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="6" id="configProgressBar" aria-label="Fortschritt der Projektkonfiguration">
+              <span class="config-progress-seg active" data-seg="1"></span>
+              <span class="config-progress-seg" data-seg="2"></span>
+              <span class="config-progress-seg" data-seg="3"></span>
+              <span class="config-progress-seg" data-seg="4"></span>
+              <span class="config-progress-seg" data-seg="5"></span>
+              <span class="config-progress-seg" data-seg="6"></span>
+            </div>
+          </div>
+
+          <!-- Notification / Validation Banner -->
+          <div class="config-alert-box" id="configAlertBox" role="alert" style="display: none;"></div>
+
+          <!-- Configurator Multi-Step Form -->
+          <form id="projectConfiguratorForm" novalidate>
+
+            <!-- ===========================================================
+                 STEP 1: PROPERTY TYPE (SINGLE-SELECT)
+                 =========================================================== -->
+            <div class="config-step-panel active" id="configStep1" data-step="1">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Um welche Immobilie handelt es sich?</h3>
+                <p class="config-step-subtitle">Für welches Gebäude oder Objekt benötigen Sie unsere Unterstützung?</p>
+              </div>
+
+              <div class="config-cards-grid config-grid-4x2" role="radiogroup" aria-label="Immobilienart">
+                <!-- 1. Einfamilienhaus -->
+                <div class="config-card config-card-singleselect is-selected" data-group="property" data-value="Einfamilienhaus" tabindex="0" role="radio" aria-checked="true">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Einfamilienhaus</div>
+                </div>
+
+                <!-- 2. Mehrfamilienhaus -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Mehrfamilienhaus" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                        <line x1="8" y1="6" x2="10" y2="6"></line>
+                        <line x1="14" y1="6" x2="16" y2="6"></line>
+                        <line x1="8" y1="10" x2="10" y2="10"></line>
+                        <line x1="14" y1="10" x2="16" y2="10"></line>
+                        <line x1="8" y1="14" x2="10" y2="14"></line>
+                        <line x1="14" y1="14" x2="16" y2="14"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Mehrfamilienhaus</div>
+                </div>
+
+                <!-- 3. Wohnung -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Wohnung" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                        <circle cx="14" cy="12" r="1"></circle>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Wohnung</div>
+                </div>
+
+                <!-- 4. Bürogebäude -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Bürogebäude" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                        <path d="M6 12H4a2 2 0 0 0-2 2v8"></path>
+                        <path d="M18 9h2a2 2 0 0 1 2 2v11"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Bürogebäude</div>
+                </div>
+
+                <!-- 5. Einzelhandel -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Einzelhandel" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l2-5h14l2 5"></path>
+                        <path d="M21 9v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9"></path>
+                        <line x1="10" y1="12" x2="14" y2="12"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Einzelhandel</div>
+                </div>
+
+                <!-- 6. Werkstatt oder Halle -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Werkstatt oder Halle" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 20h20"></path>
+                        <path d="M5 20V8l7-4 7 4v12"></path>
+                        <line x1="9" y1="14" x2="15" y2="14"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Werkstatt oder Halle</div>
+                </div>
+
+                <!-- 7. Öffentliches Gebäude -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Öffentliches Gebäude" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="2" y1="20" x2="22" y2="20"></line>
+                        <line x1="4" y1="10" x2="4" y2="20"></line>
+                        <line x1="9" y1="10" x2="9" y2="20"></line>
+                        <line x1="15" y1="10" x2="15" y2="20"></line>
+                        <line x1="20" y1="10" x2="20" y2="20"></line>
+                        <polygon points="12 2 2 7 22 7 12 2"></polygon>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Öffentliches Gebäude</div>
+                </div>
+
+                <!-- 8. Sonstiges -->
+                <div class="config-card config-card-singleselect" data-group="property" data-value="Sonstiges" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Sonstiges</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 2: SERVICE SELECTION (MULTI-SELECT)
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep2" data-step="2">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Welche Arbeiten benötigen Sie?</h3>
+                <p class="config-step-subtitle">Wählen Sie eine oder mehrere Leistungen aus, die zu Ihrem Vorhaben passen.</p>
+              </div>
+
+              <div class="config-cards-grid config-grid-4x2" role="group" aria-label="Leistungsauswahl">
+                <!-- 1. Elektroinstallation -->
+                <div class="config-card config-card-multiselect is-selected" data-value="Elektroinstallation" tabindex="0" role="checkbox" aria-checked="true">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Elektroinstallation</div>
+                </div>
+
+                <!-- 2. Zähler und Hausanschluss -->
+                <div class="config-card config-card-multiselect" data-value="Zähler und Hausanschluss" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                        <rect x="8" y="6" width="8" height="4" rx="1"></rect>
+                        <circle cx="12" cy="16" r="2"></circle>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Zähler und Hausanschluss</div>
+                </div>
+
+                <!-- 3. Wallbox und E-Mobilität -->
+                <div class="config-card config-card-multiselect" data-value="Wallbox und E-Mobilität" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path>
+                        <circle cx="7" cy="17" r="2"></circle>
+                        <path d="M9 17h6"></path>
+                        <circle cx="17" cy="17" r="2"></circle>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Wallbox und E-Mobilität</div>
+                </div>
+
+                <!-- 4. Smart Home und KNX -->
+                <div class="config-card config-card-multiselect" data-value="Smart Home und KNX" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <path d="M9 13a3 3 0 0 1 6 0"></path>
+                        <path d="M7 11a5.5 5.5 0 0 1 10 0"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Smart Home und KNX</div>
+                </div>
+
+                <!-- 5. Beleuchtung -->
+                <div class="config-card config-card-multiselect" data-value="Beleuchtung" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18h6"></path>
+                        <path d="M10 22h4"></path>
+                        <path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.3 4.7 3.2 6H15.8c1.9-1.3 3.2-3.5 3.2-6a7 7 0 0 0-7-7z"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Beleuchtung</div>
+                </div>
+
+                <!-- 6. Netzwerk und Kommunikation -->
+                <div class="config-card config-card-multiselect" data-value="Netzwerk und Kommunikation" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="2" width="6" height="6" rx="1"></rect>
+                        <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+                        <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+                        <path d="M12 8v4"></path>
+                        <path d="M5 16v-2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Netzwerk und Kommunikation</div>
+                </div>
+
+                <!-- 7. Prüfung und Wartung -->
+                <div class="config-card config-card-multiselect" data-value="Prüfung und Wartung" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <polyline points="9 12 11 14 15 10"></polyline>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Prüfung und Wartung</div>
+                </div>
+
+                <!-- 8. Störung und Reparatur -->
+                <div class="config-card config-card-multiselect" data-value="Störung und Reparatur" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Störung und Reparatur</div>
+                </div>
+                <!-- 9. Photovoltaik -->
+                <div class="config-card config-card-multiselect" data-value="Photovoltaik" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Photovoltaik und Speicher</div>
+                </div>
+
+                <!-- 10. Wärmepumpe -->
+                <div class="config-card config-card-multiselect" data-value="Wärmepumpe" tabindex="0" role="checkbox" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="M2 12h2"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-indicator" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="config-card-label">Wärmepumpe &amp; § 14a EnWG</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 3: PROJECT STATUS / PHASE (SINGLE-SELECT)
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep3" data-step="3">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">In welcher Phase befindet sich Ihr Projekt?</h3>
+                <p class="config-step-subtitle">Teilen Sie uns mit, wie weit Ihre Planung bereits ist.</p>
+              </div>
+
+              <div class="config-cards-grid config-grid-3x2" role="radiogroup" aria-label="Projektphase">
+                <!-- 1. Erste Idee -->
+                <div class="config-card config-card-singleselect is-selected" data-group="phase" data-value="Erste Idee" tabindex="0" role="radio" aria-checked="true">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Erste Idee</div>
+                  <div class="config-card-sublabel">Wir beraten Sie von Grund auf und finden die optimale Lösung.</div>
+                </div>
+
+                <!-- 2. Angebot gewünscht -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Angebot gewünscht" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="8" y1="13" x2="16" y2="13"></line>
+                        <line x1="8" y1="17" x2="12" y2="17"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Angebot gewünscht</div>
+                  <div class="config-card-sublabel">Sie wünschen ein transparentes, unverbindliches Angebot.</div>
+                </div>
+
+                <!-- 3. Planung bereits vorhanden -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Planung bereits vorhanden" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Planung bereits vorhanden</div>
+                  <div class="config-card-sublabel">Pläne, Leistungsverzeichnis oder Skizzen liegen bereits vor.</div>
+                </div>
+
+                <!-- 4. Bauarbeiten haben begonnen -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Bauarbeiten haben begonnen" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 18h20"></path>
+                        <path d="M12 2a7 7 0 0 0-7 7v7h14V9a7 7 0 0 0-7-7z"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Bauarbeiten haben begonnen</div>
+                  <div class="config-card-sublabel">Das Bauprojekt läuft bereits – zeitnahe Umsetzung gefragt.</div>
+                </div>
+
+                <!-- 5. Bestehende Anlage soll modernisiert werden -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Bestehende Anlage soll modernisiert werden" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2v6h-6"></path>
+                        <path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Bestehende Anlage modernisieren</div>
+                  <div class="config-card-sublabel">Erweiterung, Teilsanierung oder Austausch alter Installationen.</div>
+                </div>
+
+                <!-- 6. Störung oder dringender Reparaturbedarf -->
+                <div class="config-card config-card-singleselect" data-group="phase" data-value="Störung oder dringender Reparaturbedarf" tabindex="0" role="radio" aria-checked="false">
+                  <div class="config-card-top">
+                    <div class="config-card-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                    </div>
+                    <div class="config-card-radio-indicator" aria-hidden="true"></div>
+                  </div>
+                  <div class="config-card-label">Störung oder Reparatur</div>
+                  <div class="config-card-sublabel">Akuter Ausfall, Sicherungsproblem oder Fehlersuche.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 4: PROJECT DETAILS & SCOPE (DYNAMIC ADAPTATION)
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep4" data-step="4">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Erzählen Sie uns mehr über Ihr Vorhaben.</h3>
+                <p class="config-step-subtitle">Mit ein paar zusätzlichen Angaben können wir Ihren Bedarf besser einschätzen.</p>
+              </div>
+
+              <!-- Container populated dynamically with fields for selected services -->
+              <div class="config-dynamic-fields" id="configDynamicFields">
+                <!-- Dynamically populated via JS -->
+              </div>
+
+              <!-- Always-present Message Textarea -->
+              <div class="config-field-group">
+                <label for="configProjectMessage" class="config-field-label">
+                  <span>Projektbeschreibung oder besondere Anforderungen</span>
+                  <small class="text-muted">(optional)</small>
+                </label>
+                <textarea 
+                  id="configProjectMessage" 
+                  name="projectMessage" 
+                  class="config-textarea" 
+                  rows="3" 
+                  placeholder="Beschreiben Sie Ihr Projekt kurz, z.B. besondere Zeitpläne, spezielle Wünsche oder bestehende Gegebenheiten vor Ort..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 5: FILE UPLOADS (OPTIONAL)
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep5" data-step="5">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Haben Sie Bilder oder Dokumente zu Ihrem Projekt?</h3>
+                <p class="config-step-subtitle">Zusätzliche Unterlagen helfen uns, Ihr Vorhaben besser einzuschätzen.</p>
+              </div>
+
+              <!-- Upload Dropzone -->
+              <div class="config-dropzone-wrap">
+                <div class="config-dropzone" id="configDropzone" tabindex="0" role="button" aria-label="Dateien hochladen">
+                  <input type="file" id="configFileUpload" multiple accept=".jpg,.jpeg,.png,.webp,.pdf" class="config-file-input">
+                  <div class="config-dropzone-icon" aria-hidden="true">
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                    </svg>
+                  </div>
+                  <div class="config-dropzone-text">
+                    <strong class="config-dropzone-headline">Bilder oder Dokumente auswählen</strong>
+                    <span class="config-dropzone-sub">oder per Drag &amp; Drop hier ablegen (JPG, PNG, PDF – max. 10 MB pro Datei)</span>
+                  </div>
+                </div>
+
+                <!-- Suggestions Pills -->
+                <div class="config-upload-suggestions">
+                  <span class="config-sugg-title">Nützliche Unterlagen:</span>
+                  <span class="config-sugg-tag">📸 Fotos bestehender Verteilungen</span>
+                  <span class="config-sugg-tag">📐 Grundrisse &amp; Baupläne</span>
+                  <span class="config-sugg-tag">📄 Angebote &amp; Skizzen</span>
+                </div>
+
+                <!-- File List Preview -->
+                <div class="config-file-list" id="configFileList" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 STEP 6: CONTACT DETAILS & SUMMARY
+                 =========================================================== -->
+            <div class="config-step-panel" id="configStep6" data-step="6">
+              <div class="config-panel-heading">
+                <h3 class="config-step-title">Wie können wir Sie erreichen?</h3>
+                <p class="config-step-subtitle">Übermitteln Sie uns Ihre Kontaktdaten, damit wir uns zu Ihrem Projekt melden können.</p>
+              </div>
+
+              <!-- Contact Inputs Grid (2x2) -->
+              <div class="config-contact-grid">
+                <div class="config-field-group">
+                  <label for="configVorname" class="config-field-label">
+                    Vorname <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="configVorname" name="vorname" class="config-input" placeholder="Max" required autocomplete="given-name">
+                  <span class="config-field-error" id="errVorname">Bitte geben Sie Ihren Vornamen an.</span>
+                </div>
+
+                <div class="config-field-group">
+                  <label for="configNachname" class="config-field-label">
+                    Nachname <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="configNachname" name="nachname" class="config-input" placeholder="Mustermann" required autocomplete="family-name">
+                  <span class="config-field-error" id="errNachname">Bitte geben Sie Ihren Nachnamen an.</span>
+                </div>
+
+                <div class="config-field-group">
+                  <label for="configEmail" class="config-field-label">
+                    E-Mail-Adresse <span class="required-star">*</span>
+                  </label>
+                  <input type="email" id="configEmail" name="email" class="config-input" placeholder="ihre.email@beispiel.de" required autocomplete="email">
+                  <span class="config-field-error" id="errEmail">Bitte geben Sie eine gültige E-Mail-Adresse an.</span>
+                </div>
+
+                <div class="config-field-group">
+                  <label for="configTelefon" class="config-field-label">
+                    Telefonnummer <span class="required-star">*</span>
+                  </label>
+                  <input type="tel" id="configTelefon" name="telefon" class="config-input" placeholder="0151 12345678" required autocomplete="tel">
+                  <span class="config-field-error" id="errTelefon">Bitte geben Sie Ihre Telefonnummer an.</span>
+                </div>
+              </div>
+
+              <!-- Preferred Contact Method & Preferred Time -->
+              <div class="config-contact-prefs">
+                <div class="config-field-group">
+                  <label class="config-field-label">Bevorzugter Rückmeldeweg</label>
+                  <div class="config-pref-buttons" role="radiogroup" aria-label="Rückmeldeweg">
+                    <button type="button" class="config-pref-btn active" data-pref="E-Mail" role="radio" aria-checked="true">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                      <span>E-Mail</span>
+                    </button>
+                    <button type="button" class="config-pref-btn" data-pref="Telefon" role="radio" aria-checked="false">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                      </svg>
+                      <span>Telefon</span>
+                    </button>
+                    <button type="button" class="config-pref-btn" data-pref="WhatsApp" role="radio" aria-checked="false">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                      </svg>
+                      <span>WhatsApp</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="config-field-group">
+                  <label for="configContactTime" class="config-field-label">
+                    <span>Erreichbarkeit</span>
+                    <small class="text-muted">(optional)</small>
+                  </label>
+                  <div class="config-select-wrap">
+                    <select id="configContactTime" class="config-select">
+                      <option value="Jederzeit">Jederzeit erreichbar</option>
+                      <option value="Vormittags">Vormittags (08:00 – 12:00 Uhr)</option>
+                      <option value="Nachmittags">Nachmittags (12:00 – 17:00 Uhr)</option>
+                      <option value="Abends">Abends (17:00 – 19:00 Uhr)</option>
+                    </select>
+                    <svg class="config-select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Compact Live Project Summary -->
+              <div class="config-summary-box">
+                <div class="config-summary-header">
+                  <span class="config-summary-title">Ihre Projektkonfiguration im Überblick:</span>
+                  <button type="button" class="config-summary-edit-btn" id="btnEditConfig">Korrigieren</button>
+                </div>
+                <div class="config-summary-grid">
+                  <div class="config-sum-item">
+                    <span class="config-sum-label">Leistungen:</span>
+                    <strong class="config-sum-val" id="sumServices">-</strong>
+                  </div>
+                  <div class="config-sum-item">
+                    <span class="config-sum-label">Objektart:</span>
+                    <strong class="config-sum-val" id="sumProperty">-</strong>
+                  </div>
+                  <div class="config-sum-item">
+                    <span class="config-sum-label">Projektphase:</span>
+                    <strong class="config-sum-val" id="sumPhase">-</strong>
+                  </div>
+                  <div class="config-sum-item">
+                    <span class="config-sum-label">Dateianhänge:</span>
+                    <strong class="config-sum-val" id="sumFiles">Keine</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Privacy Consent Checkbox -->
+              <div class="config-privacy-wrap">
+                <label class="config-checkbox-label">
+                  <input type="checkbox" id="configDatenschutz" name="datenschutz" required class="config-privacy-input">
+                  <span class="config-custom-checkbox"></span>
+                  <span class="config-privacy-text">
+                    Ich habe die <a href="/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage erhoben und verarbeitet werden. <span class="required-star">*</span>
+                  </span>
+                </label>
+                <span class="config-field-error" id="errDatenschutz">Bitte stimmen Sie der Datenschutzerklärung zu.</span>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 CONFIRMATION SCREEN (STEP 7 / SUCCESS STATE)
+                 =========================================================== -->
+            <div class="config-confirmation-panel" id="configConfirmation" style="display: none;">
+              <div class="config-success-badge" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+
+              <h3 class="config-success-headline">Vielen Dank für Ihre Anfrage!</h3>
+              <p class="config-success-text">
+                Wir haben Ihre Projektdaten erfolgreich erhalten und werden uns schnellstmöglich bei Ihnen melden.
+              </p>
+
+              <div class="config-success-details">
+                <div class="config-success-row">
+                  <span>Referenz-Nummer:</span>
+                  <strong id="confirmRefId">#MLK-2026-8492</strong>
+                </div>
+                <div class="config-success-row">
+                  <span>Bestätigung gesendet an:</span>
+                  <strong id="confirmEmailDisplay">-</strong>
+                </div>
+                <div class="config-success-row">
+                  <span>Dringende Fragen?</span>
+                  <a href="tel:+4915125383578" class="config-success-phone">0151 25 38 35 78</a>
+                </div>
+              </div>
+
+              <button type="button" class="btn-config-next" id="btnResetConfigurator" style="display: inline-flex; margin-top: 10px;">
+                <span>Neue Anfrage starten</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <polyline points="1 4 1 10 7 10"></polyline>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Card Navigation Footer (Zurück & Weiter Buttons) -->
+          <div class="config-nav-footer" id="configNavFooter">
+            <button type="button" class="btn-config-back" id="btnConfigBack" disabled aria-label="Zurück zum vorherigen Schritt">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Zurück</span>
+            </button>
+
+            <button type="button" class="btn-config-next" id="btnConfigNext">
+              <span id="btnNextText">Weiter</span>
+              <svg id="btnNextIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+
+        </main>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================================
+       SECTION 05: SHARED FOOTER
+       ===================================================================== -->
+  <footer class="site-footer" id="footer">
+    <!-- Subtle top ambient glow curves -->
+    <div class="footer-glow footer-glow-left" aria-hidden="true"></div>
+    <div class="footer-glow footer-glow-right" aria-hidden="true"></div>
+
+    <div class="footer-container">
+      <div class="footer-main-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <div class="footer-logo-wrap">
+            <img src="assets/logos/malawko-footer-logo-clean.png" alt="MALAWKO Elektrotechnik Logo" class="footer-brand-logo" width="180" height="55">
+          </div>
+          <p class="footer-brand-desc">
+            Ihr zuverlässiger Partner für moderne Elektrotechnik in Privat, Gewerbe und öffentlichen Einrichtungen.
+          </p>
+        </div>
+
+        <!-- Col 2: Schnellzugriff -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Schnellzugriff</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list">
+            <li><a href="/" class="footer-link">Startseite</a></li>
+            <li><a href="/#ueber-uns" class="footer-link">Über uns</a></li>
+            <li><a href="/#leistungen" class="footer-link">Leistungen</a></li>
+            <li><a href="/projekte" class="footer-link">Referenzen</a></li>
+            <li><a href="/kontakt" class="footer-link">Kontakt</a></li>
+          </ul>
+        </div>
+
+                <!-- Col 3: Unsere Leistungen -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Unsere Leistungen</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-nav-list footer-services-2col">
+            <li><a href="/elektroinstallation" class="footer-link">Elektroinstallation</a></li>
+            <li><a href="/zaehler-hausanschluss" class="footer-link">Zähler &amp; Hausanschluss</a></li>
+            <li><a href="/wallbox-emobilitaet" class="footer-link">Wallbox &amp; E-Mobilität</a></li>
+            <li><a href="/smart-home" class="footer-link">Smart Home &amp; KNX</a></li>
+            <li><a href="/beleuchtung" class="footer-link">Beleuchtung</a></li>
+            <li><a href="/netzwerk-kommunikation" class="footer-link">Netzwerk &amp; Kommunikation</a></li>
+            <li><a href="/pruefung-wartung" class="footer-link">Prüfung &amp; Wartung</a></li>
+            <li><a href="/stoerung-reparatur" class="footer-link">Störung &amp; Reparatur</a></li>
+            <li><a href="/photovoltaik" class="footer-link">Photovoltaik &amp; Speicher</a></li>
+            <li><a href="/waermepumpe" class="footer-link">Wärmepumpen-Anschluss</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Kontakt -->
+        <div class="footer-col">
+          <h3 class="footer-heading">
+            <span>Kontakt</span>
+            <span class="footer-heading-line" aria-hidden="true"></span>
+          </h3>
+          <ul class="footer-contact-list">
+            <li class="contact-item">
+              <a href="tel:+4915125383578" class="contact-link" aria-label="Telefonisch anrufen: 0151 25 38 35 78">
+                <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>0151 25 38 35 78</span>
+              </a>
+            </li>
+            <li class="contact-item">
+              <a href="https://wa.me/4915125383578" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="WhatsApp Chat öffnen: 0151 25 38 35 78">
+                <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+                <span>WhatsApp: 0151 25 38 35 78</span>
+              </a>
+            </li>
+            <li class="contact-item">
+              <a href="mailto:kontakt@elektrotechnik-malawko.de" class="contact-link" aria-label="E-Mail senden an kontakt@elektrotechnik-malawko.de">
+                <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>kontakt@elektrotechnik-malawko.de</span>
+              </a>
+            </li>
+            <li class="contact-item">
+              <a href="javascript:void(0)" data-open-callback onclick="openCallbackModal()" class="contact-link" role="button" aria-label="Kostenlosen Rückruf anfordern">
+                <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="16 2 16 8 22 8"></polyline>
+                  <line x1="23" y1="1" x2="16" y2="8"></line>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>Rückruf anfordern</span>
+              </a>
+            </li>
+            <li class="contact-item">
+              <a href="/kontakt#stoerung-melden" class="contact-link" aria-label="Störung online melden">
+                <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <span>Störung online melden</span>
+              </a>
+            </li>
+            <li class="contact-item">
+              <a href="https://maps.google.com/?q=Schreyerring+49,+22309+Hamburg" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Standort auf Google Maps öffnen: Schreyerring 49, 22309 Hamburg">
+                <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Schreyerring 49, 22309 Hamburg</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2026 Malawko Elektrotechnik. Alle Rechte vorbehalten.
+        </div>
+        <div class="footer-credit">
+          Webdesign by <a href="https://emancopys.com/" target="_blank" rel="noopener noreferrer" class="credit-link"><span class="highlight-orange">EmanCopys</span></a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="/impressum">Impressum</a>
+          <span class="legal-sep">|</span>
+          <a href="/datenschutz">Datenschutz</a>
+          <span class="legal-sep">|</span>
+          <a href="#cookies" onclick="openCookieBanner(); return false;" data-open-cookies>Cookie-Einstellungen</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet Interactive Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/main.js?v=2.4"></script>
+  <!-- =====================================================================
+       CALLBACK MODAL (RÜCKRUF ANFORDERN - POPUP FORMULAR)
+       ===================================================================== -->
+  <div class="callback-modal-overlay" id="callbackModal" style="display: none;" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="callbackModalTitle">
+    <div class="callback-modal-backdrop" onclick="closeCallbackModal()"></div>
+    <div class="callback-modal-dialog">
+      <button type="button" class="callback-modal-close" onclick="closeCallbackModal()" aria-label="Dialog schließen">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="callback-modal-header">
+        <div class="callback-badge">
+          <span class="badge-dash" aria-hidden="true"></span>
+          <span>RÜCKRUF-SERVICE</span>
+        </div>
+        <h3 class="callback-modal-title" id="callbackModalTitle">Rückruf anfordern</h3>
+        <p class="callback-modal-subtitle">
+          Hinterlassen Sie uns kurz Ihre Kontaktdaten und Ihr Anliegen – wir rufen Sie gerne verlässlich zurück.
+        </p>
+      </div>
+
+      <form id="callbackForm" class="callback-modal-form" onsubmit="return submitCallbackForm(event)" novalidate>
+        <div class="callback-form-group">
+          <label for="cbName" class="callback-label">Ihr Name <span class="req-star">*</span></label>
+          <input type="text" id="cbName" name="name" class="callback-input" placeholder="z. B. Max Mustermann" required autocomplete="name">
+          <div class="field-error-msg" id="cbNameError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-group">
+          <label for="cbPhone" class="callback-label">Ihre Telefonnummer <span class="req-star">*</span></label>
+          <input type="tel" id="cbPhone" name="phone" class="callback-input" placeholder="z. B. 0151 12345678" required autocomplete="tel">
+          <div class="field-error-msg" id="cbPhoneError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-group">
+          <label class="callback-label">Wann passt es Ihnen am besten?</label>
+          <div class="callback-time-pills" role="radiogroup" aria-label="Bevorzugte Rückrufzeit">
+            <button type="button" class="callback-time-pill active" onclick="selectCallbackTime(this, 'Schnellstmöglich')" role="radio" aria-checked="true">Schnellstmöglich</button>
+            <button type="button" class="callback-time-pill" onclick="selectCallbackTime(this, 'Vormittags (08–12 Uhr)')" role="radio" aria-checked="false">Vormittags (08–12 Uhr)</button>
+            <button type="button" class="callback-time-pill" onclick="selectCallbackTime(this, 'Nachmittags (12–17 Uhr)')" role="radio" aria-checked="false">Nachmittags (12–17 Uhr)</button>
+          </div>
+          <input type="hidden" id="cbPreferredTime" name="preferredTime" value="Schnellstmöglich">
+        </div>
+
+        <div class="callback-form-group">
+          <label for="cbReason" class="callback-label">Grund des Rückrufs <span class="req-star">*</span></label>
+          <textarea id="cbReason" name="reason" class="callback-textarea" rows="3" placeholder="Worum geht es kurz? z. B. Wallbox-Installation, Zählerschrank oder PV-Anlage..." required></textarea>
+          <div class="field-error-msg" id="cbReasonError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-group callback-checkbox-group">
+          <label class="callback-checkbox-label">
+            <input type="checkbox" id="cbDatenschutz" required>
+            <span class="chk-text">Ich habe die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> zur Kenntnis genommen und willige in die Verarbeitung meiner Daten ein. <span class="req-star">*</span></span>
+          </label>
+          <div class="field-error-msg" id="cbDatenschutzError" aria-live="polite"></div>
+        </div>
+
+        <div class="callback-form-actions">
+          <button type="submit" class="btn-primary-orange btn-block" id="btnSubmitCallback">
+            <span>Rückruf anfordern</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Confirmation state -->
+      <div class="callback-success-panel" id="callbackSuccess" style="display: none;">
+        <div class="callback-success-icon-wrap" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h4 class="callback-success-title">Rückrufanfrage erfolgreich gesendet!</h4>
+        <p class="callback-success-text">
+          Vielen Dank, <strong id="cbSuccessName"></strong>. Wir haben Ihre Rückrufbitte an <strong>kontakt@elektrotechnik-malawko.de</strong> erhalten und rufen Sie unter <strong id="cbSuccessPhone"></strong> schnellstmöglich zurück.
+        </p>
+        <button type="button" class="btn-secondary-glass btn-block" onclick="closeCallbackModal()" style="margin-top: 20px;">
+          <span>Fenster schließen</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCallbackModal() {
+      var modal = document.getElementById('callbackModal');
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      var inp = modal.querySelector('input:not([type="hidden"])');
+      if (inp) inp.focus();
+    }
+
+    function closeCallbackModal() {
+      var modal = document.getElementById('callbackModal');
+      if (!modal) return;
+      modal.classList.remove('open');
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    }
+
+    function selectCallbackTime(btn, val) {
+      var container = btn.closest('.callback-time-pills');
+      if (container) {
+        var pills = container.querySelectorAll('.callback-time-pill');
+        for (var i = 0; i < pills.length; i++) {
+          pills[i].classList.remove('active');
+          pills[i].setAttribute('aria-checked', 'false');
+        }
+      }
+      btn.classList.add('active');
+      btn.setAttribute('aria-checked', 'true');
+      var hidden = document.getElementById('cbPreferredTime');
+      if (hidden) hidden.value = val;
+    }
+
+    function submitCallbackForm(e) {
+      if (e) e.preventDefault();
+      var modal = document.getElementById('callbackModal');
+      if (!modal) return false;
+
+      var nameInp = document.getElementById('cbName');
+      var phoneInp = document.getElementById('cbPhone');
+      var reasonInp = document.getElementById('cbReason');
+      var chkInp = document.getElementById('cbDatenschutz');
+      var timeInp = document.getElementById('cbPreferredTime');
+
+      var errName = document.getElementById('cbNameError');
+      var errPhone = document.getElementById('cbPhoneError');
+      var errReason = document.getElementById('cbReasonError');
+      var errChk = document.getElementById('cbDatenschutzError');
+
+      var isValid = true;
+
+      if (!nameInp || !nameInp.value.trim()) {
+        if (nameInp) nameInp.classList.add('error');
+        if (errName) errName.textContent = 'Bitte geben Sie Ihren Namen an.';
+        isValid = false;
+      } else {
+        nameInp.classList.remove('error');
+        if (errName) errName.textContent = '';
+      }
+
+      if (!phoneInp || !phoneInp.value.trim()) {
+        if (phoneInp) phoneInp.classList.add('error');
+        if (errPhone) errPhone.textContent = 'Bitte geben Sie Ihre Telefonnummer an.';
+        isValid = false;
+      } else {
+        var clean = phoneInp.value.replace(/[^0-9+]/g, '');
+        if (clean.length < 6) {
+          phoneInp.classList.add('error');
+          if (errPhone) errPhone.textContent = 'Bitte geben Sie eine gültige Rufnummer ein.';
+          isValid = false;
+        } else {
+          phoneInp.classList.remove('error');
+          if (errPhone) errPhone.textContent = '';
+        }
+      }
+
+      if (!reasonInp || !reasonInp.value.trim()) {
+        if (reasonInp) reasonInp.classList.add('error');
+        if (errReason) errReason.textContent = 'Bitte nennen Sie kurz das Anliegen Ihres Rückrufs.';
+        isValid = false;
+      } else {
+        reasonInp.classList.remove('error');
+        if (errReason) errReason.textContent = '';
+      }
+
+      if (!chkInp || !chkInp.checked) {
+        if (errChk) errChk.textContent = 'Bitte willigen Sie in die Datenverarbeitung ein.';
+        isValid = false;
+      } else {
+        if (errChk) errChk.textContent = '';
+      }
+
+      if (!isValid) return false;
+
+      var submitBtn = document.getElementById('btnSubmitCallback');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        var sp = submitBtn.querySelector('span');
+        if (sp) sp.textContent = 'Wird übermittelt...';
+      }
+
+      var payload = {
+        recipient: 'kontakt@elektrotechnik-malawko.de',
+        subject: 'Neue Rückrufanfrage – Malawko Website',
+        name: nameInp.value.trim(),
+        phone: phoneInp.value.trim(),
+        time: timeInp ? timeInp.value : 'Schnellstmöglich',
+        reason: reasonInp.value.trim(),
+        submittedAt: new Date().toISOString()
+      };
+
+      console.log('--- RÜCKRUFANFRAGE AN kontakt@elektrotechnik-malawko.de ---', payload);
+
+      setTimeout(function() {
+        var form = document.getElementById('callbackForm');
+        var success = document.getElementById('callbackSuccess');
+        if (form) form.style.display = 'none';
+        if (success) {
+          var sName = document.getElementById('cbSuccessName');
+          var sPhone = document.getElementById('cbSuccessPhone');
+          if (sName) sName.textContent = payload.name;
+          if (sPhone) sPhone.textContent = payload.phone;
+          success.style.display = 'block';
+        }
+      }, 450);
+
+      return false;
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeCallbackModal();
+    });
+  </script>
+
+    <!-- =====================================================================
+       COOKIE CONSENT BANNER (DSGVO / TTDSG) - CENTERED FLOATING
+       ===================================================================== -->
+  <aside class="cookie-banner-wrapper" id="cookieBanner" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="cookieBannerTitle">
+    <div class="cookie-banner-card">
+      <button type="button" class="cookie-banner-close" onclick="closeCookieBanner()" aria-label="Cookie-Banner schließen" title="Schließen">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="cookie-banner-main">
+        <div class="cookie-banner-badge">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>PRIVATSPHÄRE &amp; COOKIES</span>
+        </div>
+        <h3 class="cookie-banner-title" id="cookieBannerTitle">Wir schätzen Ihre Privatsphäre</h3>
+        <p class="cookie-banner-desc">
+          Wir nutzen Cookies und externe Dienste, um unsere Webseite nutzerfreundlich zu gestalten. Essenzielle Cookies sind für den technischen Betrieb erforderlich. Externe Medien (wie unsere interaktive Einsatzgebietskarte) laden externe Kartendaten erst nach Ihrer ausdrücklichen Zustimmung.
+        </p>
+        <div class="cookie-categories">
+          <label class="cookie-cat-item">
+            <input type="checkbox" checked disabled>
+            <span class="cookie-cat-box">
+              <strong class="cookie-cat-name">Essenzielle Funktionen</strong>
+              <span class="cookie-cat-hint">(immer aktiv)</span>
+            </span>
+          </label>
+          <label class="cookie-cat-item">
+            <input type="checkbox" id="cookieOptExternal" checked>
+            <span class="cookie-cat-box">
+              <strong class="cookie-cat-name">Externe Medien &amp; Karten</strong>
+              <span class="cookie-cat-hint">(Interaktive Karte Hamburg)</span>
+            </span>
+          </label>
+        </div>
+        <div class="cookie-banner-links">
+          <a href="/datenschutz">Datenschutzerklärung</a>
+          <span class="sep">&bull;</span>
+          <a href="/impressum">Impressum</a>
+        </div>
+      </div>
+      <div class="cookie-banner-actions">
+        <button type="button" class="btn-primary-orange cookie-btn-accept" onclick="acceptAllCookies()">
+          <span>Alle akzeptieren</span>
+        </button>
+        <button type="button" class="btn-cookie-essential" onclick="acceptEssentialOnly()">
+          <span>Nur essenzielle</span>
+        </button>
+        <button type="button" class="btn-cookie-custom" onclick="saveCustomCookies()">
+          <span>Auswahl speichern</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Always-present Floating Cookie Settings Trigger (Fixed Bottom-Left) -->
+  <button type="button" class="cookie-floating-btn" id="cookieFloatingBtn" onclick="openCookieBanner()" aria-label="Cookie-Einstellungen verwalten" title="Cookie-Einstellungen">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
+      <path d="M8.5 8.5v.01"></path>
+      <path d="M16 15.5v.01"></path>
+      <path d="M12 12v.01"></path>
+      <path d="M11 17v.01"></path>
+      <path d="M7 13v.01"></path>
+    </svg>
+    <span class="cookie-floating-text">Cookies</span>
+  </button>
+
+</body>
+</html>
+
