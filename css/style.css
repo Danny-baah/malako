@@ -9462,6 +9462,22 @@ body.cookie-banner-active .cookie-floating-btn {
   border: 2px solid #d93f1e;
 }
 .stoerung-notfall-btn-emergency:hover { box-shadow: 0 6px 16px rgba(217, 63, 30, 0.2); }
+.stoerung-notfall-btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.stoerung-notfall-btn-back:hover {
+  color: #D9541E;
+  background-color: rgba(217, 84, 30, 0.06);
+}
 
 @media (max-width: 640px) {
   .stoerung-notfall-box {
