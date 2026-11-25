@@ -3920,6 +3920,53 @@ a.direct-card-value:hover {
   display: block;
 }
 
+/* Direkter Kontakt — Responsive */
+@media (max-width: 992px) {
+  .direkter-kontakt-section {
+    padding: 64px 20px 72px 20px;
+  }
+  .direkter-kontakt-container {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .direkter-kontakt-left {
+    flex: 1 1 auto;
+    max-width: 100%;
+    width: 100%;
+  }
+  .direkter-kontakt-right {
+    width: 100%;
+    min-height: 280px;
+  }
+}
+@media (max-width: 640px) {
+  .direkter-title {
+    font-size: 1.85rem;
+    line-height: 1.2;
+    word-wrap: break-word;
+  }
+  .direkter-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+  .direct-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .direct-card {
+    padding: 18px 16px;
+  }
+  .direct-card-value {
+    font-size: 0.92rem;
+    word-break: break-word;
+  }
+}
+@media (max-width: 400px) {
+  .direkter-title {
+    font-size: 1.6rem;
+  }
+}
+
 /* ==========================================================================
    33. KONTAKT PAGE: 6-STEP INTERACTIVE PROJECT CONFIGURATOR
    ========================================================================== */
@@ -9693,11 +9740,42 @@ body.cookie-banner-active .cookie-floating-btn {
 /* Textarea */
 .stoerung-textarea { min-height: 140px; resize: vertical; }
 
+/* Mobile Progress Badge (replaces 9-dot tracker on small screens) */
+.stoerung-mobile-badge {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, rgba(217, 84, 30, 0.08) 0%, rgba(217, 84, 30, 0.02) 100%);
+  border: 1px solid rgba(217, 84, 30, 0.18);
+  border-radius: 12px;
+}
+.stoerung-mobile-badge-step {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #D9541E;
+  padding: 4px 10px;
+  background: #ffffff;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+.stoerung-mobile-badge-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0b1320;
+}
+
 @media (max-width: 720px) {
   .stoerung-category-group { grid-template-columns: 1fr; }
   .stoerung-field-span-2 { grid-column: span 1; }
   .stoerung-nav-footer { flex-wrap: wrap; }
-  .stoerung-step-counter { order: -1; width: 100%; text-align: center; margin-bottom: 8px; }
+  .stoerung-step-counter { display: none; }
+  /* Hide 9-dot progress tracker on mobile, show badge instead */
+  .stoerung-progress-tracker { display: none !important; }
+  .stoerung-mobile-badge { display: flex; }
 }
 
 @media (max-width: 640px) {

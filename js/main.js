@@ -1589,12 +1589,22 @@ function initStoerungForm() {
     }
   }
 
+  const STEP_TITLES = {
+    1: 'Anlage', 2: 'Bereich', 3: 'Zeit & Muster', 4: 'Sicherung',
+    5: 'Fehlercode', 6: 'Auffälligkeit', 7: 'Beschreibung', 8: 'Kontakt',
+    9: 'Ort & Rückruf'
+  };
+  const mobileBadgeStep = document.getElementById('stoerungMobileBadgeStep');
+  const mobileBadgeTitle = document.getElementById('stoerungMobileBadgeTitle');
+
   function updateNav(step) {
     if (btnBack) {
       btnBack.disabled = (step === 1);
       btnBack.style.visibility = (step === 1) ? 'hidden' : 'visible';
     }
     if (stepCounter) stepCounter.textContent = 'Schritt ' + step + ' von ' + totalSteps;
+    if (mobileBadgeStep) mobileBadgeStep.textContent = 'Schritt ' + step + ' von ' + totalSteps;
+    if (mobileBadgeTitle) mobileBadgeTitle.textContent = STEP_TITLES[step] || '';
     if (btnNext && btnNextText && btnNextIcon) {
       if (step === totalSteps) {
         btnNextText.textContent = 'Störung verbindlich melden';
