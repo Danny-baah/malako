@@ -9243,3 +9243,121 @@ body.cookie-banner-active .cookie-floating-btn {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   ANLIEGEN-CHOOSER: Angebot vs. Störung (klare Trennung)
+   ============================================================ */
+.anliegen-chooser-section {
+  background-color: #f7f8fa;
+  padding: 72px 24px 80px 24px;
+  width: 100%;
+}
+.anliegen-chooser-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  text-align: center;
+}
+.anliegen-chooser-title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 12px 0 10px;
+  line-height: 1.2;
+}
+.anliegen-chooser-subtitle {
+  font-size: 1.0625rem;
+  color: #4a4a4a;
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.55;
+}
+.anliegen-chooser-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.anliegen-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 28px;
+  background-color: #ffffff;
+  border: 2px solid #e8e8ed;
+  border-radius: 16px;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.anliegen-card:hover,
+.anliegen-card:focus-visible {
+  border-color: #D9541E;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(217, 84, 30, 0.12);
+  outline: none;
+}
+.anliegen-card-icon-wrap {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fef3ec;
+  color: #D9541E;
+}
+.anliegen-card-stoerung .anliegen-card-icon-wrap {
+  background-color: #fff2f0;
+  color: #d93f1e;
+}
+.anliegen-card-content {
+  flex: 1;
+}
+.anliegen-card-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #D9541E;
+  margin-bottom: 8px;
+}
+.anliegen-card-stoerung .anliegen-card-eyebrow {
+  color: #d93f1e;
+}
+.anliegen-card-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 10px;
+  line-height: 1.25;
+}
+.anliegen-card-desc {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #4a4a4a;
+  margin: 0 0 18px;
+}
+.anliegen-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #D9541E;
+}
+.anliegen-card-stoerung .anliegen-card-cta {
+  color: #d93f1e;
+}
+@media (max-width: 720px) {
+  .anliegen-chooser-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .anliegen-card {
+    padding: 24px 22px;
+  }
+}
