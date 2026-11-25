@@ -1215,7 +1215,6 @@ img, picture {
   }
 
   .nav-actions .btn-project-cta,
-  .btn-call-orange,
   .btn-callback,
   .nav-divider {
     display: none !important;
@@ -6707,47 +6706,92 @@ a.direct-card-value:hover {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    height: 48px !important;
-    padding: 4px 8px 4px 10px !important;
+    height: 46px !important;
+    padding: 3px 6px 3px 8px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
   }
   .brand-card {
-    height: 38px !important;
-    padding: 3px 10px !important;
+    height: 36px !important;
+    padding: 2px 8px !important;
     display: inline-flex !important;
     align-items: center !important;
     margin-right: 0 !important;
     flex-shrink: 0 !important;
   }
   .brand-logo {
-    height: 24px !important;
-    max-width: 125px !important;
+    height: 20px !important;
+    max-width: 100px !important;
     width: auto !important;
     object-fit: contain !important;
   }
   .nav-actions {
     display: flex !important;
     align-items: center !important;
-    gap: 0 !important;
+    gap: 5px !important;
     flex-shrink: 0 !important;
     margin-left: auto !important;
   }
   .nav-actions .btn-project-cta,
-  .nav-actions .btn-call-orange,
   .nav-actions .btn-callback,
   .nav-actions .nav-divider {
     display: none !important;
   }
+  /* WhatsApp button on mobile navbar */
+  .nav-actions .btn-call-orange {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    background-color: var(--color-orange) !important;
+    color: var(--color-white) !important;
+    font-size: 0.74rem !important;
+    font-weight: 700 !important;
+    padding: 5px 10px !important;
+    height: 34px !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
+    box-shadow: 0 2px 8px rgba(217, 84, 30, 0.35) !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    transition: all var(--transition-fast) !important;
+  }
+  .nav-actions .btn-call-orange svg {
+    width: 13px !important;
+    height: 13px !important;
+    flex-shrink: 0 !important;
+  }
+  .nav-actions .phone-circle-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    flex-shrink: 0 !important;
+  }
+  .nav-actions .phone-circle-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
   .hamburger-btn {
     display: flex !important;
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    padding: 7px !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    padding: 6px !important;
     flex-shrink: 0 !important;
-    margin-left: auto !important;
+    margin-left: 0 !important;
+  }
+  @media (max-width: 340px) {
+    .nav-actions .btn-call-orange {
+      padding: 0 !important;
+      width: 34px !important;
+      height: 34px !important;
+      border-radius: 50% !important;
+    }
+    .nav-actions .btn-call-orange span {
+      display: none !important;
+    }
   }
 
   .mobile-drawer {
@@ -7677,15 +7721,88 @@ body.modal-open {
 }
 
 /* ==========================================================================
-   COOKIE CONSENT BANNER & MAP PLACEHOLDER (DSGVO / TTDSG)
+   ALWAYS-PRESENT FLOATING COOKIE BUTTON (FIXED BOTTOM-LEFT)
+   ========================================================================== */
+.cookie-floating-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 99990;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0B1320;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  padding: 10px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 16px rgba(217, 84, 30, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.cookie-floating-btn svg {
+  color: var(--color-orange, #D9541E);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.cookie-floating-btn:hover {
+  background: #111C2E;
+  border-color: rgba(217, 84, 30, 0.55);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(217, 84, 30, 0.35);
+}
+
+.cookie-floating-btn:hover svg {
+  transform: rotate(20deg) scale(1.1);
+}
+
+.cookie-floating-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Hide floating button when banner is open */
+.cookie-banner-wrapper.open ~ .cookie-floating-btn,
+body.cookie-banner-active .cookie-floating-btn {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(10px) scale(0.9) !important;
+}
+
+@media (max-width: 768px) {
+  .cookie-floating-btn {
+    bottom: 16px;
+    left: 16px;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    justify-content: center;
+  }
+  .cookie-floating-btn .cookie-floating-text {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   COOKIE CONSENT BANNER & MAP PLACEHOLDER (DSGVO / TTDSG) - FLOATING LEFT
    ========================================================================== */
 .cookie-banner-wrapper {
   position: fixed;
   bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%) translateY(40px);
-  width: calc(100% - 40px);
-  max-width: 980px;
+  left: 24px;
+  right: auto;
+  transform: translateY(30px);
+  width: calc(100% - 48px);
+  max-width: 520px;
   z-index: 99998;
   opacity: 0;
   visibility: hidden;
@@ -7694,22 +7811,44 @@ body.modal-open {
 }
 
 .cookie-banner-wrapper.open {
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
   opacity: 1;
   visibility: visible;
   display: block !important;
 }
 
 .cookie-banner-card {
+  position: relative;
   background: #0B1320;
   color: #FFFFFF;
   border-radius: 20px;
-  padding: 24px 28px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(255, 255, 255, 0.12), 0 0 20px rgba(217, 84, 30, 0.12);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
+  padding: 24px 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.14), 0 0 24px rgba(217, 84, 30, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cookie-banner-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #94A3B8;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.cookie-banner-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
 }
 
 .cookie-banner-badge {
@@ -7931,7 +8070,10 @@ body.modal-open {
 @media (max-width: 860px) {
   .cookie-banner-wrapper {
     bottom: 12px;
+    left: 10px;
+    right: 10px;
     width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
   }
   .cookie-banner-card {
     grid-template-columns: 1fr;

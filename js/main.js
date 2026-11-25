@@ -2572,15 +2572,38 @@ function initCookieConsent() {
   const banner = document.getElementById('cookieBanner');
   const consent = localStorage.getItem('malawko_cookie_consent');
 
+  // Ensure persistent floating cookie trigger exists on the bottom-left
+  let floatBtn = document.getElementById('cookieFloatingBtn');
+  if (!floatBtn) {
+    floatBtn = document.createElement('button');
+    floatBtn.type = 'button';
+    floatBtn.className = 'cookie-floating-btn';
+    floatBtn.id = 'cookieFloatingBtn';
+    floatBtn.setAttribute('aria-label', 'Cookie-Einstellungen verwalten');
+    floatBtn.setAttribute('title', 'Cookie-Einstellungen');
+    floatBtn.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
+        <path d="M8.5 8.5v.01"></path>
+        <path d="M16 15.5v.01"></path>
+        <path d="M12 12v.01"></path>
+        <path d="M11 17v.01"></path>
+        <path d="M7 13v.01"></path>
+      </svg>
+      <span class="cookie-floating-text">Cookies</span>
+    `;
+    floatBtn.onclick = openCookieBanner;
+    document.body.appendChild(floatBtn);
+  }
+
   if (!consent && banner) {
     setTimeout(() => {
-      banner.style.display = 'block';
-      setTimeout(() => banner.classList.add('open'), 20);
+      openCookieBanner();
     }, 600);
   }
 
   document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href="#cookies"], [data-open-cookies]');
+    const a = e.target.closest('a[href="#cookies"], [data-open-cookies], #cookieFloatingBtn');
     if (a) {
       e.preventDefault();
       openCookieBanner();
@@ -2596,19 +2619,33 @@ function openCookieBanner() {
   if (optExternal) {
     optExternal.checked = (currentConsent === 'all');
   }
+  document.body.classList.add('cookie-banner-active');
   banner.style.display = 'block';
   setTimeout(() => banner.classList.add('open'), 10);
+
+  const floatBtn = document.getElementById('cookieFloatingBtn');
+  if (floatBtn) {
+    floatBtn.style.opacity = '0';
+    floatBtn.style.pointerEvents = 'none';
+  }
 }
 
 function closeCookieBanner() {
   const banner = document.getElementById('cookieBanner');
   if (!banner) return;
   banner.classList.remove('open');
+  document.body.classList.remove('cookie-banner-active');
   setTimeout(() => {
     if (!banner.classList.contains('open')) {
       banner.style.display = 'none';
     }
   }, 350);
+
+  const floatBtn = document.getElementById('cookieFloatingBtn');
+  if (floatBtn) {
+    floatBtn.style.opacity = '1';
+    floatBtn.style.pointerEvents = 'auto';
+  }
 }
 
 function acceptAllCookies() {
