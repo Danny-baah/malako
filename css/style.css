@@ -242,6 +242,28 @@ img, picture {
   transition: all var(--transition-fast);
 }
 
+/* Kontakt-Dropdown: deutlich sichtbare Pill-Umrandung
+   (Link + Pfeil-Button werden gemeinsam umrandet) */
+#contactDropdownTrigger .nav-link-dropdown-wrap {
+  border: 2px solid var(--color-orange, #D9541E);
+  padding-right: 4px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+#contactDropdownTrigger .nav-link-dropdown-wrap:hover {
+  background-color: var(--color-orange, #D9541E);
+}
+#contactDropdownTrigger .nav-link-dropdown-wrap:hover .nav-link-main,
+#contactDropdownTrigger .nav-link-dropdown-wrap:hover .dropdown-toggle-btn {
+  color: var(--color-white, #ffffff);
+}
+#contactDropdownTrigger.open .nav-link-dropdown-wrap {
+  background-color: var(--color-orange, #D9541E);
+}
+#contactDropdownTrigger.open .nav-link-main,
+#contactDropdownTrigger.open .dropdown-toggle-btn {
+  color: var(--color-white, #ffffff);
+}
+
 .nav-link-dropdown-wrap:hover {
   background: rgba(217, 84, 30, 0.08);
 }
