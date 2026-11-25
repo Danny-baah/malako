@@ -2735,23 +2735,36 @@ img, picture {
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
 .contact-icon {
   flex-shrink: 0;
+  transition: transform var(--transition-fast, 0.2s ease);
 }
 
 .contact-link,
 .contact-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: #A0ABC0;
   font-size: 0.83rem;
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: color var(--transition-fast, 0.2s ease);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  text-align: left;
 }
 
 .contact-link:hover {
-  color: var(--color-white);
+  color: var(--color-white, #FFFFFF);
+}
+
+.contact-link:hover .contact-icon {
+  transform: scale(1.1);
 }
 
 .footer-bottom-bar {
