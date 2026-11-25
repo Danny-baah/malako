@@ -7727,6 +7727,7 @@ body.modal-open {
   position: fixed;
   bottom: 24px;
   left: 24px;
+  right: auto;
   z-index: 99990;
   display: inline-flex;
   align-items: center;
@@ -7781,6 +7782,7 @@ body.cookie-banner-active .cookie-floating-btn {
   .cookie-floating-btn {
     bottom: 16px;
     left: 16px;
+    right: auto;
     padding: 0;
     width: 44px;
     height: 44px;
@@ -7793,16 +7795,16 @@ body.cookie-banner-active .cookie-floating-btn {
 }
 
 /* ==========================================================================
-   COOKIE CONSENT BANNER & MAP PLACEHOLDER (DSGVO / TTDSG) - FLOATING LEFT
+   COOKIE CONSENT BANNER & MAP PLACEHOLDER (DSGVO / TTDSG) - CENTERED FLOATING
    ========================================================================== */
 .cookie-banner-wrapper {
   position: fixed;
   bottom: 24px;
-  left: 24px;
+  left: 50%;
   right: auto;
-  transform: translateY(30px);
+  transform: translateX(-50%) translateY(30px);
   width: calc(100% - 48px);
-  max-width: 520px;
+  max-width: 580px;
   z-index: 99998;
   opacity: 0;
   visibility: hidden;
@@ -7811,7 +7813,7 @@ body.cookie-banner-active .cookie-floating-btn {
 }
 
 .cookie-banner-wrapper.open {
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
   opacity: 1;
   visibility: visible;
   display: block !important;
@@ -8070,10 +8072,14 @@ body.cookie-banner-active .cookie-floating-btn {
 @media (max-width: 860px) {
   .cookie-banner-wrapper {
     bottom: 12px;
-    left: 10px;
-    right: 10px;
-    width: calc(100% - 20px);
-    max-width: calc(100% - 20px);
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+    transform: translateY(20px);
+  }
+  .cookie-banner-wrapper.open {
+    transform: translateY(0);
   }
   .cookie-banner-card {
     grid-template-columns: 1fr;
