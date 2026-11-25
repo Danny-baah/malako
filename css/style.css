@@ -8955,3 +8955,291 @@ body.cookie-banner-active .cookie-floating-btn {
   padding-top: 10px;
   border-top: 1px dashed rgba(11, 19, 32, 0.1);
 }
+
+/* ==========================================================================
+   ENHANCED STÖRUNG MELDEN (FAULT REPORTING, SAFETY NOTICE & PV DIAGNOSTICS)
+   ========================================================================== */
+
+/* 1. Prominent Emergency Safety Banner */
+.stoerung-safety-banner {
+  background: #FFFBFB;
+  border: 1.5px solid rgba(220, 38, 38, 0.28);
+  border-left: 5px solid #DC2626;
+  border-radius: 20px;
+  padding: 24px 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.06);
+}
+
+.safety-banner-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.safety-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #DC2626;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.safety-banner-pill-emergency {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: rgba(220, 38, 38, 0.08);
+  color: #991B1B;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.safety-banner-intro {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.safety-warning-card {
+  display: flex;
+  gap: 16px;
+  background: #FEF2F2;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+
+.safety-warning-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #FEE2E2;
+  color: #DC2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.safety-warning-text {
+  flex: 1;
+}
+
+.safety-warning-headline {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #991B1B;
+  margin-bottom: 6px;
+}
+
+.safety-warning-text p {
+  font-size: 0.9rem;
+  color: #4B5563;
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+.safety-rule-list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.88rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.safety-rule-list li {
+  margin-bottom: 4px;
+}
+
+.safety-banner-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(220, 38, 38, 0.15);
+  flex-wrap: wrap;
+}
+
+.safety-action-note {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #4B5563;
+}
+
+.btn-safety-hotline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #DC2626;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 3px 12px rgba(220, 38, 38, 0.28);
+  transition: all 0.2s ease;
+}
+
+.btn-safety-hotline:hover {
+  background: #B91C1C;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(220, 38, 38, 0.38);
+}
+
+/* 2. Symptom Pill Checkboxes */
+.stoerung-symptom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.stoerung-checkbox-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #FAF8F5;
+  border: 1.5px solid #EAE5DE;
+  border-radius: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-primary-text, #1A1D20);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.stoerung-checkbox-pill input[type="checkbox"] {
+  accent-color: var(--color-orange, #D9541E);
+  width: 17px;
+  height: 17px;
+}
+
+.stoerung-checkbox-pill:hover {
+  border-color: var(--color-orange, #D9541E);
+  background: #FFF9F5;
+}
+
+.stoerung-checkbox-pill:has(input:checked) {
+  border-color: var(--color-orange, #D9541E);
+  background: rgba(217, 84, 30, 0.08);
+  color: var(--color-orange, #D9541E);
+}
+
+/* 3. Dedicated Photovoltaic Diagnostic Block */
+.pv-diagnostic-block {
+  background: #FDF9F5;
+  border: 1.5px solid rgba(217, 84, 30, 0.24);
+  border-left: 4.5px solid var(--color-orange, #D9541E);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+  animation: stoerungFadeIn 0.3s ease;
+}
+
+.pv-diagnostic-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.pv-diagnostic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: #B44012;
+}
+
+.pv-diagnostic-sub {
+  font-size: 0.86rem;
+  color: #64748B;
+  margin: 0 0 16px;
+  line-height: 1.45;
+}
+
+/* 4. Radio Group Row for Behavior & Breakers */
+.stoerung-radio-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* 5. Confirmation Panel Enhanced Buttons */
+.stoerung-confirm-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.btn-confirm-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0B1320;
+  color: #FFFFFF;
+  padding: 12px 22px;
+  border-radius: 9999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-confirm-email:hover {
+  background: #1E293B;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .stoerung-safety-banner {
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+  .safety-warning-card {
+    flex-direction: column;
+    padding: 14px 14px;
+    gap: 10px;
+  }
+  .safety-banner-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .btn-safety-hotline {
+    width: 100%;
+    justify-content: center;
+  }
+  .stoerung-symptom-grid,
+  .stoerung-radio-row {
+    grid-template-columns: 1fr;
+  }
+}

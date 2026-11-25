@@ -832,6 +832,60 @@
       <div id="stoerung" class="anchor-offset"></div>
       <div class="stoerung-container">
 
+        <!-- =====================================================================
+             SICHERHEITSHINWEIS & NOTFALL-ABGRENZUNG (EMERGENCY SAFETY NOTICE)
+             ===================================================================== -->
+        <aside class="stoerung-safety-banner" role="alert" aria-label="Wichtiger Sicherheitshinweis bei akuter Gefahr">
+          <div class="safety-banner-badge-row">
+            <span class="safety-banner-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span>Wichtiger Sicherheitshinweis bei akuter Gefahr</span>
+            </span>
+            <span class="safety-banner-pill-emergency">Akuter Notfall vs. Reguläre Störungsmeldung</span>
+          </div>
+
+          <div class="safety-banner-body">
+            <p class="safety-banner-intro">
+              Bitte unterscheiden Sie sorgfältig zwischen einer <strong>regulären technischen Störung</strong> (z. B. Teilausfall, defekte Steckdose, PV-Fehlermeldung) und einer <strong>akuten elektrischen Gefahr</strong>:
+            </p>
+
+            <div class="safety-warning-card">
+              <div class="safety-warning-icon-wrap" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                </svg>
+              </div>
+              <div class="safety-warning-text">
+                <strong class="safety-warning-headline">Brandgeruch, Rauch, Funkenflug oder offene Leitungen?</strong>
+                <p>
+                  Bemerken Sie <strong>Brandgeruch, Rauchentwicklung, Funkenflug, lautes Knistern oder freiliegende, beschädigte Leitungen</strong>:
+                </p>
+                <ul class="safety-rule-list">
+                  <li><strong>Installation keinesfalls berühren!</strong> Halten Sie ausreichend Sicherheitsabstand und warnen Sie andere Personen im Gebäude.</li>
+                  <li><strong>Stromzufuhr trennen:</strong> Nur falls <em>gefahrlos möglich</em>, den Hauptschalter / SLS ausschalten oder die Sicherung trennen.</li>
+                  <li><strong>Bei unmittelbarer Brand- oder Lebensgefahr:</strong> Bringen Sie sich sofort in Sicherheit und wählen Sie den <strong>Notruf der Feuerwehr unter 112</strong>!</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="safety-banner-actions">
+              <div class="safety-action-note">
+                Für dringende, nicht lebensgefährliche Notfälle erreichen Sie unsere Meister-Hotline direkt:
+              </div>
+              <a href="tel:+4915125383578" class="btn-safety-hotline" aria-label="Elektro-Notdienst anrufen: 0151 25 38 35 78">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>Elektro-Notdienst: 0151 25 38 35 78</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+
         <!-- White Form Card Container -->
         <div class="stoerung-card" id="stoerungCard">
 
@@ -858,7 +912,7 @@
 
             <div class="stoerung-step-item" id="stoerungStepIndicator2">
               <div class="stoerung-step-circle">2</div>
-              <span class="stoerung-step-label">Anlage &amp; Bereich</span>
+              <span class="stoerung-step-label">Anlage &amp; Rahmenbedingungen</span>
             </div>
 
             <div class="stoerung-progress-connector" id="stoerungConnector2">
@@ -867,7 +921,7 @@
 
             <div class="stoerung-step-item" id="stoerungStepIndicator3">
               <div class="stoerung-step-circle">3</div>
-              <span class="stoerung-step-label">Beschreibung &amp; Fotos</span>
+              <span class="stoerung-step-label">Details, Fotos &amp; Abschluss</span>
             </div>
           </div>
 
@@ -877,7 +931,9 @@
           <!-- Form Element -->
           <form id="stoerungForm" class="stoerung-form" novalidate>
 
-            <!-- STEP 1: IHRE ANGABEN & EINSATZORT -->
+            <!-- =================================================================
+                 STEP 1: IHRE ANGABEN & EINSATZORT
+                 ================================================================= -->
             <div class="stoerung-step-panel active" id="stoerungStep1" role="region" aria-label="Schritt 1 von 3: Ihre Kontaktdaten und Einsatzort">
               <div class="stoerung-fields-grid">
 
@@ -902,7 +958,7 @@
                 <!-- Firma (optional) -->
                 <div class="stoerung-field-group">
                   <label for="stoerungCompany" class="stoerung-label">
-                    Firma / Unternehmen <span class="stoerung-optional">(falls gewerblich)</span>
+                    Firma / Unternehmen <span class="stoerung-optional">(bei Gewerbekunden)</span>
                   </label>
                   <input type="text" id="stoerungCompany" name="company" class="stoerung-input" placeholder="z. B. Muster GmbH &amp; Co. KG" autocomplete="organization">
                 </div>
@@ -939,7 +995,7 @@
               <div class="stoerung-address-block">
                 <div class="stoerung-address-header">
                   <div class="stoerung-address-title-wrap">
-                    <span class="stoerung-address-title">Einsatzort / Adresse der Störung <span class="stoerung-required">*</span></span>
+                    <span class="stoerung-address-title">Schadenort / Adresse der Störung <span class="stoerung-required">*</span></span>
                     <span class="stoerung-address-sub">Wo vor Ort befindet sich die betroffene Anlage?</span>
                   </div>
                   <button type="button" class="btn-load-saved-address" id="btnLoadSavedAddress" style="display: none;">
@@ -988,11 +1044,13 @@
 
             </div>
 
-            <!-- STEP 2: ART DER ANLAGE (10 SERVICES) & BEREICH -->
-            <div class="stoerung-step-panel" id="stoerungStep2" role="region" aria-label="Schritt 2 von 3: Art der Anlage und betroffener Bereich" style="display: none;">
+            <!-- =================================================================
+                 STEP 2: ART DER ANLAGE (10 SERVICES) & RAHMENBEDINGUNGEN
+                 ================================================================= -->
+            <div class="stoerung-step-panel" id="stoerungStep2" role="region" aria-label="Schritt 2 von 3: Art der Anlage und Rahmenbedingungen" style="display: none;">
               <div class="stoerung-panel-intro">
-                <h3 class="stoerung-panel-title">Art der betroffenen Anlage &amp; Bereich</h3>
-                <p class="stoerung-panel-desc">Wählen Sie die technische Anlage aus (alle 10 Fachbereiche) und bestimmen Sie den Ort des Ausfalls.</p>
+                <h3 class="stoerung-panel-title">Art der betroffenen Anlage &amp; Rahmenbedingungen</h3>
+                <p class="stoerung-panel-desc">Wählen Sie das betroffene Gewerk aus und grenzen Sie das Problem anhand wichtiger Vorab-Fragen ein.</p>
               </div>
 
               <!-- 10 Full Service Selection Cards -->
@@ -1061,7 +1119,7 @@
               </div>
               <div class="stoerung-error-msg" id="errStoerungCategory"></div>
 
-              <!-- Context Details: Affected Area & When it occurred -->
+              <!-- Context Details: Area, Time, Behavior & Breakers -->
               <div class="stoerung-fields-grid mt-4">
                 
                 <!-- Affected Area / Room -->
@@ -1087,30 +1145,84 @@
                 <!-- When did it first occur -->
                 <div class="stoerung-field-group">
                   <label for="stoerungTimeOccurred" class="stoerung-label">
-                    Wann ist die Störung erstmals aufgetreten? <span class="stoerung-required">*</span>
+                    Wann trat die Störung erstmals auf? <span class="stoerung-required">*</span>
                   </label>
                   <select id="stoerungTimeOccurred" name="timeOccurred" class="stoerung-select" required>
                     <option value="" disabled selected>Bitte Zeitpunkt wählen ...</option>
-                    <option value="Gerade eben (innerhalb der letzten Stunde)">Gerade eben (innerhalb der letzten Stunde)</option>
+                    <option value="Gerade eben (innerhalb der letzten 2 Stunden)">Gerade eben (innerhalb der letzten 2 Stunden)</option>
                     <option value="Heute im Tagesverlauf">Heute im Tagesverlauf</option>
-                    <option value="Gestern / vor wenigen Tagen">Gestern / vor wenigen Tagen</option>
+                    <option value="Gestern">Gestern</option>
+                    <option value="Vor wenigen Tagen">Vor wenigen Tagen</option>
+                    <option value="Seit mehreren Wochen">Seit mehreren Wochen</option>
                     <option value="Wiederkehrend (tritt sporadisch auf)">Wiederkehrend (tritt sporadisch auf)</option>
                     <option value="Seit längerer Zeit / dauerhaft">Seit längerer Zeit / dauerhaft</option>
                   </select>
                   <div class="stoerung-error-msg" id="errStoerungTimeOccurred"></div>
                 </div>
 
+                <!-- Fault Behavior (Permanent vs. Intermittent) -->
+                <div class="stoerung-field-group field-span-2">
+                  <label class="stoerung-label">
+                    Tritt der Fehler dauerhaft oder unregelmäßig auf? <span class="stoerung-required">*</span>
+                  </label>
+                  <div class="stoerung-radio-row">
+                    <label class="stoerung-radio-pill">
+                      <input type="radio" name="stoerungBehavior" value="Dauerhaft (durchgehend vorhanden)" checked>
+                      <span>Dauerhaft (durchgehend)</span>
+                    </label>
+                    <label class="stoerung-radio-pill">
+                      <input type="radio" name="stoerungBehavior" value="Sporadisch / Zeitweise (tritt unregelmäßig auf)">
+                      <span>Sporadisch / unregelmäßig</span>
+                    </label>
+                    <label class="stoerung-radio-pill">
+                      <input type="radio" name="stoerungBehavior" value="Nur unter Last (beim Einschalten bestimmter Geräte)">
+                      <span>Nur bei Last / Geräten</span>
+                    </label>
+                    <label class="stoerung-radio-pill">
+                      <input type="radio" name="stoerungBehavior" value="Einmaliges Ereignis (Gerät schaltete ab)">
+                      <span>Einmaliger Ausfall</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Circuit Breakers / RCDs Checked -->
+                <div class="stoerung-field-group field-span-2">
+                  <label class="stoerung-label">
+                    Wurden Sicherungen oder FI-Schutzschalter bereits geprüft? <span class="stoerung-required">*</span>
+                  </label>
+                  <div class="stoerung-radio-row">
+                    <label class="stoerung-radio-pill">
+                      <input type="radio" name="stoerungBreakers" value="Ja – FI / Sicherung löst sofort wieder aus" checked>
+                      <span>Ja – löst sofort wieder aus</span>
+                    </label>
+                    <label class="stoerung-radio-pill">
+                      <input type="radio" name="stoerungBreakers" value="Ja – Schalter lässt sich gar nicht erst umlegen">
+                      <span>Ja – lässt sich nicht umlegen</span>
+                    </label>
+                    <label class="stoerung-radio-pill">
+                      <input type="radio" name="stoerungBreakers" value="Nein – noch nicht geprüft">
+                      <span>Nein – noch nicht geprüft</span>
+                    </label>
+                    <label class="stoerung-radio-pill">
+                      <input type="radio" name="stoerungBreakers" value="Nicht sicher / kein Zugang zum Verteiler">
+                      <span>Nicht sicher / kein Zugang</span>
+                    </label>
+                  </div>
+                </div>
+
               </div>
 
             </div>
 
-            <!-- STEP 3: FEHLERBESCHREIBUNG, FOTO-UPLOAD & RÜCKRUF -->
+            <!-- =================================================================
+                 STEP 3: FEHLERBESCHREIBUNG, PV-DETAILS, FOTO-UPLOAD & RÜCKRUF
+                 ================================================================= -->
             <div class="stoerung-step-panel" id="stoerungStep3" role="region" aria-label="Schritt 3 von 3: Fehlerbeschreibung, Fotos und Rückruf" style="display: none;">
               
               <!-- Quality of Fault Reports: Guidance Helper Box -->
               <div class="stoerung-guidance-box">
                 <div class="guidance-box-header">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="16" x2="12" y2="12"></line>
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -1118,21 +1230,110 @@
                   <span>Hinweise für eine präzise Störungsbeschreibung:</span>
                 </div>
                 <p class="guidance-box-intro">
-                  Bitte beschreiben Sie das Problem so genau wie möglich – das vermeidet Rückfragen und hilft unserem Serviceteam, sofort die richtigen Ersatzteile mitzubringen:
+                  Bitte beschreiben Sie das Problem so genau wie möglich. Eine knappe Angabe wie nur <em>„Strom geht nicht“</em> liefert wenig Anhaltspunkte und führt zu unnötigen Rückfragen. Beachten Sie bitte folgende Leitfragen:
                 </p>
                 <ul class="guidance-box-list">
-                  <li><strong>Was genau passiert?</strong> Fliegt der FI-Schalter oder Leitungsschutzschalter heraus? Gibt es Schmorgeruch, Funken oder Knistern?</li>
-                  <li><strong>Display / Fehlercode:</strong> Zeigt das Gerät (z. B. Wechselrichter, Wärmepumpe oder Wallbox) eine Fehlermeldung oder einen Blinkcode an?</li>
-                  <li><strong>Eigenversuch:</strong> Haben Sie bereits versucht, die Sicherung wieder einzuschalten? Löst sie sofort wieder aus?</li>
+                  <li><strong>Was genau funktioniert nicht?</strong> Welche Stromkreise, Steckdosen, Geräte oder Beleuchtungen sind ausgefallen?</li>
+                  <li><strong>Welche Bereiche sind betroffen?</strong> Einzelne Zimmer, ein Stockwerk oder die gesamte Stromversorgung?</li>
+                  <li><strong>Wann begann das Problem?</strong> Gab es kurz davor Gewitter, Renovierungen oder neue Elektrogeräte?</li>
+                  <li><strong>Dauerhaft oder intermittierend?</strong> Besteht der Ausfall ununterbrochen oder schaltet das System selbsttätig wieder ein?</li>
+                  <li><strong>Sicherungen / RCDs:</strong> Wurde die Sicherung geprüft und löst sie beim Wiedereinschalten sofort wieder aus?</li>
+                  <li><strong>Fehlercodes / Display:</strong> Zeigt das Gerät (z. B. Wechselrichter, Wärmepumpe oder Ladestation) eine Fehlermeldung oder Blinksequenz an?</li>
+                  <li><strong>Auffälligkeiten:</strong> Bemerken Sie ungewöhnliche Geräusche (Brummen, Knistern), Brandgeruch oder Schmorspuren?</li>
                 </ul>
               </div>
 
-              <!-- Message Textarea -->
+              <!-- Dedicated Photovoltaik Diagnostic Block (Dynamically active for PV) -->
+              <div class="pv-diagnostic-block" id="pvDiagnosticBlock" style="display: none;">
+                <div class="pv-diagnostic-header">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                  <span class="pv-diagnostic-badge">Zusätzliche Angaben für Photovoltaikanlagen (PV)</span>
+                </div>
+                <p class="pv-diagnostic-sub">
+                  Diese technischen Angaben ermöglichen unserem Photovoltaik-Meister eine fundierte Vorab-Fehleranalyse:
+                </p>
+                <div class="stoerung-fields-grid">
+                  <div class="stoerung-field-group">
+                    <label for="stoerungPvInverter" class="stoerung-label">Wechselrichter-Hersteller &amp; Modell</label>
+                    <input type="text" id="stoerungPvInverter" name="pvInverter" class="stoerung-input" placeholder="z. B. SMA Sunny Tripower, Fronius, Huawei, SolarEdge">
+                  </div>
+                  <div class="stoerung-field-group">
+                    <label for="stoerungPvErrorCode" class="stoerung-label">Angezeigter Fehlercode / App-Meldung</label>
+                    <input type="text" id="stoerungPvErrorCode" name="pvErrorCode" class="stoerung-input" placeholder="z. B. Isolationsfehler, Fehler 304, LED rot">
+                  </div>
+                  <div class="stoerung-field-group field-span-2">
+                    <label class="stoerung-label">Art des PV-Ertragsausfalls</label>
+                    <div class="stoerung-radio-row">
+                      <label class="stoerung-radio-pill">
+                        <input type="radio" name="pvOutputStatus" value="Komplettausfall (keine Stromerzeugung, Wechselrichter aus/rot)" checked>
+                        <span>Komplettausfall (Anlage steht)</span>
+                      </label>
+                      <label class="stoerung-radio-pill">
+                        <input type="radio" name="pvOutputStatus" value="Reduzierte Leistung (Ertrag deutlich unter Normalwert)">
+                        <span>Reduzierte Leistung (Teilausfall)</span>
+                      </label>
+                      <label class="stoerung-radio-pill">
+                        <input type="radio" name="pvOutputStatus" value="Speicher lädt nicht / Kommunikationsfehler">
+                        <span>Speicher / App-Verbindung</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Error Code & Display Message -->
+              <div class="stoerung-field-group mb-4">
+                <label for="stoerungErrorCode" class="stoerung-label">
+                  Wird ein Fehlercode oder eine Displaymeldung angezeigt? <span class="stoerung-optional">(falls vorhanden)</span>
+                </label>
+                <input type="text" id="stoerungErrorCode" name="errorCode" class="stoerung-input" placeholder="z. B. Error 102, F.28, rote Warn-LED oder Display bleibt dunkel">
+              </div>
+
+              <!-- Unusual Symptoms (Smell, Noise, Discoloration) -->
+              <div class="stoerung-field-group mb-4">
+                <label class="stoerung-label">
+                  Gibt es ungewöhnliche Auffälligkeiten (Geräusche, Gerüche, Schmorspuren)?
+                </label>
+                <div class="stoerung-symptom-grid">
+                  <label class="stoerung-checkbox-pill">
+                    <input type="checkbox" name="symptoms" value="Keine Auffälligkeiten" id="symNone">
+                    <span>Keine Auffälligkeiten</span>
+                  </label>
+                  <label class="stoerung-checkbox-pill">
+                    <input type="checkbox" name="symptoms" value="Schmorgeruch / Brandgeruch" id="symSmell">
+                    <span>Schmor- oder Brandgeruch</span>
+                  </label>
+                  <label class="stoerung-checkbox-pill">
+                    <input type="checkbox" name="symptoms" value="Knistern, Summen oder Brummgeräusche" id="symNoise">
+                    <span>Knistern, Summen oder Brummen</span>
+                  </label>
+                  <label class="stoerung-checkbox-pill">
+                    <input type="checkbox" name="symptoms" value="Sichtbare Schmorspuren, Ruß oder Verfärbungen" id="symSoot">
+                    <span>Schmorspuren, Ruß oder Verfärbung</span>
+                  </label>
+                  <label class="stoerung-checkbox-pill">
+                    <input type="checkbox" name="symptoms" value="Flackerndes Licht / Spannungsschwankungen" id="symFlicker">
+                    <span>Flackerndes Licht / Schwankungen</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Message Textarea with Detailed Guidance Placeholder -->
               <div class="stoerung-field-group mb-4">
                 <label for="stoerungMessage" class="stoerung-label">
                   Genaue Beschreibung der Störung <span class="stoerung-required">*</span>
                 </label>
-                <textarea id="stoerungMessage" name="message" class="stoerung-textarea" rows="5" placeholder="Beschreiben Sie hier die Symptome: Was funktioniert nicht? Welche Geräte waren eingeschaltet? Gab es Geräusche oder Geruch? Fehlercode falls vorhanden ..." required></textarea>
+                <textarea id="stoerungMessage" name="message" class="stoerung-textarea" rows="5" placeholder="Beschreiben Sie hier die Symptome: Was genau funktioniert nicht? Welche Geräte oder Räume sind betroffen? Wann trat das Problem auf? Wurden Sicherungen geprüft? Gibt es Geräusche oder Fehlercodes? ..." required></textarea>
                 <div class="stoerung-error-msg" id="errStoerungMessage"></div>
               </div>
 
@@ -1144,13 +1345,13 @@
                   </label>
                   <span class="upload-tip-badge">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-                    Foto des Sicherungskastens / Displays hilft enorm!
+                    Foto von Zählerschrank, Verteiler, Display oder Fehlermeldung hilft enorm!
                   </span>
                 </div>
                 
                 <div class="stoerung-dropzone" id="stoerungDropzone" tabindex="0" role="button" aria-label="Dateien zum Hochladen auswählen">
-                  <input type="file" id="stoerungFileInput" multiple accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stoerung-dropzone-icon" aria-hidden="true">
+                  <input type="file" id="stoerungFileInput" multiple accept=".jpg,.jpeg,.png,.pdf,.heic" style="display: none;">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D9541E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stoerung-dropzone-icon" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="17 8 12 3 7 8"></polyline>
                     <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -1158,7 +1359,7 @@
                   <p class="stoerung-dropzone-prompt">
                     Fotos hierhin ziehen oder <span class="stoerung-dropzone-browse">Dateien auswählen</span>
                   </p>
-                  <p class="stoerung-dropzone-hint">Ideal: Fotos vom Sicherungskasten, Wechselrichter-Display oder Typenschild (JPG, PNG, PDF bis 10 MB)</p>
+                  <p class="stoerung-dropzone-hint">Ideal: Fotos vom Sicherungskasten, Unterverteiler, Wechselrichter-Display oder Typenschild (JPG, PNG, PDF bis 15 MB)</p>
                 </div>
                 <div class="stoerung-file-list" id="stoerungFileList"></div>
               </div>
@@ -1233,7 +1434,7 @@
             </div>
 
             <h3 class="stoerung-confirm-title">Vielen Dank für Ihre Störungsmeldung!</h3>
-            <p class="stoerung-confirm-desc">Wir haben Ihre Angaben und Fotos erfolgreich erhalten. Unser Meisterteam prüft die Details und setzt sich zeitnah mit Ihnen in Verbindung.</p>
+            <p class="stoerung-confirm-desc">Ihre Angaben und hochgeladenen Fotos wurden erfolgreich erfasst und an <strong>kontakt@elektrotechnik-malawko.de</strong> übermittelt. Unser Meisterteam analysiert die Details und setzt sich zeitnah mit Ihnen in Verbindung.</p>
 
             <div class="stoerung-confirm-details-card">
               <div class="stoerung-confirm-row">
@@ -1257,12 +1458,31 @@
                 <span class="confirm-value" id="stoerungConfirmContact">Max Mustermann (0151 12345678)</span>
               </div>
               <div class="stoerung-confirm-row">
+                <span class="confirm-label">Fehler-Verhalten:</span>
+                <span class="confirm-value" id="stoerungConfirmBehavior">Dauerhaft</span>
+              </div>
+              <div class="stoerung-confirm-row">
+                <span class="confirm-label">Sicherungen / FI:</span>
+                <span class="confirm-value" id="stoerungConfirmBreakers">Geprüft</span>
+              </div>
+              <div class="stoerung-confirm-row" id="stoerungConfirmRowPv" style="display: none;">
+                <span class="confirm-label">PV-Details:</span>
+                <span class="confirm-value" id="stoerungConfirmPv">SMA (Komplettausfall)</span>
+              </div>
+              <div class="stoerung-confirm-row">
                 <span class="confirm-label">Rückruf:</span>
                 <span class="confirm-value" id="stoerungConfirmCallback">Ja (Schnellstmöglich)</span>
               </div>
             </div>
 
             <div class="stoerung-confirm-actions">
+              <a href="#" class="btn-confirm-email" id="btnMailtoSummary" target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Kopie per E-Mail senden</span>
+              </a>
               <a href="tel:+4915125383578" class="btn-primary-orange">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>

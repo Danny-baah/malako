@@ -1235,6 +1235,16 @@ function initInteractiveConfigurator() {
 
     console.log('--- MALAWKO INTERAKTIVE PROJEKTANFRAGE (STRUKTURIERTE E-MAIL DATEN) ---', inquiryPayload);
 
+    try {
+      if (typeof fetch === 'function') {
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(inquiryPayload)
+        }).catch(() => {});
+      }
+    } catch (e) {}
+
     // Simulate reliable submission transition
     setTimeout(() => {
       // Hide step panels and card header, keep form container visible
@@ -1339,6 +1349,7 @@ function initStoerungForm() {
   const alertBox = document.getElementById('stoerungAlertBox');
   const confirmationPanel = document.getElementById('stoerungConfirmation');
   const btnReset = document.getElementById('btnResetStoerung');
+  const btnMailtoSummary = document.getElementById('btnMailtoSummary');
 
   // Step Indicators & Connectors
   const indicators = {
@@ -1376,6 +1387,13 @@ function initStoerungForm() {
     category: 'Elektroinstallation (Steckdosen / Schalter / Leitungen)',
     area: '',
     timeOccurred: '',
+    behavior: 'Dauerhaft (durchgehend vorhanden)',
+    breakers: 'Ja – FI / Sicherung löst sofort wieder aus',
+    errorCode: '',
+    symptoms: [],
+    pvInverter: '',
+    pvErrorCode: '',
+    pvOutputStatus: 'Komplettausfall (keine Stromerzeugung, Anlage steht)',
     message: '',
     files: [],
     callbackRequested: 'Ja',
@@ -1383,7 +1401,7 @@ function initStoerungForm() {
     datenschutz: false
   };
 
-  // Inputs
+  // Step 1 Inputs
   const inputVorname = document.getElementById('stoerungVorname');
   const inputNachname = document.getElementById('stoerungNachname');
   const inputCompany = document.getElementById('stoerungCompany');
@@ -1396,12 +1414,24 @@ function initStoerungForm() {
   const inputSaveAddress = document.getElementById('stoerungSaveAddress');
   const btnLoadSavedAddress = document.getElementById('btnLoadSavedAddress');
 
+  // Step 2 Inputs
   const selectArea = document.getElementById('stoerungArea');
   const selectTimeOccurred = document.getElementById('stoerungTimeOccurred');
+  const pvDiagnosticBlock = document.getElementById('pvDiagnosticBlock');
+
+  // Step 3 Inputs
+  const inputErrorCode = document.getElementById('stoerungErrorCode');
+  const inputPvInverter = document.getElementById('stoerungPvInverter');
+  const inputPvErrorCode = document.getElementById('stoerungPvErrorCode');
   const inputMessage = document.getElementById('stoerungMessage');
   const inputDatenschutz = document.getElementById('stoerungDatenschutz');
   const callbackTimeWrap = document.getElementById('callbackTimeWrap');
   const selectCallbackTime = document.getElementById('stoerungCallbackTime');
+
+  // Dropzone Elements
+  const dropzone = document.getElementById('stoerungDropzone');
+  const fileInput = document.getElementById('stoerungFileInput');
+  const fileList = document.getElementById('stoerungFileList');
 
   // Errors
   const errVorname = document.getElementById('errStoerungVorname');
@@ -1417,14 +1447,7 @@ function initStoerungForm() {
   const errMessage = document.getElementById('errStoerungMessage');
   const errDatenschutz = document.getElementById('errStoerungDatenschutz');
 
-  // Dropzone Elements
-  const dropzone = document.getElementById('stoerungDropzone');
-  const fileInput = document.getElementById('stoerungFileInput');
-  const fileList = document.getElementById('stoerungFileList');
-
-  // --------------------------------------------------------------------------
-  // Helpers
-  // --------------------------------------------------------------------------
+  // Helper functions
   function showAlert(msg) {
     if (!alertBox) return;
     alertBox.textContent = msg;
@@ -1466,9 +1489,7 @@ function initStoerungForm() {
   if (inputMessage) inputMessage.addEventListener('input', () => clearFieldError(inputMessage, errMessage));
   if (inputDatenschutz) inputDatenschutz.addEventListener('change', () => clearFieldError(null, errDatenschutz));
 
-  // --------------------------------------------------------------------------
-  // Saved Address Feature (like Amazon)
-  // --------------------------------------------------------------------------
+  // Amazon-style Saved Address
   const STORAGE_KEY = 'malawko_saved_address';
   function checkSavedAddress() {
     try {
@@ -1476,9 +1497,7 @@ function initStoerungForm() {
       if (saved && btnLoadSavedAddress) {
         btnLoadSavedAddress.style.display = 'inline-flex';
       }
-    } catch (e) {
-      // localStorage disabled / unavailable
-    }
+    } catch (e) {}
   }
 
   function loadSavedAddress() {
@@ -1496,35 +1515,50 @@ function initStoerungForm() {
       if (data.zip && inputZip) inputZip.value = data.zip;
       if (data.city && inputCity) inputCity.value = data.city;
 
-      // Visual flash feedback on button
       if (btnLoadSavedAddress) {
-        const origHTML = btnLoadSavedAddress.innerHTML;
-        btnLoadSavedAddress.innerHTML = '<span>✓ Adresse geladen!</span>';
-        btnLoadSavedAddress.style.borderColor = '#16a34a';
-        btnLoadSavedAddress.style.color = '#16a34a';
+        const span = btnLoadSavedAddress.querySelector('span');
+        if (span) span.textContent = 'Adresse geladen!';
         setTimeout(() => {
-          btnLoadSavedAddress.innerHTML = origHTML;
-          btnLoadSavedAddress.style.borderColor = '';
-          btnLoadSavedAddress.style.color = '';
-        }, 2200);
+          if (span) span.textContent = 'Gespeicherte Adresse laden';
+        }, 2000);
       }
-    } catch (e) {
-      console.warn('Could not load address from storage', e);
-    }
+    } catch (e) {}
   }
+
   if (btnLoadSavedAddress) {
-    btnLoadSavedAddress.addEventListener('click', loadSavedAddress);
+    btnLoadSavedAddress.addEventListener('click', (e) => {
+      e.preventDefault();
+      loadSavedAddress();
+    });
   }
   checkSavedAddress();
 
-  // Callback selection toggle
-  window.toggleCallbackTime = function(isWanted) {
-    state.callbackRequested = isWanted ? 'Ja' : 'Nein';
+  // Callback visibility toggle
+  window.toggleCallbackTime = function(show) {
     if (callbackTimeWrap) {
-      callbackTimeWrap.style.display = isWanted ? 'block' : 'none';
+      callbackTimeWrap.style.display = show ? 'block' : 'none';
     }
   };
 
+  // Symptoms: If "Keine Auffälligkeiten" is checked, uncheck others and vice-versa
+  const symNone = document.getElementById('symNone');
+  const otherSymptoms = document.querySelectorAll('input[name="symptoms"]:not(#symNone)');
+  if (symNone) {
+    symNone.addEventListener('change', () => {
+      if (symNone.checked) {
+        otherSymptoms.forEach(cb => cb.checked = false);
+      }
+    });
+    otherSymptoms.forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (cb.checked && symNone) {
+          symNone.checked = false;
+        }
+      });
+    });
+  }
+
+  // Tracker & Navigation
   function updateTracker(step) {
     for (let i = 1; i <= totalSteps; i++) {
       const ind = indicators[i];
@@ -1557,6 +1591,12 @@ function initStoerungForm() {
     }
   }
 
+  function checkPvToggle() {
+    if (!pvDiagnosticBlock) return;
+    const isPv = (state.category || '').toLowerCase().includes('photovoltaik');
+    pvDiagnosticBlock.style.display = isPv ? 'block' : 'none';
+  }
+
   function goToStep(targetStep) {
     if (targetStep < 1 || targetStep > totalSteps) return;
     hideAlert();
@@ -1574,6 +1614,10 @@ function initStoerungForm() {
       targetPanel.classList.add('active');
     }
 
+    if (targetStep === 3) {
+      checkPvToggle();
+    }
+
     currentStep = targetStep;
     updateTracker(currentStep);
     updateNav(currentStep);
@@ -1584,9 +1628,7 @@ function initStoerungForm() {
     }
   }
 
-  // --------------------------------------------------------------------------
-  // Step 2: 10 Service Option Cards
-  // --------------------------------------------------------------------------
+  // Step 2 Option Cards
   const optionCards = card.querySelectorAll('.stoerung-option-card');
   optionCards.forEach(c => {
     const selectOption = () => {
@@ -1598,6 +1640,7 @@ function initStoerungForm() {
       c.setAttribute('aria-checked', 'true');
       state.category = c.getAttribute('data-value') || '';
       clearFieldError(null, errCategory);
+      checkPvToggle();
     };
 
     c.addEventListener('click', selectOption);
@@ -1609,9 +1652,7 @@ function initStoerungForm() {
     });
   });
 
-  // --------------------------------------------------------------------------
-  // Step 3: File Upload Dropzone
-  // --------------------------------------------------------------------------
+  // Step 3 File Upload Dropzone
   if (dropzone && fileInput) {
     dropzone.addEventListener('click', () => fileInput.click());
     dropzone.addEventListener('keydown', (e) => {
@@ -1649,17 +1690,17 @@ function initStoerungForm() {
   }
 
   function handleFiles(fileListObj) {
-    const allowed = ['image/jpeg', 'image/png', 'application/pdf', '.jpg', '.jpeg', '.png', '.pdf'];
-    const maxSizeBytes = 10 * 1024 * 1024; // 10MB
+    const allowed = ['image/jpeg', 'image/png', 'application/pdf', 'image/heic', '.jpg', '.jpeg', '.png', '.pdf', '.heic'];
+    const maxSizeBytes = 15 * 1024 * 1024; // 15MB
 
     Array.from(fileListObj).forEach(file => {
       const ext = '.' + file.name.split('.').pop().toLowerCase();
       if (!allowed.includes(file.type) && !allowed.includes(ext)) {
-        showAlert(`Format nicht unterstützt: ${file.name} (Erlaubt: JPG, PNG, PDF)`);
+        showAlert(`Format nicht unterstützt: ${file.name} (Erlaubt: JPG, PNG, PDF, HEIC)`);
         return;
       }
       if (file.size > maxSizeBytes) {
-        showAlert(`Datei zu groß: ${file.name} (Maximal 10 MB erlaubt)`);
+        showAlert(`Datei zu groß: ${file.name} (Maximal 15 MB erlaubt)`);
         return;
       }
       if (!state.files.some(f => f.name === file.name && f.size === file.size)) {
@@ -1679,7 +1720,7 @@ function initStoerungForm() {
       const nameSpan = document.createElement('span');
       nameSpan.className = 'stoerung-file-name';
       const sizeKb = (file.size / 1024).toFixed(0);
-      nameSpan.textContent = `${file.name} (${sizeKb} KB)`;
+      nameSpan.textContent = `📎 ${file.name} (${sizeKb} KB)`;
 
       const removeBtn = document.createElement('button');
       removeBtn.type = 'button';
@@ -1697,9 +1738,7 @@ function initStoerungForm() {
     });
   }
 
-  // --------------------------------------------------------------------------
-  // Validation per Step
-  // --------------------------------------------------------------------------
+  // Validation
   function validateStep(step) {
     let isValid = true;
     hideAlert();
@@ -1746,14 +1785,14 @@ function initStoerungForm() {
       }
 
       if (!state.street || state.street.length < 3) {
-        setFieldError(inputStreet, errStreet, 'Bitte geben Sie die Straße und Hausnummer des Einsatzorts an.');
+        setFieldError(inputStreet, errStreet, 'Bitte geben Sie die Straße und Hausnummer des Schadenorts an.');
         isValid = false;
       } else {
         clearFieldError(inputStreet, errStreet);
       }
 
       if (!state.zip || state.zip.length < 4) {
-        setFieldError(inputZip, errZip, 'Bitte geben Sie die Postleitzahl des Einsatzorts an.');
+        setFieldError(inputZip, errZip, 'Bitte geben Sie die Postleitzahl des Schadenorts an.');
         isValid = false;
       } else {
         clearFieldError(inputZip, errZip);
@@ -1772,6 +1811,12 @@ function initStoerungForm() {
     } else if (step === 2) {
       state.area = selectArea ? selectArea.value : '';
       state.timeOccurred = selectTimeOccurred ? selectTimeOccurred.value : '';
+
+      const radioBehavior = document.querySelector('input[name="stoerungBehavior"]:checked');
+      state.behavior = radioBehavior ? radioBehavior.value : 'Dauerhaft (durchgehend vorhanden)';
+
+      const radioBreakers = document.querySelector('input[name="stoerungBreakers"]:checked');
+      state.breakers = radioBreakers ? radioBreakers.value : 'Ja – FI / Sicherung löst sofort wieder aus';
 
       if (!state.category) {
         setFieldError(null, errCategory, 'Bitte wählen Sie die Art der betroffenen Anlage aus.');
@@ -1800,13 +1845,26 @@ function initStoerungForm() {
     } else if (step === 3) {
       state.message = inputMessage ? inputMessage.value.trim() : '';
       state.datenschutz = inputDatenschutz ? inputDatenschutz.checked : false;
+      state.errorCode = inputErrorCode ? inputErrorCode.value.trim() : '';
+
+      // Symptoms
+      state.symptoms = [];
+      document.querySelectorAll('input[name="symptoms"]:checked').forEach(cb => {
+        state.symptoms.push(cb.value);
+      });
+
+      // PV Specifics
+      state.pvInverter = inputPvInverter ? inputPvInverter.value.trim() : '';
+      state.pvErrorCode = inputPvErrorCode ? inputPvErrorCode.value.trim() : '';
+      const radioPv = document.querySelector('input[name="pvOutputStatus"]:checked');
+      state.pvOutputStatus = radioPv ? radioPv.value : 'Komplettausfall (keine Stromerzeugung, Anlage steht)';
 
       const radioCb = document.querySelector('input[name="callbackRequested"]:checked');
       state.callbackRequested = radioCb ? radioCb.value : 'Ja';
-      state.callbackTime = selectCallbackTime ? selectCallbackTime.value : 'Schnellstmöglich';
+      state.callbackTime = (selectCallbackTime && selectCallbackTime.value) ? selectCallbackTime.value : 'Schnellstmöglich';
 
-      if (!state.message || state.message.length < 10) {
-        setFieldError(inputMessage, errMessage, 'Bitte beschreiben Sie das aufgetretene Problem möglichst genau (mind. 10 Zeichen).');
+      if (!state.message || state.message.length < 15) {
+        setFieldError(inputMessage, errMessage, 'Bitte beschreiben Sie das aufgetretene Problem möglichst genau (mindestens 15 Zeichen), um unserem Meisterteam die Vorbereitung zu erleichtern.');
         isValid = false;
       } else {
         clearFieldError(inputMessage, errMessage);
@@ -1820,16 +1878,14 @@ function initStoerungForm() {
       }
 
       if (!isValid) {
-        showAlert('Bitte überprüfen Sie Ihre Fehlerbeschreibung und stimmen Sie der Datenschutzerklärung zu.');
+        showAlert('Bitte überprüfen Sie Ihre Fehlerbeschreibung und willigen Sie in den Datenschutz ein.');
       }
     }
 
     return isValid;
   }
 
-  // --------------------------------------------------------------------------
   // Navigation Event Handlers
-  // --------------------------------------------------------------------------
   if (btnNext) {
     btnNext.addEventListener('click', (e) => {
       e.preventDefault();
@@ -1856,9 +1912,7 @@ function initStoerungForm() {
     });
   }
 
-  // --------------------------------------------------------------------------
   // Submission
-  // --------------------------------------------------------------------------
   function submitStoerungReport() {
     isSubmitting = true;
     btnNext.disabled = true;
@@ -1880,26 +1934,27 @@ function initStoerungForm() {
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(addressToSave));
         if (btnLoadSavedAddress) btnLoadSavedAddress.style.display = 'inline-flex';
-      } catch (e) {
-        // Storage fail ignored
-      }
+      } catch (e) {}
     }
 
     const timestamp = new Date().toISOString();
     const formattedDate = new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
     const refId = '#ST-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
 
+    const isPvCategory = (state.category || '').toLowerCase().includes('photovoltaik');
+
     const payload = {
-      subject: 'Neue Störungsmeldung – Malawko Meisterbetrieb',
+      subject: `Störungsmeldung ${refId}: ${state.category} – ${state.vorname} ${state.nachname} (${state.city})`,
       referenceId: refId,
       submittedAt: timestamp,
       formattedDate: formattedDate,
+      recipient: 'kontakt@elektrotechnik-malawko.de',
       customer: {
         name: `${state.vorname} ${state.nachname}`,
         vorname: state.vorname,
         nachname: state.nachname,
-        company: state.company || null,
-        customerNumber: state.customerNumber || null,
+        company: state.company || 'Privatkunde',
+        customerNumber: state.customerNumber || 'Nicht vorhanden',
         email: state.email,
         phone: state.phone,
         address: `${state.street}, ${state.zip} ${state.city}`,
@@ -1911,16 +1966,79 @@ function initStoerungForm() {
         category: state.category,
         area: state.area,
         timeOccurred: state.timeOccurred,
+        behavior: state.behavior,
+        breakersChecked: state.breakers,
+        errorCode: state.errorCode || 'Keiner angegeben',
+        symptoms: state.symptoms.length ? state.symptoms.join(', ') : 'Keine Auffälligkeiten',
+        photovoltaik: isPvCategory ? {
+          inverter: state.pvInverter || 'Nicht spezifiziert',
+          errorCode: state.pvErrorCode || 'Keiner angegeben',
+          outputStatus: state.pvOutputStatus
+        } : null,
         message: state.message,
         callbackRequested: state.callbackRequested,
         callbackTime: state.callbackRequested === 'Ja' ? state.callbackTime : 'Nicht gewünscht',
         attachments: state.files.map(f => ({ name: f.name, size: f.size, type: f.type }))
       },
-      privacyConsent: true,
-      recipient: 'kontakt@elektrotechnik-malawko.de'
+      privacyConsent: true
     };
 
-    console.log('[STÖRUNGSMELDUNG PAYLOAD]', payload);
+    console.log('--- STÖRUNGSMELDUNG AN kontakt@elektrotechnik-malawko.de ---', payload);
+
+    // Prepare mailto link for direct customer transmission or copy
+    const mailSubject = encodeURIComponent(`Störungsmeldung ${refId}: ${state.category}`);
+    let mailBody = `STÖRUNGSMELDUNG – ELEKTROTECHNIK MALAWKO GMBH\n` +
+      `===================================================\n` +
+      `Ticket-Nr: ${refId}\n` +
+      `Datum/Zeit: ${formattedDate}\n\n` +
+      `1. KUNDENDATEN & EINSATZORT\n` +
+      `---------------------------------------------------\n` +
+      `Name: ${state.vorname} ${state.nachname}\n` +
+      `Firma: ${state.company || '–'}\n` +
+      `Kundennummer: ${state.customerNumber || '–'}\n` +
+      `Telefon: ${state.phone}\n` +
+      `E-Mail: ${state.email}\n` +
+      `Schadenort: ${state.street}, ${state.zip} ${state.city}\n\n` +
+      `2. ANLAGE & DIAGNOSEDATEN\n` +
+      `---------------------------------------------------\n` +
+      `Art der Anlage: ${state.category}\n` +
+      `Betroffener Bereich: ${state.area}\n` +
+      `Erstmals aufgetreten: ${state.timeOccurred}\n` +
+      `Fehler-Verhalten: ${state.behavior}\n` +
+      `Sicherungen / FI geprüft: ${state.breakers}\n` +
+      `Auffälligkeiten / Symptome: ${state.symptoms.length ? state.symptoms.join(', ') : 'Keine'}\n` +
+      `Fehlercode / Display: ${state.errorCode || 'Keiner'}\n`;
+
+    if (payload.fault.photovoltaik) {
+      mailBody += `\nPV-Spezifikationen:\n` +
+        `- Wechselrichter: ${payload.fault.photovoltaik.inverter}\n` +
+        `- Fehlercode: ${payload.fault.photovoltaik.errorCode}\n` +
+        `- Art des Ausfalls: ${payload.fault.photovoltaik.outputStatus}\n`;
+    }
+
+    mailBody += `\n3. BESCHREIBUNG DER STÖRUNG\n` +
+      `---------------------------------------------------\n` +
+      `${state.message}\n\n` +
+      `4. RÜCKRUF & ANHÄNGE\n` +
+      `---------------------------------------------------\n` +
+      `Rückruf gewünscht: ${state.callbackRequested === 'Ja' ? `Ja (${state.callbackTime || 'Schnellstmöglich'})` : 'Nein (rein per E-Mail)'}\n` +
+      `Fotos angehängt: ${state.files.length} Datei(en)\n` +
+      `Datenschutz-Einwilligung: Erteilt\n`;
+
+    if (btnMailtoSummary) {
+      btnMailtoSummary.href = `mailto:kontakt@elektrotechnik-malawko.de?subject=${mailSubject}&body=${encodeURIComponent(mailBody)}`;
+    }
+
+    // Try posting to /api/contact if available
+    try {
+      if (typeof fetch === 'function') {
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      }
+    } catch (e) {}
 
     setTimeout(() => {
       form.style.display = 'none';
@@ -1935,15 +2053,30 @@ function initStoerungForm() {
         const confArea = document.getElementById('stoerungConfirmArea');
         const confAddr = document.getElementById('stoerungConfirmAddress');
         const confContact = document.getElementById('stoerungConfirmContact');
+        const confBehavior = document.getElementById('stoerungConfirmBehavior');
+        const confBreakers = document.getElementById('stoerungConfirmBreakers');
         const confCallback = document.getElementById('stoerungConfirmCallback');
+        const confPvRow = document.getElementById('stoerungConfirmRowPv');
+        const confPv = document.getElementById('stoerungConfirmPv');
 
         if (confRef) confRef.textContent = refId;
         if (confCat) confCat.textContent = state.category;
         if (confArea) confArea.textContent = state.area;
         if (confAddr) confAddr.textContent = `${state.street}, ${state.zip} ${state.city}`;
         if (confContact) confContact.textContent = `${state.vorname} ${state.nachname} (${state.phone})`;
+        if (confBehavior) confBehavior.textContent = state.behavior.split(' (')[0];
+        if (confBreakers) confBreakers.textContent = state.breakers.split(' – ')[0] || state.breakers;
         if (confCallback) {
-          confCallback.textContent = state.callbackRequested === 'Ja' ? `Ja (${state.callbackTime})` : 'Nein (E-Mail)';
+          confCallback.textContent = state.callbackRequested === 'Ja' ? `Ja (${state.callbackTime || 'Schnellstmöglich'})` : 'Nein (E-Mail)';
+        }
+
+        if (confPvRow && confPv) {
+          if (isPvCategory) {
+            confPvRow.style.display = 'flex';
+            confPv.textContent = `${state.pvInverter || 'PV-Anlage'} (${state.pvOutputStatus.split(' (')[0]})`;
+          } else {
+            confPvRow.style.display = 'none';
+          }
         }
       }
 
@@ -1951,7 +2084,7 @@ function initStoerungForm() {
       isSubmitting = false;
       btnNext.disabled = false;
       btnNextText.textContent = 'Störung verbindlich melden';
-    }, 700);
+    }, 600);
   }
 
   // Reset handler
@@ -2493,13 +2626,26 @@ function initCallbackModal() {
           if (submitSpan) submitSpan.textContent = 'Wird gesendet...';
         }
 
-        console.log('--- RÜCKRUF-ANFRAGE GESENDET ---', {
+        const callbackPayload = {
+          recipient: 'kontakt@elektrotechnik-malawko.de',
           name: inputName.value.trim(),
           phone: inputPhone.value.trim(),
           preferredTime: hiddenTimeInput ? hiddenTimeInput.value : 'Schnellstmöglich',
           reason: inputReason.value.trim(),
           timestamp: new Date().toISOString()
-        });
+        };
+
+        console.log('--- RÜCKRUF-ANFRAGE GESENDET AN kontakt@elektrotechnik-malawko.de ---', callbackPayload);
+
+        try {
+          if (typeof fetch === 'function') {
+            fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(callbackPayload)
+            }).catch(() => {});
+          }
+        } catch (e) {}
 
         setTimeout(() => {
           form.style.display = 'none';
