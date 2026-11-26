@@ -2886,6 +2886,10 @@ img, picture {
     align-items: flex-start;
     gap: 10px;
   }
+  /* Mobile-Reihenfolge: Copyright -> Legal-Links -> Webdesign-Credit */
+  .footer-copy { order: 1; }
+  .footer-legal-links { order: 2; }
+  .footer-credit { order: 3; }
 
   .why-stats-glass-bar {
     position: static;
@@ -7319,11 +7323,15 @@ a.direct-card-value:hover {
     text-align: center !important;
     gap: 12px !important;
   }
+  /* Mobile-Reihenfolge: Copyright -> Legal-Links -> Webdesign-Credit */
+  .footer-copy { order: 1 !important; }
   .footer-legal-links {
+    order: 2 !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
     gap: 8px !important;
   }
+  .footer-credit { order: 3 !important; }
 }
 
 /* ==========================================================================
