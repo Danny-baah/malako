@@ -2887,6 +2887,16 @@ window.acceptExternalMedia = acceptExternalMedia;
  */
 let currentLightboxGallery = [];
 let currentLightboxIndex = 0;
+const lightboxPreloadCache = new Map();
+
+function preloadLightboxImage(src) {
+  if (!src || lightboxPreloadCache.has(src)) return lightboxPreloadCache.get(src);
+  const img = new Image();
+  img.decoding = 'async';
+  img.src = src;
+  lightboxPreloadCache.set(src, img);
+  return img;
+}
 
 function openProjectLightbox(cardEl) {
   const lightbox = document.getElementById('imageLightbox');
@@ -2914,13 +2924,16 @@ function openProjectLightbox(cardEl) {
   currentLightboxGallery = gallery;
   currentLightboxIndex = 0;
 
+  // Preload ALLE Gallery-Bilder sofort, damit Navigation instant ist
+  gallery.forEach(preloadLightboxImage);
+
   updateLightboxContent();
 
   lightbox.style.display = 'flex';
-  setTimeout(() => {
+  requestAnimationFrame(() => {
     lightbox.classList.add('open');
     document.body.classList.add('modal-open');
-  }, 10);
+  });
 }
 
 function updateLightboxContent() {
@@ -2932,7 +2945,23 @@ function updateLightboxContent() {
   if (!imgEl || currentLightboxGallery.length === 0) return;
 
   const currentSrc = currentLightboxGallery[currentLightboxIndex];
-  imgEl.src = currentSrc;
+  // Nachbar-Bilder prefetchen, falls Open-Preload noch nicht fertig war
+  const n = currentLightboxGallery.length;
+  preloadLightboxImage(currentLightboxGallery[(currentLightboxIndex + 1) % n]);
+  preloadLightboxImage(currentLightboxGallery[(currentLightboxIndex - 1 + n) % n]);
+
+  // Wenn Preload fertig ist -> sofort setzen; sonst setzen und Browser kuemmert sich
+  const cached = lightboxPreloadCache.get(currentSrc);
+  if (cached && cached.complete && cached.naturalWidth > 0) {
+    imgEl.src = currentSrc;
+  } else if (cached) {
+    imgEl.src = currentSrc;
+    cached.addEventListener('load', () => {
+      if (imgEl.src !== currentSrc && !imgEl.src.endsWith(currentSrc)) return;
+    }, { once: true });
+  } else {
+    imgEl.src = currentSrc;
+  }
 
   if (currentLightboxGallery.length > 1) {
     if (prevBtn) prevBtn.style.display = 'flex';
